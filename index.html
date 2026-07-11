@@ -11,8 +11,8 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/hero-1200.jpg">
 <link rel="icon" href="assets/SQNC_V_GREEN.svg">
-<link rel="preload" href="assets/fonts/inter-normal-100-900.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/fraunces-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/matter-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/matter-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/hero-2000.webp" as="image" media="(min-width: 800px)">
 <link rel="preload" href="assets/hero-760.webp" as="image" media="(max-width: 799px)">
 <style>
@@ -20,12 +20,15 @@
    SEQUENCE — production teaser v1 (from Figma draft 5rfsnt74)
    Vanilla, self-contained, tuned for LCP + snap.
    ============================================================ */
-@font-face{font-family:'Fraunces';font-style:normal;font-weight:300 700;font-display:swap;
-  src:url('assets/fonts/fraunces-normal-300-700.woff2') format('woff2')}
-@font-face{font-family:'Fraunces';font-style:italic;font-weight:300 700;font-display:swap;
-  src:url('assets/fonts/fraunces-italic-300-700.woff2') format('woff2')}
-@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;
-  src:url('assets/fonts/inter-normal-100-900.woff2') format('woff2')}
+/* Brand trial fonts — Matter (body/UI) + Season Mix (display) */
+@font-face{font-family:'Matter';font-style:normal;font-weight:400;font-display:swap;
+  src:url('assets/fonts/matter-400.woff2') format('woff2')}
+@font-face{font-family:'Matter';font-style:normal;font-weight:500;font-display:swap;
+  src:url('assets/fonts/matter-500.woff2') format('woff2')}
+@font-face{font-family:'Matter';font-style:normal;font-weight:600;font-display:swap;
+  src:url('assets/fonts/matter-600.woff2') format('woff2')}
+@font-face{font-family:'Season Mix';font-style:normal;font-weight:400;font-display:swap;
+  src:url('assets/fonts/seasonmix-400.woff2') format('woff2')}
 
 :root{
   --green:#072B18; --green-soft:#375443; --mineral:#F6F9F2;
@@ -33,84 +36,108 @@
   --opt:#B9FF2E; --bord:#FFE23F; --need:#FAB14A;
   --ink-60:rgba(255,255,255,.6);
   --ease:cubic-bezier(.16,1,.3,1);
-  --sans:'Inter',system-ui,-apple-system,sans-serif;
-  --serif:'Fraunces',Georgia,serif;
+  --sans:'Matter','Inter',system-ui,-apple-system,sans-serif;
+  --serif:'Season Mix',Georgia,serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{overflow-x:clip;scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{font-family:var(--sans);color:var(--green);background:var(--mineral);
+body{font-family:var(--sans);color:var(--green);background:#fff;
   overflow-x:clip;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img{display:block;max-width:100%}
 ::selection{background:var(--lime);color:var(--green)}
 
 /* ---------- HERO ---------- */
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;
-  align-items:center;isolation:isolate;overflow:clip;
-  padding:clamp(40px,7svh,84px) 20px 56px}
+  align-items:center;isolation:isolate;overflow:clip;padding:0 20px 56px}
 .hero-bg{position:absolute;inset:0;z-index:-1}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 22%}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
 .hero-bg::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(196,222,240,.25),transparent 34%,transparent 78%,rgba(7,43,24,.18) 100%)}
-.wordmark{width:min(520px,72vw);height:auto}
-.tagline{margin-top:22px;font-weight:600;font-size:clamp(.85rem,1.25vw,1.2rem);
-  letter-spacing:.14em;text-transform:uppercase;text-align:center;text-wrap:balance}
+  background:linear-gradient(to bottom,rgba(196,222,240,.22),transparent 28%,transparent 55%,rgba(255,255,255,.55) 78%,rgba(255,255,255,.92) 92%,#fff 99%)}
+/* foreground athlete cutout — sits IN FRONT of the cards, aligned to the bg */
+.hero-fg{position:absolute;inset:0;z-index:2;pointer-events:none}
+.hero-fg img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;
+  -webkit-mask:linear-gradient(to bottom,#000 82%,transparent 99%);mask:linear-gradient(to bottom,#000 82%,transparent 99%)}
 
-/* email pill */
-.capture{margin-top:clamp(26px,4svh,44px);width:min(600px,100%)}
-.pill{display:flex;align-items:stretch;height:64px;border-radius:999px;overflow:hidden;
-  background:var(--lime);box-shadow:0 8px 20px rgba(0,0,0,.12),0 24px 60px -20px rgba(7,43,24,.35);
+/* nav — transparent over the sky */
+.nav{position:relative;z-index:5;width:100%;max-width:1400px;display:flex;
+  align-items:center;justify-content:space-between;padding:22px 8px 8px}
+.nav-logo img{height:23px;width:auto;display:block}
+.nav-right{display:flex;align-items:center;gap:clamp(18px,2.4vw,40px)}
+.nav-right a{color:var(--green);text-decoration:none;font-weight:500;font-size:15px;
+  transition:opacity .18s var(--ease),background .18s var(--ease)}
+.nav-right a:not(.nav-cta):hover{opacity:.6}
+.nav-right a.nav-cta{background:var(--green);color:#fff;padding:9px 17px;border-radius:999px;font-weight:500;font-size:14px}
+.nav-right a.nav-cta:hover{background:#0b3f24;opacity:1}
+
+/* hero content */
+.hero-inner{flex:1;display:flex;flex-direction:column;align-items:center;width:100%;
+  padding-top:clamp(24px,4.5svh,60px)}
+.headline{max-width:760px;text-align:center;font-weight:600;
+  font-size:clamp(1.6rem,3.3vw,2.55rem);line-height:1.16;letter-spacing:-.015em;
+  color:var(--green);text-wrap:balance}
+.headline .nw{white-space:nowrap}
+.chip{display:inline-block;height:.86em;aspect-ratio:7/5;vertical-align:-.18em;
+  background:#fff;border-radius:.16em;padding:.08em;object-fit:contain;
+  box-shadow:0 3px 10px rgba(7,43,24,.14);border:1px solid rgba(255,255,255,.9);margin:0 .16em}
+.subline{margin-top:18px;font-size:clamp(1rem,1.5vw,1.24rem);font-weight:500;
+  color:rgba(7,43,24,.6);text-align:center;text-wrap:balance}
+
+/* modern email field — clean pill + inset lime button */
+.capture{margin-top:clamp(26px,4svh,40px);width:min(560px,100%);display:flex;flex-direction:column;align-items:center}
+.field{display:flex;align-items:center;gap:12px;width:100%;
+  background:rgba(255,255,255,.94);border:1px solid rgba(7,43,24,.09);border-radius:999px;
+  padding:8px 8px 8px 24px;box-shadow:0 14px 44px -12px rgba(7,43,24,.3);
   transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
-.pill:focus-within{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.16),0 30px 70px -20px rgba(7,43,24,.4)}
-.pill .mail{flex-shrink:0;align-self:center;margin-left:22px;opacity:.75}
-.pill input{flex:1;min-width:0;border:0;background:transparent;padding:0 14px;
+.field:focus-within{transform:translateY(-2px);box-shadow:0 18px 52px -12px rgba(7,43,24,.36)}
+.field .mail{flex-shrink:0;opacity:.55}
+.field input{flex:1;min-width:0;border:0;background:transparent;padding:14px 0;
   font-family:var(--sans);font-size:16.5px;font-weight:500;color:var(--green)}
-.pill input::placeholder{color:rgba(7,43,24,.55)}
-.pill input:focus{outline:none}
-.pill button{display:flex;align-items:center;gap:8px;border:0;cursor:pointer;
-  padding:0 26px;background:var(--green);color:#fff;
-  font-family:var(--sans);font-weight:600;font-size:16.5px;white-space:nowrap;
+.field input::placeholder{color:rgba(7,43,24,.5)}
+.field input:focus{outline:none}
+.field button{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;flex-shrink:0;
+  padding:14px 22px;background:var(--lime);color:var(--green);border-radius:999px;
+  font-family:var(--sans);font-weight:600;font-size:15.5px;white-space:nowrap;
   transition:background .18s var(--ease)}
-.pill button:hover{background:#0b3f24}
-.pill button svg{transition:transform .22s var(--ease)}
-.pill button:hover svg{transform:translateX(3px)}
-.pill button[disabled]{opacity:.7;cursor:wait}
-.micro{margin-top:12px;text-align:center;font-size:12.5px;font-weight:500;
-  letter-spacing:.06em;color:rgba(7,43,24,.72);text-transform:uppercase}
-.joined-pill{display:none;align-items:center;justify-content:center;gap:12px;height:64px;
-  border-radius:999px;background:var(--green);color:#fff;
-  box-shadow:0 8px 20px rgba(0,0,0,.12)}
-.joined-pill b{font-family:var(--serif);font-weight:500;font-size:19px;letter-spacing:.02em}
-.is-joined .pill,.is-joined .micro{display:none}
+.field button:hover{background:#a2f052}
+.field button svg{transition:transform .22s var(--ease)}
+.field button:hover svg{transform:translateX(3px)}
+.field button[disabled]{opacity:.7;cursor:wait}
+.micro{margin-top:13px;text-align:center;font-size:12.5px;font-weight:500;
+  letter-spacing:.04em;color:rgba(7,43,24,.6)}
+.joined-pill{display:none;align-items:center;justify-content:center;gap:12px;width:100%;height:62px;
+  border-radius:999px;background:var(--green);color:#fff;box-shadow:0 14px 44px -12px rgba(7,43,24,.3)}
+.joined-pill b{font-weight:600;font-size:16px}
+.is-joined .field,.is-joined .micro{display:none}
 .is-joined .joined-pill{display:flex}
 
 /* glass biomarker cards */
-.cards{position:relative;margin-top:clamp(30px,6svh,72px);width:min(680px,100%);
-  display:flex;flex-direction:column;gap:16px;align-items:center}
-.glass{--r:26px;position:relative;border-radius:var(--r);
-  background:rgba(10,26,17,.34);backdrop-filter:blur(14px) saturate(1.15);
-  -webkit-backdrop-filter:blur(14px) saturate(1.15);
-  border:1px solid rgba(255,255,255,.16);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 13px 65px rgba(0,0,0,.16);
-  color:#fff;padding:24px 26px;width:100%;
+.cards{position:relative;margin-top:clamp(28px,5svh,56px);width:min(600px,100%);
+  display:flex;flex-direction:column;gap:14px;align-items:center}
+.glass{--r:24px;position:relative;border-radius:var(--r);
+  background:rgba(42,48,52,.42);backdrop-filter:blur(16px) saturate(.92);
+  -webkit-backdrop-filter:blur(16px) saturate(.92);
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 13px 60px rgba(0,0,0,.14);
+  color:#fff;padding:20px 24px;width:100%;
   transition:transform .3s var(--ease)}
 .glass:hover{transform:translateY(-3px)}
 .g-label{display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:600;
   letter-spacing:.1em;text-transform:uppercase;color:var(--ink-60)}
 .g-label svg{opacity:.8}
-.card-blood{max-width:480px;align-self:center}
+.card-blood{max-width:440px;align-self:center}
 .blood-stats{display:flex;gap:34px;margin:16px 0 18px}
 .blood-stats b{display:block;font-family:var(--serif);font-weight:420;font-size:34px;
   line-height:1;color:rgba(255,255,255,.92)}
 .blood-stats span{display:block;margin-top:7px;font-size:13.5px;font-weight:600;letter-spacing:.04em}
 .s-opt span{color:var(--opt)} .s-bord span{color:var(--bord)} .s-need span{color:var(--need)}
-.tri{display:flex;gap:5px;height:9px;border-radius:9px}
-.tri i{border-radius:9px;filter:blur(.6px)}
-.tri .a{flex:1;background:var(--opt);box-shadow:0 0 12px rgba(184,255,44,.55)}
-.tri .b{width:30%;background:#FF7327;box-shadow:0 0 12px rgba(255,115,39,.5)}
-.tri .c{width:14%;background:#FF3227;box-shadow:0 0 12px rgba(255,50,39,.5)}
-.vial{position:absolute;right:22px;top:18px;width:34px;opacity:.95;border-radius:6px}
-.card-hrv{max-width:640px;display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center}
+.tri{display:flex;gap:6px;height:9px;border-radius:9px}
+.tri i{border-radius:9px;filter:blur(1.4px);opacity:.72}
+.tri .a{flex:1;background:#C7F27A;box-shadow:0 0 14px rgba(199,242,122,.45)}
+.tri .b{width:30%;background:#FFB067;box-shadow:0 0 14px rgba(255,176,103,.4)}
+.tri .c{width:14%;background:#FF8A93;box-shadow:0 0 14px rgba(255,138,147,.4)}
+.vial{position:absolute;right:22px;top:18px;height:88px;width:auto;object-fit:contain;filter:drop-shadow(0 6px 14px rgba(0,0,0,.3))}
+.card-hrv{max-width:560px;display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center}
 .card-hrv .watch{width:86px;height:86px;object-fit:contain;filter:drop-shadow(0 6px 14px rgba(0,0,0,.4))}
 .hrv-mid .g-label{margin-bottom:12px}
 .hrv-title{font-family:var(--serif);font-weight:420;font-size:clamp(20px,2.4vw,27px);line-height:1.05}
@@ -118,14 +145,10 @@ img{display:block;max-width:100%}
 .hrv-tags{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
 .hrv-tags span{padding:5px 11px;border-radius:999px;font-size:12.5px;font-weight:600;
   background:rgba(255,255,255,.14);color:rgba(255,255,255,.9)}
-.eq{position:relative;display:flex;flex-direction:column;gap:2px;width:118px;height:86px}
-.eq i{position:relative;border-radius:2px;background:rgba(255,255,255,.08);overflow:visible}
-.eq i::after{content:"";position:absolute;right:0;top:0;bottom:0;width:3px;border-radius:2px;background:var(--tip)}
-.eq .r1{flex:1;--tip:#FE5B04}.eq .r2{flex:1;--tip:#FFD755}
-.eq .r3{height:38%;--tip:#6DD909;background:linear-gradient(90deg,rgba(224,255,50,0),rgba(224,255,50,.16))}
-.eq .r4{flex:1;--tip:#FFD755}.eq .r5{flex:1;--tip:#FE5B04}
-.eq svg{position:absolute;left:10px;top:38%;width:75%;height:36%;overflow:visible}
-.card-chat{max-width:560px}
+.eq{position:relative;display:flex;flex-direction:column;gap:5px;width:118px;height:86px}
+.eq i{flex:1;border-radius:2px;background:rgba(255,255,255,.07)}
+.eq svg{position:absolute;inset:8px 4px;width:calc(100% - 8px);height:calc(100% - 16px);overflow:visible}
+.card-chat{max-width:500px}
 .card-chat .q{margin-top:14px;font-size:15px;color:rgba(255,255,255,.82)}
 .card-chat .a{margin-top:6px;font-family:var(--serif);font-weight:420;font-size:22px}
 
@@ -191,39 +214,56 @@ footer{background:var(--green);color:#fff;padding:56px clamp(18px,4vw,56px) 40px
 .foot-row a{color:rgba(255,255,255,.85);text-decoration:none}
 .foot-row a:hover{color:#fff}
 
-/* ---------- MOTION ---------- */
-.rv{opacity:0;transform:translateY(18px);
-  transition:opacity .65s var(--ease),transform .65s var(--ease);transition-delay:var(--d,0ms)}
-.rv.on{opacity:1;transform:none}
-html.static .rv{opacity:1!important;transform:none!important;transition:none!important}
+/* ---------- MOTION — opening settle-in ---------- */
+@keyframes settle{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes settleFg{from{opacity:0;transform:translateY(34px) scale(1.04)}to{opacity:1;transform:none}}
+.rv{opacity:0;animation:settle .72s var(--ease) both;animation-delay:var(--d,0ms)}
+.hero-fg{opacity:0;animation:settleFg 1.05s var(--ease) .5s both}
+html.static .rv,html.static .hero-fg{animation:none!important;opacity:1!important;transform:none!important}
 html.static .hero{min-height:860px!important}
 @media(prefers-reduced-motion:reduce){
-  .rv{transform:none;transition:opacity .4s ease}
-  .glass:hover,.mini:hover,.logos img:hover,.chips span:hover{transform:none}
+  .rv{animation:none;opacity:1;transform:none}
+  .hero-fg{animation:none;opacity:1;transform:none}
+  .glass:hover{transform:none}
 }
 
 /* ---------- RESPONSIVE ---------- */
-@media(max-width:980px){
-  .cal-grid{grid-template-columns:1fr}
-  .panel{min-height:560px}
+@media(max-width:1024px){
+  /* tablet + mobile: man-free sky bg + a tight cutout of the man anchored bottom-RIGHT, in front of the cards (no double image) */
+  .hero-bg img{object-position:52% 18%}
+  .hero-fg{inset:auto -2% -1px auto;left:auto;width:min(600px,90%);height:auto}
+  .hero-fg img{position:relative;width:100%;height:auto;object-fit:contain;
+    -webkit-mask:linear-gradient(to bottom,#000 90%,transparent 100%);mask:linear-gradient(to bottom,#000 90%,transparent 100%)}
 }
 @media(max-width:720px){
-  .hero{padding-top:12svh}
-  .hero-bg img{object-position:67% 24%}
-  .card-hrv{grid-template-columns:auto 1fr}
+  /* bottle-forward: cutout shifted well to the right so the bottle + drinking action lead and the body runs off-frame */
+  .hero-fg{inset:auto -34% -1px auto;left:auto;width:min(560px,150%)}
+  .nav{padding:16px 4px 4px}
+  .nav-logo img{height:21px}
+  .nav-right a:not(.nav-cta){display:none}
+  .nav-cta{padding:10px 16px;font-size:14px}
+  .headline{font-size:clamp(1.6rem,6.9vw,2.15rem)}
+  .chip{height:.8em}
+  /* smaller, stepped cards — middle (wearable) largest, like desktop (room to scroll later) */
+  .cards{width:min(430px,92%);gap:11px}
+  .glass{padding:15px 18px;--r:20px}
+  .card-blood{max-width:87%}
+  .card-hrv{max-width:100%;grid-template-columns:auto 1fr;gap:13px}
+  .card-chat{max-width:79%}
   .card-hrv .eq{display:none}
-  .card-hrv .watch{width:64px;height:64px}
-  .card-chat{display:none}
-  .pill{height:58px}
-  .pill input{font-size:16px}
-  .pill button{padding:0 18px;font-size:15px}
-  .pill button .cta-txt{display:none}
-  .pill button::before{content:"Join"}
-  .mini-stack{position:static;transform:none;width:100%;margin-top:16px}
-  .p-app{flex-direction:column}
-  .p-app .phone{width:min(280px,72%)}
-  .panel{min-height:0}
-  .p-ing{min-height:560px}
+  .card-hrv .watch{width:50px;height:50px}
+  .g-label{font-size:11.5px}
+  .hrv-title{font-size:19px}
+  .card-chat .a{font-size:19px}
+  .blood-stats{gap:13px;padding-right:24px;margin:12px 0 13px}
+  .blood-stats b{font-size:26px}
+  .blood-stats span{font-size:12px}
+  .card-blood .vial{height:66px;right:12px;top:13px}
+  .field{padding:6px 6px 6px 18px;gap:8px}
+  .field input{font-size:16px;padding:12px 0}
+  .field button{padding:12px 16px;font-size:14px}
+  .field button .cta-txt{display:none}
+  .field button::before{content:"Join"}
 }
 </style>
 </head>
@@ -235,35 +275,52 @@ html.static .hero{min-height:860px!important}
     <picture>
       <source type="image/webp" srcset="assets/hero-760.webp 760w, assets/hero-1200.webp 1200w, assets/hero-2000.webp 2000w" sizes="100vw">
       <img src="assets/hero-1200.jpg" srcset="assets/hero-760.jpg 760w, assets/hero-1200.jpg 1200w, assets/hero-2000.jpg 2000w"
-           sizes="100vw" alt="" fetchpriority="high" width="1620" height="1080">
+           sizes="100vw" alt="" fetchpriority="high" width="2000" height="1231">
+    </picture>
+  </div>
+  <div class="hero-fg" aria-hidden="true">
+    <picture>
+      <source media="(max-width:1024px)" type="image/webp" srcset="assets/hero-man-760.webp 760w, assets/hero-man-1200.webp 1200w">
+      <source type="image/webp" srcset="assets/hero-fg-760.webp 760w, assets/hero-fg-1200.webp 1200w, assets/hero-fg-2000.webp 2000w" sizes="100vw">
+      <img src="assets/hero-fg-1200.webp" alt="" width="2000" height="1231">
     </picture>
   </div>
 
-  <img class="wordmark rv on" src="assets/SEQUENCE_GREEN.svg" alt="SEQUENCE" width="859" height="128">
-  <p class="tagline rv on" style="--d:60ms">Supplement that learns from your biomarkers</p>
+  <nav class="nav rv">
+    <a class="nav-logo" href="#" aria-label="SQNC home"><img src="assets/SQNC_H_GREEN.svg" alt="SQNC" width="107" height="30"></a>
+    <div class="nav-right">
+      <a href="#how">How it works</a>
+      <a href="#science">The science</a>
+      <a href="#advisors">Advisors</a>
+      <a class="nav-cta" href="#access">Join the waiting list</a>
+    </div>
+  </nav>
 
-  <div class="capture rv on" style="--d:120ms">
-    <form class="pill" id="waitlist" novalidate>
-      <svg class="mail" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#072B18" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+  <div class="hero-inner">
+  <h1 class="headline rv" style="--d:120ms">The most personalised supplement, built from your <span class="nw"><img class="chip" src="assets/card-vial.png" alt="blood test"> blood,</span> <span class="nw"><img class="chip" src="assets/img-watch.png" alt="Whoop"> Whoop,</span> and <span class="nw"><img class="chip" src="assets/img-ring.png" alt="Oura"> Oura data.</span></h1>
+  <p class="subline rv" style="--d:230ms">Re-formulated every month as your biomarkers change.</p>
+
+  <div class="capture rv" style="--d:320ms" id="access">
+    <form class="field" id="waitlist" novalidate>
+      <svg class="mail" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#072B18" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="3.5"/><path d="m3.5 7.5 8.5 6 8.5-6"/></svg>
       <input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="email" required aria-label="Email address">
       <button type="submit" id="cta"><span class="cta-txt">Join the waiting list</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12h15m0 0-6-6m6 6-6 6"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg>
       </button>
     </form>
     <div class="joined-pill" role="status">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B1FC63" stroke-width="2.4" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>
       <b>You're on the list — No. <span id="qn">—</span></b>
     </div>
-    <p class="micro">First cohort: 200 athletes — London, Q4 2026</p>
   </div>
 
   <div class="cards">
-    <article class="glass card-blood rv" style="--d:80ms">
+    <article class="glass card-blood rv" style="--d:440ms">
       <p class="g-label">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 1 1-12 0c0-4.5 6-11 6-11Z"/></svg>
         April blood test
       </p>
-      <img class="vial" src="assets/img-vial.png" alt="" loading="lazy" width="68" height="212">
+      <img class="vial" src="assets/card-vial.png" alt="" loading="lazy" width="32" height="142">
       <div class="blood-stats">
         <div class="s-opt"><b>32</b><span>Optimal</span></div>
         <div class="s-bord"><b>16</b><span>Borderline</span></div>
@@ -272,8 +329,8 @@ html.static .hero{min-height:860px!important}
       <div class="tri" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i></div>
     </article>
 
-    <article class="glass card-hrv rv" style="--d:160ms">
-      <img class="watch" src="assets/img-watch.png" alt="" loading="lazy" width="320" height="331">
+    <article class="glass card-hrv rv" style="--d:540ms">
+      <img class="watch" src="assets/card-watch.png" alt="" loading="lazy" width="207" height="234">
       <div class="hrv-mid">
         <p class="g-label">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="7" y="6" width="10" height="12" rx="3"/><path d="M9 6V3h6v3M9 18v3h6v-3"/></svg>
@@ -289,7 +346,7 @@ html.static .hero{min-height:860px!important}
       </div>
     </article>
 
-    <article class="glass card-chat rv" style="--d:240ms">
+    <article class="glass card-chat rv" style="--d:640ms">
       <p class="g-label">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/></svg>
         SQNC AI chat
@@ -298,80 +355,11 @@ html.static .hero{min-height:860px!important}
       <p class="a">Energy drops sharply</p>
     </article>
   </div>
+  </div><!-- /hero-inner -->
 </header>
 
-<!-- ================= PROOF ================= -->
-<section class="proof">
-  <h2 class="rv">By people from…</h2>
-  <div class="logos rv" style="--d:100ms">
-    <img src="assets/logo-1.png" alt="" loading="lazy" width="115" height="115">
-    <img src="assets/logo-2.png" alt="" loading="lazy" width="115" height="115">
-    <img src="assets/logo-3.png" alt="" loading="lazy" width="115" height="115">
-    <img src="assets/logo-4.png" alt="" loading="lazy" width="115" height="115">
-    <img src="assets/logo-5.png" alt="" loading="lazy" width="115" height="115">
-    <img src="assets/logo-6.png" alt="" loading="lazy" width="115" height="115">
-    <img src="assets/logo-7.png" alt="" loading="lazy" width="115" height="115">
-  </div>
-</section>
-
-<!-- ================= CALIBRATE ================= -->
-<section class="calibrate">
-  <h2 class="cal-head rv">
-    <span class="sqnc-pill"><img src="assets/SQNC_H_WHITE.svg" alt="SQNC" width="339" height="95"></span>
-    calibrates your formula to your biomarkers.<br>
-    Then measures what actually works.
-  </h2>
-
-  <div class="cal-grid">
-    <div class="panel p-app rv">
-      <div class="panel-bg" aria-hidden="true">
-        <img src="assets/photo-motion.webp" alt="" loading="lazy" width="937" height="1666">
-      </div>
-      <img class="phone" src="assets/phone.webp" alt="SQNC app — March blood test score and daily sachet formula" loading="lazy" width="740" height="1676">
-      <div class="mini-stack">
-        <div class="mini">
-          <h3>Blood test data</h3>
-          <div class="row"><img src="assets/img-vial.png" alt="" loading="lazy"><img src="assets/img-vial.png" alt="" loading="lazy" style="height:28px"><img src="assets/img-vial.png" alt="" loading="lazy" style="height:22px"></div>
-        </div>
-        <div class="mini">
-          <h3>Wearable integration</h3>
-          <div class="row"><img src="assets/img-watch.png" alt="" loading="lazy"><img src="assets/img-ring.png" alt="" loading="lazy"><img src="assets/img-garmin.png" alt="" loading="lazy"></div>
-        </div>
-        <div class="mini">
-          <h3>AI based chat</h3>
-          <div class="row"><img class="bubble" src="assets/img-bubble.png" alt="" loading="lazy"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel p-ing rv" style="--d:120ms">
-      <div class="panel-bg" aria-hidden="true">
-        <img src="assets/photo-pour.webp" alt="" loading="lazy" width="1137" height="937">
-      </div>
-      <div class="top" style="position:relative">
-        <h2>40+</h2>
-        <p>personalised ingredients matched to your biomarkers</p>
-      </div>
-      <div class="chips" style="position:relative">
-        <span>D3</span><span>Rhodiola Rosea</span><span>B12</span><span>Selenium</span>
-        <span>Iron bisglycinate</span><span>B6</span><span>Magnesium</span><span>Zinc</span>
-        <span>Ashwagandha</span><span>Acacia fiber</span><span>K2</span><span>Vitamin C</span><span>Creatine</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= FOOTER ================= -->
-<footer>
-  <div class="foot">
-    <div class="mark"><img src="assets/SEQUENCE_WHITE.svg" alt="SEQUENCE" width="859" height="128"></div>
-    <div class="foot-row">
-      <span>Personalised performance nutrition — London, Q4 2026</span>
-      <span><a href="mailto:hello@drinksequence.co.uk">hello@drinksequence.co.uk</a></span>
-      <span>© 2026 SQNC Ltd. SQNC is not a medical service.</span>
-    </div>
-  </div>
-</footer>
+<!-- Rest of page intentionally white — focusing on the hero.
+     Sections below (proof / how-it-works / advisors / footer) to be designed next. -->
 
 <script>
 (function () {
@@ -401,15 +389,7 @@ html.static .hero{min-height:860px!important}
     setTimeout(function(){ try{localStorage.setItem(KEY, JSON.stringify(rec))}catch(e){}; joined(rec); cta.disabled=false; }, STATIC?0:300);
   });
 
-  /* Reveals */
-  var els = [].slice.call(document.querySelectorAll('.rv'));
-  if (STATIC) { els.forEach(function(el){el.classList.add('on')}); return; }
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
-    }, { threshold: .12, rootMargin: '0px 0px -5% 0px' });
-    els.forEach(function (el) { if (!el.classList.contains('on')) io.observe(el); });
-  } else { els.forEach(function (el) { el.classList.add('on'); }); }
+  /* Opening settle-in is pure CSS (keyframes on .rv / .hero-fg with staggered delays). */
 })();
 </script>
 </body>
