@@ -13,8 +13,8 @@
 <link rel="icon" href="assets/SQNC_V_GREEN.svg">
 <link rel="preload" href="assets/fonts/matter-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/matter-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/hero-2000.webp" as="image" media="(min-width: 800px)">
-<link rel="preload" href="assets/hero-760.webp" as="image" media="(max-width: 799px)">
+<link rel="preload" as="image" imagesrcset="assets/cyclist-3600.webp 1x, assets/cyclist-6400.webp 2x" media="(min-width: 800px)">
+<link rel="preload" href="assets/cyclist-mobile.webp" as="image" media="(max-width: 799px)">
 <style>
 /* ============================================================
    SEQUENCE — production teaser v1 (from Figma draft 5rfsnt74)
@@ -29,6 +29,8 @@
   src:url('assets/fonts/matter-600.woff2') format('woff2')}
 @font-face{font-family:'Season Mix';font-style:normal;font-weight:400;font-display:swap;
   src:url('assets/fonts/seasonmix-400.woff2') format('woff2')}
+@font-face{font-family:'Season Sans';font-style:normal;font-weight:500;font-display:swap;
+  src:url('assets/fonts/seasonsans-500.woff2') format('woff2')}
 
 :root{
   --green:#072B18; --green-soft:#375443; --mineral:#F6F9F2;
@@ -50,14 +52,13 @@ img{display:block;max-width:100%}
 /* ---------- HERO ---------- */
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;
   align-items:center;isolation:isolate;overflow:clip;padding:0 clamp(18px,2.4vw,44px) 56px}
-.hero-bg{position:absolute;inset:0;z-index:-1}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
-.hero-bg::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(196,222,240,.22),transparent 28%,transparent 55%,rgba(255,255,255,.55) 78%,rgba(255,255,255,.92) 92%,#fff 99%)}
-/* foreground athlete cutout — sits IN FRONT of the cards, aligned to the bg */
-.hero-fg{position:absolute;right:-4%;bottom:-17.5vw;top:auto;left:auto;z-index:2;width:min(62vw,1250px);pointer-events:none}
-.hero-fg img{width:100%;height:auto;display:block;
-  -webkit-mask:linear-gradient(to bottom,#000 93%,transparent 100%);mask:linear-gradient(to bottom,#000 93%,transparent 100%)}
+.hero-bg{position:absolute;inset:0;z-index:-1;background:#aecadd;
+  background-image:url(assets/cyclist-3600.webp);
+  background-image:-webkit-image-set(url(assets/cyclist-3600.webp) 1x,url(assets/cyclist-6400.webp) 2x);
+  background-image:image-set(url(assets/cyclist-3600.webp) 1x,url(assets/cyclist-6400.webp) 2x);
+  background-repeat:no-repeat;background-size:cover;background-position:60% 32%}
+.hero-bg::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to bottom,transparent 88%,rgba(255,255,255,.42))}
 
 /* nav — transparent over the sky */
 .nav{position:relative;z-index:5;width:100%;max-width:none;display:flex;
@@ -82,9 +83,18 @@ img{display:block;max-width:100%}
   box-shadow:0 3px 10px rgba(7,43,24,.14);border:1px solid rgba(255,255,255,.9);margin:0 .16em}
 .chip.ring{height:.84em;padding:.06em}
 .chip.whoop{height:.92em}
-.pill{display:inline-block;height:.92em;width:auto;vertical-align:-.24em;margin:0 .12em;
+.pill{display:inline-block;height:.92em;width:auto;vertical-align:middle;margin:0 .12em;
   border-radius:.5em;box-shadow:0 4px 14px rgba(7,43,24,.16)}
+/* wearable carousel — devices slide out right, next slides in from left */
+.wear{position:relative;width:auto;aspect-ratio:174/62;overflow:hidden;isolation:isolate;
+  background:#e7cf14 url(assets/chip-band.png) center/cover no-repeat}
+.wear .ws{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  will-change:transform;transition:transform .55s cubic-bezier(.66,0,.24,1)}
+.wear .ws img{height:86%;width:auto;max-width:60%;object-fit:contain;display:block;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.28))}
+@media(prefers-reduced-motion:reduce){.wear .ws{transition:none}}
 .subline{margin-top:18px;font-size:clamp(1rem,1.5vw,1.24rem);font-weight:500;
+  font-family:'Season Sans','Season Mix',Georgia,serif;
   color:rgba(7,43,24,.6);text-align:center;text-wrap:balance}
 
 /* modern email field — clean pill + inset lime button */
@@ -100,10 +110,10 @@ img{display:block;max-width:100%}
 .field input::placeholder{color:rgba(7,43,24,.5)}
 .field input:focus{outline:none}
 .field button{position:relative;isolation:isolate;display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;flex-shrink:0;
-  padding:14px 22px;background:var(--lime);color:var(--green);border-radius:999px;
+  padding:14px 22px;background:var(--green);color:var(--lime);border-radius:999px;
   font-family:var(--sans);font-weight:600;font-size:15.5px;white-space:nowrap;
   transition:background .18s var(--ease)}
-.field button:hover{background:#a2f052}
+.field button:hover{background:#0b3f24}
 .field button svg{transition:transform .22s var(--ease)}
 .field button:hover svg{transform:translateX(3px)}
 .field button[disabled]{opacity:.7;cursor:wait}
@@ -259,27 +269,45 @@ html.static .hero{min-height:860px!important}
 /* desktop single-view: compress hero + model so the "Built by..." row + logo
    marquee land within one screen (no scroll). Model reframed smaller/higher. */
 @media(min-width:1025px){
-  .hero{min-height:70vh}
-  html.static .hero{min-height:70vh!important}
-  .hero-fg{right:-10%;bottom:-17vw;width:min(44vw,900px)}
-  /* dissolve the model's lower body into the whitening sky (no hard clip line) */
-  .hero-fg img{-webkit-mask:linear-gradient(to bottom,#000 45%,transparent 58%);
-    mask:linear-gradient(to bottom,#000 45%,transparent 58%)}
-  .social{padding:clamp(22px,2.4vw,38px) 0 clamp(18px,2vw,32px)}
-  .marquee{margin-top:clamp(16px,1.8vw,28px)}
+  /* premium full-bleed hero — matches Figma 60:10779 (1920x1102) */
+  .hero{min-height:auto;aspect-ratio:1920/1102;justify-content:center;
+    padding:0 clamp(40px,3.75vw,72px)}
+  html.static .hero{min-height:auto!important}
+  .hero-bg{background-size:216.8% auto;background-position:74% 17%}
+  .nav{position:absolute;top:22px;left:0;right:0;padding:0 clamp(40px,3.75vw,72px)}
+  .nav-logo img{height:19.5px}
+  .nav-right{gap:clamp(28px,2.4vw,44px)}
+  .nav-right a{font-size:18px}
+  .nav-cta{padding:13px 24px;font-size:17px}
+  .hero-inner{flex:0 1 auto;justify-content:center;padding:0;transform:translateY(6.5%)}
+  .headline{max-width:min(1240px,94%);font-weight:500;font-size:clamp(2.6rem,3.6vw,4.4rem);
+    line-height:1.08;letter-spacing:-.012em;text-wrap:wrap}
+  .subline{margin-top:clamp(28px,2.2vw,42px);font-family:'Season Sans','Season Mix',Georgia,serif;font-weight:500;font-size:26.25px;color:rgba(7,43,24,.9)}
+  .capture{width:min(880px,94%);margin-top:clamp(32px,2.6vw,46px)}
+  .field{padding:11px 12px 11px 34px;gap:14px}
+  .field .mail{width:26px;height:26px}
+  .field input{font-size:clamp(18px,1.45vw,27px)}
+  .field button{padding:16px 28px;font-size:clamp(15px,1vw,18px)}
+  .field button svg{width:22px;height:22px}
+  .pill{height:.86em;border:2px solid rgba(255,255,255,.8)}
 }
 @media(max-width:720px){
   /* bottle-forward: cutout scaled down + shifted right so the SQNC bottle leads and the head is a smaller supporting element (not co-focus) */
   /* content-driven height (no full-screen blue gap) + model raised to fill the space */
-  .hero{min-height:74svh}
-  html.static .hero{min-height:74svh!important}
-  .hero-inner{padding-bottom:0}
-  .hero-fg{right:-26%;bottom:0;left:auto;width:min(94vw,40svh)}
-  .nav{padding:16px 4px 4px}
-  .nav-logo img{height:15px}
+  /* premium portrait hero — Figma 61:11102: cyclist+bike photo, white centered
+     copy over a dark top scrim, glass form over the photo */
+  .hero{min-height:100svh;justify-content:center;padding:0}
+  html.static .hero{min-height:100svh!important}
+  .hero-bg{background-image:url(assets/cyclist-mobile.webp);background-size:cover;background-position:left center}
+  .hero-bg::after{background:linear-gradient(to bottom,rgba(4,10,6,.4) 0%,rgba(4,10,6,.52) 42%,rgba(4,10,6,.4) 60%,rgba(4,10,6,.1) 80%,transparent 93%)}
+  .nav{position:absolute;top:0;left:0;right:0;z-index:5;padding:16px 18px 0}
+  .nav-logo img{height:16px;filter:brightness(0) invert(1)}
   .nav-right a:not(.nav-cta){display:none}
-  .nav-cta{padding:10px 16px;font-size:14px}
-  .headline{font-size:clamp(1.6rem,6.9vw,2.15rem)}
+  .nav-cta{padding:7px 13px;font-size:11px}
+  .hero-inner{flex:0 0 auto;width:100%;padding:0 18px;align-items:center;transform:translateY(-3%)}
+  .headline{color:#fff;font-weight:500;max-width:330px;
+    font-size:clamp(1.5rem,6.9vw,1.85rem);line-height:1.15;letter-spacing:-.018em}
+  .subline{color:#fff;margin-top:12px;font-size:16px;max-width:330px}
   .chip{height:.8em}
   /* smaller, stepped cards — middle (wearable) largest, like desktop (room to scroll later) */
   .cards{width:min(430px,92%);gap:11px}
@@ -297,16 +325,13 @@ html.static .hero{min-height:860px!important}
   .blood-stats b{font-size:26px}
   .blood-stats span{font-size:12px}
   .card-blood .vial{height:56px;right:14px;top:14px;width:auto}
-  .field{padding:6px 6px 6px 12px;gap:5px}
-  .field input{font-size:16px;padding:12px 0}
-  .field button{padding:11px 12px;font-size:12.5px;gap:5px}
+  .capture{width:min(344px,95%);margin-top:26px}
+  .field{padding:5px 5px 5px 12px;gap:5px}
+  .field .mail{width:16px;height:16px}
+  .field input{font-size:16px;padding:11px 0}
+  .field button{padding:10px 10px;font-size:12px;gap:4px}
 }
 @media(max-width:720px) and (max-height:740px){
-  .hero{min-height:72svh}
-  html.static .hero{min-height:72svh!important}
-  .hero-fg{width:min(94vw,38svh)}
-  .hero-inner{padding-top:clamp(16px,3svh,40px)}
-  .subline{margin-top:12px}
   .social{padding-top:14px;padding-bottom:16px}
   .marquee{margin-top:12px}
 }
@@ -316,19 +341,7 @@ html.static .hero{min-height:860px!important}
 
 <!-- ================= HERO ================= -->
 <header class="hero">
-  <div class="hero-bg" aria-hidden="true">
-    <picture>
-      <source type="image/webp" srcset="assets/hero-760.webp 760w, assets/hero-1200.webp 1200w, assets/hero-2000.webp 2000w" sizes="100vw">
-      <img src="assets/hero-1200.jpg" srcset="assets/hero-760.jpg 760w, assets/hero-1200.jpg 1200w, assets/hero-2000.jpg 2000w"
-           sizes="100vw" alt="" fetchpriority="high" width="2000" height="1231">
-    </picture>
-  </div>
-  <div class="hero-fg" aria-hidden="true">
-    <picture>
-      <source type="image/webp" srcset="assets/model-760.webp 760w, assets/model-1348.webp 1348w">
-      <img src="assets/model-1348.webp" alt="" width="1248" height="1145">
-    </picture>
-  </div>
+  <div class="hero-bg" aria-hidden="true"></div>
 
   <nav class="nav rv">
     <a class="nav-logo" href="#" aria-label="SQNC home"><img src="assets/SQNC_H_GREEN.svg" alt="SQNC" width="107" height="30"></a>
@@ -341,7 +354,7 @@ html.static .hero{min-height:860px!important}
   </nav>
 
   <div class="hero-inner">
-  <h1 class="headline rv" style="--d:120ms">The most personalised supplement, built from your <span class="nw"><img class="pill" src="assets/chip-blood.png" alt="blood test"> blood</span> and <span class="nw"><img class="pill" src="assets/chip-wear.png" alt="wearable"> wearables data.</span></h1>
+  <h1 class="headline rv" style="--d:120ms">The most personalised supplement, based on your <span class="nw"><img class="pill" src="assets/chip-blood.png" alt="blood test"> blood</span> and <span class="nw"><span class="pill wear" role="img" aria-label="wearable devices"><i class="ws"><img alt=""></i><i class="ws"><img alt=""></i></span> wearables data.</span></h1>
   <p class="subline rv" style="--d:230ms">Re-formulated every month as your biomarkers change.</p>
 
   <div class="capture rv" style="--d:320ms" id="access">
@@ -422,6 +435,30 @@ html.static .hero{min-height:860px!important}
     try{fetch('/api/waitlist',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(rec)}).catch(function(){})}catch(e){}
     setTimeout(function(){ try{localStorage.setItem(KEY, JSON.stringify(rec))}catch(e){}; joined(rec); cta.disabled=false; }, STATIC?0:300);
   });
+
+  /* wearable carousel — current device slides out to the right, next enters from the left */
+  (function(){
+    var wear=document.querySelector('.wear'); if(!wear) return;
+    var ws=wear.querySelectorAll('.ws');
+    var im=[ws[0].querySelector('img'), ws[1].querySelector('img')];
+    var dev=['assets/wear-apple.png','assets/wear-oura.png','assets/wear-garmin.png','assets/wear-whoop.png'];
+    var i=0, a=0;
+    im[0].src=dev[0]; ws[0].style.transform='translateX(0)';
+    im[1].src=dev[1]; ws[1].style.transform='translateX(-100%)';
+    if (STATIC || (window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches)) return;
+    function tick(){
+      var b=1-a, n=(i+1)%dev.length;
+      im[b].src=dev[n];
+      ws[b].style.transition='none'; ws[b].style.transform='translateX(-100%)';
+      void wear.offsetWidth;                     /* reflow so the reset lands without a slide */
+      ws[b].style.transition='';
+      ws[a].style.transform='translateX(100%)';  /* current slides out to the right */
+      ws[b].style.transform='translateX(0)';     /* next slides in from the left */
+      a=b; i=n;
+    }
+    var t=setInterval(tick, 2600);
+    document.addEventListener('visibilitychange', function(){ clearInterval(t); if(!document.hidden) t=setInterval(tick,2600); });
+  })();
 
   /* Opening settle-in is pure CSS (keyframes on .rv / .hero-fg with staggered delays). */
 })();
