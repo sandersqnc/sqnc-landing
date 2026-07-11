@@ -1,0 +1,7 @@
+# local safety backups — never deploy
+index.backup-*.html
+
+# unused legacy card assets (cards removed from hero)
+assets/card-bubble.png
+assets/card-garmin.png
+assets/card-ring.png
