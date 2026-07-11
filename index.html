@@ -107,14 +107,6 @@ img{display:block;max-width:100%}
 .field button svg{transition:transform .22s var(--ease)}
 .field button:hover svg{transform:translateX(3px)}
 .field button[disabled]{opacity:.7;cursor:wait}
-@property --spin{syntax:'<angle>';inherits:false;initial-value:0deg}
-.field button::after{content:"";position:absolute;inset:-3px;border-radius:inherit;padding:3px;pointer-events:none;z-index:1;
-  background:conic-gradient(from var(--spin),transparent 0deg,transparent 300deg,#9aa2a9 322deg,#cdd3d8 348deg,#f8fafb 356deg,transparent 360deg);
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
-  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;
-  animation:cta-spin 4.2s linear infinite}
-@keyframes cta-spin{to{--spin:360deg}}
-@media(prefers-reduced-motion:reduce){.field button::after{animation:none;background:none}}
 .micro{margin-top:13px;text-align:center;font-size:12.5px;font-weight:500;
   letter-spacing:.04em;color:rgba(7,43,24,.6)}
 .joined-pill{display:none;align-items:center;justify-content:center;gap:12px;width:100%;height:62px;
@@ -186,11 +178,12 @@ html.static .marquee-row{animation:none!important}
 @media(prefers-reduced-motion:reduce){.marquee-row{animation:none;transform:none}}
 @media(max-width:720px){
   .social{padding-top:20px;padding-bottom:26px}
-  .social-head{flex-direction:column;gap:12px}
-  .social-text{font-size:1.04rem;line-height:1.34}
-  .marquee{margin-top:20px;height:46px}
-  .marquee-row{gap:36px}
-  .mlogo{max-height:24px;max-width:116px;opacity:.62}
+  .social-head{flex-direction:column;gap:10px}
+  .avatar-stack{height:30px}
+  .social-text{font-size:0.9rem;line-height:1.3}
+  .marquee{margin-top:18px;height:40px}
+  .marquee-row{gap:30px}
+  .mlogo{max-height:18px;max-width:88px;opacity:.6}
 }
 
 /* ---------- CALIBRATE ---------- */
@@ -281,7 +274,7 @@ html.static .hero{min-height:860px!important}
   .hero{min-height:74svh}
   html.static .hero{min-height:74svh!important}
   .hero-inner{padding-bottom:0}
-  .hero-fg{right:-21%;bottom:0;left:auto;width:min(92vw,37svh)}
+  .hero-fg{right:-26%;bottom:0;left:auto;width:min(94vw,40svh)}
   .nav{padding:16px 4px 4px}
   .nav-logo img{height:15px}
   .nav-right a:not(.nav-cta){display:none}
@@ -304,14 +297,14 @@ html.static .hero{min-height:860px!important}
   .blood-stats b{font-size:26px}
   .blood-stats span{font-size:12px}
   .card-blood .vial{height:56px;right:14px;top:14px;width:auto}
-  .field{padding:6px 6px 6px 18px;gap:8px}
+  .field{padding:6px 6px 6px 12px;gap:5px}
   .field input{font-size:16px;padding:12px 0}
-  .field button{padding:11px 14px;font-size:13px}
+  .field button{padding:11px 12px;font-size:12.5px;gap:5px}
 }
 @media(max-width:720px) and (max-height:740px){
   .hero{min-height:72svh}
   html.static .hero{min-height:72svh!important}
-  .hero-fg{width:min(92vw,34svh)}
+  .hero-fg{width:min(94vw,38svh)}
   .hero-inner{padding-top:clamp(16px,3svh,40px)}
   .subline{margin-top:12px}
   .social{padding-top:14px;padding-bottom:16px}
