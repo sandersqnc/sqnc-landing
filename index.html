@@ -121,8 +121,8 @@ img{display:block;max-width:100%}
 /* modern email field — clean pill + inset lime button */
 .capture{margin-top:clamp(26px,4svh,40px);width:min(560px,100%);display:flex;flex-direction:column;align-items:center}
 .field{display:flex;align-items:center;gap:12px;width:100%;
-  background:rgba(255,255,255,.94);border:1px solid rgba(7,43,24,.09);border-radius:999px;
-  padding:8px 8px 8px 24px;box-shadow:0 14px 44px -12px rgba(7,43,24,.3);
+  background:rgba(255,255,255,.96);border:1px solid rgba(7,43,24,.08);border-radius:999px;
+  padding:8px 8px 8px 24px;box-shadow:0 10px 30px -16px rgba(7,43,24,.22);
   transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
 .field:focus-within{transform:translateY(-2px);box-shadow:0 18px 52px -12px rgba(7,43,24,.36)}
 .field .mail{flex-shrink:0;opacity:.55}
@@ -285,25 +285,84 @@ html.static .marquee-row{animation:none!important}
 .app-cta:hover{filter:brightness(1.05)}
 .app-cta:hover svg{transform:translateX(3px)}
 .app-cta:focus-visible{outline:3px solid #fff;outline-offset:3px}
-/* desktop redesign (>=921px): card docked to the left edge + right-side section menu */
-.app-nav{display:none;flex-direction:column;gap:clamp(11px,1vw,17px)}
-.app-nav-item{position:relative;display:flex;align-items:baseline;justify-content:space-between;gap:16px;
-  padding-left:20px;font-family:var(--sans);font-weight:500;font-size:clamp(15px,1.05vw,17px);color:#9a9a9a;line-height:1.35}
-.app-nav-item.on{color:#1a1a1a}
-.app-nav-item.on::before{content:"";position:absolute;left:0;top:3px;bottom:3px;width:2px;border-radius:2px;background:#1a1a1a}
-.app-nav-n{color:inherit;font-variant-numeric:tabular-nums;flex-shrink:0}
+/* persistent right-side section menu (desktop >=1200) + reveal-on-scroll */
+.side-menu{display:none}
+.side-menu-item{position:relative;display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  padding-left:20px;font-family:var(--sans);font-weight:500;font-size:clamp(15px,1.05vw,17px);color:#9a9a9a;line-height:1.4;transition:color .35s var(--ease)}
+.side-menu-item.on{color:#1a1a1a}
+.side-menu-item.on::before{content:"";position:absolute;left:0;top:3px;bottom:3px;width:2px;border-radius:2px;background:#1a1a1a}
+.side-menu-n{color:inherit;font-variant-numeric:tabular-nums;flex-shrink:0}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 @media(min-width:1200px){
-  .app{display:flex;align-items:center;gap:clamp(24px,2.6vw,56px);
-    padding-top:clamp(50px,6vw,110px);padding-bottom:clamp(50px,6vw,110px);padding-left:0;padding-right:clamp(34px,4vw,88px)}
-  .app-card{flex:1 1 auto;max-width:none;margin:0;min-height:clamp(500px,45vw,780px);
-    border-radius:0 clamp(22px,1.9vw,30px) clamp(22px,1.9vw,30px) 0}
-  .app-photo{flex:0 0 43%}
-  .app-title{font-size:clamp(2rem,2.8vw,50px)}
-  .app-nav{display:flex;flex:0 0 auto;width:clamp(200px,16vw,270px)}
+  .side-menu{display:flex;flex-direction:column;gap:clamp(12px,1.1vw,18px);
+    position:fixed;right:clamp(28px,3vw,80px);top:50%;transform:translateY(-50%);width:clamp(180px,15vw,240px);z-index:40;
+    opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+  .side-menu.show{opacity:1;pointer-events:auto}
+  /* un-dock the app image + reserve a right gutter for the fixed menu (comp gutter is set after the .comp rules below) */
+  .app{padding-left:clamp(24px,5vw,120px);padding-right:clamp(220px,20vw,340px)}
+  .app-card{max-width:none;margin:0}
+}
+
+/* ---------- COMPONENTS ---------- */
+.comp{max-width:1560px;margin:0 auto;background:#fff;padding:clamp(56px,8vw,120px) clamp(24px,4vw,60px) clamp(72px,9vw,140px)}
+.comp-text{max-width:640px}
+.comp-label{font-family:var(--sans);font-weight:400;color:#666;font-size:clamp(15px,1.15vw,18px)}
+.comp-title{margin-top:16px;font-family:var(--serif);font-weight:500;color:#1a1a1a;
+  font-size:clamp(2.1rem,3.4vw,56px);line-height:1.1;letter-spacing:-.012em}
+.comp-desc{margin-top:18px;font-family:var(--sans);font-weight:400;color:#666;font-size:clamp(1rem,1.28vw,20px);line-height:1.5;max-width:600px}
+.comp-points{margin-top:clamp(26px,3vw,40px);list-style:none;display:flex;flex-direction:column;gap:12px}
+.comp-points li{position:relative;padding-left:18px;font-family:var(--sans);font-weight:400;color:#666;font-size:clamp(.95rem,1.05vw,18px);line-height:1.35}
+.comp-points li::before{content:"";position:absolute;left:0;top:.6em;width:4px;height:4px;border-radius:50%;background:#666}
+.comp-cta{margin-top:clamp(30px,3.2vw,46px);display:inline-flex;align-items:center;gap:9px;background:#1a1a1a;color:#fff;text-decoration:none;
+  padding:clamp(16px,1.6vw,20px) clamp(30px,2.7vw,40px);border-radius:999px;font-family:var(--sans);font-weight:500;font-size:clamp(14px,1.05vw,18px);
+  letter-spacing:.045em;text-transform:uppercase;white-space:nowrap;transition:background .18s var(--ease),transform .18s var(--ease)}
+.comp-cta svg{transition:transform .22s var(--ease)}
+.comp-cta:hover{background:#333}
+.comp-cta:hover svg{transform:translateX(3px)}
+.comp-cta:focus-visible{outline:3px solid #1a1a1a;outline-offset:3px}
+.comp-media{position:relative;aspect-ratio:1;border-radius:clamp(20px,1.9vw,26px);overflow:hidden;background:#e8e6e0;box-shadow:0 22px 64px -26px rgba(7,43,24,.3)}
+.comp-bike{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:82% 50%}
+/* card track uses per-card margin (no gap / no vertical padding) so translateY(-50%) loops seamlessly */
+.comp-cards{position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;padding:0 16px;animation:compscroll 48s linear infinite;will-change:transform}
+.comp-media:hover .comp-cards{animation-play-state:paused}
+@keyframes compscroll{to{transform:translateY(-50%)}}
+.ing-card{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;margin-bottom:16px;border-radius:22px;
+  background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);
+  border:1px solid rgba(255,255,255,.55);box-shadow:0 14px 40px -18px rgba(0,0,0,.22)}
+.ing-title{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin:0}
+.ing-name{font-family:var(--serif);font-weight:500;color:#375443;font-size:clamp(18px,1.7vw,25px);line-height:1.05}
+.ing-dose{font-family:var(--sans);font-weight:500;color:#304d3c;opacity:.5;font-size:clamp(12px,1vw,15px)}
+.ing-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ing-tags span{background:#f4f4f2;color:#494845;padding:6px 12px;border-radius:999px;font-family:var(--sans);font-weight:500;font-size:clamp(11px,.85vw,13px);white-space:nowrap}
+.ing-spark{flex-shrink:0;width:clamp(112px,9.2vw,146px);height:auto}
+@media(prefers-reduced-motion:reduce){.comp-cards{animation:none}}
+@media(min-width:921px){
+  .comp{display:flex;align-items:center;gap:clamp(40px,5vw,96px)}
+  .comp-text{flex:1 1 auto}
+  .comp-media{flex:0 0 53%;margin-left:auto}
+  .comp-cards{left:44%;padding-left:0}
+}
+@media(min-width:1200px){
+  /* align components to the app's left band + reserve the same right gutter for the fixed menu */
+  .comp{max-width:none;margin:0;padding-left:clamp(24px,5vw,120px);padding-right:clamp(220px,20vw,340px)}
+}
+@media(max-width:920px){
+  .comp{display:flex;flex-direction:column;gap:clamp(34px,7vw,52px)}
+  .comp-media{order:-1;width:100%;max-width:500px;margin:0 auto}
+  .comp-text{max-width:none}
+  /* shrink + right-align the cards; shift the cyclist left and zoom so the rider reads */
+  .comp-cards{left:auto;right:0;width:58%;padding:0 10px 0 0}
+  .comp-bike{object-position:84% 42%;transform:scale(1.32);transform-origin:30% 50%}
+}
+@media(max-width:720px){
+  .comp-cta{white-space:normal;justify-content:center;padding:16px 22px;letter-spacing:.03em}
 }
 @media(max-width:920px){
   .app-card{flex-direction:column;min-height:0}
-  .app-photo{flex:none;width:100%;aspect-ratio:16/11}
+  .app-photo{flex:none;width:100%;aspect-ratio:16/11;overflow:hidden}
+  .app-photo img{object-position:50% 44%;transform:scale(1.42);transform-origin:50% 46%}
   .app-panel{padding:clamp(30px,6vw,52px) clamp(26px,5.6vw,48px) clamp(36px,7vw,54px)}
   .app-title{font-size:clamp(2rem,6vw,2.9rem)}
   .app-desc{font-size:clamp(1rem,2.4vw,1.15rem)}
@@ -313,6 +372,118 @@ html.static .marquee-row{animation:none!important}
 @media(max-width:720px){
   .app{padding-left:16px;padding-right:16px}
   .app-cta{padding:16px 20px;letter-spacing:.03em;white-space:normal}
+}
+
+/* ---------- DRINKING SEQUENCE (image-left card + green panel — like the app card) ---------- */
+.drink{background:#fff;padding:clamp(20px,3vw,64px) clamp(24px,4vw,60px) clamp(72px,8vw,132px)}
+.drink-card{max-width:1580px;margin:0 auto;display:flex;align-items:stretch;
+  min-height:clamp(440px,44vw,720px);
+  border-radius:clamp(20px,1.9vw,28px);overflow:hidden;background:var(--green)}
+.drink-photo{position:relative;flex:0 0 47%}
+.drink-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.drink-panel{flex:1 1 auto;color:#fff;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(40px,4vw,64px) clamp(36px,3.2vw,56px)}
+.drink-label{font-family:var(--sans);font-weight:400;color:#b9b9b9;font-size:clamp(15px,1.15vw,18px)}
+.drink-title{margin-top:16px;font-family:var(--serif);font-weight:500;
+  font-size:clamp(2rem,3vw,52px);line-height:1.09;letter-spacing:-.012em}
+.drink-desc{margin-top:18px;font-family:var(--sans);font-weight:400;color:#b9b9b9;
+  font-size:clamp(1rem,1.28vw,20px);line-height:1.5;max-width:600px}
+.drink-points{margin-top:clamp(28px,3.2vw,46px);list-style:none;display:flex;flex-direction:column;gap:12px;max-width:600px}
+.drink-points li{position:relative;padding-left:18px;font-family:var(--sans);font-weight:400;
+  color:#b9b9b9;font-size:clamp(.95rem,1.05vw,18px);line-height:1.35}
+.drink-points li::before{content:"";position:absolute;left:0;top:.6em;width:4px;height:4px;border-radius:50%;background:#b9b9b9}
+.drink-cta{margin-top:clamp(30px,3.2vw,46px);align-self:flex-start;display:inline-flex;align-items:center;gap:9px;
+  background:var(--lime-cta);color:var(--green);text-decoration:none;
+  padding:clamp(16px,1.6vw,20px) clamp(30px,2.7vw,40px);border-radius:999px;
+  font-family:var(--sans);font-weight:500;font-size:clamp(14px,1.05vw,18px);
+  letter-spacing:.045em;text-transform:uppercase;white-space:nowrap;
+  transition:filter .18s var(--ease),transform .18s var(--ease)}
+.drink-cta svg{transition:transform .22s var(--ease)}
+.drink-cta:hover{filter:brightness(1.05)}
+.drink-cta:hover svg{transform:translateX(3px)}
+.drink-cta:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media(min-width:1200px){
+  /* align the image to the app image's left band + reserve the right gutter for the fixed menu */
+  .drink{padding-left:clamp(24px,5vw,120px);padding-right:clamp(220px,20vw,340px)}
+  .drink-card{max-width:none;margin:0}
+}
+@media(max-width:920px){
+  .drink-card{flex-direction:column;min-height:0}
+  .drink-photo{flex:none;width:100%;aspect-ratio:5/4}
+  .drink-panel{padding:clamp(30px,6vw,52px) clamp(26px,5.6vw,48px) clamp(36px,7vw,54px)}
+  .drink-title{font-size:clamp(2rem,6vw,2.9rem)}
+  .drink-desc{font-size:clamp(1rem,2.4vw,1.15rem)}
+  .drink-points li{font-size:clamp(.95rem,2.2vw,1.05rem)}
+  .drink-cta{align-self:stretch;justify-content:center}
+}
+@media(max-width:720px){
+  .drink{padding-left:16px;padding-right:16px}
+  .drink-cta{padding:16px 20px;letter-spacing:.03em;white-space:normal}
+}
+
+/* ---------- COMPETITOR COMPARISON ---------- */
+.cmp{background:#fff;padding:clamp(48px,6vw,104px) clamp(20px,5vw,120px) clamp(60px,8vw,128px)}
+.cmp-inner{max-width:1650px;margin:0 auto}
+.cmp-label{font-family:var(--sans);font-weight:400;color:#666;font-size:clamp(15px,1.15vw,18px)}
+.cmp-title{margin-top:14px;font-family:var(--serif);font-weight:500;color:#1a1a1a;
+  font-size:clamp(2rem,3.6vw,56px);line-height:1.1;letter-spacing:-.012em;max-width:1269px}
+.cmp-toggle{display:none}
+.cmp-table{position:relative;margin-top:clamp(36px,4.5vw,72px)}
+.cmp-row{display:grid;grid-template-columns:28% 24% 24% 24%;align-items:center;min-height:clamp(64px,6vw,88px);border-radius:11px}
+.cmp-headrow{min-height:clamp(70px,6vw,100px)}
+.cmp-body{position:relative}
+.cmp-body .cmp-row:nth-child(odd){background:#f7f7f7}
+.cmp-feat{padding:14px 16px 14px clamp(16px,2vw,33px);font-family:var(--sans);font-weight:400;color:#1a1a1a;font-size:clamp(14px,1.15vw,19px);line-height:1.3}
+.cmp-c{padding:12px clamp(10px,1.4vw,24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center;
+  font-family:var(--sans);font-weight:400;color:#1a1a1a;font-size:clamp(14px,1.15vw,19px);line-height:1.3}
+.cmp-sub{font-size:clamp(11px,.95vw,16px);color:#1a1a1a;opacity:.8;line-height:1.3}
+.cmp-muted{color:#808080}
+.cmp-ico{width:clamp(20px,1.9vw,27px);height:auto;display:block}
+.cmp-logo-sqnc{height:clamp(19px,1.7vw,27px);width:auto;display:block}
+.cmp-logos{display:inline-flex;gap:8px;align-items:center}
+.cmp-brand{height:clamp(27px,2.5vw,38px);width:auto;display:block;border-radius:8px}
+.cmp-highlight{position:absolute;top:0;bottom:0;left:28%;width:24%;border:1.5px solid #ff5f2e;border-radius:10px;
+  box-shadow:0 18px 44px rgba(0,0,0,.05);pointer-events:none;z-index:3}
+@media(max-width:920px){
+  .cmp-toggle{display:inline-flex;gap:5px;margin:22px 0 4px;background:#f0f0f0;border-radius:999px;padding:5px}
+  .cmp-tog{border:0;background:transparent;font-family:var(--sans);font-weight:500;font-size:15px;color:#666;
+    padding:9px 18px;border-radius:999px;cursor:pointer;transition:background .2s var(--ease),color .2s var(--ease)}
+  .cmp-tog.on{background:#fff;color:#1a1a1a;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+  .cmp-row{grid-template-columns:38% 31% 31%}
+  .cmp-table[data-comp="ag"] .cmp-thorne{display:none}
+  .cmp-table[data-comp="thorne"] .cmp-ag{display:none}
+  .cmp-highlight{left:38%;width:31%}
+  .cmp-feat{font-size:14px;padding-left:14px}
+  .cmp-c{font-size:14px;padding:12px 8px}
+  .cmp-brand{height:26px}
+  .cmp-logos{gap:5px}
+}
+@media(max-width:520px){
+  .cmp-row{grid-template-columns:40% 30% 30%}
+  .cmp-feat{font-size:12.5px;padding-left:12px}
+  .cmp-c{font-size:12.5px;padding:11px 5px}
+  .cmp-sub{font-size:11px}
+}
+
+/* ---------- CLOSING CTA (photo left + green panel — echoes the hero) ---------- */
+.cta2{display:flex;align-items:stretch;min-height:clamp(500px,52vw,860px);background:var(--green)}
+.cta2-photo{position:relative;flex:0 0 50%;overflow:hidden}
+.cta2-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:26% 50%}
+.cta2-panel{flex:1 1 50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:clamp(44px,5vw,88px) clamp(28px,5vw,96px)}
+.cta2-title{max-width:760px;font-family:var(--sans);font-weight:600;color:#fff;
+  font-size:clamp(1.7rem,2.9vw,3.35rem);line-height:1.14;letter-spacing:-.018em;text-wrap:balance}
+.cta2-title .nw{white-space:nowrap}
+.cta2-title .pill{box-shadow:0 9px 31px rgba(7,43,24,.3)}
+.cta2-sub{margin-top:clamp(16px,1.8vw,26px);max-width:620px;font-family:var(--sans);font-weight:500;
+  font-size:clamp(1.05rem,1.55vw,1.5rem);line-height:1.35;color:#fff;text-wrap:balance}
+.cta2-capture{width:min(640px,100%)}
+@media(max-width:920px){
+  .cta2{flex-direction:column;min-height:0}
+  .cta2-photo{flex:none;width:100%;aspect-ratio:16/11}
+  .cta2-panel{padding:clamp(40px,8vw,64px) clamp(22px,6vw,40px) clamp(48px,9vw,72px)}
+  .cta2-title{font-size:clamp(1.8rem,6.4vw,2.6rem)}
+  .cta2-sub{font-size:clamp(1rem,3.4vw,1.2rem)}
 }
 
 /* ---------- LEFT SCROLL RAIL (desktop ≥1200px) ---------- */
@@ -428,12 +599,12 @@ html.static .hero{min-height:860px!important}
   .headline{max-width:min(1240px,94%);font-weight:500;font-size:clamp(2.6rem,3.6vw,4.4rem);
     line-height:1.08;letter-spacing:-.012em;text-wrap:wrap}
   .subline{margin-top:clamp(28px,2.2vw,42px);font-family:'Season Sans','Season Mix',Georgia,serif;font-weight:500;font-size:26.25px;color:rgba(7,43,24,.9)}
-  .capture{width:min(880px,94%);margin-top:clamp(32px,2.6vw,46px)}
-  .field{padding:11px 12px 11px 34px;gap:14px}
-  .field .mail{width:26px;height:26px}
-  .field input{font-size:clamp(18px,1.45vw,27px)}
-  .field button{padding:16px 28px;font-size:clamp(15px,1vw,18px)}
-  .field button svg{width:22px;height:22px}
+  .capture{width:min(516px,94%);margin-top:clamp(28px,2.2vw,40px)}
+  .field{padding:7px 7px 7px 24px;gap:12px}
+  .field .mail{width:20px;height:20px}
+  .field input{font-size:clamp(16px,1.05vw,18px);padding:13px 0}
+  .field button{padding:13px 24px;font-size:15px}
+  .field button svg{width:18px;height:18px}
   .pill{height:.86em;border:2px solid rgba(255,255,255,.8)}
 }
 @media(max-width:720px){
@@ -453,6 +624,7 @@ html.static .hero{min-height:860px!important}
   .headline{color:#fff;font-weight:500;max-width:330px;
     font-size:clamp(1.5rem,6.9vw,1.85rem);line-height:1.15;letter-spacing:-.018em}
   .subline{color:#fff;margin-top:12px;font-size:16px;max-width:330px}
+  .micro{color:rgba(255,255,255,.72);margin-top:11px;font-size:11.5px}
   .chip{height:.8em}
   /* smaller, stepped cards — middle (wearable) largest, like desktop (room to scroll later) */
   .cards{width:min(430px,92%);gap:11px}
@@ -520,6 +692,7 @@ html.static .hero{min-height:860px!important}
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg>
       </button>
     </form>
+    <p class="micro">Free to join &middot; No spam, ever &middot; Launching 2026</p>
     <div class="joined-pill" role="status">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B1FC63" stroke-width="2.4" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>
       <b>You're on the list — No. <span id="qn">—</span></b>
@@ -591,13 +764,17 @@ html.static .hero{min-height:860px!important}
     <span class="mstep-tick"></span>
     <ol class="mstep-list">
       <li class="mstep-item on" data-for="app"><span class="mstep-n">01</span><span class="mstep-l">The mobile app</span></li>
-      <li class="mstep-item"><span class="mstep-n">02</span></li>
-      <li class="mstep-item"><span class="mstep-n">03</span></li>
-      <li class="mstep-item"><span class="mstep-n">04</span></li>
+      <li class="mstep-item" data-for="components"><span class="mstep-n">02</span><span class="mstep-l">Components</span></li>
+      <li class="mstep-item" data-for="drinking"><span class="mstep-n">03</span><span class="mstep-l">Drinking SEQUENCE</span></li>
     </ol>
   </div>
 
-<section class="app" id="app">
+<nav class="side-menu" aria-hidden="true">
+  <span class="side-menu-item on" data-for="app"><span class="side-menu-l">The mobile app</span><span class="side-menu-n">01</span></span>
+  <span class="side-menu-item" data-for="components"><span class="side-menu-l">Components</span><span class="side-menu-n">02</span></span>
+  <span class="side-menu-item" data-for="drinking"><span class="side-menu-l">Drinking SEQUENCE</span><span class="side-menu-n">03</span></span>
+</nav>
+<section class="app reveal" id="app">
   <div class="app-card">
     <div class="app-photo">
       <img src="assets/app-hand.webp" width="1800" height="1201" loading="lazy" alt="A hand holding a phone showing the SEQUENCE app — a daily health score and personalised formula">
@@ -616,13 +793,161 @@ html.static .hero{min-height:860px!important}
       </a>
     </div>
   </div>
-  <nav class="app-nav" aria-hidden="true">
-    <span class="app-nav-item on" data-for="app"><span class="app-nav-l">The mobile app</span><span class="app-nav-n">01</span></span>
-    <span class="app-nav-item"><span class="app-nav-l">Components</span><span class="app-nav-n">02</span></span>
-    <span class="app-nav-item"><span class="app-nav-l">Drinking SEQUENCE</span><span class="app-nav-n">03</span></span>
-  </nav>
+</section>
+
+<section class="comp reveal" id="components">
+  <div class="comp-text">
+    <p class="comp-label">The SEQUENCE manufacturing plant</p>
+    <h2 class="comp-title">The most premium components, precision dosed individually.</h2>
+    <p class="comp-desc">Your formula is manufactured using the highest-quality raw materials available on the market, all 3rd-party tested on a regular basis. Using precision dosing equipment, we assemble each customer&rsquo;s powder individually in the UK.</p>
+    <ul class="comp-points">
+      <li>Highest quality raw materials (3rd party tested)</li>
+      <li>Manufactured in-house in the UK</li>
+      <li>Every shipment is quality controlled</li>
+    </ul>
+    <a class="comp-cta" href="#hero">Join the waiting list
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg>
+    </a>
+  </div>
+  <div class="comp-media">
+    <img class="comp-bike" src="assets/cyclist.webp" width="2400" height="1601" loading="lazy" alt="A cyclist riding at speed">
+    <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs>
+      <linearGradient id="spark-line" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f5a623"/><stop offset=".6" stop-color="#f5a623"/><stop offset="1" stop-color="#9bd824"/></linearGradient>
+      <radialGradient id="spark-endglow"><stop offset="0" stop-color="#6dd909" stop-opacity=".6"/><stop offset="1" stop-color="#6dd909" stop-opacity="0"/></radialGradient>
+      <filter id="spark-soft" x="-20%" y="-45%" width="140%" height="210%"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#ffffff" flood-opacity=".6"/></filter>
+      <g id="spark-ticks"><g stroke-width="3.4" stroke-linecap="round"><line x1="170" y1="9" x2="170" y2="25" stroke="#f5a623"/><line x1="170" y1="32" x2="170" y2="48" stroke="#6dd909"/><line x1="170" y1="55" x2="170" y2="71" stroke="#f5a623"/><line x1="170" y1="78" x2="170" y2="94" stroke="#fe5b04"/></g></g>
+      <symbol id="spark1" viewBox="0 0 176 96" overflow="visible"><path d="M6 52 L44 62 L84 61 L120 62" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 62 L154 26" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="0.1 7"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="62" r="4" fill="#f5a623"/><circle cx="84" cy="61" r="4" fill="#f5a623"/><circle cx="120" cy="62" r="4" fill="#f5a623"/></g><circle cx="154" cy="26" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="26" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+      <symbol id="spark2" viewBox="0 0 176 96" overflow="visible"><path d="M6 68 L44 60 L84 54 L120 46" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 46 L154 18" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="0.1 7"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="60" r="4" fill="#f5a623"/><circle cx="84" cy="54" r="4" fill="#f5a623"/><circle cx="120" cy="46" r="4" fill="#f5a623"/></g><circle cx="154" cy="18" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="18" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+      <symbol id="spark3" viewBox="0 0 176 96" overflow="visible"><path d="M6 50 L44 58 L84 64 L120 56" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 56 L154 24" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="0.1 7"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="58" r="4" fill="#f5a623"/><circle cx="84" cy="64" r="4" fill="#f5a623"/><circle cx="120" cy="56" r="4" fill="#f5a623"/></g><circle cx="154" cy="24" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="24" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+      <symbol id="spark4" viewBox="0 0 176 96" overflow="visible"><path d="M6 64 L44 52 L84 50 L120 52" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 52 L154 22" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="0.1 7"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="52" r="4" fill="#f5a623"/><circle cx="84" cy="50" r="4" fill="#f5a623"/><circle cx="120" cy="52" r="4" fill="#f5a623"/></g><circle cx="154" cy="22" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="22" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+      <symbol id="spark5" viewBox="0 0 176 96" overflow="visible"><path d="M6 70 L44 66 L84 58 L120 60" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 60 L154 20" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="0.1 7"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="66" r="4" fill="#f5a623"/><circle cx="84" cy="58" r="4" fill="#f5a623"/><circle cx="120" cy="60" r="4" fill="#f5a623"/></g><circle cx="154" cy="20" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="20" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+      <symbol id="spark6" viewBox="0 0 176 96" overflow="visible"><path d="M6 58 L44 64 L84 54 L120 48" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 48 L154 26" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="0.1 7"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="64" r="4" fill="#f5a623"/><circle cx="84" cy="54" r="4" fill="#f5a623"/><circle cx="120" cy="48" r="4" fill="#f5a623"/></g><circle cx="154" cy="26" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="26" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+    </defs></svg>
+    <div class="comp-cards" aria-hidden="true">
+      <div class="ing-card"><div class="ing-info"><p class="ing-title"><span class="ing-name">Magnesium Bisglycinate</span><span class="ing-dose">400 mg</span></p><div class="ing-tags"><span>Muscle tension</span><span>HRV</span></div></div><svg class="ing-spark" viewBox="0 0 176 96" fill="none" aria-hidden="true"><use href="#spark1"/></svg></div>
+      <div class="ing-card"><div class="ing-info"><p class="ing-title"><span class="ing-name">Rhodiola Rosea</span><span class="ing-dose">250 mg</span></p><div class="ing-tags"><span>VO2 Max</span><span>Mental Health</span></div></div><svg class="ing-spark" viewBox="0 0 176 96" fill="none" aria-hidden="true"><use href="#spark2"/></svg></div>
+      <div class="ing-card"><div class="ing-info"><p class="ing-title"><span class="ing-name">Vitamin D3</span><span class="ing-dose">2000 IU</span></p><div class="ing-tags"><span>Immunity</span><span>Bone health</span></div></div><svg class="ing-spark" viewBox="0 0 176 96" fill="none" aria-hidden="true"><use href="#spark3"/></svg></div>
+      <div class="ing-card"><div class="ing-info"><p class="ing-title"><span class="ing-name">Ashwagandha</span><span class="ing-dose">600 mg</span></p><div class="ing-tags"><span>Stress</span><span>Recovery</span></div></div><svg class="ing-spark" viewBox="0 0 176 96" fill="none" aria-hidden="true"><use href="#spark4"/></svg></div>
+      <div class="ing-card"><div class="ing-info"><p class="ing-title"><span class="ing-name">Creatine</span><span class="ing-dose">5 g</span></p><div class="ing-tags"><span>Power</span><span>Strength</span></div></div><svg class="ing-spark" viewBox="0 0 176 96" fill="none" aria-hidden="true"><use href="#spark5"/></svg></div>
+      <div class="ing-card"><div class="ing-info"><p class="ing-title"><span class="ing-name">Vitamin B12</span><span class="ing-dose">500 &micro;g</span></p><div class="ing-tags"><span>Energy</span><span>Focus</span></div></div><svg class="ing-spark" viewBox="0 0 176 96" fill="none" aria-hidden="true"><use href="#spark6"/></svg></div>
+    </div>
+  </div>
+</section>
+<section class="drink reveal" id="drinking">
+  <div class="drink-card">
+    <div class="drink-photo">
+      <img src="assets/drink.webp" width="1200" height="1412" loading="lazy" alt="A cyclist in a bright kitchen holding a coffee beside a SEQUENCE green-juice bottle">
+    </div>
+    <div class="drink-panel">
+      <p class="drink-label">The SEQUENCE experience</p>
+      <h2 class="drink-title">Feels like drinking a green morning juice.</h2>
+      <p class="drink-desc">Instead of endless capsules, drop the powder from your sachet into the water bottle. Takes 30s and done. Enjoy your morning, accompanied by the green juice that&rsquo;s customized to your biology.</p>
+      <ul class="drink-points">
+        <li>Custom glass SEQUENCE bottle, no BPA</li>
+        <li>Dishwasher safe, easy to maintain</li>
+        <li>Daily sachets are easy to pack for travel</li>
+      </ul>
+      <a class="drink-cta" href="#hero">Join the waiting list
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg>
+      </a>
+    </div>
+  </div>
 </section>
 </div><!-- /.rail-scope -->
+
+<section class="cmp reveal" id="advantage">
+  <div class="cmp-inner">
+    <p class="cmp-label">The SEQUENCE advantage</p>
+    <h2 class="cmp-title">This is what you get that competitors don&rsquo;t offer</h2>
+
+    <div class="cmp-toggle" role="group" aria-label="Choose a competitor to compare against SEQUENCE">
+      <button type="button" class="cmp-tog on" data-comp="ag" aria-pressed="true">AG1 &amp; IM8</button>
+      <button type="button" class="cmp-tog" data-comp="thorne" aria-pressed="false">Thorne</button>
+    </div>
+
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+      <g id="cmp-check"><path d="M4 12.6l5.2 5.2L20 5.4" fill="none" stroke="#ff5f2e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+      <g id="cmp-x"><circle cx="12" cy="12" r="10.2" fill="none" stroke="#cfcfcf" stroke-width="1.5"/><path d="M8.6 8.6l6.8 6.8M15.4 8.6l-6.8 6.8" stroke="#cfcfcf" stroke-width="1.5" stroke-linecap="round"/></g>
+    </defs></svg>
+
+    <div class="cmp-table" data-comp="ag">
+      <div class="cmp-row cmp-headrow">
+        <div class="cmp-feat"></div>
+        <div class="cmp-c cmp-sqnc"><img class="cmp-logo-sqnc" src="assets/SQNC_H_GREEN.svg" alt="SEQUENCE"></div>
+        <div class="cmp-c cmp-ag"><span class="cmp-logos"><img class="cmp-brand" src="assets/logo-ag1.webp" width="268" height="150" alt="AG1"><img class="cmp-brand" src="assets/logo-im8.webp" width="267" height="150" alt="IM8"></span></div>
+        <div class="cmp-c cmp-thorne"><img class="cmp-brand" src="assets/logo-thorne.webp" width="267" height="150" alt="Thorne"></div>
+      </div>
+      <div class="cmp-body">
+        <div class="cmp-row">
+          <div class="cmp-feat">Blood test</div>
+          <div class="cmp-c cmp-sqnc"><span class="cmp-strong">100+ biomarkers</span><span class="cmp-sub">Availability to import previous tests included.</span></div>
+          <div class="cmp-c cmp-ag"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-thorne"><span class="cmp-muted">10&ndash;20 biomarkers</span></div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-feat">Wearables integrations</div>
+          <div class="cmp-c cmp-sqnc">Whoop, Oura, Garmin etc</div>
+          <div class="cmp-c cmp-ag"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-thorne"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-feat">Mobile app</div>
+          <div class="cmp-c cmp-sqnc"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="Yes"><use href="#cmp-check"/></svg></div>
+          <div class="cmp-c cmp-ag"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-thorne"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-feat">Highest quality ingredients</div>
+          <div class="cmp-c cmp-sqnc"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="Yes"><use href="#cmp-check"/></svg></div>
+          <div class="cmp-c cmp-ag"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-thorne"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="Yes"><use href="#cmp-check"/></svg></div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-feat">Renews based on your data</div>
+          <div class="cmp-c cmp-sqnc">Every 3 months</div>
+          <div class="cmp-c cmp-ag"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-thorne"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-feat">Convenient daily sachet</div>
+          <div class="cmp-c cmp-sqnc"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="Yes"><use href="#cmp-check"/></svg></div>
+          <div class="cmp-c cmp-ag"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="Yes"><use href="#cmp-check"/></svg></div>
+          <div class="cmp-c cmp-thorne"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-feat">Price</div>
+          <div class="cmp-c cmp-sqnc">&pound;149 / mo</div>
+          <div class="cmp-c cmp-ag">&pound;99 / mo</div>
+          <div class="cmp-c cmp-thorne">Avg spend &pound;150&ndash;200 / mo</div>
+        </div>
+        <div class="cmp-highlight" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta2 reveal" id="join">
+  <div class="cta2-photo">
+    <img src="assets/cta-outdoor.webp" width="1500" height="1000" loading="lazy" alt="An athlete outdoors in the morning light">
+  </div>
+  <div class="cta2-panel">
+    <h2 class="cta2-title">The most personalised supplement, built from your <span class="nw"><img class="pill" src="assets/pill-blood.webp" width="368" height="140" alt="blood test"> blood</span> and <span class="nw"><img class="pill" src="assets/pill-wear.webp" width="393" height="140" alt="wearables"> wearables</span> data.</h2>
+    <p class="cta2-sub">Re-formulated every month as your biomarkers change.</p>
+    <div class="capture cta2-capture">
+      <form class="field" novalidate>
+        <svg class="mail" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#072B18" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="3.5"/><path d="m3.5 7.5 8.5 6 8.5-6"/></svg>
+        <input type="email" name="email" placeholder="Enter your email" autocomplete="email" required aria-label="Email address">
+        <button type="submit"><span class="cta-txt">Join the waiting list</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg>
+        </button>
+      </form>
+      <div class="joined-pill" role="status">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B1FC63" stroke-width="2.4" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>
+        <b>You&rsquo;re on the list &mdash; No. <span class="qn">&mdash;</span></b>
+      </div>
+    </div>
+  </div>
+</section>
 
 <script>
 (function () {
@@ -681,27 +1006,32 @@ html.static .hero{min-height:860px!important}
     mq.addEventListener ? mq.addEventListener('change', render) : mq.addListener(render);
   })();
 
-  /* Waitlist — optimistic POST; wire a real endpoint (Loops/Formspree/own API) at /api/waitlist. */
+  /* Waitlist — optimistic POST; wire a real endpoint (Loops/Formspree/own API) at /api/waitlist.
+     Handles every .field form on the page (hero + closing CTA) and keeps them in sync. */
   var KEY = 'sqnc_waitlist';
-  var form = document.getElementById('waitlist');
-  var email = document.getElementById('email');
-  var cta = document.getElementById('cta');
-  var qn = document.getElementById('qn');
-  var wrap = form.parentElement;
-
+  var forms = [].slice.call(document.querySelectorAll('form.field'));
   function hash(s){var h=5381,i=s.length;while(i)h=(h*33)^s.charCodeAt(--i);return h>>>0}
-  function joined(rec){ qn.textContent = String(rec.n).padStart(4,'0'); wrap.classList.add('is-joined'); }
+  function markJoined(rec){
+    forms.forEach(function (f) {
+      var wrap = f.parentElement, qn = wrap.querySelector('#qn, .qn');
+      if (qn) qn.textContent = String(rec.n).padStart(4, '0');
+      wrap.classList.add('is-joined');
+    });
+  }
   if (/[?&#]reset/.test(location.href)) { try{localStorage.removeItem(KEY)}catch(e){} }
-  try{var prev=JSON.parse(localStorage.getItem(KEY)); if(prev&&prev.n) joined(prev);}catch(e){}
+  try{var prev=JSON.parse(localStorage.getItem(KEY)); if(prev&&prev.n) markJoined(prev);}catch(e){}
 
-  form.addEventListener('submit', function (ev) {
-    ev.preventDefault();
-    var v = (email.value || '').trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { email.focus(); return; }
-    cta.disabled = true;
-    var rec = { email: v, n: 137 + (hash(v) % 60), ts: new Date().toISOString(), variant: 'site-v1' };
-    try{fetch('/api/waitlist',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(rec)}).catch(function(){})}catch(e){}
-    setTimeout(function(){ try{localStorage.setItem(KEY, JSON.stringify(rec))}catch(e){}; joined(rec); cta.disabled=false; }, STATIC?0:300);
+  forms.forEach(function (form) {
+    var email = form.querySelector('input[type="email"]'), cta = form.querySelector('button[type="submit"]');
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var v = (email.value || '').trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { email.focus(); return; }
+      cta.disabled = true;
+      var rec = { email: v, n: 137 + (hash(v) % 60), ts: new Date().toISOString(), variant: 'site-v1' };
+      try{fetch('/api/waitlist',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(rec)}).catch(function(){})}catch(e){}
+      setTimeout(function(){ try{localStorage.setItem(KEY, JSON.stringify(rec))}catch(e){}; markJoined(rec); cta.disabled=false; }, STATIC?0:300);
+    });
   });
 
   /* wearable carousel — current device slides out to the right, next enters from the left */
@@ -783,6 +1113,60 @@ html.static .hero{min-height:860px!important}
     addEventListener('scroll',onScroll,{passive:true});
     addEventListener('resize',render);
     mq.addEventListener?mq.addEventListener('change',render):mq.addListener(render);
+  })();
+
+  /* components — duplicate the ingredient cards once for a seamless vertical marquee */
+  (function () {
+    var track = document.querySelector('.comp-cards'); if (!track) return;
+    track.innerHTML += track.innerHTML;
+  })();
+
+  /* persistent desktop side-menu — show while a product section is in view, highlight the current one */
+  (function () {
+    var menu = document.querySelector('.side-menu'); if (!menu) return;
+    var items = [].slice.call(menu.querySelectorAll('.side-menu-item'));
+    var targets = items.map(function (i) { return document.getElementById(i.getAttribute('data-for')); });
+    var mq = matchMedia('(min-width:1200px)'), tick = false;
+    function render() {
+      tick = false;
+      if (!mq.matches) { menu.classList.remove('show'); return; }
+      var ref = scrollY + innerHeight * 0.4, active = -1, inView = false;
+      for (var i = 0; i < targets.length; i++) { var t = targets[i]; if (!t) continue;
+        var r = t.getBoundingClientRect();
+        if (r.top < innerHeight * 0.85 && r.bottom > innerHeight * 0.15) inView = true;
+        if (r.top + scrollY <= ref) active = i;
+      }
+      menu.classList.toggle('show', inView);
+      if (active < 0) active = 0;
+      for (var j = 0; j < items.length; j++) items[j].classList.toggle('on', j === active);
+    }
+    function onScroll() { if (!tick) { tick = true; requestAnimationFrame(render); } }
+    render();
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', render);
+    mq.addEventListener ? mq.addEventListener('change', render) : mq.addListener(render);
+  })();
+
+  /* reveal-on-scroll — fade/slide sections in as they enter (smooth, no pin) */
+  (function () {
+    var els = document.querySelectorAll('.reveal'); if (!els.length) return;
+    if (STATIC || !('IntersectionObserver' in window)) { [].forEach.call(els, function (el) { el.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    [].forEach.call(els, function (el) { io.observe(el); });
+  })();
+
+  /* competitor comparison — mobile toggle swaps the AG1/IM8 column for the Thorne column */
+  (function () {
+    var table = document.querySelector('.cmp-table'); if (!table) return;
+    var togs = [].slice.call(document.querySelectorAll('.cmp-tog'));
+    togs.forEach(function (b) {
+      b.addEventListener('click', function () {
+        table.setAttribute('data-comp', b.getAttribute('data-comp'));
+        togs.forEach(function (x) { var on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+      });
+    });
   })();
 
   /* Opening settle-in is pure CSS (keyframes on .rv / .hero-fg with staggered delays). */
