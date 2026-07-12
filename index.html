@@ -6,15 +6,25 @@
 <title>SEQUENCE — Supplement that learns from your biomarkers</title>
 <meta name="description" content="SQNC calibrates your daily supplement to your blood work and wearable data — then measures what actually works. Join the waiting list.">
 <meta name="theme-color" content="#072B18">
+<link rel="canonical" href="https://sandersqnc.github.io/sqnc-landing/">
 <meta property="og:title" content="SEQUENCE — Supplement that learns from your biomarkers">
 <meta property="og:description" content="Blood-tested, wearable-connected, re-formulated monthly. Join the waiting list.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="assets/hero-1200.jpg">
+<meta property="og:url" content="https://sandersqnc.github.io/sqnc-landing/">
+<meta property="og:site_name" content="SEQUENCE">
+<meta property="og:image" content="https://sandersqnc.github.io/sqnc-landing/assets/og-hero.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SEQUENCE — Supplement that learns from your biomarkers">
+<meta name="twitter:description" content="Blood-tested, wearable-connected, re-formulated monthly. Join the waiting list.">
+<meta name="twitter:image" content="https://sandersqnc.github.io/sqnc-landing/assets/og-hero.jpg">
 <link rel="icon" href="assets/SQNC_V_GREEN.svg">
+<link rel="apple-touch-icon" href="assets/SQNC_V_GREEN.svg">
 <link rel="preload" href="assets/fonts/matter-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/matter-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" imagesrcset="assets/cyclist-3600.webp 1x, assets/cyclist-6400.webp 2x" media="(min-width: 800px)">
-<link rel="preload" href="assets/cyclist-mobile.webp" as="image" media="(max-width: 799px)">
+<link rel="preload" href="assets/hero-rooftop.webp" as="image" media="(min-width: 721px)">
+<link rel="preload" href="assets/hero-rooftop-mobile-v2.webp" as="image" media="(max-width: 720px)">
 <style>
 /* ============================================================
    SEQUENCE — production teaser v1 (from Figma draft 5rfsnt74)
@@ -54,20 +64,21 @@ img{display:block;max-width:100%}
 /* ---------- HERO ---------- */
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;
   align-items:center;isolation:isolate;overflow:clip;padding:0 clamp(18px,2.4vw,44px) 56px}
-.hero-bg{position:absolute;inset:0;z-index:-1;background:#aecadd;
-  background-image:url(assets/cyclist-3600.webp);
-  background-image:-webkit-image-set(url(assets/cyclist-3600.webp) 1x,url(assets/cyclist-6400.webp) 2x);
-  background-image:image-set(url(assets/cyclist-3600.webp) 1x,url(assets/cyclist-6400.webp) 2x);
-  background-repeat:no-repeat;background-size:cover;background-position:60% 32%}
+.hero-bg{position:absolute;inset:0;z-index:-1;background:#14251b;
+  background-image:url(assets/hero-rooftop.webp);
+  background-repeat:no-repeat;background-size:cover;background-position:50% 50%;
+  transform:scale(1.22);transform-origin:50% 46%}
 .hero-bg::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(to bottom,transparent 88%,rgba(255,255,255,.42))}
+  background:
+    radial-gradient(120% 78% at 50% 48%, rgba(4,12,7,.34) 0%, rgba(4,12,7,.1) 46%, transparent 72%),
+    linear-gradient(to bottom, rgba(4,12,7,.52) 0%, rgba(4,12,7,.16) 24%, rgba(4,12,7,.30) 54%, rgba(4,12,7,.6) 84%, rgba(4,12,7,.74) 100%)}
 
 /* nav — transparent over the sky */
 .nav{position:relative;z-index:5;width:100%;max-width:none;display:flex;
   align-items:center;justify-content:space-between;padding:22px 2px 8px}
-.nav-logo img{height:18px;width:auto;display:block}
+.nav-logo img{height:18px;width:auto;display:block;filter:brightness(0) invert(1)}
 .nav-right{display:flex;align-items:center;gap:clamp(18px,2.4vw,40px)}
-.nav-right a{color:var(--green);text-decoration:none;font-weight:500;font-size:15px;
+.nav-right a{color:#fff;text-decoration:none;font-weight:500;font-size:15px;
   transition:opacity .18s var(--ease),background .18s var(--ease)}
 .nav-right a:not(.nav-cta):hover{opacity:.6}
 .nav-right a.nav-cta{background:var(--green);color:#fff;padding:9px 17px;border-radius:999px;font-weight:500;font-size:14px}
@@ -97,7 +108,7 @@ img{display:block;max-width:100%}
   padding-top:clamp(24px,4.5svh,60px)}
 .headline{max-width:min(1000px,92%);text-align:center;font-weight:600;
   font-size:clamp(1.85rem,4.2vw,3.3rem);line-height:1.14;letter-spacing:-.018em;
-  color:var(--green);text-wrap:balance}
+  color:#fff;text-wrap:balance}
 .headline .nw{white-space:nowrap}
 .chip{display:inline-block;height:.86em;aspect-ratio:7/5;vertical-align:-.18em;
   background:#fff;border-radius:.16em;padding:.08em;object-fit:contain;
@@ -116,7 +127,7 @@ img{display:block;max-width:100%}
 @media(prefers-reduced-motion:reduce){.wear .ws{transition:none}}
 .subline{margin-top:18px;font-size:clamp(1rem,1.5vw,1.24rem);font-weight:500;
   font-family:'Season Sans','Season Mix',Georgia,serif;
-  color:rgba(7,43,24,.6);text-align:center;text-wrap:balance}
+  color:rgba(255,255,255,.88);text-align:center;text-wrap:balance;text-shadow:0 1px 12px rgba(4,10,6,.4)}
 
 /* modern email field — clean pill + inset lime button */
 .capture{margin-top:clamp(26px,4svh,40px);width:min(560px,100%);display:flex;flex-direction:column;align-items:center}
@@ -125,6 +136,7 @@ img{display:block;max-width:100%}
   padding:8px 8px 8px 24px;box-shadow:0 10px 30px -16px rgba(7,43,24,.22);
   transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
 .field:focus-within{transform:translateY(-2px);box-shadow:0 18px 52px -12px rgba(7,43,24,.36)}
+.field:focus-within{outline:2.5px solid var(--lime-cta);outline-offset:3px}
 .field .mail{flex-shrink:0;opacity:.55}
 .field input{flex:1;min-width:0;border:0;background:transparent;padding:14px 0;
   font-family:var(--sans);font-size:16.5px;font-weight:500;color:var(--green)}
@@ -139,16 +151,17 @@ img{display:block;max-width:100%}
 .field button:hover svg{transform:translateX(3px)}
 .field button[disabled]{opacity:.7;cursor:wait}
 .micro{margin-top:13px;text-align:center;font-size:12.5px;font-weight:500;
-  letter-spacing:.04em;color:rgba(7,43,24,.6)}
-.joined-pill{display:none;align-items:center;justify-content:center;gap:12px;width:100%;height:62px;
-  border-radius:999px;background:var(--green);color:#fff;box-shadow:0 14px 44px -12px rgba(7,43,24,.3)}
-.joined-pill b{font-weight:600;font-size:16px}
+  letter-spacing:.04em;color:rgba(255,255,255,.88)}
+.joined-pill{display:none;align-items:center;justify-content:center;gap:12px;width:100%;min-height:62px;
+  padding:12px 22px;border-radius:32px;background:var(--green);color:#fff;box-shadow:0 14px 44px -12px rgba(7,43,24,.3)}
+.joined-pill b{font-weight:600;font-size:clamp(14px,3.4vw,16px);line-height:1.3;text-align:center}
 .is-joined .field,.is-joined .micro{display:none}
 .is-joined .joined-pill{display:flex}
 
 /* glass biomarker cards */
-.cards{position:relative;margin-top:clamp(28px,5svh,56px);width:min(600px,100%);
-  display:flex;flex-direction:column;gap:14px;align-items:center}
+.cards{--cb:clamp(48px,4.8vw,88px);position:absolute;left:50%;bottom:0;transform:translateX(-50%);margin:0;
+  width:min(920px,93vw);height:clamp(230px,21vw,300px);z-index:4;pointer-events:none}
+.cards .glass{pointer-events:auto}
 .glass{--r:24px;position:relative;border-radius:var(--r);
   background:rgba(37,42,46,.52);backdrop-filter:blur(16px) saturate(1.05);
   -webkit-backdrop-filter:blur(16px) saturate(.92);
@@ -188,6 +201,18 @@ img{display:block;max-width:100%}
   background:linear-gradient(90deg,rgba(141,242,41,.42),rgba(255,115,39,.3) 60%,rgba(255,50,39,.25));filter:blur(24px);pointer-events:none}
 .card-chat .q{margin-top:14px;font-size:15px;color:rgba(255,255,255,.82)}
 .card-chat .a{margin-top:6px;font-family:var(--serif);font-weight:420;font-size:22px}
+/* hero card cluster — Figma 103:16593: blood centre-front, wearable behind-left, chat behind-right, anchored to hero bottom */
+.hero .card-hrv{position:absolute;left:0;bottom:calc(var(--cb) + 18px);width:clamp(280px,23vw,332px);max-width:none;padding:16px 20px;gap:10px;z-index:2}
+.hero .card-hrv .watch{width:44px;height:44px}
+.hero .card-hrv .trend{width:64px}
+.hero .card-hrv .hrv-row{gap:10px}
+.hero .card-hrv .hrv-title{font-size:16.5px;line-height:1.05}
+.hero .card-hrv .hrv-ms{margin-top:3px;font-size:12.5px}
+.hero .card-hrv .hrv-tags{flex-wrap:nowrap;margin-top:8px}
+.hero .card-hrv .hrv-tags span{padding:3px 8px;font-size:11px;white-space:nowrap}
+.hero .card-blood{position:absolute;left:0;right:0;margin-inline:auto;bottom:var(--cb);width:clamp(400px,32vw,456px);max-width:none;z-index:3}
+.hero .card-chat{position:absolute;right:0;bottom:calc(var(--cb) + 18px);width:clamp(280px,23vw,332px);max-width:none;z-index:2}
+.hero .card-chat .g-label{justify-content:flex-end}
 
 /* ---------- SOCIAL PROOF + LOGO MARQUEE ---------- */
 .social{background:#fff;padding:clamp(40px,5.5vw,80px) 0 clamp(40px,5vw,72px)}
@@ -223,12 +248,20 @@ html.static .marquee-row{animation:none!important}
 /* ---------- HOW IT WORKS ---------- */
 .hiw{background:#fff;padding:clamp(72px,8vw,132px) clamp(24px,4vw,60px) clamp(88px,9vw,150px)}
 .hiw-head{max-width:1000px;margin:0 auto;text-align:center}
+@media(min-width:721px){
+  /* left-aligned section headers, flush with the card grid */
+  .hiw-head{max-width:1200px;text-align:left}
+}
 .hiw-head h2{font-family:var(--serif);font-weight:500;color:#1a1a1a;
   font-size:clamp(2.6rem,4.6vw,70px);line-height:1.03;letter-spacing:-.012em}
 .hiw-head p{margin-top:20px;font-family:var(--sans);font-weight:400;color:#666;
   font-size:clamp(1.15rem,1.95vw,30px);line-height:1.34;text-wrap:balance}
-.hiw-grid{max-width:1600px;margin:clamp(48px,5vw,84px) auto 0;
-  display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2vw,30px)}
+/* intro header for the app/components/drinking product sequence */
+.seq-intro{margin-top:clamp(-72px,-6vw,-36px);padding:0 clamp(24px,4vw,60px) clamp(34px,4.5vw,60px)}
+.hiw-grid{max-width:1200px;margin:clamp(48px,5vw,84px) auto 0;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,2.4vw,40px)}
+/* reserve the right gutter for the fixed side-menu across how-it-works + competitors (desktop) */
+@media(min-width:1200px){section.hiw,section.cmp,.seq-intro{padding-right:clamp(210px,19vw,320px)}}
 .hiw-deck{display:contents} /* load-bearing: keeps the 4 cards as direct grid/flex children */
 .hiw-card img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;display:block;
   border-radius:clamp(18px,1.6vw,26px);box-shadow:0 12px 34px -16px rgba(7,43,24,.22)}
@@ -247,11 +280,12 @@ html.static .marquee-row{animation:none!important}
 @media(min-width:721px) and (max-width:920px){.hiw-grid{grid-template-columns:repeat(2,1fr);max-width:820px}}
 /* mobile: plain vertical scroll — wide rectangular cards, centered title + description */
 @media(max-width:720px){
-  .hiw{padding-top:clamp(48px,11vw,74px)}
+  .hiw{padding-top:clamp(40px,9vw,60px)}
   .hiw-grid{display:flex;flex-direction:column;gap:clamp(30px,7.5vw,46px);
     max-width:440px;margin:clamp(28px,7vw,44px) auto 0;height:auto}
   .hiw-card{text-align:center}
   .hiw-card img{aspect-ratio:377/248;border-radius:18px;box-shadow:0 14px 34px -18px rgba(7,43,24,.26)}
+  /* cards 2+3 use dedicated 377x248 mobile assets (full phone screen / bottle with cap headroom) */
   .hiw-num{top:14px;left:16px;width:34px;border-radius:10px;font-size:16px}
   .hiw-card h3{margin-top:clamp(15px,4vw,22px);font-size:clamp(1.35rem,6vw,1.72rem)}
   .hiw-card p{margin-top:9px;max-width:33ch;margin-left:auto;margin-right:auto;font-size:clamp(1rem,3.9vw,1.12rem)}
@@ -288,7 +322,7 @@ html.static .marquee-row{animation:none!important}
 /* persistent right-side section menu (desktop >=1200) + reveal-on-scroll */
 .side-menu{display:none}
 .side-menu-item{position:relative;display:flex;align-items:baseline;justify-content:space-between;gap:16px;
-  padding-left:20px;font-family:var(--sans);font-weight:500;font-size:clamp(15px,1.05vw,17px);color:#9a9a9a;line-height:1.4;transition:color .35s var(--ease)}
+  padding-left:20px;font-family:var(--sans);font-weight:500;font-size:clamp(15px,1.05vw,17px);color:#6f6f6f;line-height:1.4;transition:color .35s var(--ease)}
 .side-menu-item.on{color:#1a1a1a}
 .side-menu-item.on::before{content:"";position:absolute;left:0;top:3px;bottom:3px;width:2px;border-radius:2px;background:#1a1a1a}
 .side-menu-n{color:inherit;font-variant-numeric:tabular-nums;flex-shrink:0}
@@ -331,6 +365,7 @@ html.static .marquee-row{animation:none!important}
 .ing-card{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;margin-bottom:16px;border-radius:22px;
   background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);
   border:1px solid rgba(255,255,255,.55);box-shadow:0 14px 40px -18px rgba(0,0,0,.22)}
+.ing-info{min-width:0}
 .ing-title{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin:0}
 .ing-name{font-family:var(--serif);font-weight:500;color:#375443;font-size:clamp(18px,1.7vw,25px);line-height:1.05}
 .ing-dose{font-family:var(--sans);font-weight:500;color:#304d3c;opacity:.5;font-size:clamp(12px,1vw,15px)}
@@ -352,12 +387,18 @@ html.static .marquee-row{animation:none!important}
   .comp{display:flex;flex-direction:column;gap:clamp(34px,7vw,52px)}
   .comp-media{order:-1;width:100%;max-width:500px;margin:0 auto}
   .comp-text{max-width:none}
-  /* shrink + right-align the cards; shift the cyclist left and zoom so the rider reads */
-  .comp-cards{left:auto;right:0;width:58%;padding:0 10px 0 0}
-  .comp-bike{object-position:84% 42%;transform:scale(1.32);transform-origin:30% 50%}
+  /* right-align the cards, cyclist zoomed on the left; keep titles on one line + graph inside the card */
+  .comp-cards{left:auto;right:0;width:69%;padding:0 10px 0 0}
+  .comp-bike{object-position:84% 42%;transform:scale(1.34);transform-origin:28% 50%}
+  .ing-card{padding:13px 15px;gap:9px}
+  .ing-name{font-size:15px;line-height:1.1}
+  .ing-dose{font-size:11.5px}
+  .ing-tags{margin-top:9px;gap:6px}
+  .ing-tags span{font-size:11px;padding:5px 10px}
+  .ing-spark{width:54px}
 }
 @media(max-width:720px){
-  .comp-cta{white-space:normal;justify-content:center;padding:16px 22px;letter-spacing:.03em}
+  .comp-cta{white-space:normal;justify-content:center;padding:16px 22px;letter-spacing:.03em;align-self:stretch;display:flex;width:100%}
 }
 @media(max-width:920px){
   .app-card{flex-direction:column;min-height:0}
@@ -377,10 +418,10 @@ html.static .marquee-row{animation:none!important}
 /* ---------- DRINKING SEQUENCE (image-left card + green panel — like the app card) ---------- */
 .drink{background:#fff;padding:clamp(20px,3vw,64px) clamp(24px,4vw,60px) clamp(72px,8vw,132px)}
 .drink-card{max-width:1580px;margin:0 auto;display:flex;align-items:stretch;
-  min-height:clamp(440px,44vw,720px);
+  min-height:clamp(440px,40vw,720px);
   border-radius:clamp(20px,1.9vw,28px);overflow:hidden;background:var(--green)}
 .drink-photo{position:relative;flex:0 0 47%}
-.drink-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.drink-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 46%}
 .drink-panel{flex:1 1 auto;color:#fff;display:flex;flex-direction:column;justify-content:center;
   padding:clamp(40px,4vw,64px) clamp(36px,3.2vw,56px)}
 .drink-label{font-family:var(--sans);font-weight:400;color:#b9b9b9;font-size:clamp(15px,1.15vw,18px)}
@@ -410,6 +451,7 @@ html.static .marquee-row{animation:none!important}
 @media(max-width:920px){
   .drink-card{flex-direction:column;min-height:0}
   .drink-photo{flex:none;width:100%;aspect-ratio:5/4}
+  .drink-photo img{object-position:50% 88%}
   .drink-panel{padding:clamp(30px,6vw,52px) clamp(26px,5.6vw,48px) clamp(36px,7vw,54px)}
   .drink-title{font-size:clamp(2rem,6vw,2.9rem)}
   .drink-desc{font-size:clamp(1rem,2.4vw,1.15rem)}
@@ -437,9 +479,11 @@ html.static .marquee-row{animation:none!important}
 .cmp-c{padding:12px clamp(10px,1.4vw,24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center;
   font-family:var(--sans);font-weight:400;color:#1a1a1a;font-size:clamp(14px,1.15vw,19px);line-height:1.3}
 .cmp-sub{font-size:clamp(11px,.95vw,16px);color:#1a1a1a;opacity:.8;line-height:1.3}
-.cmp-muted{color:#808080}
+.cmp-muted{color:#6c6c6c}
 .cmp-ico{width:clamp(20px,1.9vw,27px);height:auto;display:block}
 .cmp-logo-sqnc{height:clamp(19px,1.7vw,27px);width:auto;display:block}
+.cmp-logo-lg{display:none}
+@media(min-width:921px){.cmp-logo-sm{display:none}.cmp-logo-lg{display:block;height:clamp(15px,1.35vw,20px);width:auto}}
 .cmp-logos{display:inline-flex;gap:8px;align-items:center}
 .cmp-brand{height:clamp(27px,2.5vw,38px);width:auto;display:block;border-radius:8px}
 .cmp-highlight{position:absolute;top:0;bottom:0;left:28%;width:24%;border:1.5px solid #ff5f2e;border-radius:10px;
@@ -460,6 +504,7 @@ html.static .marquee-row{animation:none!important}
 }
 @media(max-width:520px){
   .cmp-row{grid-template-columns:40% 30% 30%}
+  .cmp-highlight{left:40%;width:30%}
   .cmp-feat{font-size:12.5px;padding-left:12px}
   .cmp-c{font-size:12.5px;padding:11px 5px}
   .cmp-sub{font-size:11px}
@@ -471,18 +516,20 @@ html.static .marquee-row{animation:none!important}
 .cta2-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:26% 50%}
 .cta2-panel{flex:1 1 50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
   padding:clamp(44px,5vw,88px) clamp(28px,5vw,96px)}
-.cta2-title{max-width:760px;font-family:var(--sans);font-weight:600;color:#fff;
+.cta2-title{max-width:720px;font-family:var(--sans);font-weight:500;color:#fff;
   font-size:clamp(1.7rem,2.9vw,3.35rem);line-height:1.14;letter-spacing:-.018em;text-wrap:balance}
 .cta2-title .nw{white-space:nowrap}
 .cta2-title .pill{box-shadow:0 9px 31px rgba(7,43,24,.3)}
 .cta2-sub{margin-top:clamp(16px,1.8vw,26px);max-width:620px;font-family:var(--sans);font-weight:500;
   font-size:clamp(1.05rem,1.55vw,1.5rem);line-height:1.35;color:#fff;text-wrap:balance}
-.cta2-capture{width:min(640px,100%)}
+.cta2-capture{width:min(516px,100%)}
 @media(max-width:920px){
   .cta2{flex-direction:column;min-height:0}
   .cta2-photo{flex:none;width:100%;aspect-ratio:16/11}
-  .cta2-panel{padding:clamp(40px,8vw,64px) clamp(22px,6vw,40px) clamp(48px,9vw,72px)}
-  .cta2-title{font-size:clamp(1.8rem,6.4vw,2.6rem)}
+  .cta2-panel{padding:clamp(40px,8vw,64px) clamp(16px,4vw,40px) clamp(48px,9vw,72px)}
+  .cta2-title{width:100%;font-size:clamp(1.2rem,4.5vw,1.7rem);text-wrap:pretty}
+  .cta2-title .nw{white-space:normal}
+  .cta2-title .pill{height:.74em;margin:0 .06em}
   .cta2-sub{font-size:clamp(1rem,3.4vw,1.2rem)}
 }
 
@@ -501,12 +548,14 @@ html.static .marquee-row{animation:none!important}
 /* ---------- MOBILE SECTION STEPPER (sticky top bar, ≤720px) ---------- */
 .mstep{display:none}
 @media(max-width:720px){
-  .mstep{display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:50;
-    background:#fff;height:52px;padding:0 20px;border-bottom:1px solid rgba(7,20,12,.08)}
+  .mstep{display:flex;align-items:center;gap:14px;position:fixed;top:0;left:0;right:0;z-index:50;
+    background:#fff;height:52px;padding:0 20px;border-bottom:1px solid rgba(7,20,12,.08);
+    transform:translateY(-100%);transition:transform .35s var(--ease)}
+  .mstep.show{transform:translateY(0)}
   .mstep-tick{flex-shrink:0;width:2px;height:16px;border-radius:2px;background:#b3b3b3}
   .mstep-list{display:flex;gap:30px;align-items:baseline;margin:0;padding:0;list-style:none;
     font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.02em;white-space:nowrap}
-  .mstep-item{display:flex;gap:12px;align-items:baseline;color:#999}
+  .mstep-item{display:flex;gap:12px;align-items:baseline;color:#6b6b6b}
   .mstep-l{display:none}
   .mstep-item.on{color:#1a1a1a}
   .mstep-item.on .mstep-l{display:inline}
@@ -562,6 +611,17 @@ footer{background:var(--green);color:#fff;padding:56px clamp(18px,4vw,56px) 40px
   font-size:13.5px;color:rgba(255,255,255,.72)}
 .foot-row a{color:rgba(255,255,255,.85);text-decoration:none}
 .foot-row a:hover{color:#fff}
+footer .mark img{filter:brightness(0) invert(1)}
+@media(min-width:721px){
+  /* white footer on desktop — clean break after the green CTA */
+  footer{background:#fff;color:#375443}
+  footer .mark img{filter:none}
+  .foot-row{color:#6c6c6c}
+  .foot-row a{color:#375443}
+  .foot-row a:hover{color:var(--green)}
+}
+.skip-link{position:absolute;left:8px;top:-52px;z-index:200;background:var(--green);color:#fff;padding:10px 16px;border-radius:8px;font-family:var(--sans);font-weight:600;font-size:14px;text-decoration:none;transition:top .2s var(--ease)}
+.skip-link:focus{top:8px;outline:2px solid var(--lime-cta);outline-offset:2px}
 
 /* ---------- MOTION — opening settle-in ---------- */
 @keyframes settle{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
@@ -586,10 +646,10 @@ html.static .hero{min-height:860px!important}
    marquee land within one screen (no scroll). Model reframed smaller/higher. */
 @media(min-width:1025px){
   /* premium full-bleed hero — matches Figma 60:10779 (1920x1102) */
-  .hero{min-height:auto;aspect-ratio:1920/1102;justify-content:center;
+  .hero{min-height:100svh;justify-content:center;
     padding:0 clamp(40px,3.75vw,72px)}
-  html.static .hero{min-height:auto!important}
-  .hero-bg{background-size:216.8% auto;background-position:74% 17%}
+  html.static .hero{min-height:100svh!important}
+  .hero-bg{background-size:cover;background-position:50% 50%}
   .nav{position:absolute;top:22px;left:0;right:0;padding:0 clamp(40px,3.75vw,72px)}
   .nav-logo img{height:19.5px}
   .nav-right{gap:clamp(28px,2.4vw,44px)}
@@ -598,14 +658,14 @@ html.static .hero{min-height:860px!important}
   .hero-inner{flex:0 1 auto;justify-content:center;padding:0;transform:translateY(6.5%)}
   .headline{max-width:min(1240px,94%);font-weight:500;font-size:clamp(2.6rem,3.6vw,4.4rem);
     line-height:1.08;letter-spacing:-.012em;text-wrap:wrap}
-  .subline{margin-top:clamp(28px,2.2vw,42px);font-family:'Season Sans','Season Mix',Georgia,serif;font-weight:500;font-size:26.25px;color:rgba(7,43,24,.9)}
+  .subline{margin-top:clamp(28px,2.2vw,42px);font-family:'Season Sans','Season Mix',Georgia,serif;font-weight:500;font-size:26.25px;color:rgba(255,255,255,.9)}
   .capture{width:min(516px,94%);margin-top:clamp(28px,2.2vw,40px)}
   .field{padding:7px 7px 7px 24px;gap:12px}
   .field .mail{width:20px;height:20px}
   .field input{font-size:clamp(16px,1.05vw,18px);padding:13px 0}
   .field button{padding:13px 24px;font-size:15px}
   .field button svg{width:18px;height:18px}
-  .pill{height:.86em;border:2px solid rgba(255,255,255,.8)}
+  .pill{height:.9em}
 }
 @media(max-width:720px){
   /* bottle-forward: cutout scaled down + shifted right so the SQNC bottle leads and the head is a smaller supporting element (not co-focus) */
@@ -614,7 +674,7 @@ html.static .hero{min-height:860px!important}
      copy over a dark top scrim, glass form over the photo */
   .hero{min-height:100svh;justify-content:center;padding:0}
   html.static .hero{min-height:100svh!important}
-  .hero-bg{background-image:url(assets/cyclist-mobile.webp);background-size:cover;background-position:left center}
+  .hero-bg{background-image:url(assets/hero-rooftop-mobile-v2.webp);background-size:cover;background-position:70% 50%;transform:none}
   .hero-bg::after{background:linear-gradient(to bottom,rgba(4,10,6,.4) 0%,rgba(4,10,6,.52) 42%,rgba(4,10,6,.4) 60%,rgba(4,10,6,.1) 80%,transparent 93%)}
   .nav{position:absolute;top:0;left:0;right:0;z-index:5;padding:16px 18px 0}
   .nav-logo img{height:16px;filter:brightness(0) invert(1)}
@@ -624,10 +684,10 @@ html.static .hero{min-height:860px!important}
   .headline{color:#fff;font-weight:500;max-width:330px;
     font-size:clamp(1.5rem,6.9vw,1.85rem);line-height:1.15;letter-spacing:-.018em}
   .subline{color:#fff;margin-top:12px;font-size:16px;max-width:330px}
-  .micro{color:rgba(255,255,255,.72);margin-top:11px;font-size:11.5px}
+  .micro{color:rgba(255,255,255,.94);margin-top:11px;font-size:11.5px;text-shadow:0 1px 7px rgba(4,10,6,.55)}
   .chip{height:.8em}
-  /* smaller, stepped cards — middle (wearable) largest, like desktop (room to scroll later) */
-  .cards{width:min(430px,92%);gap:11px}
+  /* mobile: no card cluster — the re-cropped photo already frames torso+bottle (no neck/shorts) */
+  .cards{display:none}
   .glass{padding:15px 18px;--r:20px}
   .card-blood{max-width:87%}
   .card-hrv{max-width:100%}
@@ -655,14 +715,15 @@ html.static .hero{min-height:860px!important}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ================= HERO ================= -->
 <nav class="floatnav" aria-hidden="true">
   <a class="floatnav-logo" href="#hero" tabindex="-1"><img src="assets/SQNC_H_GREEN.svg" alt="" width="96" height="27"></a>
   <div class="floatnav-links">
-    <a href="#how" tabindex="-1">How it works</a>
-    <a href="#science" tabindex="-1">The science</a>
-    <a href="#advisors" tabindex="-1">Advisors</a>
+    <a href="#advisors" tabindex="-1">Team</a>
+    <a href="#components" tabindex="-1">Ingredients</a>
+    <a href="#advantage" tabindex="-1">Competitors</a>
   </div>
   <a class="floatnav-cta" href="#" tabindex="-1">For B2B customers &rarr;</a>
 </nav>
@@ -670,45 +731,46 @@ html.static .hero{min-height:860px!important}
 <header class="hero" id="hero">
   <div class="hero-bg" aria-hidden="true"></div>
 
-  <nav class="nav rv">
-    <a class="nav-logo" href="#" aria-label="SQNC home"><img src="assets/SQNC_H_GREEN.svg" alt="SQNC" width="107" height="30"></a>
+  <nav class="nav rv" aria-label="Primary">
+    <a class="nav-logo" href="#hero" aria-label="SQNC home"><img src="assets/SQNC_H_GREEN.svg" alt="SQNC" width="107" height="30"></a>
     <div class="nav-right">
-      <a href="#how">How it works</a>
-      <a href="#science">The science</a>
-      <a href="#advisors">Advisors</a>
+      <a href="#advisors">Team</a>
+      <a href="#components">Ingredients</a>
+      <a href="#advantage">Competitors</a>
       <a class="nav-cta" href="#">For B2B customers &rarr;</a>
     </div>
   </nav>
 
   <div class="hero-inner">
-  <h1 class="headline rv" style="--d:120ms">The most personalised supplement, based on your <span class="nw"><img class="pill" src="assets/chip-blood.png" alt="blood test"> blood</span> and <span class="nw"><span class="pill wear" role="img" aria-label="wearable devices"><i class="ws"><img alt=""></i><i class="ws"><img alt=""></i></span> wearables data.</span></h1>
+  <h1 class="headline rv" style="--d:120ms">Precision dosed supplement powder.<br>Based on your blood and wearable data.</h1>
   <p class="subline rv" style="--d:230ms">Re-formulated every month as your biomarkers change.</p>
 
   <div class="capture rv" style="--d:320ms" id="access">
     <form class="field" id="waitlist" novalidate>
       <svg class="mail" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#072B18" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="3.5"/><path d="m3.5 7.5 8.5 6 8.5-6"/></svg>
       <input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="email" required aria-label="Email address">
-      <button type="submit" id="cta"><span class="cta-txt">Join the waiting list</span>
+      <button type="submit" id="cta"><span class="cta-txt">Join the waitlist</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg>
       </button>
     </form>
     <p class="micro">Free to join &middot; No spam, ever &middot; Launching 2026</p>
     <div class="joined-pill" role="status">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B1FC63" stroke-width="2.4" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>
-      <b>You're on the list — No. <span id="qn">—</span></b>
+      <b>You're on the list — we'll email you at launch.</b>
     </div>
   </div>
 
   </div><!-- /hero-inner -->
 </header>
 
+<main id="main">
 <!-- ================= SOCIAL PROOF + LOGO MARQUEE ================= -->
-<section class="social">
+<section class="social" id="advisors">
   <div class="social-head">
     <img class="avatar-stack" src="assets/avatar-stack.png" alt="SQNC founders and advisors" width="153" height="39">
     <p class="social-text">Built by exited health tech founders, advised by executives and PhD scientists from&hellip;</p>
   </div>
-  <div class="marquee">
+  <div class="marquee" aria-hidden="true">
     <div class="marquee-row" id="mtrack">
       <img class="mlogo" src="assets/logo-innocent.png" alt="Innocent">
       <img class="mlogo" src="assets/logo-graze.png" alt="Graze">
@@ -728,6 +790,18 @@ html.static .hero{min-height:860px!important}
     <span class="rail-dot" data-for="how"></span>
     <span class="rail-dot" data-for="app"></span>
   </div> -->
+
+  <!-- section stepper (mobile) — sticky nav across the 5-step journey -->
+  <div class="mstep" aria-hidden="true">
+    <span class="mstep-tick"></span>
+    <ol class="mstep-list">
+      <li class="mstep-item on" data-for="how"><span class="mstep-n">01</span><span class="mstep-l">How it works</span></li>
+      <li class="mstep-item" data-for="app"><span class="mstep-n">02</span><span class="mstep-l">The mobile app</span></li>
+      <li class="mstep-item" data-for="components"><span class="mstep-n">03</span><span class="mstep-l">Components</span></li>
+      <li class="mstep-item" data-for="drinking"><span class="mstep-n">04</span><span class="mstep-l">Drinking SEQUENCE</span></li>
+      <li class="mstep-item" data-for="advantage"><span class="mstep-n">05</span><span class="mstep-l">Competitors</span></li>
+    </ol>
+  </div>
 <section class="hiw" id="how">
   <div class="hiw-head">
     <h2>How it works</h2>
@@ -736,22 +810,17 @@ html.static .hero{min-height:860px!important}
   <div class="hiw-grid">
     <div class="hiw-deck">
       <article class="hiw-card">
-        <div class="hiw-media"><picture><source media="(max-width:720px)" srcset="assets/hiw-1w.webp"><img src="assets/hiw-1.webp" width="378" height="378" alt="Blood test appointment confirmed"></picture><span class="hiw-num">1</span></div>
+        <div class="hiw-media"><img src="assets/hiw-new-1.webp" width="378" height="378" alt="Step 1 — blood test appointment confirmed"></div>
         <h3>Take / upload a blood test</h3>
         <p>At your nearest clinic or book a nurse to visit you at home / office.</p>
       </article>
       <article class="hiw-card">
-        <div class="hiw-media"><picture><source media="(max-width:720px)" srcset="assets/hiw-2w.webp"><img src="assets/hiw-2.webp" width="378" height="378" alt="Connect your wearables — Whoop, Oura, Garmin, Apple Watch"></picture><span class="hiw-num">2</span></div>
+        <div class="hiw-media"><picture><source media="(max-width:720px)" srcset="assets/hiw-new-2w.webp"><img src="assets/hiw-new-2.webp" width="378" height="378" alt="Step 2 — connect your wearables: Whoop, Oura, Garmin, Apple Watch"></picture></div>
         <h3>Connect your wearable(s)</h3>
-        <p>Whoop, Oura, Garmin, Apple Watch, FitBit Air, Ultrahuman. More integrations soon!</p>
+        <p>Whoop, Oura, Garmin, Apple Watch, Fitbit, Ultrahuman. More integrations soon!</p>
       </article>
       <article class="hiw-card">
-        <div class="hiw-media"><picture><source media="(max-width:720px)" srcset="assets/hiw-3w.webp"><img src="assets/hiw-3.webp" width="378" height="378" alt="SQNC AI chat mapping your well-being"></picture><span class="hiw-num">3</span></div>
-        <h3>Talk with SEQUENCE AI</h3>
-        <p>Our AI will map your subjective well-being and formulates the best protocol.</p>
-      </article>
-      <article class="hiw-card">
-        <div class="hiw-media"><picture><source media="(max-width:720px)" srcset="assets/hiw-4w.webp"><img src="assets/hiw-4.webp" width="378" height="378" alt="SQNC daily sachet supplement"></picture><span class="hiw-num">4</span></div>
+        <div class="hiw-media"><picture><source media="(max-width:720px)" srcset="assets/hiw-new-3w.webp"><img src="assets/hiw-new-3.webp" width="378" height="378" alt="Step 3 — get your personalised SEQUENCE supplement"></picture></div>
         <h3>Get your supplement</h3>
         <p>Delivered to your doorstep in 72h. A daily sachet that you mix into water.</p>
       </article>
@@ -759,20 +828,20 @@ html.static .hero{min-height:860px!important}
   </div>
 </section>
 
-  <!-- mobile section stepper — starts at the app section -->
-  <div class="mstep" aria-hidden="true">
-    <span class="mstep-tick"></span>
-    <ol class="mstep-list">
-      <li class="mstep-item on" data-for="app"><span class="mstep-n">01</span><span class="mstep-l">The mobile app</span></li>
-      <li class="mstep-item" data-for="components"><span class="mstep-n">02</span><span class="mstep-l">Components</span></li>
-      <li class="mstep-item" data-for="drinking"><span class="mstep-n">03</span><span class="mstep-l">Drinking SEQUENCE</span></li>
-    </ol>
+  <div class="seq-intro">
+    <div class="hiw-head">
+      <h2>The new era of supplementation</h2>
+      <p>The app, the formula, the daily ritual &mdash; all tuned to your biology.</p>
+    </div>
   </div>
 
+
 <nav class="side-menu" aria-hidden="true">
-  <span class="side-menu-item on" data-for="app"><span class="side-menu-l">The mobile app</span><span class="side-menu-n">01</span></span>
-  <span class="side-menu-item" data-for="components"><span class="side-menu-l">Components</span><span class="side-menu-n">02</span></span>
-  <span class="side-menu-item" data-for="drinking"><span class="side-menu-l">Drinking SEQUENCE</span><span class="side-menu-n">03</span></span>
+  <span class="side-menu-item on" data-for="how"><span class="side-menu-l">How it works</span><span class="side-menu-n">01</span></span>
+  <span class="side-menu-item" data-for="app"><span class="side-menu-l">The mobile app</span><span class="side-menu-n">02</span></span>
+  <span class="side-menu-item" data-for="components"><span class="side-menu-l">Components</span><span class="side-menu-n">03</span></span>
+  <span class="side-menu-item" data-for="drinking"><span class="side-menu-l">Drinking SEQUENCE</span><span class="side-menu-n">04</span></span>
+  <span class="side-menu-item" data-for="advantage"><span class="side-menu-l">Competitors</span><span class="side-menu-n">05</span></span>
 </nav>
 <section class="app reveal" id="app">
   <div class="app-card">
@@ -788,7 +857,7 @@ html.static .hero{min-height:860px!important}
         <li>Explanations about every single component</li>
         <li>Formula continuously updates based on your new data</li>
       </ul>
-      <a class="app-cta" href="#hero">Join the waiting list
+      <a class="app-cta" href="#hero">Join the waitlist
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg>
       </a>
     </div>
@@ -805,7 +874,7 @@ html.static .hero{min-height:860px!important}
       <li>Manufactured in-house in the UK</li>
       <li>Every shipment is quality controlled</li>
     </ul>
-    <a class="comp-cta" href="#hero">Join the waiting list
+    <a class="comp-cta" href="#hero">Join the waitlist
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg>
     </a>
   </div>
@@ -814,14 +883,16 @@ html.static .hero{min-height:860px!important}
     <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs>
       <linearGradient id="spark-line" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f5a623"/><stop offset=".6" stop-color="#f5a623"/><stop offset="1" stop-color="#9bd824"/></linearGradient>
       <radialGradient id="spark-endglow"><stop offset="0" stop-color="#6dd909" stop-opacity=".6"/><stop offset="1" stop-color="#6dd909" stop-opacity="0"/></radialGradient>
+      <radialGradient id="spark-endglow-o"><stop offset="0" stop-color="#f5a623" stop-opacity=".55"/><stop offset="1" stop-color="#f5a623" stop-opacity="0"/></radialGradient>
       <filter id="spark-soft" x="-20%" y="-45%" width="140%" height="210%"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#ffffff" flood-opacity=".6"/></filter>
       <g id="spark-ticks"><g stroke-width="3.4" stroke-linecap="round"><line x1="170" y1="9" x2="170" y2="25" stroke="#f5a623"/><line x1="170" y1="32" x2="170" y2="48" stroke="#6dd909"/><line x1="170" y1="55" x2="170" y2="71" stroke="#f5a623"/><line x1="170" y1="78" x2="170" y2="94" stroke="#fe5b04"/></g></g>
-      <symbol id="spark1" viewBox="0 0 176 96" overflow="visible"><path d="M6 52 L44 62 L84 61 L120 62" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 62 L154 26" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="0.1 7"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="62" r="4" fill="#f5a623"/><circle cx="84" cy="61" r="4" fill="#f5a623"/><circle cx="120" cy="62" r="4" fill="#f5a623"/></g><circle cx="154" cy="26" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="26" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
-      <symbol id="spark2" viewBox="0 0 176 96" overflow="visible"><path d="M6 68 L44 60 L84 54 L120 46" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 46 L154 18" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="0.1 7"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="60" r="4" fill="#f5a623"/><circle cx="84" cy="54" r="4" fill="#f5a623"/><circle cx="120" cy="46" r="4" fill="#f5a623"/></g><circle cx="154" cy="18" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="18" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
-      <symbol id="spark3" viewBox="0 0 176 96" overflow="visible"><path d="M6 50 L44 58 L84 64 L120 56" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 56 L154 24" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="0.1 7"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="58" r="4" fill="#f5a623"/><circle cx="84" cy="64" r="4" fill="#f5a623"/><circle cx="120" cy="56" r="4" fill="#f5a623"/></g><circle cx="154" cy="24" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="24" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
-      <symbol id="spark4" viewBox="0 0 176 96" overflow="visible"><path d="M6 64 L44 52 L84 50 L120 52" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 52 L154 22" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="0.1 7"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="52" r="4" fill="#f5a623"/><circle cx="84" cy="50" r="4" fill="#f5a623"/><circle cx="120" cy="52" r="4" fill="#f5a623"/></g><circle cx="154" cy="22" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="22" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
-      <symbol id="spark5" viewBox="0 0 176 96" overflow="visible"><path d="M6 70 L44 66 L84 58 L120 60" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 60 L154 20" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="0.1 7"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="66" r="4" fill="#f5a623"/><circle cx="84" cy="58" r="4" fill="#f5a623"/><circle cx="120" cy="60" r="4" fill="#f5a623"/></g><circle cx="154" cy="20" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="20" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
-      <symbol id="spark6" viewBox="0 0 176 96" overflow="visible"><path d="M6 58 L44 64 L84 54 L120 48" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 48 L154 26" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="0.1 7"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="64" r="4" fill="#f5a623"/><circle cx="84" cy="54" r="4" fill="#f5a623"/><circle cx="120" cy="48" r="4" fill="#f5a623"/></g><circle cx="154" cy="26" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="26" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+      <!-- zones (ticks at x170): high 9-25 / optimal 32-48 / borderline 55-71 / low 78-94 — dot colors match landing zone -->
+      <symbol id="spark1" viewBox="0 0 176 96" overflow="visible"><path d="M6 86 L44 78 L84 64 L120 68" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 68 L154 40" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="78" r="4" fill="#fe5b04"/><circle cx="84" cy="64" r="4" fill="#f5a623"/><circle cx="120" cy="68" r="4" fill="#f5a623"/></g><circle cx="154" cy="40" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="40" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+      <symbol id="spark2" viewBox="0 0 176 96" overflow="visible"><path d="M6 58 L44 70 L84 46 L120 58" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 58 L154 36" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="70" r="4" fill="#f5a623"/><circle cx="84" cy="46" r="4" fill="#9bd824"/><circle cx="120" cy="58" r="4" fill="#f5a623"/></g><circle cx="154" cy="36" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="36" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+      <symbol id="spark3" viewBox="0 0 176 96" overflow="visible"><path d="M6 78 L44 68 L84 60 L120 44" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 44 L154 38" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="68" r="4" fill="#f5a623"/><circle cx="84" cy="60" r="4" fill="#f5a623"/><circle cx="120" cy="44" r="4" fill="#9bd824"/></g><circle cx="154" cy="38" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="38" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+      <symbol id="spark4" viewBox="0 0 176 96" overflow="visible"><path d="M6 62 L44 60 L84 63 L120 58" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 58 L154 44" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="60" r="4" fill="#f5a623"/><circle cx="84" cy="63" r="4" fill="#f5a623"/><circle cx="120" cy="58" r="4" fill="#f5a623"/></g><circle cx="154" cy="44" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="44" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+      <symbol id="spark5" viewBox="0 0 176 96" overflow="visible"><path d="M6 66 L44 58 L84 20 L120 36" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 36 L154 40" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="58" r="4" fill="#f5a623"/><circle cx="84" cy="20" r="4" fill="#f5a623"/><circle cx="120" cy="36" r="4" fill="#9bd824"/></g><circle cx="154" cy="40" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="40" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+      <symbol id="spark6" viewBox="0 0 176 96" overflow="visible"><path d="M6 84 L44 80 L84 66 L120 70" fill="none" stroke="#f5a623" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 70 L154 60" fill="none" stroke="#f5a623" stroke-width="3.2" stroke-linecap="round"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="80" r="4" fill="#fe5b04"/><circle cx="84" cy="66" r="4" fill="#f5a623"/><circle cx="120" cy="70" r="4" fill="#f5a623"/></g><circle cx="154" cy="60" r="13" fill="url(#spark-endglow-o)"/><circle cx="154" cy="60" r="6.6" fill="#f5a623" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
     </defs></svg>
     <div class="comp-cards" aria-hidden="true">
       <div class="ing-card"><div class="ing-info"><p class="ing-title"><span class="ing-name">Magnesium Bisglycinate</span><span class="ing-dose">400 mg</span></p><div class="ing-tags"><span>Muscle tension</span><span>HRV</span></div></div><svg class="ing-spark" viewBox="0 0 176 96" fill="none" aria-hidden="true"><use href="#spark1"/></svg></div>
@@ -836,7 +907,7 @@ html.static .hero{min-height:860px!important}
 <section class="drink reveal" id="drinking">
   <div class="drink-card">
     <div class="drink-photo">
-      <img src="assets/drink.webp" width="1200" height="1412" loading="lazy" alt="A cyclist in a bright kitchen holding a coffee beside a SEQUENCE green-juice bottle">
+      <img src="assets/drink2.webp" width="1365" height="1534" loading="lazy" alt="A cyclist in a bright kitchen holding a coffee beside a SEQUENCE green-juice bottle">
     </div>
     <div class="drink-panel">
       <p class="drink-label">The SEQUENCE experience</p>
@@ -847,13 +918,12 @@ html.static .hero{min-height:860px!important}
         <li>Dishwasher safe, easy to maintain</li>
         <li>Daily sachets are easy to pack for travel</li>
       </ul>
-      <a class="drink-cta" href="#hero">Join the waiting list
+      <a class="drink-cta" href="#hero">Join the waitlist
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg>
       </a>
     </div>
   </div>
 </section>
-</div><!-- /.rail-scope -->
 
 <section class="cmp reveal" id="advantage">
   <div class="cmp-inner">
@@ -873,7 +943,7 @@ html.static .hero{min-height:860px!important}
     <div class="cmp-table" data-comp="ag">
       <div class="cmp-row cmp-headrow">
         <div class="cmp-feat"></div>
-        <div class="cmp-c cmp-sqnc"><img class="cmp-logo-sqnc" src="assets/SQNC_H_GREEN.svg" alt="SEQUENCE"></div>
+        <div class="cmp-c cmp-sqnc"><img class="cmp-logo-sqnc cmp-logo-sm" src="assets/SQNC_H_GREEN.svg" alt="SEQUENCE"><img class="cmp-logo-lg" src="assets/logo-sequence.svg" alt="SEQUENCE"></div>
         <div class="cmp-c cmp-ag"><span class="cmp-logos"><img class="cmp-brand" src="assets/logo-ag1.webp" width="268" height="150" alt="AG1"><img class="cmp-brand" src="assets/logo-im8.webp" width="267" height="150" alt="IM8"></span></div>
         <div class="cmp-c cmp-thorne"><img class="cmp-brand" src="assets/logo-thorne.webp" width="267" height="150" alt="Thorne"></div>
       </div>
@@ -881,38 +951,38 @@ html.static .hero{min-height:860px!important}
         <div class="cmp-row">
           <div class="cmp-feat">Blood test</div>
           <div class="cmp-c cmp-sqnc"><span class="cmp-strong">100+ biomarkers</span><span class="cmp-sub">Availability to import previous tests included.</span></div>
-          <div class="cmp-c cmp-ag"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-ag"><svg class="cmp-ico" role="img" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
           <div class="cmp-c cmp-thorne"><span class="cmp-muted">10&ndash;20 biomarkers</span></div>
         </div>
         <div class="cmp-row">
           <div class="cmp-feat">Wearables integrations</div>
           <div class="cmp-c cmp-sqnc">Whoop, Oura, Garmin etc</div>
-          <div class="cmp-c cmp-ag"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
-          <div class="cmp-c cmp-thorne"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-ag"><svg class="cmp-ico" role="img" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-thorne"><svg class="cmp-ico" role="img" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
         </div>
         <div class="cmp-row">
           <div class="cmp-feat">Mobile app</div>
-          <div class="cmp-c cmp-sqnc"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="Yes"><use href="#cmp-check"/></svg></div>
-          <div class="cmp-c cmp-ag"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
-          <div class="cmp-c cmp-thorne"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-sqnc"><svg class="cmp-ico" role="img" viewBox="0 0 24 24" aria-label="Yes"><use href="#cmp-check"/></svg></div>
+          <div class="cmp-c cmp-ag"><svg class="cmp-ico" role="img" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-thorne"><svg class="cmp-ico" role="img" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
         </div>
         <div class="cmp-row">
           <div class="cmp-feat">Highest quality ingredients</div>
-          <div class="cmp-c cmp-sqnc"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="Yes"><use href="#cmp-check"/></svg></div>
-          <div class="cmp-c cmp-ag"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
-          <div class="cmp-c cmp-thorne"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="Yes"><use href="#cmp-check"/></svg></div>
+          <div class="cmp-c cmp-sqnc"><svg class="cmp-ico" role="img" viewBox="0 0 24 24" aria-label="Yes"><use href="#cmp-check"/></svg></div>
+          <div class="cmp-c cmp-ag"><svg class="cmp-ico" role="img" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-thorne"><svg class="cmp-ico" role="img" viewBox="0 0 24 24" aria-label="Yes"><use href="#cmp-check"/></svg></div>
         </div>
         <div class="cmp-row">
           <div class="cmp-feat">Renews based on your data</div>
-          <div class="cmp-c cmp-sqnc">Every 3 months</div>
-          <div class="cmp-c cmp-ag"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
-          <div class="cmp-c cmp-thorne"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-sqnc">Every month</div>
+          <div class="cmp-c cmp-ag"><svg class="cmp-ico" role="img" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-thorne"><svg class="cmp-ico" role="img" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
         </div>
         <div class="cmp-row">
           <div class="cmp-feat">Convenient daily sachet</div>
-          <div class="cmp-c cmp-sqnc"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="Yes"><use href="#cmp-check"/></svg></div>
-          <div class="cmp-c cmp-ag"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="Yes"><use href="#cmp-check"/></svg></div>
-          <div class="cmp-c cmp-thorne"><svg class="cmp-ico" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-sqnc"><svg class="cmp-ico" role="img" viewBox="0 0 24 24" aria-label="Yes"><use href="#cmp-check"/></svg></div>
+          <div class="cmp-c cmp-ag"><svg class="cmp-ico" role="img" viewBox="0 0 24 24" aria-label="Yes"><use href="#cmp-check"/></svg></div>
+          <div class="cmp-c cmp-thorne"><svg class="cmp-ico" role="img" viewBox="0 0 24 24" aria-label="No"><use href="#cmp-x"/></svg></div>
         </div>
         <div class="cmp-row">
           <div class="cmp-feat">Price</div>
@@ -925,29 +995,45 @@ html.static .hero{min-height:860px!important}
     </div>
   </div>
 </section>
+</div><!-- /.rail-scope -->
 
 <section class="cta2 reveal" id="join">
   <div class="cta2-photo">
     <img src="assets/cta-outdoor.webp" width="1500" height="1000" loading="lazy" alt="An athlete outdoors in the morning light">
   </div>
   <div class="cta2-panel">
-    <h2 class="cta2-title">The most personalised supplement, built from your <span class="nw"><img class="pill" src="assets/pill-blood.webp" width="368" height="140" alt="blood test"> blood</span> and <span class="nw"><img class="pill" src="assets/pill-wear.webp" width="393" height="140" alt="wearables"> wearables</span> data.</h2>
+    <h2 class="cta2-title">Precision dosed supplement powder. Based on your blood and wearable data.</h2>
     <p class="cta2-sub">Re-formulated every month as your biomarkers change.</p>
     <div class="capture cta2-capture">
       <form class="field" novalidate>
         <svg class="mail" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#072B18" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="3.5"/><path d="m3.5 7.5 8.5 6 8.5-6"/></svg>
         <input type="email" name="email" placeholder="Enter your email" autocomplete="email" required aria-label="Email address">
-        <button type="submit"><span class="cta-txt">Join the waiting list</span>
+        <button type="submit"><span class="cta-txt">Join the waitlist</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg>
         </button>
       </form>
       <div class="joined-pill" role="status">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B1FC63" stroke-width="2.4" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>
-        <b>You&rsquo;re on the list &mdash; No. <span class="qn">&mdash;</span></b>
+        <b>You&rsquo;re on the list &mdash; we&rsquo;ll email you at launch.</b>
       </div>
     </div>
   </div>
 </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <div class="mark"><img src="assets/SQNC_H_GREEN.svg" alt="SEQUENCE" width="120" height="34"></div>
+    <div class="foot-row">
+      <span>Blood-tested, wearable-connected, re-formulated monthly.</span>
+      <span><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="mailto:hello@drinksequence.co.uk">Contact</a></span>
+    </div>
+    <div class="foot-row">
+      <span>&copy; 2026 SEQUENCE. All rights reserved.</span>
+      <span>By joining the waiting list you agree to receive launch updates &mdash; unsubscribe anytime.</span>
+    </div>
+  </div>
+</footer>
 
 <script>
 (function () {
@@ -990,7 +1076,7 @@ html.static .hero{min-height:860px!important}
     var c = document.querySelector('.app-cta'), hero = document.getElementById('hero'), e = document.getElementById('email');
     if (!c) return;
     c.addEventListener('click', function (ev) {
-      if (hero) { ev.preventDefault(); hero.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      if (hero) { ev.preventDefault(); var rm = matchMedia('(prefers-reduced-motion:reduce)').matches; hero.scrollIntoView({ behavior: rm ? 'auto' : 'smooth', block: 'start' }); }
       if (e) setTimeout(function () { try { e.focus({ preventScroll: true }); } catch (_) {} }, 650);
     });
   })();
@@ -1010,16 +1096,11 @@ html.static .hero{min-height:860px!important}
      Handles every .field form on the page (hero + closing CTA) and keeps them in sync. */
   var KEY = 'sqnc_waitlist';
   var forms = [].slice.call(document.querySelectorAll('form.field'));
-  function hash(s){var h=5381,i=s.length;while(i)h=(h*33)^s.charCodeAt(--i);return h>>>0}
-  function markJoined(rec){
-    forms.forEach(function (f) {
-      var wrap = f.parentElement, qn = wrap.querySelector('#qn, .qn');
-      if (qn) qn.textContent = String(rec.n).padStart(4, '0');
-      wrap.classList.add('is-joined');
-    });
+  function markJoined(){
+    forms.forEach(function (f) { f.parentElement.classList.add('is-joined'); });
   }
   if (/[?&#]reset/.test(location.href)) { try{localStorage.removeItem(KEY)}catch(e){} }
-  try{var prev=JSON.parse(localStorage.getItem(KEY)); if(prev&&prev.n) markJoined(prev);}catch(e){}
+  try{var prev=JSON.parse(localStorage.getItem(KEY)); if(prev&&prev.email) markJoined();}catch(e){}
 
   forms.forEach(function (form) {
     var email = form.querySelector('input[type="email"]'), cta = form.querySelector('button[type="submit"]');
@@ -1028,9 +1109,9 @@ html.static .hero{min-height:860px!important}
       var v = (email.value || '').trim();
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { email.focus(); return; }
       cta.disabled = true;
-      var rec = { email: v, n: 137 + (hash(v) % 60), ts: new Date().toISOString(), variant: 'site-v1' };
+      var rec = { email: v, ts: new Date().toISOString(), variant: 'site-v1' };
       try{fetch('/api/waitlist',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(rec)}).catch(function(){})}catch(e){}
-      setTimeout(function(){ try{localStorage.setItem(KEY, JSON.stringify(rec))}catch(e){}; markJoined(rec); cta.disabled=false; }, STATIC?0:300);
+      setTimeout(function(){ try{localStorage.setItem(KEY, JSON.stringify(rec))}catch(e){}; markJoined(); cta.disabled=false; }, STATIC?0:300);
     });
   });
 
@@ -1094,19 +1175,25 @@ html.static .hero{min-height:860px!important}
     mq.addEventListener?mq.addEventListener('change',upd):mq.addListener(upd);
   })();
 
-  /* mobile section stepper — highlight the current section as you scroll (sticky top bar, ≤720px) */
+  /* mobile section stepper — fixed top bar, slides in once "How it works" is reached (≤720px) */
   (function(){
     var bar=document.querySelector('.mstep'); if(!bar) return;
     var items=[].slice.call(bar.querySelectorAll('.mstep-item'));
     var targets=items.map(function(i){return document.getElementById(i.getAttribute('data-for'));});
     var mq=matchMedia('(max-width:720px)'), tick=false;
     function render(){
-      tick=false; if(!mq.matches) return;
+      tick=false; if(!mq.matches){ bar.classList.remove('show'); return; }
       var ref=scrollY + innerHeight*0.4, active=0;
       for(var i=0;i<targets.length;i++){ var t=targets[i];
         if(t && t.getBoundingClientRect().top+scrollY<=ref) active=i;
       }
       for(var j=0;j<items.length;j++) items[j].classList.toggle('on', j===active);
+      /* visible from "How it works" reaching the top area until the last section leaves */
+      var first=targets[0], last=targets[targets.length-1], show=false;
+      if(first && last){
+        show = first.getBoundingClientRect().top <= 64 && last.getBoundingClientRect().bottom > 120;
+      }
+      bar.classList.toggle('show', show);
     }
     function onScroll(){ if(!tick){tick=true;requestAnimationFrame(render);} }
     render();
@@ -1133,9 +1220,16 @@ html.static .hero{min-height:860px!important}
       var ref = scrollY + innerHeight * 0.4, active = -1, inView = false;
       for (var i = 0; i < targets.length; i++) { var t = targets[i]; if (!t) continue;
         var r = t.getBoundingClientRect();
-        if (r.top < innerHeight * 0.85 && r.bottom > innerHeight * 0.15) inView = true;
         if (r.top + scrollY <= ref) active = i;
       }
+      /* show only once "How it works" reaches mid-viewport, until the last section leaves */
+      var first = targets[0], last = targets[targets.length - 1];
+      if (first && last) {
+        var fr = first.getBoundingClientRect(), lr = last.getBoundingClientRect();
+        inView = fr.top < innerHeight * 0.5 && lr.bottom > innerHeight * 0.15;
+      }
+      var joinSec = document.getElementById('join');
+      if (joinSec && joinSec.getBoundingClientRect().top < innerHeight * 0.55) inView = false;
       menu.classList.toggle('show', inView);
       if (active < 0) active = 0;
       for (var j = 0; j < items.length; j++) items[j].classList.toggle('on', j === active);
