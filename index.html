@@ -25,7 +25,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/matter-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/matter-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/hero-rooftop.webp" as="image" media="(min-width: 721px)">
+<link rel="preload" href="assets/hero-rooftop-v2.webp" as="image" media="(min-width: 721px)">
 <link rel="preload" href="assets/hero-rooftop-mobile-v3.webp" as="image" media="(max-width: 720px)">
 <style>
 /* ============================================================
@@ -67,9 +67,8 @@ img{display:block;max-width:100%}
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;
   align-items:center;isolation:isolate;overflow:clip;padding:0 clamp(18px,2.4vw,44px) 56px}
 .hero-bg{position:absolute;inset:0;z-index:-1;background:#14251b;
-  background-image:url(assets/hero-rooftop.webp);
-  background-repeat:no-repeat;background-size:cover;background-position:50% 50%;
-  transform:scale(1.22);transform-origin:50% 46%}
+  background-image:url(assets/hero-rooftop-v2.webp);
+  background-repeat:no-repeat;background-size:cover;background-position:50% 50%}
 .hero-bg::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:
     radial-gradient(120% 78% at 50% 48%, rgba(4,12,7,.34) 0%, rgba(4,12,7,.1) 46%, transparent 72%),
@@ -770,13 +769,14 @@ html.static .hero{min-height:860px!important}
 .pers-row{display:flex;gap:clamp(14px,1.5vw,22px);margin-top:clamp(30px,4vw,56px);overflow-x:auto;
   scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-right:clamp(24px,4vw,60px);scrollbar-width:none}
 .pers-row::-webkit-scrollbar{display:none}
-.pers-card{position:relative;flex:0 0 clamp(280px,33vw,440px);aspect-ratio:558/377.5;border-radius:18px;
+.pers-card{position:relative;flex:0 0 clamp(320px,34vw,520px);aspect-ratio:558/377.5;border-radius:18px;
   overflow:hidden;display:flex;align-items:center;scroll-snap-align:start;background:#0a0f0a;
   box-shadow:0 20px 50px -26px rgba(7,43,24,.35)}
+.pers-card:last-child{scroll-snap-align:end} /* clean scroll-end as more cards are added */
 .pers-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .pers-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,14,9,.74) 0%,rgba(8,14,9,.5) 38%,rgba(8,14,9,.06) 74%,transparent 100%)}
 .pers-txt{position:relative;z-index:2;margin:0;padding:0 clamp(24px,2vw,44px);color:#fff;font-family:var(--sans);
-  font-weight:500;font-size:clamp(1.35rem,2.05vw,2rem);line-height:1.12;letter-spacing:-.01em;max-width:76%;
+  font-weight:500;font-size:clamp(1.4rem,2.15vw,2.2rem);line-height:1.12;letter-spacing:-.01em;max-width:78%;
   text-shadow:0 1px 16px rgba(4,10,6,.4)}
 @media(max-width:720px){
   /* mobile: horizontal peek carousel. Header centred; first card flush-left, last card
@@ -785,7 +785,6 @@ html.static .hero{min-height:860px!important}
   .pers-head{padding:0 20px}
   .pers-row{gap:12px;margin-top:clamp(26px,7vw,40px);padding-left:20px;padding-right:20px;scroll-padding-left:20px}
   .pers-card{flex:0 0 80vw;border-radius:14px}
-  .pers-card:last-child{scroll-snap-align:end}
   .pers-txt{font-size:clamp(1.3rem,6vw,1.7rem);padding:0 22px;max-width:84%}
 }
 </style>
@@ -910,7 +909,7 @@ html.static .hero{min-height:860px!important}
         <p>Whoop, Oura, Garmin, Apple Watch, Fitbit, Ultrahuman. More integrations soon!</p>
       </article>
       <article class="hiw-card">
-        <div class="hiw-media"><picture><source media="(max-width:720px)" srcset="assets/hiw-r2-3w.webp"><img src="assets/hiw-r2-3.webp" width="378" height="378" alt="Step 3 — get your personalised SEQUENCE supplement"></picture><span class="hiw-num">3</span></div>
+        <div class="hiw-media"><picture><source media="(max-width:720px)" srcset="assets/hiw-r3-3w.webp"><img src="assets/hiw-r3-3.webp" width="378" height="378" alt="Step 3 — get your personalised SEQUENCE supplement"></picture><span class="hiw-num">3</span></div>
         <h3>Get your supplement</h3>
         <p>Delivered to your doorstep in 72h. A daily sachet that you mix into water.</p>
       </article>
