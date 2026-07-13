@@ -6,19 +6,19 @@
 <title>SEQUENCE — Supplement that learns from your biomarkers</title>
 <meta name="description" content="SQNC calibrates your daily supplement to your blood work and wearable data — then measures what actually works. Join the waiting list.">
 <meta name="theme-color" content="#072B18">
-<link rel="canonical" href="https://sandersqnc.github.io/sqnc-landing/">
+<link rel="canonical" href="https://sqnc.co.uk/">
 <meta property="og:title" content="SEQUENCE — Supplement that learns from your biomarkers">
 <meta property="og:description" content="Blood-tested, wearable-connected, re-formulated monthly. Join the waiting list.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://sandersqnc.github.io/sqnc-landing/">
+<meta property="og:url" content="https://sqnc.co.uk/">
 <meta property="og:site_name" content="SEQUENCE">
-<meta property="og:image" content="https://sandersqnc.github.io/sqnc-landing/assets/og-hero.jpg">
+<meta property="og:image" content="https://sqnc.co.uk/assets/og-hero.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SEQUENCE — Supplement that learns from your biomarkers">
 <meta name="twitter:description" content="Blood-tested, wearable-connected, re-formulated monthly. Join the waiting list.">
-<meta name="twitter:image" content="https://sandersqnc.github.io/sqnc-landing/assets/og-hero.jpg">
+<meta name="twitter:image" content="https://sqnc.co.uk/assets/og-hero.jpg">
 <link rel="icon" href="assets/SQNC_V_GREEN.svg">
 <link rel="apple-touch-icon" href="assets/SQNC_V_GREEN.svg">
 <link rel="preload" href="assets/fonts/matter-600.woff2" as="font" type="font/woff2" crossorigin>
@@ -1101,7 +1101,9 @@ html.static .hero{min-height:860px!important}
   /* Waitlist — honest submit to the Cloudflare Worker (D1 + Slack). Success only on a real 200.
      Handles every .field form on the page (hero + closing CTA) and keeps them in sync. */
   var KEY = 'sqnc_waitlist';
-  var API = 'https://sqnc-waitlist.sander-e42.workers.dev';
+  // On the live domain the API is same-origin (Worker route on /api/*); elsewhere (pages.dev
+  // preview, github.io legacy, localhost) fall back to the Worker's own URL.
+  var API = /(^|\.)sqnc\.co\.uk$/.test(location.hostname) ? '/api/waitlist' : 'https://sqnc-waitlist.sander-e42.workers.dev';
   var forms = [].slice.call(document.querySelectorAll('form.field'));
   function markJoined(){
     forms.forEach(function (f) { f.parentElement.classList.add('is-joined'); });
