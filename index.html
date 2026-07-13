@@ -26,7 +26,7 @@
 <link rel="preload" href="assets/fonts/matter-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/matter-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/hero-rooftop.webp" as="image" media="(min-width: 721px)">
-<link rel="preload" href="assets/hero-rooftop-mobile-v2.webp" as="image" media="(max-width: 720px)">
+<link rel="preload" href="assets/hero-rooftop-mobile-v3.webp" as="image" media="(max-width: 720px)">
 <style>
 /* ============================================================
    SEQUENCE — production teaser v1 (from Figma draft 5rfsnt74)
@@ -253,18 +253,18 @@ html.static .marquee-row{animation:none!important}
 
 /* ---------- HOW IT WORKS ---------- */
 .hiw{background:#fff;padding:clamp(72px,8vw,132px) clamp(24px,4vw,60px) clamp(88px,9vw,150px)}
-.hiw-head{max-width:1000px;margin:0 auto;text-align:center}
+.hiw-head,.pers-head{max-width:1000px;margin:0 auto;text-align:center}
 @media(min-width:721px){
-  /* left-aligned section headers, flush with the card grid */
-  .hiw-head{max-width:1200px;text-align:left}
+  /* left-aligned section headers, flush with the card grid (pinned left, not centred) */
+  .hiw-head,.pers-head{max-width:1200px;text-align:left;margin-inline:0 auto}
 }
-.hiw-head h2{font-family:var(--serif);font-weight:500;color:#1a1a1a;
+.hiw-head h2,.pers-head h2{font-family:var(--serif);font-weight:500;color:#1a1a1a;
   font-size:clamp(2.6rem,4.6vw,70px);line-height:1.03;letter-spacing:-.012em}
-.hiw-head p{margin-top:20px;font-family:var(--sans);font-weight:400;color:#666;
+.hiw-head p,.pers-head p{margin-top:20px;font-family:var(--sans);font-weight:400;color:#666;
   font-size:clamp(1.15rem,1.95vw,30px);line-height:1.34;text-wrap:balance}
 /* intro header for the app/components/drinking product sequence */
 .seq-intro{margin-top:clamp(-72px,-6vw,-36px);padding:0 clamp(24px,4vw,60px) clamp(34px,4.5vw,60px)}
-.hiw-grid{max-width:1200px;margin:clamp(48px,5vw,84px) auto 0;
+.hiw-grid{max-width:1200px;margin:clamp(48px,5vw,84px) 0 0;
   display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,2.4vw,40px)}
 /* reserve the right gutter for the fixed side-menu across how-it-works + competitors (desktop) */
 @media(min-width:1200px){section.hiw,section.cmp,.seq-intro{padding-right:clamp(210px,19vw,320px)}}
@@ -678,7 +678,7 @@ html.static .hero{min-height:860px!important}
      copy over a dark top scrim, glass form over the photo */
   .hero{min-height:100svh;justify-content:center;padding:0}
   html.static .hero{min-height:100svh!important}
-  .hero-bg{background-image:url(assets/hero-rooftop-mobile-v2.webp);background-size:cover;background-position:55% 50%;transform:none}
+  .hero-bg{background-image:url(assets/hero-rooftop-mobile-v3.webp);background-size:cover;background-position:50% 50%;transform:none}
   .hero-bg::after{background:linear-gradient(to bottom,rgba(4,10,6,.4) 0%,rgba(4,10,6,.52) 42%,rgba(4,10,6,.4) 60%,rgba(4,10,6,.1) 80%,transparent 93%)}
   .nav{position:absolute;top:0;left:0;right:0;z-index:5;padding:16px 18px 0}
   .nav-logo img{height:16px;filter:brightness(0) invert(1)}
@@ -715,6 +715,74 @@ html.static .hero{min-height:860px!important}
 @media(max-width:720px) and (max-height:740px){
   .social{padding-top:34px;padding-bottom:16px}
   .marquee{margin-top:12px}
+}
+
+/* ---------- INGREDIENTS LINK + MODAL ---------- */
+.cta-row{display:flex;align-items:center;gap:clamp(16px,2vw,26px);flex-wrap:wrap;margin-top:clamp(30px,3.2vw,46px)}
+.comp-cta{margin-top:0}
+.ing-link{background:none;border:0;padding:4px 2px;cursor:pointer;font-family:var(--sans);font-weight:500;
+  font-size:clamp(14px,1.05vw,16px);color:#1a1a1a;text-decoration:underline;text-underline-offset:4px;
+  text-decoration-thickness:1.5px;text-decoration-color:rgba(26,26,26,.35);
+  transition:text-decoration-color .18s var(--ease),color .18s var(--ease)}
+.ing-link:hover{text-decoration-color:#1a1a1a}
+.ing-link:focus-visible{outline:2.5px solid #1a1a1a;outline-offset:3px;border-radius:3px}
+.ing-modal{position:fixed;inset:0;margin:auto;border:0;padding:0;border-radius:22px;width:min(780px,94vw);max-width:94vw;
+  height:fit-content;max-height:88svh;background:#fff;color:#1a1a1a;box-shadow:0 40px 120px -30px rgba(7,43,24,.55);overflow:hidden}
+.ing-modal::backdrop{background:rgba(7,20,12,.55);backdrop-filter:blur(3px)}
+.ing-modal[open]{display:flex;flex-direction:column;animation:ingIn .28s var(--ease)}
+@keyframes ingIn{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
+.ing-modal-head{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;
+  padding:clamp(22px,3vw,32px) clamp(20px,3vw,34px) clamp(15px,2vw,20px);border-bottom:1px solid #eef1ec}
+.ing-modal-eyebrow{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#6c8a76}
+.ing-modal-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.6vw,30px);color:#072B18;margin:5px 0 0;line-height:1.1}
+.ing-modal-sub{font-family:var(--sans);font-weight:400;font-size:clamp(13px,1.05vw,15px);color:#5a625a;margin:8px 0 0;max-width:52ch;line-height:1.45}
+.ing-modal-x{flex:0 0 auto;width:38px;height:38px;border:0;border-radius:50%;background:#f1f4ee;color:#3a463c;
+  font-size:24px;line-height:1;cursor:pointer;transition:background .18s var(--ease)}
+.ing-modal-x:hover{background:#e2e8dc}
+.ing-modal-x:focus-visible{outline:2.5px solid #072B18;outline-offset:2px}
+.ing-modal-body{overflow-y:auto;padding:clamp(18px,2.4vw,26px) clamp(20px,3vw,34px) clamp(24px,3vw,32px)}
+.ing-group-label{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:var(--sans);font-weight:500;
+  font-size:clamp(13px,1.05vw,15px);color:#3a463c;margin:0 0 12px}
+.ing-group-2{margin-top:30px}
+.ing-badge{display:inline-block;background:#072B18;color:#B1FC63;font-weight:600;font-size:12px;letter-spacing:.02em;padding:4px 11px;border-radius:999px}
+.ing-badge.base{background:#eef1ec;color:#3a463c}
+.ing-table-wrap{overflow-x:auto;border:1px solid #eef1ec;border-radius:14px}
+.ing-table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:clamp(12.5px,1vw,14px)}
+.ing-table th{text-align:left;font-weight:600;color:#6c8a76;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;
+  padding:11px 14px;background:#f7faf4;border-bottom:1px solid #eef1ec;white-space:nowrap}
+.ing-table td{padding:11px 14px;border-bottom:1px solid #f2f5ef;vertical-align:top}
+.ing-table tr:last-child td{border-bottom:0}
+.ing-table tbody tr:hover{background:#fafcf8}
+.ing-n{color:#aab3a6;font-variant-numeric:tabular-nums;width:30px}
+.ing-nm{font-weight:500;color:#1a1a1a}
+.ing-rt{color:#5a625a}
+.ing-ds{font-weight:600;color:#072B18;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ing-modal-foot{margin:18px 0 0;font-family:var(--sans);font-size:12px;color:#8a938a;line-height:1.5}
+@media(max-width:560px){
+  .ing-modal{max-height:92svh;border-radius:18px}
+  .ing-table th,.ing-table td{padding:9px 10px}
+  .ing-rt{font-size:11.5px}
+}
+
+/* ---------- PERSONALISED-FOR-YOU (horizontal card row) ---------- */
+.pers{background:#fff;padding:clamp(52px,7vw,116px) 0 clamp(44px,6vw,96px) clamp(24px,4vw,60px)}
+.pers-row{display:flex;gap:clamp(14px,1.5vw,22px);margin-top:clamp(30px,4vw,56px);overflow-x:auto;
+  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-right:clamp(24px,4vw,60px);scrollbar-width:none}
+.pers-row::-webkit-scrollbar{display:none}
+.pers-card{position:relative;flex:0 0 clamp(280px,33vw,440px);aspect-ratio:558/377.5;border-radius:18px;
+  overflow:hidden;display:flex;align-items:center;scroll-snap-align:start;background:#0a0f0a;
+  box-shadow:0 20px 50px -26px rgba(7,43,24,.35)}
+.pers-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pers-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,14,9,.74) 0%,rgba(8,14,9,.5) 38%,rgba(8,14,9,.06) 74%,transparent 100%)}
+.pers-txt{position:relative;z-index:2;margin:0;padding:0 clamp(24px,2vw,44px);color:#fff;font-family:var(--sans);
+  font-weight:500;font-size:clamp(1.35rem,2.05vw,2rem);line-height:1.12;letter-spacing:-.01em;max-width:76%;
+  text-shadow:0 1px 16px rgba(4,10,6,.4)}
+@media(max-width:720px){
+  /* mobile: vertical stack of full-width cards (matches How-it-works), no horizontal-scroll edge jank */
+  .pers{padding:clamp(44px,11vw,64px) 20px clamp(34px,8vw,52px)}
+  .pers-row{flex-direction:column;gap:14px;margin-top:clamp(26px,7vw,40px);overflow:visible;padding-right:0;scroll-snap-type:none}
+  .pers-card{flex:0 0 auto;width:100%;border-radius:14px}
+  .pers-txt{font-size:clamp(1.3rem,6vw,1.7rem);padding:0 22px;max-width:84%}
 }
 </style>
 </head>
@@ -788,6 +856,19 @@ html.static .hero{min-height:860px!important}
 </section>
 
 <!-- ============ HOW IT WORKS + THE APP — wrapped for the left scroll-rail ============ -->
+<section class="pers reveal" aria-label="Personalised for you to…">
+  <div class="pers-head">
+    <h2>Personalised for you to&hellip;</h2>
+    <p>To support the goals that matter to you.</p>
+  </div>
+  <div class="pers-row">
+    <article class="pers-card"><img src="assets/pers-1.webp" width="1000" height="677" loading="lazy" alt="A cyclist recovering with a coffee after training"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Recover faster from training.</p></article>
+    <article class="pers-card"><img src="assets/pers-2.webp" width="1000" height="677" loading="lazy" alt="Pouring loose capsules into a hand"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Not to spend your time managing capsules.</p></article>
+    <article class="pers-card"><img src="assets/pers-3.webp" width="1000" height="677" loading="lazy" alt="An athlete with sustained energy holding a green drink"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Have sustained energy with boosted immune defence.</p></article>
+    <article class="pers-card"><img src="assets/pers-4.webp" width="1000" height="677" loading="lazy" alt="A supplement synced with your wearables"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Have a supplement synced with your Whoop, Oura etc.</p></article>
+  </div>
+</section>
+
 <div class="rail-scope">
   <!-- desktop scroll-rail — DISABLED, kept as backup. Uncomment this block to restore (its CSS/JS re-activate automatically). -->
   <!-- <div class="rail" aria-hidden="true">
@@ -879,9 +960,12 @@ html.static .hero{min-height:860px!important}
       <li>Manufactured in-house in the UK</li>
       <li>Every shipment is quality controlled</li>
     </ul>
+    <div class="cta-row">
     <a class="comp-cta" href="#hero">Join the waitlist
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg>
     </a>
+    <button type="button" class="ing-link" data-open="ingModal" aria-haspopup="dialog">See all 29 ingredients &rarr;</button>
+    </div>
   </div>
   <div class="comp-media">
     <img class="comp-bike" src="assets/cyclist.webp" width="2400" height="1601" loading="lazy" alt="A cyclist riding at speed">
@@ -1041,6 +1125,34 @@ html.static .hero{min-height:860px!important}
   </div>
 </footer>
 
+<dialog id="ingModal" class="ing-modal" aria-labelledby="ingModalTitle">
+  <div class="ing-modal-head">
+    <div>
+      <p class="ing-modal-eyebrow">What's inside</p>
+      <h2 id="ingModalTitle">The SEQUENCE ingredient list</h2>
+      <p class="ing-modal-sub">29 evidence-based ingredients. Your daily formula is built from these &mdash; personalised to your blood &amp; wearable data.</p>
+    </div>
+    <button type="button" class="ing-modal-x" data-close aria-label="Close">&times;</button>
+  </div>
+  <div class="ing-modal-body">
+    <p class="ing-group-label"><span class="ing-badge">Personalised &middot; 20</span> Routed per customer &mdash; dose set by your data</p>
+    <div class="ing-table-wrap">
+      <table class="ing-table">
+        <thead><tr><th>#</th><th>Ingredient</th><th>Routed on</th><th>Max dose</th></tr></thead>
+        <tbody><tr><td class="ing-n">1</td><td class="ing-nm">Creatine monohydrate</td><td class="ing-rt">Body mass, training load</td><td class="ing-ds">5 g</td></tr><tr><td class="ing-n">2</td><td class="ing-nm">Vitamin C</td><td class="ing-rt">Intake, training load</td><td class="ing-ds">1000 mg</td></tr><tr><td class="ing-n">3</td><td class="ing-nm">Collagen peptides</td><td class="ing-rt">Joint/tendon load, age</td><td class="ing-ds">10 g</td></tr><tr><td class="ing-n">4</td><td class="ing-nm">Acacia fibre</td><td class="ing-rt">Fibre intake, gut markers</td><td class="ing-ds">8 g</td></tr><tr><td class="ing-n">5</td><td class="ing-nm">Vitamin D3</td><td class="ing-rt">25(OH)D level + season</td><td class="ing-ds">300 mg mat.</td></tr><tr><td class="ing-n">6</td><td class="ing-nm">Curcumin (TurmXtra 60N)</td><td class="ing-rt">Inflammatory markers</td><td class="ing-ds">250 mg</td></tr><tr><td class="ing-n">7</td><td class="ing-nm">Tart cherry (Montmorency)</td><td class="ing-rt">Recovery, sleep</td><td class="ing-ds">480 mg</td></tr><tr><td class="ing-n">8</td><td class="ing-nm">Ashwagandha (KSM-66)</td><td class="ing-rt">Stress, HRV, cortisol</td><td class="ing-ds">500 mg</td></tr><tr><td class="ing-n">9</td><td class="ing-nm">Magnesium (bisglycinate)</td><td class="ing-rt">Mg status, sweat losses</td><td class="ing-ds">1429 mg</td></tr><tr><td class="ing-n">10</td><td class="ing-nm">Iron (ferrous bisglycinate)</td><td class="ing-rt">Ferritin</td><td class="ing-ds">75 mg mat.</td></tr><tr><td class="ing-n">11</td><td class="ing-nm">Glycine</td><td class="ing-rt">Sleep markers (wearable)</td><td class="ing-ds">3000 mg</td></tr><tr><td class="ing-n">12</td><td class="ing-nm">Rhodiola Rosea</td><td class="ing-rt">Fatigue, stress</td><td class="ing-ds">150 mg</td></tr><tr><td class="ing-n">13</td><td class="ing-nm">Vitamin B6 (P5P)</td><td class="ing-rt">B6 status, PMS</td><td class="ing-ds">5 mg</td></tr><tr><td class="ing-n">14</td><td class="ing-nm">Boswellia Serrata</td><td class="ing-rt">Joint pain, inflammation</td><td class="ing-ds">154 mg</td></tr><tr><td class="ing-n">15</td><td class="ing-nm">Selenium</td><td class="ing-rt">Serum selenium</td><td class="ing-ds">100 mg mat.</td></tr><tr><td class="ing-n">16</td><td class="ing-nm">Vitamin B12 (methylcobalamin)</td><td class="ing-rt">Serum B12 / MMA</td><td class="ing-ds">2 mg mat.</td></tr><tr><td class="ing-n">17</td><td class="ing-nm">Zinc</td><td class="ing-rt">Zinc status, immune load</td><td class="ing-ds">125 mg mat.</td></tr><tr><td class="ing-n">18</td><td class="ing-nm">Folate (5-MTHF)</td><td class="ing-rt">RBC folate</td><td class="ing-ds">6 mg mat.</td></tr><tr><td class="ing-n">19</td><td class="ing-nm">CoQ10</td><td class="ing-rt">Statin use, age, VO2</td><td class="ing-ds">204 mg mat.</td></tr><tr><td class="ing-n">20</td><td class="ing-nm">Iodine</td><td class="ing-rt">Urinary iodine / thyroid</td><td class="ing-ds">0.4 mg mat.</td></tr></tbody>
+      </table>
+    </div>
+    <p class="ing-group-label ing-group-2"><span class="ing-badge base">Base mix &middot; 9</span> Everyone gets these, every day</p>
+    <div class="ing-table-wrap">
+      <table class="ing-table">
+        <thead><tr><th>#</th><th>Ingredient</th><th>Dose</th></tr></thead>
+        <tbody><tr><td class="ing-n">1</td><td class="ing-nm">Vitamin K2 (MK-7)</td><td class="ing-ds">100 &micro;g</td></tr><tr><td class="ing-n">2</td><td class="ing-nm">Vitamin K1</td><td class="ing-ds">100 &micro;g</td></tr><tr><td class="ing-n">3</td><td class="ing-nm">Vitamin A</td><td class="ing-ds">800 &micro;g</td></tr><tr><td class="ing-n">4</td><td class="ing-nm">Vitamin B1 (thiamin)</td><td class="ing-ds">5 mg</td></tr><tr><td class="ing-n">5</td><td class="ing-nm">Vitamin B2 (riboflavin)</td><td class="ing-ds">5 mg</td></tr><tr><td class="ing-n">6</td><td class="ing-nm">Vitamin B5 (pantothenic acid)</td><td class="ing-ds">10 mg</td></tr><tr><td class="ing-n">7</td><td class="ing-nm">Niacinamide (B3)</td><td class="ing-ds">20 mg</td></tr><tr><td class="ing-n">8</td><td class="ing-nm">Biotin</td><td class="ing-ds">50 &micro;g</td></tr><tr><td class="ing-n">9</td><td class="ing-nm">Manganese</td><td class="ing-ds">2 mg</td></tr></tbody>
+      </table>
+    </div>
+    <p class="ing-modal-foot">Doses shown are per-day maximums; your personalised amounts are set within safe ranges from your biomarkers. &ldquo;mat.&rdquo; = as material.</p>
+  </div>
+</dialog>
+
 <script>
 (function () {
   'use strict';
@@ -1148,6 +1260,17 @@ html.static .hero{min-height:860px!important}
     });
     email.addEventListener('input', clearErr);
   });
+
+  /* ingredient list modal (native <dialog> gives ESC-close, focus trap, backdrop) */
+  (function(){
+    var modal=document.getElementById('ingModal'); if(!modal||!modal.showModal) return;
+    document.querySelectorAll('[data-open="ingModal"]').forEach(function(b){
+      b.addEventListener('click', function(){ modal.showModal(); });
+    });
+    modal.addEventListener('click', function(e){
+      if (e.target===modal || (e.target.closest && e.target.closest('[data-close]'))) modal.close();
+    });
+  })();
 
   /* wearable carousel — current device slides out to the right, next enters from the left */
   (function(){
