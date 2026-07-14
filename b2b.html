@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SQNC for partners - the personalised-supplement API</title>
+<meta name="description" content="Offer the most personalised supplement inside your own platform. Customers order without leaving your site; you earn a 20% recurring revenue share. Book a call with the founders.">
+<meta name="theme-color" content="#072B18">
+<script>if(location.hostname==='sqnc-landing.pages.dev'||/(^|\.)github\.io$/.test(location.hostname)){location.replace('https://sqnc.co.uk'+location.pathname.replace(/^\/sqnc-landing/,'')+location.search)}</script>
+<link rel="canonical" href="https://sqnc.co.uk/b2b.html">
+<meta property="og:title" content="SQNC for partners - the personalised-supplement API">
+<meta property="og:description" content="Offer a blood- and wearable-personalised supplement inside your platform. Customers order without leaving your site; you earn 20% recurring.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sqnc.co.uk/b2b.html">
+<meta property="og:site_name" content="SEQUENCE">
+<meta property="og:image" content="https://sqnc.co.uk/assets/og-hero-v2.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/assets/SQNC_V_GREEN.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/matter-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/seasonmix-500.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Matter';font-weight:400;font-display:swap;src:url('assets/fonts/matter-400.woff2') format('woff2')}
+@font-face{font-family:'Matter';font-weight:500;font-display:swap;src:url('assets/fonts/matter-500.woff2') format('woff2')}
+@font-face{font-family:'Matter';font-weight:600;font-display:swap;src:url('assets/fonts/matter-600.woff2') format('woff2')}
+@font-face{font-family:'Season Mix';font-weight:400;font-display:swap;src:url('assets/fonts/seasonmix-400.woff2') format('woff2')}
+@font-face{font-family:'Season Mix';font-weight:500;font-display:swap;src:url('assets/fonts/seasonmix-500.woff2') format('woff2')}
+:root{--green:#072B18;--green-soft:#375443;--mineral:#F6F9F2;--lime:#B1FC63;--lime-cta:#6DD909;--ease:cubic-bezier(.16,1,.3,1);--sans:'Matter',system-ui,sans-serif;--serif:'Season Mix',Georgia,serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{font-family:var(--sans);color:var(--green);background:#fff;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--lime);color:var(--green)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,60px)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;font-family:var(--sans);font-weight:500;font-size:clamp(1rem,1.15vw,1.12rem);padding:15px 26px;border-radius:999px;transition:background .18s var(--ease),transform .18s var(--ease);cursor:pointer}
+.btn:hover{background:#0b3f24;transform:translateY(-1px)}
+.btn svg{width:18px;height:18px;flex:0 0 auto}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(7,43,24,.07)}
+.nav-in{max-width:1180px;margin:0 auto;padding:15px clamp(20px,4vw,60px);display:flex;align-items:center;justify-content:space-between}
+.nav-logo img{height:21px;width:auto}
+.nav-r{display:flex;align-items:center;gap:clamp(16px,2vw,28px)}
+.nav-back{font-weight:500;font-size:14px;color:var(--green-soft)}
+.nav-back:hover{color:var(--green)}
+.nav-cta{background:var(--green);color:#fff;padding:9px 17px;border-radius:999px;font-weight:500;font-size:14px;transition:background .18s}
+.nav-cta:hover{background:#0b3f24}
+
+/* hero */
+.hero{background:var(--mineral);padding:clamp(56px,8vw,116px) 0 clamp(52px,7vw,100px)}
+.eyebrow{font-weight:500;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--green-soft)}
+.hero h1{margin-top:18px;font-family:var(--serif);font-weight:500;font-size:clamp(2.35rem,5vw,4.5rem);line-height:1.03;letter-spacing:-.016em;max-width:17ch}
+.hero .lead{margin-top:clamp(20px,2.4vw,30px);font-size:clamp(1.12rem,1.6vw,1.45rem);color:#3a4a41;max-width:46ch;line-height:1.45}
+.hero .btn{margin-top:clamp(26px,3vw,38px)}
+
+/* sections */
+section{padding:clamp(56px,7.5vw,108px) 0}
+.sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.95rem,3.7vw,3.35rem);line-height:1.06;letter-spacing:-.012em;max-width:20ch}
+.sec-head p{margin-top:16px;font-size:clamp(1.05rem,1.45vw,1.28rem);color:#666;max-width:54ch;line-height:1.5}
+
+/* flow */
+.flow{margin-top:clamp(40px,5vw,66px);display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2vw,30px)}
+.step{position:relative}
+.step-n{width:44px;height:44px;border-radius:13px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:18px;font-variant-numeric:tabular-nums;position:relative;z-index:2}
+.step h3{margin-top:20px;font-family:var(--serif);font-weight:500;font-size:clamp(1.2rem,1.5vw,1.5rem);line-height:1.15;letter-spacing:-.006em}
+.step p{margin-top:9px;color:#666;font-size:clamp(.98rem,1.08vw,1.06rem);line-height:1.5}
+.step:not(:last-child)::after{content:"";position:absolute;top:22px;left:58px;right:calc(-1 * clamp(20px,2vw,30px) - 4px);height:2px;
+  background:repeating-linear-gradient(90deg,rgba(7,43,24,.24) 0 5px,transparent 5px 11px)}
+
+/* revenue */
+.rev-wrap{padding-top:0}
+.rev{background:var(--green);color:#fff;border-radius:clamp(20px,2.2vw,30px);padding:clamp(38px,5.5vw,76px);
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(30px,5vw,72px);align-items:center;box-shadow:0 30px 70px -40px rgba(7,43,24,.5)}
+.rev-num{font-family:var(--serif);font-weight:500;font-size:clamp(5rem,13vw,10.5rem);line-height:.86;color:var(--lime);letter-spacing:-.02em}
+.rev-num span{font-size:.46em;vertical-align:.14em;margin-left:.02em}
+.rev h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.75rem,3vw,2.7rem);line-height:1.08;letter-spacing:-.01em}
+.rev .rp{margin-top:16px;font-size:clamp(1.04rem,1.35vw,1.24rem);color:rgba(255,255,255,.82);line-height:1.5;max-width:48ch}
+
+/* who for */
+.who{padding-top:0}
+.pills{margin-top:clamp(30px,3.6vw,44px);display:flex;flex-wrap:wrap;gap:12px}
+.pill{background:var(--green);color:#fff;font-weight:500;font-size:clamp(1rem,1.25vw,1.18rem);padding:12px 22px;border-radius:999px}
+
+/* closing */
+.close{background:var(--green);color:#fff;text-align:center;border-radius:0}
+.close h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.1rem,4.2vw,3.7rem);line-height:1.05;letter-spacing:-.014em}
+.close p{margin:16px auto 0;color:rgba(255,255,255,.8);font-size:clamp(1.05rem,1.5vw,1.3rem);max-width:46ch}
+.close .btn{margin-top:clamp(28px,3vw,38px);background:#fff;color:var(--green)}
+.close .btn:hover{background:var(--lime);color:var(--green)}
+
+/* footer */
+footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:18px 30px;flex-wrap:wrap;font-size:14px;color:#6c6c6c}
+.foot-in img{height:26px;width:auto}
+.foot-in a{color:var(--green-soft)}.foot-in a:hover{color:var(--green)}
+
+@media(max-width:860px){
+  .flow{grid-template-columns:repeat(2,1fr);gap:34px 22px}
+  .step:not(:last-child)::after{display:none}
+  .rev{grid-template-columns:1fr;gap:8px;text-align:left}
+  .rev-num{font-size:clamp(4.5rem,26vw,7rem)}
+}
+@media(max-width:500px){
+  .flow{grid-template-columns:1fr;gap:30px}
+  .nav-back{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="nav-logo" href="/" aria-label="SQNC home"><img src="assets/SQNC_H_GREEN.svg" alt="SQNC" width="107" height="30"></a>
+    <div class="nav-r">
+      <a class="nav-back" href="/">For customers</a>
+      <a class="nav-cta" href="mailto:hello@drinksequence.co.uk?subject=SQNC%20API%20partnership%20-%20book%20a%20call">Book a call &rarr;</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">SQNC API &middot; For partners</p>
+    <h1>Offer the most personalised supplement, inside your platform.</h1>
+    <p class="lead">Your customers order a supplement built from their blood and wearable data, without ever leaving your site. You earn a 20% recurring revenue share, every month.</p>
+    <a class="btn" href="mailto:hello@drinksequence.co.uk?subject=SQNC%20API%20partnership%20-%20book%20a%20call">Book a call with the founders to learn more
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg></a>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>One API. Your platform, our supplement.</h2>
+      <p>Plug the SQNC API into your app or site. Customers order under your own branding and never leave your product.</p>
+    </div>
+    <div class="flow">
+      <div class="step"><div class="step-n">1</div>
+        <h3>Ordered in your platform</h3>
+        <p>A customer buys the SQNC supplement from your app, under your own branding and checkout.</p></div>
+      <div class="step"><div class="step-n">2</div>
+        <h3>API call to SQNC</h3>
+        <p>Your platform passes their blood and wearable data to the SQNC API.</p></div>
+      <div class="step"><div class="step-n">3</div>
+        <h3>AI formulates the stack</h3>
+        <p>SQNC builds their personalised formula, precision-dosed to their biomarkers.</p></div>
+      <div class="step"><div class="step-n">4</div>
+        <h3>Shipped in 72h</h3>
+        <p>Daily sachets ship straight to your customer, re-formulated every month.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="rev-wrap">
+  <div class="wrap">
+    <div class="rev">
+      <div class="rev-num">20<span>%</span></div>
+      <div>
+        <h2>A recurring revenue share, every month.</h2>
+        <p class="rp">You distribute; we handle the formulation, manufacturing, and fulfilment. Keep 20% of every order, every month, for as long as your customer stays subscribed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="who">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Built for platforms in longevity &amp; wellness.</h2>
+      <p>Our goal is to be the infrastructure layer for supplementation.</p>
+    </div>
+    <div class="pills">
+      <span class="pill">Longevity clinics</span>
+      <span class="pill">Wearable companies</span>
+      <span class="pill">Sports teams</span>
+      <span class="pill">Telehealth</span>
+      <span class="pill">Blood-test companies</span>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <h2>Let&rsquo;s build it together.</h2>
+    <p>We&rsquo;ll walk you through the API and the partnership terms.</p>
+    <a class="btn" href="mailto:hello@drinksequence.co.uk?subject=SQNC%20API%20partnership%20-%20book%20a%20call">Book a call with the founders to learn more
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <img src="assets/SQNC_H_GREEN.svg" alt="SEQUENCE" width="92" height="26">
+    <span>&copy; 2026 SEQUENCE. All rights reserved.</span>
+    <span><a href="/">Home</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
