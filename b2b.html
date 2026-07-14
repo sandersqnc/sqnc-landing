@@ -68,11 +68,17 @@ a{color:inherit;text-decoration:none}
 @media(prefers-reduced-motion:reduce){.floatnav{transition:opacity .2s linear}}
 
 /* hero */
-.hero{background:var(--mineral);padding:clamp(56px,8vw,116px) 0 clamp(52px,7vw,100px)}
-.eyebrow{font-weight:500;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--green-soft)}
-.hero h1{margin-top:18px;font-family:var(--serif);font-weight:500;font-size:clamp(2.35rem,5vw,4.5rem);line-height:1.03;letter-spacing:-.016em;max-width:17ch}
-.hero .lead{margin-top:clamp(20px,2.4vw,30px);font-size:clamp(1.12rem,1.6vw,1.45rem);color:#3a4a41;max-width:46ch;line-height:1.45}
+.hero{position:relative;overflow:hidden;isolation:isolate;background:var(--green);padding:clamp(56px,8vw,116px) 0 clamp(52px,7vw,100px)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:url(assets/b2b-hero-alcove-v1.webp) center/cover no-repeat;transform:scale(1.04)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(5,17,10,.82) 0%,rgba(5,17,10,.6) 54%,rgba(5,17,10,.44) 100%)}
+.eyebrow{font-weight:500;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime)}
+.hero h1{margin-top:18px;font-family:var(--serif);font-weight:500;font-size:clamp(2.35rem,5vw,4.5rem);line-height:1.03;letter-spacing:-.016em;max-width:17ch;color:#fff}
+.hero .lead{margin-top:clamp(20px,2.4vw,30px);font-size:clamp(1.12rem,1.6vw,1.45rem);color:rgba(255,255,255,.85);max-width:46ch;line-height:1.45}
 .hero .btn{margin-top:clamp(26px,3vw,38px)}
+/* CTA email fallback (works on the dark hero image + the green closing panel) */
+.cta-alt{margin-top:15px;font-family:var(--sans);font-size:clamp(.98rem,1.15vw,1.08rem);color:rgba(255,255,255,.72)}
+.cta-alt a{color:#fff;text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(255,255,255,.42)}
+.cta-alt a:hover{text-decoration-color:#fff}
 
 /* sections */
 section{padding:clamp(56px,7.5vw,108px) 0}
@@ -147,7 +153,7 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
     <a class="nav-logo" href="/" aria-label="SQNC home"><img src="assets/SQNC_H_GREEN.svg" alt="SQNC" width="107" height="30"></a>
     <div class="nav-r">
       <a class="nav-back" href="/">For customers</a>
-      <a class="nav-cta" href="mailto:hello@drinksequence.co.uk?subject=SQNC%20API%20partnership%20-%20book%20a%20call">Book a call &rarr;</a>
+      <a class="nav-cta" href="https://sqnc.cal.com/sequence/sqnc-b2b-partnership-intro" target="_blank" rel="noopener noreferrer">Book a call &rarr;</a>
     </div>
   </div>
 </nav>
@@ -155,7 +161,7 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
 <nav class="floatnav" aria-hidden="true">
   <a class="floatnav-logo" href="/" aria-label="SQNC home" tabindex="-1"><img src="assets/SQNC_H_GREEN.svg" alt="" width="96" height="27"></a>
   <a class="floatnav-back" href="/" tabindex="-1">For customers</a>
-  <a class="floatnav-cta" href="mailto:hello@drinksequence.co.uk?subject=SQNC%20API%20partnership%20-%20book%20a%20call" tabindex="-1">Book a call &rarr;</a>
+  <a class="floatnav-cta" href="https://sqnc.cal.com/sequence/sqnc-b2b-partnership-intro" target="_blank" rel="noopener noreferrer" tabindex="-1">Book a call &rarr;</a>
 </nav>
 
 <header class="hero">
@@ -163,8 +169,9 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
     <p class="eyebrow">SQNC API &middot; For partners</p>
     <h1>Offer the most personalised supplement, inside your platform.</h1>
     <p class="lead">Your customers order a supplement built from their blood and wearable data, without ever leaving your site. You earn a 20% recurring revenue share, every month.</p>
-    <a class="btn" href="mailto:hello@drinksequence.co.uk?subject=SQNC%20API%20partnership%20-%20book%20a%20call">Book a call with the founders to learn more
+    <a class="btn" href="https://sqnc.cal.com/sequence/sqnc-b2b-partnership-intro" target="_blank" rel="noopener noreferrer">Book a call with the founders to learn more
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg></a>
+    <p class="cta-alt">Or email us: <a href="mailto:b2b@drinksequence.co.uk">b2b@drinksequence.co.uk</a></p>
   </div>
 </header>
 
@@ -226,8 +233,9 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
   <div class="wrap">
     <h2>Let&rsquo;s build it together.</h2>
     <p>We&rsquo;ll walk you through the API and the partnership terms.</p>
-    <a class="btn" href="mailto:hello@drinksequence.co.uk?subject=SQNC%20API%20partnership%20-%20book%20a%20call">Book a call with the founders to learn more
+    <a class="btn" href="https://sqnc.cal.com/sequence/sqnc-b2b-partnership-intro" target="_blank" rel="noopener noreferrer">Book a call with the founders to learn more
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg></a>
+    <p class="cta-alt">Or email us: <a href="mailto:b2b@drinksequence.co.uk">b2b@drinksequence.co.uk</a></p>
   </div>
 </section>
 

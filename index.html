@@ -777,7 +777,7 @@ html.static .hero{min-height:860px!important}
 .pers-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .pers-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,14,9,.74) 0%,rgba(8,14,9,.5) 38%,rgba(8,14,9,.06) 74%,transparent 100%)}
 .pers-txt{position:relative;z-index:2;margin:0;padding:0 clamp(24px,2vw,44px);color:#fff;font-family:var(--sans);
-  font-weight:500;font-size:clamp(1.4rem,2.15vw,2.2rem);line-height:1.12;letter-spacing:-.01em;max-width:78%;
+  font-weight:400;font-size:clamp(1.32rem,2vw,2.05rem);line-height:1.16;letter-spacing:-.008em;max-width:82%;
   text-shadow:0 1px 16px rgba(4,10,6,.4)}
 @media(max-width:720px){
   /* mobile: horizontal peek carousel. Header centred; first card flush-left, last card
@@ -787,6 +787,11 @@ html.static .hero{min-height:860px!important}
   .pers-row{gap:12px;margin-top:clamp(26px,7vw,40px);padding-left:20px;padding-right:20px;scroll-padding-left:20px}
   .pers-card{flex:0 0 80vw;border-radius:14px}
   .pers-txt{font-size:clamp(1.3rem,6vw,1.7rem);padding:0 22px;max-width:84%}
+}
+/* mobile: vertical page scroll drives the carousel horizontally (see JS). Lock manual
+   swipe + snap so the scroll position is owned by JS; reduced-motion keeps a manual scroller. */
+@media(max-width:720px) and (prefers-reduced-motion:no-preference){
+  .pers-row{touch-action:pan-y;scroll-snap-type:none}
 }
 </style>
 </head>
@@ -866,11 +871,11 @@ html.static .hero{min-height:860px!important}
     <p>Supporting the goals that matter to you.</p>
   </div>
   <div class="pers-row">
-    <article class="pers-card"><img src="assets/pers-1.webp" width="1000" height="677" loading="lazy" alt="A cyclist recovering with a coffee after training"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Recover faster from training.</p></article>
-    <article class="pers-card"><img src="assets/pers-2.webp" width="1000" height="677" loading="lazy" alt="Pouring loose capsules into a hand"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Not spend your time managing capsules.</p></article>
     <article class="pers-card"><img src="assets/pers-3.webp" width="1000" height="677" loading="lazy" alt="An athlete holding a green SEQUENCE drink"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Get what your body needs at clinical doses.</p></article>
-    <article class="pers-card"><img src="assets/pers-4.webp" width="1000" height="677" loading="lazy" alt="The SEQUENCE app on a phone showing sleep data"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Have a supplement that updates based on your wearable.</p></article>
     <article class="pers-card"><img src="assets/pers-5.webp" width="1000" height="677" loading="lazy" alt="See your biomarkers improving. July blood test: 52 optimal, 14 borderline, 10 needs work."></article>
+    <article class="pers-card"><img src="assets/pers-2.webp" width="1000" height="677" loading="lazy" alt="Pouring loose capsules into a hand"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Not spend your time managing capsules.</p></article>
+    <article class="pers-card"><img src="assets/pers-4.webp" width="1000" height="677" loading="lazy" alt="The SEQUENCE app on a phone showing sleep data"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Have a supplement that updates based on your wearable.</p></article>
+    <article class="pers-card"><img src="assets/pers-1.webp" width="1000" height="677" loading="lazy" alt="A cyclist recovering with a coffee after training"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Recover faster from training.</p></article>
   </div>
 </section>
 
@@ -911,7 +916,7 @@ html.static .hero{min-height:860px!important}
         <p>Whoop, Oura, Garmin, Apple Watch, FitBit Air, Ultrahuman. More integrations soon!</p>
       </article>
       <article class="hiw-card">
-        <div class="hiw-media"><picture><source media="(max-width:720px)" srcset="assets/hiw-r5-3w.webp"><img src="assets/hiw-r5-3.webp" width="378" height="378" alt="Step 3 — get your personalised SEQUENCE supplement, with ingredients tailored to your data"></picture><span class="hiw-num">3</span></div>
+        <div class="hiw-media"><picture><source media="(max-width:720px)" srcset="assets/hiw-r6-3w.webp"><img src="assets/hiw-r5-3.webp" width="378" height="378" alt="Step 3 — get your personalised SEQUENCE supplement, with ingredients tailored to your data"></picture><span class="hiw-num">3</span></div>
         <h3>Get your supplement</h3>
         <p>Delivered to your doorstep in 72h. A daily sachet that you mix into water.</p>
       </article>
@@ -1122,7 +1127,7 @@ html.static .hero{min-height:860px!important}
     <div class="mark"><img src="assets/SQNC_H_GREEN.svg" alt="SEQUENCE" width="120" height="34"></div>
     <div class="foot-row">
       <span>Blood-tested, wearable-connected, re-formulated monthly.</span>
-      <span><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="mailto:hello@drinksequence.co.uk">Contact</a></span>
+      <span><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="mailto:info@drinksequence.co.uk">Contact</a></span>
     </div>
     <div class="foot-row">
       <span>&copy; 2026 SEQUENCE. All rights reserved.</span>
@@ -1424,6 +1429,37 @@ html.static .hero{min-height:860px!important}
         togs.forEach(function (x) { var on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on ? 'true' : 'false'); });
       });
     });
+  })();
+
+  /* mobile: vertical scroll drives the "Personalised for you" carousel horizontally.
+     Scroll down -> cards pan left (through all of them); scroll up -> back to the right.
+     Desktop keeps its normal manual horizontal scroller; reduced-motion is left untouched. */
+  (function () {
+    var row = document.querySelector('.pers-row');
+    var sec = document.querySelector('.pers');
+    if (!row || !sec) return;
+    var mq = matchMedia('(max-width:720px)');
+    var rm = matchMedia('(prefers-reduced-motion:reduce)');
+    var tick = false;
+    function live() { return mq.matches && !rm.matches && !STATIC; }
+    function apply() {
+      tick = false;
+      if (!live()) return;
+      var max = row.scrollWidth - row.clientWidth;
+      if (max <= 1) return;
+      var r = sec.getBoundingClientRect();
+      var vh = innerHeight || document.documentElement.clientHeight;
+      /* p: 0 as the section enters (top near viewport bottom) -> 1 as its bottom reaches mid-viewport */
+      var p = (vh * 0.9 - r.top) / (vh * 0.4 + r.height);
+      p = p < 0 ? 0 : p > 1 ? 1 : p;
+      row.scrollLeft = p * max;
+    }
+    function onScroll() { if (!tick) { tick = true; requestAnimationFrame(apply); } }
+    apply();
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', apply);
+    mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply);
+    rm.addEventListener ? rm.addEventListener('change', apply) : rm.addListener(apply);
   })();
 
   /* Opening settle-in is pure CSS (keyframes on .rv / .hero-fg with staggered delays). */
