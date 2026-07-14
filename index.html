@@ -766,6 +766,7 @@ html.static .hero{min-height:860px!important}
 
 /* ---------- PERSONALISED-FOR-YOU (horizontal card row) ---------- */
 .pers{background:#fff;padding:clamp(52px,7vw,116px) 0 clamp(44px,6vw,96px) 0}
+.pers-pin{display:contents} /* transparent to layout on desktop + reduced-motion; becomes the sticky pin on mobile */
 .pers-head{padding-left:clamp(24px,4vw,60px)} /* left inset lives on head + row (not the section) so scrolled cards bleed off the left edge */
 .pers-row{display:flex;gap:clamp(14px,1.5vw,22px);margin-top:clamp(30px,4vw,56px);overflow-x:auto;
   scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-left:clamp(24px,4vw,60px);scroll-padding-left:clamp(24px,4vw,60px);scrollbar-width:none}
@@ -788,10 +789,16 @@ html.static .hero{min-height:860px!important}
   .pers-card{flex:0 0 80vw;border-radius:14px}
   .pers-txt{font-size:clamp(1.3rem,6vw,1.7rem);padding:0 22px;max-width:84%}
 }
-/* mobile: vertical page scroll drives the carousel horizontally (see JS). Lock manual
-   swipe + snap so the scroll position is owned by JS; reduced-motion keeps a manual scroller. */
+/* mobile: PINNED scroll-driven carousel. .pers becomes a tall track; the header+cards pin to the
+   viewport and the cards pan horizontally as you scroll through it (see JS). The first card stays
+   fully in frame until the section pins, then pans through all of them over --pers-pan px of scroll
+   (set by JS; bigger = slower). Reduced-motion keeps a plain manual swipe carousel. */
 @media(max-width:720px) and (prefers-reduced-motion:no-preference){
-  .pers-row{touch-action:pan-y;scroll-snap-type:none}
+  /* .pin-on is added by JS only when the effect is live, so no-JS falls back to the normal swipe carousel */
+  .pers.pin-on{height:calc(100svh + var(--pers-pan,900px));padding:0}
+  .pers.pin-on.reveal{transform:none}          /* keep the opacity fade, drop the translate (a transform would break sticky) */
+  .pers.pin-on .pers-pin{display:flex;flex-direction:column;justify-content:center;position:sticky;top:0;height:100svh}
+  .pers.pin-on .pers-row{touch-action:pan-y;scroll-snap-type:none}
 }
 </style>
 </head>
@@ -866,6 +873,7 @@ html.static .hero{min-height:860px!important}
 
 <!-- ============ HOW IT WORKS + THE APP — wrapped for the left scroll-rail ============ -->
 <section class="pers reveal" aria-label="Personalised for you to…">
+  <div class="pers-pin">
   <div class="pers-head">
     <h2>Personalised <br class="pers-brk">for you to&hellip;</h2>
     <p>Supporting the goals that matter to you.</p>
@@ -876,6 +884,7 @@ html.static .hero{min-height:860px!important}
     <article class="pers-card"><img src="assets/pers-2.webp" width="1000" height="677" loading="lazy" alt="Pouring loose capsules into a hand"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Not spend your time managing capsules.</p></article>
     <article class="pers-card"><img src="assets/pers-4.webp" width="1000" height="677" loading="lazy" alt="The SEQUENCE app on a phone showing sleep data"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Have a supplement that updates based on your wearable.</p></article>
     <article class="pers-card"><img src="assets/pers-1.webp" width="1000" height="677" loading="lazy" alt="A cyclist recovering with a coffee after training"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Recover faster from training.</p></article>
+  </div>
   </div>
 </section>
 
@@ -1431,35 +1440,47 @@ html.static .hero{min-height:860px!important}
     });
   })();
 
-  /* mobile: vertical scroll drives the "Personalised for you" carousel horizontally.
-     Scroll down -> cards pan left (through all of them); scroll up -> back to the right.
-     Desktop keeps its normal manual horizontal scroller; reduced-motion is left untouched. */
+  /* mobile: the "Personalised for you" carousel is PINNED and pans as you scroll through a tall track.
+     The first card stays fully in frame until the section pins to the viewport; then the cards pan
+     through all of them over --pers-pan px of scroll (slower + more intentional). Scroll up reverses.
+     Desktop = normal manual scroll; reduced-motion = manual scroll (no pin). */
   (function () {
-    var row = document.querySelector('.pers-row');
     var sec = document.querySelector('.pers');
-    if (!row || !sec) return;
+    var pin = document.querySelector('.pers-pin');
+    var row = document.querySelector('.pers-row');
+    if (!sec || !pin || !row) return;
     var mq = matchMedia('(max-width:720px)');
     var rm = matchMedia('(prefers-reduced-motion:reduce)');
     var tick = false;
     function live() { return mq.matches && !rm.matches && !STATIC; }
+    function setPan() {
+      if (!live()) { sec.style.removeProperty('--pers-pan'); return; }
+      var max = row.scrollWidth - row.clientWidth;
+      /* vertical scroll the full pan spans (~0.8x the horizontal overflow = a slow, deliberate feel);
+         scales with card count so adding cards keeps the same per-card pace. */
+      var pan = Math.max(700, Math.round(max * 0.8));
+      sec.style.setProperty('--pers-pan', pan + 'px');
+    }
     function apply() {
       tick = false;
-      if (!live()) return;
+      if (!live()) { row.scrollLeft = 0; return; }
       var max = row.scrollWidth - row.clientWidth;
       if (max <= 1) return;
-      var r = sec.getBoundingClientRect();
-      var vh = innerHeight || document.documentElement.clientHeight;
-      /* p: 0 as the section enters (top near viewport bottom) -> 1 as its bottom reaches mid-viewport */
-      var p = (vh * 0.9 - r.top) / (vh * 0.4 + r.height);
+      var panPx = parseFloat(getComputedStyle(sec).getPropertyValue('--pers-pan')) || 900;
+      var secTop = sec.getBoundingClientRect().top;
+      /* pinned while secTop in [0, -panPx]: before it the first card is held, after it the last card is held */
+      var p = (-secTop) / panPx;
       p = p < 0 ? 0 : p > 1 ? 1 : p;
       row.scrollLeft = p * max;
     }
     function onScroll() { if (!tick) { tick = true; requestAnimationFrame(apply); } }
-    apply();
+    function refresh() { sec.classList.toggle('pin-on', live()); setPan(); apply(); }
+    refresh();
     addEventListener('scroll', onScroll, { passive: true });
-    addEventListener('resize', apply);
-    mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply);
-    rm.addEventListener ? rm.addEventListener('change', apply) : rm.addListener(apply);
+    addEventListener('resize', refresh);
+    addEventListener('load', refresh);
+    mq.addEventListener ? mq.addEventListener('change', refresh) : mq.addListener(refresh);
+    rm.addEventListener ? rm.addEventListener('change', refresh) : rm.addListener(refresh);
   })();
 
   /* Opening settle-in is pure CSS (keyframes on .rv / .hero-fg with staggered delays). */
