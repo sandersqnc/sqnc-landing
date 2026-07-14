@@ -725,6 +725,7 @@ html.static .hero{min-height:860px!important}
   transition:text-decoration-color .18s var(--ease),color .18s var(--ease)}
 .ing-link:hover{text-decoration-color:#1a1a1a}
 .ing-link:focus-visible{outline:2.5px solid #1a1a1a;outline-offset:3px;border-radius:3px}
+.ing-note{margin-top:clamp(12px,1.4vw,16px);font-family:var(--sans);font-weight:400;font-size:clamp(.9rem,1.05vw,1rem);color:#8a8a8a;letter-spacing:.005em}
 .ing-modal{position:fixed;inset:0;margin:auto;border:0;padding:0;border-radius:22px;width:min(780px,94vw);max-width:94vw;
   height:fit-content;max-height:88svh;background:#fff;color:#1a1a1a;box-shadow:0 40px 120px -30px rgba(7,43,24,.55);overflow:hidden}
 .ing-modal::backdrop{background:rgba(7,20,12,.55);backdrop-filter:blur(3px)}
@@ -910,7 +911,7 @@ html.static .hero{min-height:860px!important}
         <p>Whoop, Oura, Garmin, Apple Watch, FitBit Air, Ultrahuman. More integrations soon!</p>
       </article>
       <article class="hiw-card">
-        <div class="hiw-media"><picture><source media="(max-width:720px)" srcset="assets/hiw-r4-3w.webp"><img src="assets/hiw-r3-3.webp" width="378" height="378" alt="Step 3 — get your personalised SEQUENCE supplement"></picture><span class="hiw-num">3</span></div>
+        <div class="hiw-media"><picture><source media="(max-width:720px)" srcset="assets/hiw-r5-3w.webp"><img src="assets/hiw-r5-3.webp" width="378" height="378" alt="Step 3 — get your personalised SEQUENCE supplement, with ingredients tailored to your data"></picture><span class="hiw-num">3</span></div>
         <h3>Get your supplement</h3>
         <p>Delivered to your doorstep in 72h. A daily sachet that you mix into water.</p>
       </article>
@@ -970,6 +971,7 @@ html.static .hero{min-height:860px!important}
     </a>
     <button type="button" class="ing-link" data-open="ingModal" aria-haspopup="dialog">See all 29 ingredients &rarr;</button>
     </div>
+    <p class="ing-note">V1 &middot; 29 ingredients today, with new ones added every month.</p>
   </div>
   <div class="comp-media">
     <img class="comp-bike" src="assets/cyclist.webp" width="2400" height="1601" loading="lazy" alt="A cyclist riding at speed">
