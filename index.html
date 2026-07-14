@@ -764,9 +764,10 @@ html.static .hero{min-height:860px!important}
 }
 
 /* ---------- PERSONALISED-FOR-YOU (horizontal card row) ---------- */
-.pers{background:#fff;padding:clamp(52px,7vw,116px) 0 clamp(44px,6vw,96px) clamp(24px,4vw,60px)}
+.pers{background:#fff;padding:clamp(52px,7vw,116px) 0 clamp(44px,6vw,96px) 0}
+.pers-head{padding-left:clamp(24px,4vw,60px)} /* left inset lives on head + row (not the section) so scrolled cards bleed off the left edge */
 .pers-row{display:flex;gap:clamp(14px,1.5vw,22px);margin-top:clamp(30px,4vw,56px);overflow-x:auto;
-  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-left:clamp(24px,4vw,60px);scroll-padding-left:clamp(24px,4vw,60px);scrollbar-width:none}
 .pers-row::-webkit-scrollbar{display:none}
 .pers-card{position:relative;flex:0 0 clamp(320px,34vw,520px);aspect-ratio:558/377.5;border-radius:18px;
   overflow:hidden;display:flex;align-items:center;scroll-snap-align:start;background:#0a0f0a;
@@ -861,13 +862,14 @@ html.static .hero{min-height:860px!important}
 <section class="pers reveal" aria-label="Personalised for you to…">
   <div class="pers-head">
     <h2>Personalised <br class="pers-brk">for you to&hellip;</h2>
-    <p>To support the goals that matter to you.</p>
+    <p>Supporting the goals that matter to you.</p>
   </div>
   <div class="pers-row">
     <article class="pers-card"><img src="assets/pers-1.webp" width="1000" height="677" loading="lazy" alt="A cyclist recovering with a coffee after training"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Recover faster from training.</p></article>
-    <article class="pers-card"><img src="assets/pers-2.webp" width="1000" height="677" loading="lazy" alt="Pouring loose capsules into a hand"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Not to spend your time managing capsules.</p></article>
-    <article class="pers-card"><img src="assets/pers-3.webp" width="1000" height="677" loading="lazy" alt="An athlete with sustained energy holding a green drink"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Have sustained energy with boosted immune defence.</p></article>
-    <article class="pers-card"><img src="assets/pers-4.webp" width="1000" height="677" loading="lazy" alt="A supplement synced with your wearables"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Have a supplement synced with your Whoop, Oura etc.</p></article>
+    <article class="pers-card"><img src="assets/pers-2.webp" width="1000" height="677" loading="lazy" alt="Pouring loose capsules into a hand"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Not spend your time managing capsules.</p></article>
+    <article class="pers-card"><img src="assets/pers-3.webp" width="1000" height="677" loading="lazy" alt="An athlete holding a green SEQUENCE drink"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Get what your body needs at clinical doses.</p></article>
+    <article class="pers-card"><img src="assets/pers-4.webp" width="1000" height="677" loading="lazy" alt="The SEQUENCE app on a phone showing sleep data"><span class="pers-scrim" aria-hidden="true"></span><p class="pers-txt">Have a supplement that updates based on your wearable.</p></article>
+    <article class="pers-card"><img src="assets/pers-5.webp" width="1000" height="677" loading="lazy" alt="See your biomarkers improving. July blood test: 52 optimal, 14 borderline, 10 needs work."></article>
   </div>
 </section>
 
