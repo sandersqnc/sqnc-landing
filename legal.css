@@ -23,7 +23,7 @@ a{color:inherit}
 .lp-top{background:var(--green);padding:20px clamp(20px,5vw,64px);
   display:flex;align-items:center;justify-content:space-between}
 .lp-top a.brand{display:inline-flex;align-items:center}
-.lp-top img{filter:brightness(0) invert(1);height:30px;width:auto;display:block}
+.lp-top img{filter:brightness(0) invert(1);height:20px;width:auto;display:block}
 .lp-top a.back{color:#fff;text-decoration:none;font-weight:500;font-size:14px;opacity:.85;
   transition:opacity .2s var(--ease)}
 .lp-top a.back:hover{opacity:1}
