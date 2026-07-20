@@ -256,5 +256,9 @@ render();addEventListener('scroll',onScroll,{passive:true});
 mq.addEventListener?mq.addEventListener('change',render):mq.addListener(render);})();
 </script>
 
+<!-- Cloudflare Web Analytics: cookieless, aggregate. Installed manually rather than via
+     the zone's automatic injection, which does not fire for this Pages-served site.
+     The host + connect target are allow-listed in _headers' CSP. -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "dfd569a6862741c08c95ff2cf74a2d43"}'></script>
 </body>
 </html>

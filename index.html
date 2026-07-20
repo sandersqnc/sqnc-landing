@@ -1238,6 +1238,16 @@ html.static .hero{min-height:860px!important}
   // preview, github.io legacy, localhost) fall back to the Worker's own URL.
   var API = /(^|\.)sqnc\.co\.uk$/.test(location.hostname) ? '/api/waitlist' : 'https://sqnc-waitlist.sander-e42.workers.dev';
   var forms = [].slice.call(document.querySelectorAll('form.field'));
+  // Channel attribution: ?src= (or utm_source) is captured on the landing hit and held for
+  // the session, so it still rides along if the visitor wanders the page before signing up.
+  var SRCKEY = 'sqnc_src';
+  var src = '';
+  try {
+    var qs = new URLSearchParams(location.search);
+    var q = (qs.get('src') || qs.get('utm_source') || '').trim().toLowerCase();
+    if (q) { src = q.replace(/[^a-z0-9_-]/g, '').slice(0, 40); sessionStorage.setItem(SRCKEY, src); }
+    else { src = sessionStorage.getItem(SRCKEY) || ''; }
+  } catch (e) {}
   function markJoined(){
     forms.forEach(function (f) { f.parentElement.classList.add('is-joined'); });
   }
@@ -1266,7 +1276,7 @@ html.static .hero{min-height:860px!important}
       if (STATIC) { markJoined(); return; }
       var label = txt ? txt.textContent : '';
       cta.disabled = true; if (txt) txt.textContent = 'Joining…';
-      var rec = { email: v, ts: new Date().toISOString(), variant: 'site-v1', website: hp ? hp.value : '' };
+      var rec = { email: v, ts: new Date().toISOString(), variant: 'site-v1', src: src, website: hp ? hp.value : '' };
       fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(rec) })
         .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
         .then(function () {
@@ -1487,5 +1497,9 @@ html.static .hero{min-height:860px!important}
   /* Opening settle-in is pure CSS (keyframes on .rv / .hero-fg with staggered delays). */
 })();
 </script>
+<!-- Cloudflare Web Analytics: cookieless, aggregate. Installed manually rather than via
+     the zone's automatic injection, which does not fire for this Pages-served site.
+     The host + connect target are allow-listed in _headers' CSP. -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "dfd569a6862741c08c95ff2cf74a2d43"}'></script>
 </body>
 </html>
