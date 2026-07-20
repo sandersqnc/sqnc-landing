@@ -35,5 +35,9 @@ export async function onRequest(context) {
     );
   }
 
-  return next();
+  // temporary diagnostic header — removed once the counter is confirmed working
+  const res = await next();
+  const out = new Response(res.body, res);
+  out.headers.set('X-SQNC-MW', isDocument ? 'doc' : 'skip');
+  return out;
 }
