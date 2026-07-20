@@ -24,7 +24,10 @@ export async function onRequest(context) {
 
   if (isDocument) {
     waitUntil(
-      fetch(`${url.origin}/e/visit`, {
+      // NOT ${url.origin}/e/visit: a subrequest from a Pages Function to its own zone
+      // bypasses Worker routes and hits the Pages origin, so the counter never fires.
+      // The workers.dev hostname is outside the zone and routes correctly.
+      fetch('https://sqnc-links.sander-e42.workers.dev/e/visit', {
         method: 'POST',
         headers: {
           // Forwarded so the counter applies the same bot filter as the click log —
@@ -35,9 +38,5 @@ export async function onRequest(context) {
     );
   }
 
-  // temporary diagnostic header — removed once the counter is confirmed working
-  const res = await next();
-  const out = new Response(res.body, res);
-  out.headers.set('X-SQNC-MW', isDocument ? 'doc' : 'skip');
-  return out;
+  return next();
 }
