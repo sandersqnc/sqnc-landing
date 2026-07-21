@@ -1017,7 +1017,7 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
       <div class="hero-copy">
         <p class="eyebrow">SEQUENCE - For partners</p>
         <h1>Personalised supplement for every customer. <span class="h1-nobr">With your branding.</span></h1>
-        <p class="lead">Formulated based on blood and wearable data, inside your product.<br class="brk-md">Manufactured in the UK from the highest quality ingredients.</p>
+        <p class="lead">Formulated based on blood and wearable data, inside your product. <br class="brk-md">Manufactured in the UK from the highest quality ingredients.</p>
         <form class="field" id="b2b-lead" novalidate>
           <input type="email" id="hero-email" name="email" required aria-label="Work email" autocomplete="email" inputmode="email" placeholder="Enter your work email">
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" readonly>
@@ -1311,7 +1311,7 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
       </div>
       <div class="clin-copy">
         <h2 id="clin-card-h">A digital interface to control the formula.</h2>
-        <p class="body">SEQUENCE builds the first formula and explains every dose.<br class="brk-md">Your nutritionist and customer can both adjust the formulation as needed. The formula can be updated on a monthly basis.</p>
+        <p class="body">SEQUENCE builds the first formula and explains every dose. <br class="brk-md">Your nutritionist and customer can both adjust the formulation as needed. The formula can be updated on a monthly basis.</p>
         <ul class="ticks">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>See the reason behind every dose</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>Adjust doses within safe upper limits</li>
@@ -1794,7 +1794,10 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
     var fcard = stack.querySelector('.fcard');
     if(!insp || !cur || !fcard) return;
     if(STATIC || RM || !('IntersectionObserver' in window)) return;
-    if(matchMedia('(max-width:860px)').matches) return;
+    /* runs from 360px up. the overlay is inset:0 on the stack and the cursor is positioned from
+       runtime rects, so it adapts to the narrow card; below 360 the note runs long enough to
+       crowd the card, and the plain four-row card is the fallback there. */
+    if(matchMedia('(max-width:359px)').matches) return;
 
     var elName = insp.querySelector('.ci-name'), elBadge = insp.querySelector('.ci-badge'),
         elVal  = insp.querySelector('.ci-val'),  elSup   = insp.querySelector('.ci-sup'),
