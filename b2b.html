@@ -374,6 +374,12 @@ html.static .ben-panel{transition:none}
 @media(prefers-reduced-motion:reduce){.ben-panel{transition:none}}
 .js .ben-panel>h3{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
 .ben-panel>h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;color:#1a1a1a;margin-bottom:20px}
+/* .ben-panel is a <section>, so the global section{padding:clamp(56px,8vw,132px) 0 clamp(56px,9vw,150px)}
+   was landing INSIDE the benefits block: 56px above the cards and 56px below them at mobile, up to
+   132/150 at desktop. That is what made the gap under the tabs 90px and the gap down to the
+   clinician heading 168px (56 panel + 56 benefits + 56 clinician). It is a nested-section leak,
+   not a design choice. */
+.ben-panel{padding:0}
 /* ---- desktop side rail (mirrors the D2C .side-menu) ---- */
 .side-menu{display:none}
 /* mobile section stepper, ported from the D2C page (.mstep there). gaps are 16/10 not D2C's 30/12:
@@ -551,10 +557,15 @@ html.static .ben-panel{transition:none}
 .ci-note{font-family:var(--sans);font-weight:400;font-size:12px;line-height:18px;color:#404D40}
 
 .clin-cursor{position:absolute;left:0;top:0;z-index:3;width:27px;height:37px;
-  opacity:0;pointer-events:none;filter:drop-shadow(0 4px 9px rgba(7,43,24,.55));
+  opacity:0;pointer-events:none;
   transform:var(--ct,translate(0,0));
+  will-change:transform,opacity;
   transition:opacity .22s var(--ease),transform .85s var(--ease)}
-.clin-cursor svg{display:block;width:100%;height:100%}
+/* the drop-shadow sits on the SVG, not on the element that animates transform. A filtered element
+   under an 850ms transform transition is what leaves stray repaint rectangles on iOS Safari, and
+   will-change promotes the cursor to its own layer so its repaints cannot smear onto the card. */
+.clin-cursor svg{display:block;width:100%;height:100%;
+  filter:drop-shadow(0 4px 9px rgba(7,43,24,.55))}
 .clin-cursor.on{opacity:1}
 /* Click tell: a ring pulsing out from the pointer tip. Dark green, not lime — the button
    underneath goes lime on press, so a lime ring would vanish exactly when it fires. */
@@ -980,12 +991,12 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
   .hero h1{letter-spacing:-.05em;text-wrap:balance}
 }
 @media(max-width:520px){
-  /* the longer submit label pins the field's min-content right edge at 476.8px, so below 520 the
-     pill stacks rather than escaping the gutter */
-  .hero .field{flex-direction:column;align-items:stretch;gap:10px;border-radius:24px;padding:10px}
-  /* :not(.hp) or this rule (0,2,1) outranks .field .hp (0,2,0) and un-hides the honeypot */
-  .hero .field input:not(.hp){width:100%;padding:12px 16px;min-height:44px}
-  .hero .field .btn{width:100%;justify-content:center;white-space:normal;min-height:48px}
+  /* the field stays on ONE row. It used to stack here because the long "Submit your email, we'll
+     be in touch" label pinned its min-content right edge at 476.8px; the label is just "Submit"
+     below 720 now, so the row fits and the block is a whole button-height shorter.
+     :not(.hp) so this (0,2,1) rule does not out-rank .field .hp (0,2,0) and un-hide the honeypot */
+  .hero .field input:not(.hp){min-width:0;padding:12px 0;min-height:44px}
+  .hero .field .btn{flex:0 0 auto;white-space:nowrap;min-height:44px}
   .cmp-row{grid-template-columns:38% 31% 31%}
   .cmp-highlight{left:38%;width:31%}
   .cmp-feat{font-size:.9rem}
@@ -1054,9 +1065,9 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
       <div class="hero-copy">
         <p class="eyebrow">SEQUENCE - For partners</p>
         <h1>Personalised supplement for every customer. <span class="h1-nobr">With your branding.</span></h1>
-        <p class="lead">Formulated based on blood and wearable data, inside your product. <br class="brk-md">Manufactured in the UK from the highest quality ingredients.</p>
+        <p class="lead">Formulated based on blood and wearable data. <br class="brk-md">Manufactured in the UK from the highest quality ingredients.</p>
         <form class="field" id="b2b-lead" novalidate>
-          <input type="email" id="hero-email" name="email" required aria-label="Work email" autocomplete="email" inputmode="email" placeholder="Enter your work email">
+          <input type="email" id="hero-email" name="email" required aria-label="Work email" autocomplete="email" inputmode="email" placeholder="Enter work email">
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" readonly>
           <button class="btn" type="submit" aria-label="Submit your email, we&rsquo;ll be in touch"><span class="cta-txt cta-txt-long">Submit your email, we&rsquo;ll be in touch</span><span class="cta-txt cta-txt-short">Submit</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg></button>
