@@ -574,12 +574,11 @@ html.static .ben-panel{transition:none}
    has 1087px of room; 15.2em clears it at every width from 1025 up and still lets it wrap on
    mobile, where the container is narrower than the cap */
 .conn .sec-head h2{max-width:15.2em}
-/* two lines. The copy grew past what 14em could hold, so this was setting four rows, and the
-   ceiling here is hard: section.clin reserves a 290px right gutter for the rail, leaving 1176px
-   at 1920 while "Your nutritionist and customer can adjust it." needs 1304px at 70px. Size alone
-   would have cost 16%; pairing a 65px cap with roughly double the shared tracking costs 7% and
-   holds two lines from 820px up. Sizes at 900 and below are unchanged from the shared rule. */
-.clin .sec-head h2{max-width:none;font-size:clamp(2.6rem,4.15vw,65px);letter-spacing:-.026em}
+/* two lines, at the shared type scale. Only the 20ch measure is lifted: section.clin reserves a
+   290px right gutter for the rail, so the real ceiling is 1176px at 1920, and "Your nutritionist
+   can adjust it." clears it at the full 70px. The earlier 65px/-.026em override existed only to
+   fit the longer "and customer" wording and is no longer needed. */
+.clin .sec-head h2{max-width:none}
 /* the carousel and its dots are mobile only; above 720 the three cards are a plain grid */
 .conn-dots{display:none}
 .conn-dot{position:relative;width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(7,43,24,.18);cursor:pointer;transition:background .3s var(--ease),transform .3s var(--ease)}
@@ -785,16 +784,20 @@ html.static .ben-panel{transition:none}
 
 /* ============ 11. FOOTER ============ */
 footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
-/* the footer takes the same rail gutter as every content section so its row ends on the same line
-   as the columns above it. It has to sit AFTER the base rule above: both are (0,0,1), so the one
-   declared later wins, and the earlier gutter list was silently losing its padding-right. */
-@media(min-width:1200px){footer{padding-right:clamp(190px,17vw,290px)}}
+/* no rail gutter here, unlike the content sections. The rail is not on screen at the footer, so
+   reserving 290px for it stranded the links 672px from the right edge at 1920 while the mark sat
+   72px from the left. D2C's footer is symmetric (80/80 at 1920) and the mark/links pair reads as a
+   bar; this mirrors that using B2B's own 60px gutter rather than D2C's 80px, so the mark still
+   lines up with the content column above it. */
+.foot-in{max-width:none}
 /* mirrors the D2C footer (index.html .foot / .foot-row): the mark sits on its own row and each row
    below holds exactly TWO items, so space-between pins one left and one right. three items in one
    space-between row left the middle one floating wherever the free space fell. */
 .foot-in{display:flex;flex-direction:column;gap:26px;font-size:14px;color:#6c6c6c}
 .foot-in .mark img{height:22px;width:auto;display:block}
 .foot-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+/* separate words, no dashes: the gap carries the separation the hyphens used to */
+.foot-links{display:flex;gap:clamp(18px,2vw,28px);flex-wrap:wrap;justify-content:flex-end}
 .foot-in a{color:var(--green-soft)}
 .foot-in a:hover{color:var(--green)}
 .foot-in a:focus-visible{outline:2.5px solid var(--green);outline-offset:3px}
@@ -1105,8 +1108,7 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
 <section class="loop reveal" id="loop" data-sec="03" aria-labelledby="loop-h">
   <div class="wrap">
     <div class="sec-head loop-head">
-      <h2 id="loop-h">Your customers can get the most personalised supplement with your branding.</h2>
-      <p>And you don&rsquo;t need to worry about stocking supplements.</p>
+      <h2 id="loop-h">Your customers get the most personalised supplement.<br class="brk">With your branding.</h2>
     </div>
     <div class="loop-grid">
 
@@ -1206,7 +1208,7 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
 
 <section class="ben reveal" id="benefits" data-sec="04" aria-labelledby="ben-h">
   <div class="wrap">
-    <div class="sec-head ben-head-wrap"><h2 id="ben-h">Increased customer life-time value through integrating your product into their day.</h2></div>
+    <div class="sec-head ben-head-wrap"><h2 id="ben-h">Increased LTV and retention.<br class="brk">The value extends beyond the supplement.</h2></div>
     <div class="ben-tabs" id="ben-tabs" hidden>
       <button type="button" class="ben-tab" data-panel="clinics"><span class="full">Longevity clinics</span><span class="short">Clinics</span></button>
       <button type="button" class="ben-tab" data-panel="platforms"><span class="full">Blood-test platforms</span><span class="short">Blood tests</span></button>
@@ -1305,7 +1307,7 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
 <!-- ============ 5. CLINICIAN CONTROL ============ -->
 <section class="clin reveal" id="clinician" data-sec="05" aria-labelledby="clin-h">
   <div class="wrap">
-    <div class="sec-head"><h2 id="clin-h">Our AI formulates the supplement.<br class="brk">Your nutritionist and customer can adjust it.</h2></div>
+    <div class="sec-head"><h2 id="clin-h">Our AI formulates the supplement.<br class="brk">Your nutritionist can adjust it.</h2></div>
     <div class="clin-card">
       <div class="fstack" id="clin-stack">
       <div class="fcard">
@@ -1498,7 +1500,7 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow-d">For your practice</p>
-      <h2 id="cmp-h">What stocking a retail brand can&rsquo;t do for you.</h2>
+      <h2 id="cmp-h">What stocking capsules can&rsquo;t do.</h2>
     </div>
     <div class="cmp-toggle" role="group" aria-label="Choose a competitor to compare">
       <button type="button" class="cmp-tog on" data-comp="bio" aria-pressed="true">Biogena One</button>
@@ -1585,7 +1587,7 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
     <div class="mark"><img src="assets/SEQUENCE_GREEN.svg" alt="SEQUENCE" width="181" height="27"></div>
     <div class="foot-row">
       <span>&copy; 2026 SEQUENCE. All rights reserved.</span>
-      <span><a href="/">Home</a> - <a href="/privacy">Privacy</a> - <a href="/terms">Terms</a></span>
+      <span class="foot-links"><a href="/">Home</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></span>
     </div>
   </div>
 </footer>
