@@ -113,6 +113,13 @@ section{padding:clamp(56px,8vw,132px) 0 clamp(56px,9vw,150px)}
 .field-alt{margin-top:15px;font-size:clamp(.98rem,1.15vw,1.05rem);color:var(--ink-60)}
 .field-alt a{color:#fff;text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(255,255,255,.42)}
 .field-alt a:hover{text-decoration-color:#fff}
+/* mobile swaps the button label to "Submit" and moves the sentence into the line below */
+.cta-txt-short,.alt-short{display:none}
+/* after a successful submit the pill already says "Thanks, we'll be in touch.", so the
+   supporting line reverts to "Or book a call directly" rather than repeating it.
+   (0,2,0) deliberately outranks the (0,1,0) .alt-long rule in the max-width:720px block. */
+.field-alt.joined .alt-short{display:none}
+.field-alt.joined .alt-long{display:inline}
 .badge{display:inline-flex;font-family:var(--sans);font-weight:500;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:var(--mineral);border:1px solid rgba(7,43,24,.08);color:#666}
 .badge.on-green{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);color:var(--lime)}
 
@@ -873,13 +880,18 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
   /* max capped at 56px: any deeper and the pack's POWERED BY lockup touches the cut on 430px phones */
   .hero-media{margin-bottom:calc(-1 * clamp(50px,14vw,56px))}
   .pk-powline{right:auto;left:50%;transform:translateX(-50%)}
-  .hero h1{font-size:clamp(30px,8.4vw,42px)}
+  /* the 30px floor is inert at >=357px (8.4vw==30px there); it only bound in the 309-357 band,
+     where it inflated the headline above its own vw curve and pinned 320px at 4 lines. 26px lets
+     that band follow the curve. Measured: font-size is byte-identical at 360/375/390/393/412/430. */
+  .hero h1{font-size:clamp(26px,8.4vw,42px)}
   .hero .field{width:100%}
   /* trimmed like D2C at mobile, but keep 44px touch targets */
   .field{padding:5px 5px 5px 18px;gap:6px}
   .field input{font-size:16px;padding:12px 0;min-height:44px}
   .field .btn{padding:12px 18px;font-size:13.5px;gap:6px;min-height:44px}
   .field .btn svg{width:15px;height:15px}
+  .cta-txt-long,.alt-long{display:none}
+  .cta-txt-short,.alt-short{display:inline}
   .cred{padding-top:clamp(62px,18vw,96px);padding-bottom:26px}
   .social-head{flex-direction:column;gap:10px}
   .avatar-stack{height:30px}
@@ -910,11 +922,22 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
   .clin-card{padding:20px}
   /* the closing CTA stacks: photo above, panel below, as the D2C .cta2 does at <=920 */
   .close{flex-direction:column;min-height:0}
-  .close-media{flex:none;width:100%;aspect-ratio:16/12}
-  /* push the pack and bottle below the frame so their "Powered by SEQUENCE" marks land near the
-     bottom edge rather than floating ~35px above it. -8/-6 measured: pack ~10px, bottle ~8px. */
-  .close-figs{bottom:-8%}
-  .close-bottle{bottom:-6%}
+  .close-media{flex:none;width:100%;aspect-ratio:16/14;max-height:437.5px}
+  /* the products sit inside the frame at 68% and 16/14, grounded by a few px of bleed rather than
+     shoved below it. both "Powered by SEQUENCE" marks are bottom-anchored to a single baseline
+     ~30px above the crop at 390, and their cqw pairs are tuned so the two render at identical
+     type size and logo width despite resolving against different container widths.
+     width and max-height cap together at 340px/437.5px, which is exactly the 500px-viewport
+     composition, so 500-720 is frozen rather than growing past today's size.
+     NB: the four cqw values below are coupled to .close-bottle{width:31%} and .close-pack{width:74%};
+     change either width and the two marks silently drift apart in size again. */
+  .close-figs{bottom:-1.5%;width:min(68%,340px)}
+  .close-pack{margin-right:0}
+  .close-bottle{left:-2%;bottom:-1%}
+  .close-bottle .bt-powline{top:auto;bottom:15.27%;transform:translateX(-50%);font-size:6.872cqw}
+  .close-pack .pk-powline{bottom:11.09%;font-size:2.879cqw}
+  .close-bottle .powline img{width:46.22cqw}
+  .close-pack .powline img{width:19.36cqw}
   .close-panel{padding:clamp(34px,8vw,56px) clamp(20px,4vw,40px) clamp(40px,9vw,64px)}
   .close-panel h2{max-width:none;font-size:clamp(1.85rem,7.4vw,2.4rem)}
   .close-lead{max-width:none}
@@ -945,6 +968,13 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
   .cnote{margin-top:16px;padding:12px 14px;font-size:13px}
   /* section 08, matching the D2C page's <=720 treatment */
   .comp-cta{white-space:normal;justify-content:center;padding:14px 24px;align-self:stretch;display:flex;width:100%}
+}
+@media(max-width:470px){
+  /* the wrap is a near-miss, not a size problem: "Personalised supplement" overshoots the
+     column by only 2-8px, which strands "customer." alone on row 3. Tighter tracking pulls it
+     back in and the headline sets in 3 lines at the SAME type size (360-430 unchanged).
+     Measured 3-line headroom at -.05em: 2.2% at 320, 3.2% at 360, 4.2% at 390, 5.3% at 430. */
+  .hero h1{letter-spacing:-.05em;text-wrap:balance}
 }
 @media(max-width:520px){
   /* the longer submit label pins the field's min-content right edge at 476.8px, so below 520 the
@@ -1025,12 +1055,12 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
         <form class="field" id="b2b-lead" novalidate>
           <input type="email" id="hero-email" name="email" required aria-label="Work email" autocomplete="email" inputmode="email" placeholder="Enter your work email">
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" readonly>
-          <button class="btn" type="submit"><span class="cta-txt">Submit your email, we&rsquo;ll be in touch</span>
+          <button class="btn" type="submit" aria-label="Submit your email, we&rsquo;ll be in touch"><span class="cta-txt cta-txt-long">Submit your email, we&rsquo;ll be in touch</span><span class="cta-txt cta-txt-short">Submit</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg></button>
         </form>
         <p class="form-err" role="alert" hidden></p>
         <p class="joined-pill" hidden>Thanks, we&rsquo;ll be in touch.</p>
-        <p class="field-alt">Or <a href="https://sqnc.cal.com/sequence/sqnc-b2b-partnership-intro" target="_blank" rel="noopener">book a call directly</a></p>
+        <p class="field-alt"><span class="alt-long">Or </span><span class="alt-short">We&rsquo;ll be in touch, or </span><a href="https://sqnc.cal.com/sequence/sqnc-b2b-partnership-intro" target="_blank" rel="noopener">book a call directly</a></p>
       </div>
       <div class="hero-media">
         <div class="bottle-fig hero-bottle">
@@ -2087,7 +2117,10 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
     var KEY   = 'sqnc_b2b_lead';   /* not the D2C key: both pages share an origin on localhost */
     var API   = '/api/waitlist';
     var STATIC = document.documentElement.classList.contains('static');
-    function markJoined(){ form.hidden = true; if (err) err.hidden = true; if (pill) pill.hidden = false; }
+    var alt   = document.querySelector('.hero-copy .field-alt');
+    /* .joined drops the mobile "We'll be in touch, or " prefix: the pill already says it */
+    function markJoined(){ form.hidden = true; if (err) err.hidden = true; if (pill) pill.hidden = false;
+                           if (alt) alt.classList.add('joined'); }
     try { if (localStorage.getItem(KEY)) markJoined(); } catch(_) {}
     form.addEventListener('submit', function(e){
       e.preventDefault();
@@ -2100,9 +2133,11 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
       if (form.website && form.website.value) return;   /* honeypot */
       if (STATIC){ markJoined(); return; }
       var btn = form.querySelector('button[type=submit]');
-      var txt = btn && btn.querySelector('.cta-txt');
-      var label = txt ? txt.textContent : '';
-      if (btn) btn.disabled = true; if (txt) txt.textContent = 'Sending\u2026';
+      /* two .cta-txt spans now (long/short); swap both so the label is right at either width */
+      var txts = btn ? btn.querySelectorAll('.cta-txt') : [];
+      var labels = [].map.call(txts, function(t){ return t.textContent; });
+      if (btn) btn.disabled = true;
+      [].forEach.call(txts, function(t){ t.textContent = 'Sending\u2026'; });
       fetch(API, { method:'POST', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({ email:v, ts:new Date().toISOString(), variant:'b2b-v2', src:'b2b', website:'' }) })
         .then(function(r){ if(!r.ok) throw new Error(r.status);
@@ -2110,7 +2145,8 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
           markJoined();
         })
         .catch(function(){
-          if (btn) btn.disabled = false; if (txt) txt.textContent = label;
+          if (btn) btn.disabled = false;
+          [].forEach.call(txts, function(t,i){ t.textContent = labels[i]; });
           if (err){ err.textContent = 'Something went wrong, please try again.'; err.hidden = false; }
         });
     });
