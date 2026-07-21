@@ -304,7 +304,10 @@ html.static .marquee-row{animation:none!important}
   border-radius:clamp(18px,2.1vw,30px);background:var(--green)}
 .lcard-n{position:absolute;left:5.3%;top:5.3%;z-index:4;display:flex;align-items:center;justify-content:center;
   padding:1.99cqw 3.31cqw;border-radius:1.99cqw;background:rgba(255,255,255,.37);
-  color:#fff;font-weight:500;font-size:4.64cqw;line-height:1.2;font-variant-numeric:tabular-nums}
+  color:#fff;font-weight:500;font-size:clamp(13px,1.35vw,19px);line-height:1.2;font-variant-numeric:tabular-nums}
+/* size in vw like D2C .hiw-num, not cqw: cqw scales with card width, so as the grid changed
+   column count this swung from 0.80 of D2C at 1280 to a 1.52 overshoot at 1024. Padding and
+   radius stay in cqw deliberately, so the badge still scales with the card. */
 .lcard-txt h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.28rem,2.08vw,1.875rem);
   line-height:1.16;letter-spacing:-.004em;color:#1a1a1a}
 .lcard-txt p{margin-top:10px;font-size:clamp(1rem,1.39vw,1.25rem);line-height:1.5;color:#666}
@@ -404,6 +407,14 @@ html.static .ben-panel{transition:none}
      without it the footer links ran 125px past the content edge at 1440, 218px at 1280. */
   section.loop,section.ben,section.clin,section.conn,section.rev-wrap,section.ing,
   section.cmp{padding-right:clamp(190px,17vw,290px)}
+  /* the gutter above is a complete rail-collision guarantee on its own; the 1320px wrap cap
+     inside it is redundant below 1600 and starves the column above it. D2C's .comp is
+     max-width:none with percentage padding, so above 1600 D2C keeps growing and B2B does not:
+     measured content band B2B/D2C 1.007 at 1440 but 0.792 at 1920 and 0.560 at 2560. Mirrors
+     D2C, including its 640px measure cap so the freed column does not overshoot on text. */
+  section.loop>.wrap,section.ben>.wrap,section.clin>.wrap,section.conn>.wrap,
+  section.rev-wrap>.wrap,section.ing>.wrap,section.cmp>.wrap{max-width:none}
+  .comp-text{max-width:640px}
 }
 @media(prefers-reduced-motion:reduce){.side-menu{transition:none}}
 
@@ -470,7 +481,7 @@ html.static .ben-panel{transition:none}
 .clin-copy h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.1rem,3.4vw,56px);line-height:1.1;letter-spacing:-.012em;color:#fff;max-width:20ch}
 .clin-copy .body{margin-top:18px;color:rgba(255,255,255,.82);font-size:clamp(1rem,1.28vw,20px);line-height:1.5;max-width:46ch}
 .ticks{margin-top:clamp(28px,3.2vw,46px);display:flex;flex-direction:column;gap:12px}
-.ticks li{list-style:none;display:flex;align-items:flex-start;gap:12px;color:rgba(255,255,255,.82);font-size:clamp(.98rem,1.1vw,1.06rem);line-height:1.35}
+.ticks li{list-style:none;display:flex;align-items:flex-start;gap:12px;color:rgba(255,255,255,.82);font-size:clamp(.98rem,1.1vw,1.125rem);line-height:1.35}
 .ticks svg{width:17px;height:17px;flex:0 0 auto;margin-top:2px;color:var(--lime)}
 .clin-copy{display:flex;flex-direction:column;align-items:flex-start}
 
@@ -746,14 +757,14 @@ html.static .ben-panel{transition:none}
 .cmp-head{min-height:clamp(70px,6vw,100px)}
 .cmp-c{display:flex;align-items:center;justify-content:center;padding:12px 14px;text-align:center}
 .cmp-row .cmp-c:first-child{justify-content:flex-start;text-align:left}
-.cmp-feat{font-size:clamp(.95rem,1.05vw,1.05rem);color:#1a1a1a;line-height:1.35}
+.cmp-feat{font-size:clamp(.95rem,1.15vw,1.1875rem);color:#1a1a1a;line-height:1.35}
 .cmp-strong{font-weight:500}
 .cmp-body{position:relative}
 .cmp-body .cmp-row:nth-child(odd){background:#f7f7f7}
 .cmp-logo-lg{height:clamp(13px,1.25vw,18px);width:auto;display:block}
 .cmp-brand{height:clamp(30px,3vw,46px);width:auto;display:block}
-.cmp-cat{font-family:var(--sans);font-weight:600;font-size:clamp(11.5px,1.05vw,14px);letter-spacing:.06em;text-transform:uppercase;color:#1a1a1a;line-height:1.25}
-.cmp-txt{font-family:var(--sans);font-weight:400;font-size:clamp(.85rem,.95vw,.98rem);color:#666;line-height:1.3}
+.cmp-cat{font-family:var(--sans);font-weight:600;font-size:clamp(14px,1.15vw,16px);letter-spacing:.06em;text-transform:uppercase;color:#1a1a1a;line-height:1.25}
+.cmp-txt{font-family:var(--sans);font-weight:400;font-size:clamp(.85rem,1.15vw,1.1875rem);color:#666;line-height:1.3}
 .cmp-ico{width:clamp(20px,1.9vw,26px);height:clamp(20px,1.9vw,26px);display:block;flex:0 0 auto}
 .cmp-highlight{position:absolute;top:0;bottom:0;left:28%;width:24%;border:2px solid #ff5f2e;border-radius:10px;pointer-events:none}
 .cmp-toggle{display:none;margin-top:26px;gap:6px;background:var(--mineral);border:1px solid rgba(7,43,24,.08);border-radius:999px;padding:5px;width:max-content}
@@ -781,7 +792,7 @@ html.static .ben-panel{transition:none}
   padding:clamp(44px,5vw,88px) clamp(28px,4vw,72px)}
 /* sized so the sentence sets in two lines from 1024 up; the panel width is the cap, not an em value.
    this rule is outside the D2C parity set, so trimming it does not disturb that work. */
-.close-panel h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.85rem,2.95vw,2.9rem);line-height:1.06;letter-spacing:-.014em;color:#fff}
+.close-panel h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.85rem,2.95vw,3.35rem);line-height:1.06;letter-spacing:-.014em;color:#fff}
 /* .close-lead, not `.close p`: the pack and bottle livery are <p> elements too, and a bare
    descendant selector beat their cqw font-sizes and flattened them all to 18px */
 .close-lead{margin-top:clamp(16px,1.8vw,24px);color:rgba(255,255,255,.82);font-size:clamp(1.02rem,1.25vw,1.2rem);line-height:1.5;max-width:44ch}
@@ -917,6 +928,9 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
   .marquee-row>.mlogo:nth-child(n+7){display:none}
   .mlogo{max-height:19px;max-width:70px;opacity:.62}
   .loop-grid{grid-template-columns:1fr}
+  /* D2C .hiw-card h3 ramps on 6vw here; B2B's base clamp pins at its floor below ~985px and
+     goes flat. Scoped to mobile on purpose: at 1280 and 1440 this role is already 1.223 of D2C. */
+  .lcard-txt h3{font-size:clamp(1.35rem,6vw,1.72rem)}
   .lcard-txt p{font-size:16px}
   /* one card per screen was eating the whole viewport: shorten the visual to 16:9,
      trim the stack gaps, and keep the chip legible by nudging its type up a little */
@@ -1000,6 +1014,7 @@ footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
   .cmp-row{grid-template-columns:38% 31% 31%}
   .cmp-highlight{left:38%;width:31%}
   .cmp-feat{font-size:.9rem}
+  .cmp-cat{font-size:12.5px}
 }
 @media(max-width:560px){
   .ing-modal{max-height:92svh;border-radius:18px}
