@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html class="no-js" lang="en-GB">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SEQUENCE for partners - the personalised-supplement API</title>
-<meta name="description" content="Offer the most personalised supplement inside your own platform. Customers order without leaving your site; you earn a 20% recurring revenue share. Book a call with the founders.">
+<title>SEQUENCE for partners - a personalised supplement inside your product</title>
+<meta name="description" content="Offer the most personalised supplement inside your own platform. Customers order without leaving your site; you earn a 35% recurring revenue share. Book a call with the founders.">
 <meta name="theme-color" content="#072B18">
 <script>if(location.hostname==='sqnc-landing.pages.dev'||/(^|\.)github\.io$/.test(location.hostname)){location.replace('https://sqnc.co.uk'+location.pathname.replace(/^\/sqnc-landing/,'')+location.search)}</script>
 <link rel="canonical" href="https://sqnc.co.uk/b2b">
-<meta property="og:title" content="SEQUENCE for partners - the personalised-supplement API">
-<meta property="og:description" content="Offer a blood- and wearable-personalised supplement inside your platform. Customers order without leaving your site; you earn 20% recurring.">
+<meta property="og:title" content="SEQUENCE for partners - a personalised supplement inside your product">
+<meta property="og:description" content="Offer a blood- and wearable-personalised supplement inside your platform. Customers order without leaving your site; you earn 35% recurring.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sqnc.co.uk/b2b">
 <meta property="og:site_name" content="SEQUENCE">
@@ -22,240 +22,2094 @@
 <link rel="preload" href="assets/fonts/matter-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/seasonmix-500.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-@font-face{font-family:'Matter';font-weight:400;font-display:swap;src:url('assets/fonts/matter-400.woff2') format('woff2')}
-@font-face{font-family:'Matter';font-weight:500;font-display:swap;src:url('assets/fonts/matter-500.woff2') format('woff2')}
-@font-face{font-family:'Matter';font-weight:600;font-display:swap;src:url('assets/fonts/matter-600.woff2') format('woff2')}
-@font-face{font-family:'Season Mix';font-weight:400;font-display:swap;src:url('assets/fonts/seasonmix-400.woff2') format('woff2')}
-@font-face{font-family:'Season Mix';font-weight:500;font-display:swap;src:url('assets/fonts/seasonmix-500.woff2') format('woff2')}
-:root{--green:#072B18;--green-soft:#375443;--mineral:#F6F9F2;--lime:#B1FC63;--lime-cta:#6DD909;--ease:cubic-bezier(.16,1,.3,1);--sans:'Matter',system-ui,sans-serif;--serif:'Season Mix',Georgia,serif}
+@font-face{font-family:'Matter';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/matter-400.woff2') format('woff2')}
+@font-face{font-family:'Matter';font-style:normal;font-weight:500;font-display:swap;src:url('assets/fonts/matter-500.woff2') format('woff2')}
+@font-face{font-family:'Matter';font-style:normal;font-weight:600;font-display:swap;src:url('assets/fonts/matter-600.woff2') format('woff2')}
+@font-face{font-family:'Season Mix';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/seasonmix-400.woff2') format('woff2')}
+@font-face{font-family:'Season Mix';font-style:normal;font-weight:500;font-display:swap;src:url('assets/fonts/seasonmix-500.woff2') format('woff2')}
+
+:root{
+  --green:#072B18; --green-soft:#375443; --mineral:#F6F9F2;
+  --lime:#B1FC63; --lime-deep:#8DF229; --lime-cta:#6DD909; --orange:#FE5B04; --amber:#B89143;
+  --opt:#B9FF2E; --bord:#ffff3f; --need:#FAB14A;
+  --ink-60:rgba(255,255,255,.74);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --sans:'Matter','Inter',system-ui,-apple-system,sans-serif;
+  --serif:'Season Mix',Georgia,serif;
+}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:clip}
-body{font-family:var(--sans);color:var(--green);background:#fff;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:clip}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+html.static{scroll-behavior:auto}
+body{font-family:var(--sans);color:var(--green);background:#fff;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;line-height:1.5;overflow-x:clip}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--lime);color:var(--green)}
+
+.skip-link{position:absolute;left:-9999px;top:8px;z-index:100;background:var(--green);color:#fff;padding:10px 16px;border-radius:8px;font-weight:500;font-size:14px}
+.skip-link:focus{left:16px}
+.skip-link:focus{outline:2px solid var(--lime-cta);outline-offset:2px}
+
 .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,60px)}
+/* asymmetric like D2C, and the ceilings now grow past 1440 instead of capping at 108 */
+section{padding:clamp(56px,8vw,132px) 0 clamp(56px,9vw,150px)}
+
+/* ---------- type ---------- */
+.eyebrow{font-weight:500;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime)}
+.eyebrow-d{font-weight:500;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:#666}
+.sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,4.6vw,70px);line-height:1.03;letter-spacing:-.012em;max-width:20ch;color:#1a1a1a}
+.sec-head p{margin-top:16px;font-size:clamp(1.15rem,1.95vw,30px);color:#666;max-width:54ch;line-height:1.34}
+/* .sec-head p (0-1-1) out-specifies .eyebrow-d (0-1-0), so section 09's eyebrow was rendering at the
+   lead size instead of its declared 13.5px. this guard is what keeps the lead bump off it. */
+.sec-head .eyebrow-d{font-size:13.5px}
+/* Figma line separators ported as elements. A plain <br> needs no rule; .brk-md collapses on
+   mobile, where the forced break would orphan words. */
+@media(max-width:700px){.brk-md{display:none}}
+.sec-head .eyebrow-d+h2{margin-top:16px}
+
+/* ---------- buttons + fields ---------- */
 .btn{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;font-family:var(--sans);font-weight:500;font-size:clamp(1rem,1.15vw,1.12rem);padding:15px 26px;border-radius:999px;transition:background .18s var(--ease),transform .18s var(--ease);cursor:pointer}
 .btn:hover{background:#0b3f24;transform:translateY(-1px)}
 .btn svg{width:18px;height:18px;flex:0 0 auto}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+/* body{line-height:1.5} leaks into these because they are <a> where D2C uses <button> (UA normal),
+   which made every non-hero button ~4.5px taller than its D2C counterpart */
+.btn,.cta-lime,.comp-cta,.nav-cta,.floatnav-cta{line-height:normal}
+.cta-lime{margin-top:clamp(30px,3.2vw,46px);align-self:flex-start;display:inline-flex;align-items:center;gap:8px;background:var(--lime-cta);color:var(--green);text-decoration:none;padding:13px 26px;border-radius:999px;font-family:var(--sans);font-weight:600;font-size:15px;white-space:nowrap;transition:filter .18s var(--ease),transform .18s var(--ease)}
+.cta-lime svg{width:17px;height:17px;transition:transform .22s var(--ease)}
+.cta-lime:hover{filter:brightness(1.05)}
+.cta-lime:hover svg{transform:translateX(3px)}
+.cta-lime:focus-visible{outline:3px solid #fff;outline-offset:3px}
+/* dimensions match the D2C .capture/.field exactly (index.html 665-670); colours are ours */
+.field{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:7px 7px 7px 24px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);width:min(600px,100%)}
+/* Chrome paints its own autofill background and text colour, which shows as a pale block inside
+   the glass pill. The box-shadow trick needs a solid colour to paint over, and this field is
+   translucent over a photo, so instead defer the wash indefinitely and force the ink back to white. */
+.field input:-webkit-autofill,
+.field input:-webkit-autofill:hover,
+.field input:-webkit-autofill:focus,
+.field input:-webkit-autofill:active{
+  -webkit-text-fill-color:#fff;caret-color:#fff;
+  transition:background-color 100000s ease-in-out 0s}
+.field input{flex:1;min-width:0;background:none;border:0;color:#fff;font-family:var(--sans);font-size:clamp(16px,1.05vw,18px);padding:13px 0}
+/* the in-field CTA is the D2C capture button size, not the chunkier page .btn */
+/* line-height:1.2 because this .btn is an <a> (inherits body 1.5) where D2C uses a <button> (UA normal) */
+/* the honeypot would otherwise render as a real text input and squeeze the email field; and this
+   page has no global button reset, so <button class="btn"> gets border:2px outset without this */
+.field .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+.field .btn{padding:13px 24px;font-size:15px;gap:8px;flex-shrink:0;line-height:1.2;white-space:nowrap;border:0;appearance:none;-webkit-appearance:none}
+.joined-pill{margin-top:15px;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:11px 20px;font-size:15px;color:#fff}
+/* an author display: value beats the UA's [hidden]{display:none}. without these three the success
+   pill renders before anything is submitted, and the form stays visible after it. */
+.joined-pill[hidden],.form-err[hidden],.field[hidden]{display:none}
+.form-err{margin-top:10px;font-size:14px;color:#ffd9cc}
+.field .btn svg{width:18px;height:18px}
+.field input::placeholder{color:rgba(255,255,255,.55)}
+.field input:focus{outline:none}
+.field:focus-within{outline:2.5px solid var(--lime-cta);outline-offset:3px}
+/* hero field CTA is lime (per mock); the closing CTA stays inverted white via .close .btn */
+.hero .field .btn{background:var(--lime-cta);color:var(--green);font-weight:600}
+.hero .field .btn:hover{background:var(--lime-cta);filter:brightness(1.05)}
+.field-alt{margin-top:15px;font-size:clamp(.98rem,1.15vw,1.05rem);color:var(--ink-60)}
+.field-alt a{color:#fff;text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(255,255,255,.42)}
+.field-alt a:hover{text-decoration-color:#fff}
+.badge{display:inline-flex;font-family:var(--sans);font-weight:500;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:var(--mineral);border:1px solid rgba(7,43,24,.08);color:#666}
+.badge.on-green{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);color:var(--lime)}
 
-/* nav */
-.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(7,43,24,.07)}
-.nav-in{max-width:1180px;margin:0 auto;padding:15px clamp(20px,4vw,60px);display:flex;align-items:center;justify-content:space-between}
-.nav-logo img{height:17px;width:auto}
-.nav-r{display:flex;align-items:center;gap:clamp(16px,2vw,28px)}
-.nav-back{font-weight:500;font-size:14px;color:var(--green-soft)}
-.nav-back:hover{color:var(--green)}
-.nav-cta{background:var(--green);color:#fff;padding:9px 17px;border-radius:999px;font-weight:500;font-size:14px;transition:background .18s}
-.nav-cta:hover{background:#0b3f24}
-/* floating pill nav on scroll (desktop) - matches the main site */
+/* ---------- nav ---------- */
+/* transparent overlay on the hero photo at every width, matching the D2C hero:
+   no white strip on mobile. It scrolls away; the desktop floatnav returns on scroll. */
+.nav{position:absolute;top:0;left:0;right:0;z-index:60;background:none}
+.nav-in{max-width:1180px;margin:0 auto;padding:14px clamp(20px,4vw,60px);display:flex;align-items:center;justify-content:space-between;gap:20px}
+.nav-logo img{height:17px;width:auto;display:block;filter:brightness(0) invert(1)}
+.nav-r{display:flex;align-items:center;gap:clamp(14px,2vw,26px)}
+.nav-links{display:flex;align-items:center;gap:clamp(14px,1.9vw,26px)}
+.nav-back,.nav-links a{font-weight:500;font-size:15px;color:rgba(255,255,255,.78)}
+.nav-back:hover,.nav-links a:hover{color:#fff}
+.nav-cta{background:#fff;color:var(--green);padding:9px 17px;border-radius:999px;font-weight:500;font-size:14px;transition:background .18s}
+.nav-cta:hover{background:var(--lime)}
+.nav a:focus-visible{outline:2.5px solid #fff;outline-offset:3px}
+/* section links would crowd a small nav; the floating nav carries them once scrolled */
+@media(max-width:900px){.nav-links{display:none}}
+.nav-cta-short{display:none}
+@media(max-width:600px){.nav-cta-long{display:none}.nav-cta-short{display:inline}}
+
+/* floating pill nav (desktop only) */
 .floatnav{display:none}
+@media(min-width:1025px){
+  .nav{top:22px}
+  /* nav + hero break out of the 1180px container and use viewport gutters,
+     matching the D2C hero so the logo sits near the screen edge, not indented */
+  .nav-in{max-width:none;padding:14px clamp(40px,3.75vw,72px)}
+}
+/* the floating nav starts at 921, not 1025, so tablets and large phones get it too; the nav/nav-in
+   rules above must stay at 1025 or the 921-1024 band shifts with no D2C counterpart */
 @media(min-width:921px){
-  .nav{position:relative}
-  .floatnav{display:flex;align-items:center;gap:clamp(18px,2.2vw,34px);
-    position:fixed;top:14px;left:50%;transform:translateX(-50%) translateY(-26px);z-index:120;
-    padding:8px 8px 8px 22px;background:rgba(246,249,242,.82);
-    -webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);
+  /* position:fixed + left:50% means shrink-to-fit, and this page's multi-word labels wrap to two
+     lines at 921 without the nowrap */
+  .floatnav a{white-space:nowrap}
+  .floatnav{display:flex;align-items:center;gap:clamp(16px,1.9vw,32px);position:fixed;top:14px;left:50%;transform:translateX(-50%) translateY(-26px);z-index:80;
+    padding:9px 9px 9px 20px;background:rgba(246,249,242,.82);backdrop-filter:blur(16px) saturate(1.5);-webkit-backdrop-filter:blur(16px) saturate(1.5);
     border:1px solid rgba(7,43,24,.08);border-radius:999px;box-shadow:0 14px 44px -14px rgba(7,43,24,.28);
     opacity:0;pointer-events:none;transition:opacity .32s var(--ease),transform .32s var(--ease)}
   .floatnav.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
   .floatnav-logo img{height:17px;width:auto;display:block}
-  .floatnav a{color:var(--green);font-weight:500;font-size:14px;transition:opacity .18s var(--ease),background .18s var(--ease)}
-  .floatnav-back:hover{opacity:.6}
-  .floatnav-cta{background:var(--green);color:#fff!important;padding:9px 18px;border-radius:999px;font-size:13.5px;white-space:nowrap}
+  .floatnav a{color:var(--green);font-weight:500;font-size:14px}
+  .floatnav-links{display:flex;align-items:center;gap:clamp(16px,1.9vw,32px)}
+  .floatnav-links a:hover{opacity:.6}
+  .floatnav-cta{background:var(--green);color:#fff!important;padding:9px 18px;border-radius:999px;font-size:13.5px;transition:background .18s}
   .floatnav-cta:hover{background:#0b3f24}
 }
 @media(prefers-reduced-motion:reduce){.floatnav{transition:opacity .2s linear}}
 
-/* hero */
-.hero{position:relative;overflow:hidden;isolation:isolate;background:var(--green);padding:clamp(56px,8vw,116px) 0 clamp(52px,7vw,100px)}
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--rd,0s)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;transition-delay:0s!important}}
+html.static .reveal{opacity:1!important;transform:none!important;transition:none!important;transition-delay:0s!important}
+
+/* ============ 1. HERO ============ */
+.hero{position:relative;overflow:hidden;isolation:isolate;background:var(--green);min-height:100svh;display:flex;flex-direction:column}
 .hero::before{content:"";position:absolute;inset:0;z-index:-2;background:url(assets/b2b-hero-alcove-v1.webp) center/cover no-repeat;transform:scale(1.04)}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(5,17,10,.82) 0%,rgba(5,17,10,.6) 54%,rgba(5,17,10,.44) 100%)}
-.eyebrow{font-weight:500;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime)}
-.hero h1{margin-top:18px;font-family:var(--serif);font-weight:500;font-size:clamp(2.35rem,5vw,4.5rem);line-height:1.03;letter-spacing:-.016em;max-width:17ch;color:#fff}
-.hero .lead{margin-top:clamp(20px,2.4vw,30px);font-size:clamp(1.12rem,1.6vw,1.45rem);color:rgba(255,255,255,.85);max-width:46ch;line-height:1.45}
-.hero .btn{margin-top:clamp(26px,3vw,38px)}
-/* CTA email fallback (works on the dark hero image + the green closing panel) */
-.cta-alt{margin-top:15px;font-family:var(--sans);font-size:clamp(.98rem,1.15vw,1.08rem);color:rgba(255,255,255,.72)}
-.cta-alt a{color:#fff;text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(255,255,255,.42)}
-.cta-alt a:hover{text-decoration-color:#fff}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(58% 52% at 72% 28%,rgba(177,252,99,.16) 0%,rgba(177,252,99,.05) 45%,transparent 72%),
+  linear-gradient(100deg,rgba(5,17,10,.82) 0%,rgba(5,17,10,.6) 54%,rgba(5,17,10,.44) 100%)}
+.hero-in{flex:1;display:flex;align-items:center;padding:clamp(120px,14vw,180px) 0 clamp(64px,8vw,110px)}
+.hero-copy{max-width:58%}
+/* per the Figma comp this hero flips the D2C pairing: sans headline, serif lead */
+.hero h1{margin-top:18px;font-family:var(--sans);font-weight:500;font-size:clamp(2.2rem,4.6vw,4.1rem);line-height:1.07;letter-spacing:-.024em;max-width:11.2em;color:#fff}
+/* "With your branding." stays intact so the comp's 3-line break holds:
+   line 1 is 10.85em and line 2 + "With" only 10.46em, so no width alone can force it */
+.h1-nobr{white-space:nowrap}
+.hero .lead{margin-top:clamp(20px,2.4vw,30px);font-family:var(--serif);font-size:clamp(1.16rem,1.65vw,1.5rem);color:rgba(255,255,255,.85);max-width:46ch;line-height:1.45}
+.hero .field{margin-top:clamp(28px,3vw,40px)}
+/* Co-branded media: the pouch plus a supplement bottle in front. The partner name is
+   live text over a logo-free render rather than baked pixels, so it stays editable and
+   can carry a real partner name later. Percentages on the overlays are relative to the
+   pack render (734x1185); cqw keeps them in step at any size.
+   Mobile: pack only, centred below the copy. Bottle joins it on desktop. */
+/* mobile: bottle and pack nearly side by side so the bottle never covers the pack copy */
+.hero-media{position:relative;width:min(88vw,360px);margin:clamp(26px,5vw,38px) auto 0}
+/* mobile placement per the user's Figma arrangement (177-4186): pack overhangs the
+   media box right edge slightly; the desktop block resets margin to 0 */
+/* .pack-fig / .bottle-fig carry the livery so the hero and the loop card can share it;
+   .hero-* classes carry only placement */
+.pack-fig,.bottle-fig{position:relative;container-type:inline-size}
+.pack-fig>img,.bottle-fig>img{width:100%;height:auto;display:block}
+.hero-pack{width:72%;margin-left:auto;margin-right:-2.8%;z-index:1}
+/* "tracked light" placeholder livery (panel winner): light Matter, wide tracking, warm
+   gradient ink (never pure white) so it reads printed into the foil, not pasted on. The
+   gradient runs brightest at the top, matching the hero keylight. */
+/* Partner livery, per Figma 174-3167 / 174-3136. Percentages are the designer's px values
+   over the 444x716.797 (pack) and 198x604.375 (bottle) frames, which are exactly what those
+   two elements measure on the 1440 desktop hero, so the mapping is 1:1. */
+.pk-brand{position:absolute;left:35.92%;top:16.72%;transform:translateX(-50%);
+  font-family:var(--serif);font-weight:500;font-size:11.68cqw;line-height:1.08;
+  letter-spacing:-.012em;color:#DFE2DF;white-space:nowrap;text-align:center}
+.pk-desc{position:absolute;left:8.33%;top:25.79%;font-family:var(--sans);font-weight:500;
+  font-size:6.95cqw;line-height:1.12;letter-spacing:-.005em;color:#DFE2DF;white-space:nowrap}
+.pk-desc span{color:#A6CF72}
+.pk-comp{position:absolute;left:8.33%;top:41.97%;font-family:var(--serif);font-weight:400;
+  font-size:3.38cqw;line-height:1.13;color:#DCE0DC;white-space:nowrap}
+/* two-row lockup: "POWERED BY" over the wordmark SVG, both flush left so SEQUENCE
+   starts under the P. The img selector is needed because the bare `.hero-pack img`
+   rule outranks a lone class. */
+.powline{position:absolute;display:flex;flex-direction:column;align-items:flex-start;
+  white-space:nowrap;font-family:var(--sans);font-weight:600;line-height:1;
+  letter-spacing:-.052em;text-transform:uppercase;color:#DFE2DF}
+.powline img{height:auto;filter:brightness(0) invert(1)}
+/* anchored by its bottom (the designer's SEQUENCE baseline) so growing to two rows
+   extends upward, keeping the same clearance above the mobile crop */
+.pk-powline{right:9.77%;bottom:8.63%;font-size:2.7cqw;gap:.4em}
+.pack-fig .powline img{width:18.16cqw}
+/* bottle stands in front, carrying the same partner branding as the pack */
+.hero-bottle{position:absolute;left:4%;bottom:-4.6%;width:30%;z-index:2;
+  filter:drop-shadow(0 24px 40px rgba(0,0,0,.45))}
+/* bottle carries the same livery; the wordmark is rotated anticlockwise so it reads
+   bottom to top, and the soft shadow keeps the serif off the bubbles behind it */
+.bt-brand{position:absolute;left:52.53%;top:50.1%;transform:translate(-50%,-50%) rotate(-90deg);
+  font-family:var(--serif);font-weight:500;font-size:26.18cqw;line-height:1.08;
+  letter-spacing:-.012em;color:#DFE2DF;white-space:nowrap;
+  text-shadow:0 0 18px rgba(6,20,12,.45)}
+/* top:80% (not the designer's ~83%) so the line clears the hero's bottom bleed at wide viewports */
+.bt-powline{left:52.53%;top:80%;transform:translate(-50%,-50%);font-size:6.06cqw;gap:.4em}
+.bottle-fig .powline img{width:40.71cqw}
+html.static .hero{min-height:860px!important}
+/* desktop: hero breaks out of the 1180px container and uses viewport gutters (matches the D2C hero),
+   with a wide headline measure so it sets in ~3 lines instead of 5. Must sit AFTER the base .hero rules. */
+@media(min-width:1025px){
+  /* one wide, left-aligned container at the same gutter as the nav (matches the D2C hero),
+     so the nav, the hero copy and every section share a single left edge */
+  .wrap{max-width:1320px;margin-inline:0 auto;padding:0 clamp(40px,3.75vw,72px)}
+  .close .wrap{margin-inline:auto}   /* closing CTA stays centred */
+  /* wide enough for the h1's 11.2em measure at the capped font size (735px);
+     the h1/lead max-widths do the real constraining, so text ink never reaches the bottle */
+  .hero-copy{max-width:min(63%,920px)}
+  /* media group fills the right half. The pack stands fully visible so its bottom-right
+     "Powered by SEQUENCE" is never cropped; the bottle sits in front and takes the
+     bottom-edge crop instead, giving the grounded look without hiding the co-brand mark. */
+  .hero-media{position:absolute;top:0;bottom:0;right:0;width:min(45vw,600px);margin:0}
+  /* per the comp the pack is anchored to the corner and bled off the right and bottom
+     edges. The bleed is capped so the YOUR BRAND slot (ends 93.1% across the pack) and
+     the raised powered-by line always survive the crop; the hero's overflow does the cut. */
+  .hero-pack{position:absolute;right:-4%;bottom:-4.5%;width:74%;margin:0;
+    filter:drop-shadow(0 34px 60px rgba(0,0,0,.4))}
+  .hero-bottle{left:0;bottom:-8%;width:33%;
+    filter:drop-shadow(0 30px 46px rgba(0,0,0,.5))}
+  .hero h1{max-width:min(11.2em,100%)}
+  .hero .lead{max-width:54ch}
+}
 
-/* sections */
-section{padding:clamp(56px,7.5vw,108px) 0}
-.sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.95rem,3.7vw,3.35rem);line-height:1.06;letter-spacing:-.012em;max-width:20ch}
-.sec-head p{margin-top:16px;font-size:clamp(1.05rem,1.45vw,1.28rem);color:#666;max-width:54ch;line-height:1.5}
+/* ============ 2. CREDIBILITY — lifted verbatim from the D2C social-proof + marquee ============ */
+.cred{background:#fff;padding:clamp(40px,5.5vw,80px) 0 clamp(40px,5vw,72px)}
+.social-head{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+  gap:clamp(12px,1.5vw,19px);max-width:1040px;margin:0 auto;padding:0 clamp(20px,4vw,44px);text-align:center}
+.avatar-stack{height:36px;width:auto;flex-shrink:0}
+.social-text{font-family:var(--serif);font-weight:500;color:#141414;
+  font-size:clamp(1.02rem,1.65vw,1.55rem);letter-spacing:-.01em;line-height:1.32;text-wrap:balance}
+.marquee{position:relative;margin-top:clamp(30px,4vw,56px);width:100%;overflow:hidden;height:clamp(50px,6vw,66px);
+  -webkit-mask:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent);
+  mask:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent)}
+.marquee-row{position:absolute;top:0;left:0;height:100%;display:flex;align-items:center;
+  gap:clamp(46px,6vw,92px);width:max-content;animation:marquee 40s linear infinite;animation-play-state:paused;will-change:transform}
+.marquee.go .marquee-row{animation-play-state:running}
+.mlogo{height:auto;max-height:30px;max-width:150px;width:auto;object-fit:contain;opacity:.6;filter:grayscale(1);flex-shrink:0}
+@keyframes marquee{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+html.static .marquee-row{animation:none!important}
+@media(prefers-reduced-motion:reduce){.marquee-row{animation:none;transform:none}}
 
-/* flow */
-.flow{margin-top:clamp(40px,5vw,66px);display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2vw,30px)}
-.step{position:relative}
-.step-n{width:44px;height:44px;border-radius:13px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:18px;font-variant-numeric:tabular-nums;position:relative;z-index:2}
-.step h3{margin-top:20px;font-family:var(--serif);font-weight:500;font-size:clamp(1.2rem,1.5vw,1.5rem);line-height:1.15;letter-spacing:-.006em}
-.step p{margin-top:9px;color:#666;font-size:clamp(.98rem,1.08vw,1.06rem);line-height:1.5}
-.step:not(:last-child)::after{content:"";position:absolute;top:22px;left:58px;right:calc(-1 * clamp(20px,2vw,30px) - 4px);height:2px;
-  background:repeating-linear-gradient(90deg,rgba(7,43,24,.24) 0 5px,transparent 5px 11px)}
+/* ============ 3. THE LOOP ============ */
+.loop{background:var(--mineral)}
+/* per Figma 176-3168 this heading runs wider than the shared .sec-head measure:
+   19.6em == the comp's 1044px at its 53.28px size, so the two-line break is preserved */
+.loop-head h2{max-width:19.6em}
+/* 20.8em == the comp's 1107px at 53.28px, so this heading breaks to two lines not three */
+.ben-head-wrap h2{max-width:20.8em}
+.loop-head p{max-width:none}
+/* ---- loop cards, per Figma 180-4265. All card internals are sized in cqw against the
+   square art container, whose comp width is 377.5px, so the whole card scales as one. ---- */
+/* 98.72% == the comp's 1196.5px card row inside the 1212px container, so each card
+   lands on the designer's 377.5px and the titles break where they do in the comp */
+.loop-grid{margin-top:clamp(40px,4.6vw,66px);display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(18px,2.2vw,32px);width:98.72%}
+.lcard{display:flex;flex-direction:column;gap:clamp(16px,2.1vw,30px)}
+.lcard-art{position:relative;container-type:inline-size;aspect-ratio:1;overflow:hidden;
+  border-radius:clamp(18px,2.1vw,30px);background:var(--green)}
+.lcard-n{position:absolute;left:5.3%;top:5.3%;z-index:4;display:flex;align-items:center;justify-content:center;
+  padding:1.99cqw 3.31cqw;border-radius:1.99cqw;background:rgba(255,255,255,.37);
+  color:#fff;font-weight:500;font-size:4.64cqw;line-height:1.2;font-variant-numeric:tabular-nums}
+.lcard-txt h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.28rem,2.08vw,1.875rem);
+  line-height:1.16;letter-spacing:-.004em;color:#1a1a1a}
+.lcard-txt p{margin-top:10px;font-size:clamp(1rem,1.39vw,1.25rem);line-height:1.5;color:#666}
 
-/* revenue */
-.rev-wrap{padding-top:0}
-.rev{background:var(--green);color:#fff;border-radius:clamp(20px,2.2vw,30px);padding:clamp(38px,5.5vw,76px);
-  display:grid;grid-template-columns:auto 1fr;gap:clamp(30px,5vw,72px);align-items:center;box-shadow:0 30px 70px -40px rgba(7,43,24,.5)}
-.rev-num{font-family:var(--serif);font-weight:500;font-size:clamp(5rem,13vw,10.5rem);line-height:.86;color:var(--lime);letter-spacing:-.02em}
-.rev-num span{font-size:.46em;vertical-align:.14em;margin-left:.02em}
-.rev-rrp{margin-top:clamp(10px,1vw,15px);font-family:var(--sans);font-weight:500;font-size:clamp(1rem,1.12vw,1.15rem);color:rgba(255,255,255,.62);letter-spacing:.01em;white-space:nowrap}
-.rev h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.75rem,3vw,2.7rem);line-height:1.08;letter-spacing:-.01em}
-.rev .rp{margin-top:16px;font-size:clamp(1.04rem,1.35vw,1.24rem);color:rgba(255,255,255,.82);line-height:1.5;max-width:48ch}
+/* card 1: blurred clinic photo + glass status panel */
+.c1-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:blur(2.5px);transform:scale(1.04)}
+.c1-panel{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:79.5%;
+  display:flex;align-items:center;gap:5.3cqw;padding:5.3cqw;border-radius:5.3cqw;
+  background:rgba(0,0,0,.21);backdrop-filter:blur(12.5px);-webkit-backdrop-filter:blur(12.5px);
+  border:.33cqw solid rgba(255,255,255,.2);box-shadow:0 2.65cqw 7.95cqw rgba(0,0,0,.1)}
+.c1-ico{flex:0 0 auto;width:13.25cqw;height:13.25cqw;border-radius:2.65cqw;
+  background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center}
+.c1-ico img{width:7.15cqw;height:auto;display:block}
+.c1-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:1.32cqw}
+.c1-txt b{font-weight:500;font-size:4.64cqw;line-height:1.15;color:#fff}
+.c1-txt span{font-weight:400;font-size:3.64cqw;line-height:1.2;color:rgba(255,255,255,.7)}
+.c1-chk{flex:0 0 auto;width:5.3cqw;height:5.3cqw;color:#fff}
 
-/* who for */
-.who{padding-top:0}
-.pills{margin-top:clamp(30px,3.6vw,44px);display:flex;flex-wrap:wrap;gap:12px}
-.pill{background:var(--green);color:#fff;font-weight:500;font-size:clamp(1rem,1.25vw,1.18rem);padding:12px 22px;border-radius:999px}
+/* card 2: dotted orbit diagram */
+.c2{background:var(--green)}
+.c2-ring{position:absolute;left:19.33%;top:20.65%;width:62.46cqw;height:62.46cqw}
+.c2-arw{position:absolute;width:5.96cqw;height:5.96cqw}
+.c2-arw-t{left:47.39%;top:17.71%}
+.c2-arw-b{left:47.39%;top:80.09%}
+.c2-top,.c2-bot,.c2-mid{position:absolute;color:#E5E5E3;font-weight:500;font-size:3.78cqw;
+  line-height:1;letter-spacing:-.0075em}
+.c2-top{left:50.56%;top:12.45%;transform:translateX(-50%);text-align:center;white-space:nowrap}
+.c2-bot{left:41.82%;top:87.54%;white-space:nowrap}
+.c2-mid{left:50.5%;top:42.12%;transform:translateX(-50%);width:41.92%;text-align:center;
+  font-weight:400;font-size:3.97cqw;line-height:1.4}
+.c2-db{position:absolute;left:48.11%;top:63.01%;width:4.67cqw;height:4.57cqw}
+.c2-tag{position:absolute;display:inline-flex;align-items:center;justify-content:center;
+  /* Figma's code-gen reports rgba(202,202,202,.38) but its own export renders these
+     near-black (sampled 0,23,4 over the card); matching the export, which is the comp. */
+  padding:1.27cqw 1.9cqw;border-radius:7.62cqw;background:rgba(0,21,2,.9);
+  backdrop-filter:blur(2.4px);-webkit-backdrop-filter:blur(2.4px);
+  color:#fff;font-weight:500;font-size:3.97cqw;line-height:1.25;white-space:nowrap}
+.c2-tag-l{left:5.96%;top:47.41%}
+.c2-tag-r{left:68.34%;top:48%}
 
-/* closing */
-.close{background:var(--green);color:#fff;text-align:center;border-radius:0}
-.close h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.1rem,4.2vw,3.7rem);line-height:1.05;letter-spacing:-.014em}
-.close p{margin:16px auto 0;color:rgba(255,255,255,.8);font-size:clamp(1.05rem,1.5vw,1.3rem);max-width:46ch}
-.close .btn{margin-top:clamp(28px,3vw,38px);background:#fff;color:var(--green)}
+/* card 3: the product pair over ingredient tags that bleed off the right edge */
+.c3{background:#52AD03}
+.c3 .lcard-n{background:rgba(37,37,37,.37)}
+.c3-bottle{position:absolute;left:13.77%;top:40%;width:22.29%;z-index:3;
+  filter:drop-shadow(0 3.38cqw 5.18cqw rgba(0,0,0,.5))}
+.c3-pack{position:absolute;left:53.77%;top:-12.98%;width:49.99%;z-index:4;
+  filter:drop-shadow(0 3.83cqw 6.75cqw rgba(0,0,0,.4))}
+.c3-tags{position:absolute;left:2.52%;top:66.23%;width:135.23%;z-index:2;
+  display:flex;flex-wrap:wrap;align-content:flex-start;gap:2.21cqw}
+.c3-tags span{display:inline-flex;align-items:center;padding:1.47cqw 2.21cqw;border-radius:8.84cqw;
+  background:rgba(0,29,0,.95);backdrop-filter:blur(2.8px);-webkit-backdrop-filter:blur(2.8px);
+  color:#fff;font-weight:500;font-size:5.15cqw;line-height:1.2;white-space:nowrap}
+
+/* ============ 4. BENEFITS ============ */
+.ben{background:#fff}
+.ben-tabs{margin-top:clamp(28px,3vw,40px);display:inline-flex;gap:5px;background:var(--mineral);border:1px solid rgba(7,43,24,.08);border-radius:999px;padding:5px}
+.ben-tab{border:0;background:transparent;font-family:var(--sans);font-weight:500;font-size:15px;color:#666;padding:11px 22px;border-radius:999px;cursor:pointer;transition:background .18s var(--ease),color .18s var(--ease)}
+.ben-tab[aria-selected="true"]{background:#fff;color:#1a1a1a;box-shadow:0 12px 34px -16px rgba(7,43,24,.22)}
+.ben-tab:focus-visible{outline:2.5px solid var(--green);outline-offset:3px}
+.ben-tab .short{display:none}
+.ben-stack{margin-top:clamp(34px,3.6vw,50px)}
+.js .ben-stack{display:grid}
+.js .ben-panel{grid-area:1/1;transition:opacity .22s var(--ease)}
+.js .ben-panel[data-off]{opacity:0;visibility:hidden;pointer-events:none}
+html.static .ben-panel{transition:none}
+@media(prefers-reduced-motion:reduce){.ben-panel{transition:none}}
+.js .ben-panel>h3{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+.ben-panel>h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;color:#1a1a1a;margin-bottom:20px}
+/* ---- desktop side rail (mirrors the D2C .side-menu) ---- */
+.side-menu{display:none}
+/* mobile section stepper, ported from the D2C page (.mstep there). gaps are 16/10 not D2C's 30/12:
+   this page has six labels rather than five and D2C's spacing overflows a 320px bar by up to 44px. */
+.mstep{display:none}
+.side-menu-item{position:relative;display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  padding-left:20px;font-family:var(--sans);font-weight:500;font-size:clamp(14px,1vw,16px);
+  color:#6F6F6F;line-height:1.4;transition:color .35s var(--ease)}
+.side-menu-item.on{color:var(--green)}
+.side-menu-item.on::before{content:"";position:absolute;left:0;top:3px;bottom:3px;width:2px;
+  border-radius:2px;background:var(--green)}
+.side-menu-n{color:inherit;font-variant-numeric:tabular-nums;flex-shrink:0}
+@media(min-width:1200px){
+  .side-menu{display:flex;flex-direction:column;gap:clamp(11px,1vw,16px);
+    position:fixed;right:clamp(24px,2.6vw,64px);top:50%;transform:translateY(-50%);
+    width:clamp(160px,13vw,210px);z-index:40;
+    opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+  .side-menu.show{opacity:1;pointer-events:auto}
+  /* reserve the right gutter so the rail never sits on top of section content */
+  /* .loop joins the reservation because the rail now appears while it is still on screen.
+     footer is in the list so its row ends on the same line as every content column above it:
+     without it the footer links ran 125px past the content edge at 1440, 218px at 1280. */
+  section.loop,section.ben,section.clin,section.conn,section.rev-wrap,section.ing,
+  section.cmp{padding-right:clamp(190px,17vw,290px)}
+}
+@media(prefers-reduced-motion:reduce){.side-menu{transition:none}}
+
+/* ---- benefits, per Figma 176-638. Rule -> eyebrow -> headline -> blurred 4:3 photo
+   with a centred glass chip. ---- */
+.ben-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2.8vw,37px);
+  row-gap:clamp(40px,4.4vw,64px)}
+/* items stretch to the tallest in the row; margin-top:auto on the art then pushes every
+   card's visual to the same line, so 2-line and 3-line headlines still align. */
+.ben-item{display:flex;flex-direction:column;border-top:1.8px solid rgba(7,43,24,.1);padding-top:16.2px}
+.ben-item .eyebrow-d{font-size:12px;letter-spacing:.08em;color:#666}
+/* Season Mix REGULAR here, not the 500 used elsewhere — the comp sets these lighter */
+.ben-head{margin-top:10.8px;margin-bottom:clamp(18px,1.9vw,26px);font-family:var(--serif);font-weight:400;
+  font-size:clamp(1.15rem,1.7vw,1.625rem);line-height:1.15;letter-spacing:-.006em;color:#1a1a1a}
+
+.ben-art{position:relative;container-type:inline-size;margin-top:auto;
+  aspect-ratio:280/211;border-radius:clamp(10px,1.1vw,14px);overflow:hidden;background:var(--green)}
+/* scale(1.06) because blur samples past the edge and would otherwise leave a soft rim */
+.ben-art>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  filter:blur(var(--blur,2.2px));transform:scale(1.06)}
+
+/* glass chip, centred in the frame: text left, check right */
+/* 89% not 80.4%: the leading icon eats ~35cqw, so the narrower Figma width made the
+   longest label wrap */
+.ben-chip{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:89%;
+  display:flex;align-items:center;gap:3.6cqw;padding:3.6cqw;border-radius:4.3cqw;
+  background:rgba(7,43,24,.42);backdrop-filter:blur(9px) saturate(1.2);
+  -webkit-backdrop-filter:blur(9px) saturate(1.2);
+  border:1px solid rgba(255,255,255,.22);box-shadow:0 3cqw 7cqw rgba(0,0,0,.22)}
+.ben-chip-i{flex:0 0 auto;width:9.3cqw;height:9.3cqw;border-radius:2.6cqw;
+  background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;color:#fff}
+.ben-chip-i svg{width:5.4cqw;height:5.4cqw}
+.ben-chip-t{font-family:var(--sans);font-weight:500;font-size:4.9cqw;line-height:1.25;
+  letter-spacing:-.005em;color:#fff}
+
+/* card 4: no photograph, the margin stated plainly on brand green */
+/* the API card is a phone on a white-to-green gradient rather than a blurred photograph, so the
+   image is contained and near-sharp instead of cover + blur */
+.ben-art-app{background:linear-gradient(180deg,#fff 0%,#3bc301 100%)}
+.ben-art-app>img{object-fit:contain;object-position:50% 100%;width:64%;left:18%;right:auto;transform:none;filter:blur(.8px)}
+.ben-art-rev{background:var(--green)}
+.ben-rev{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+  padding:0 12.5%}
+.ben-rev-big{font-family:var(--serif);font-weight:500;font-size:14.3cqw;line-height:1;
+  letter-spacing:-.004em;color:var(--lime-cta)}
+.ben-rev-sub{margin-top:2.6cqw;font-family:var(--serif);font-weight:400;font-size:7.1cqw;
+  line-height:1.2;letter-spacing:-.004em;color:var(--lime-cta)}
+
+/* ============ 5. CLINICIAN ============ */
+.clin{background:#fff}
+.clin-card{margin-top:clamp(40px,4vw,60px);background:var(--green);border-radius:clamp(20px,1.9vw,28px);padding:clamp(28px,3.4vw,56px);
+  display:grid;grid-template-columns:44% 1fr;gap:clamp(28px,3.4vw,56px);align-items:center;box-shadow:0 30px 70px -40px rgba(7,43,24,.5)}
+.fcard{background:#fff;border-radius:22px;border:1px solid rgba(7,43,24,.08);box-shadow:0 22px 64px -26px rgba(7,43,24,.3);overflow:hidden}
+.fc-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;border-bottom:1px solid rgba(7,43,24,.08)}
+.fc-head h3{font-family:var(--sans);font-weight:500;font-size:15px;color:#1a1a1a}
+.fc-row{padding:14px 20px;border-bottom:1px solid rgba(7,43,24,.06)}
+.fc-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.fc-top b{font-family:var(--sans);font-weight:500;font-size:15px;color:#1a1a1a}
+.fc-top span{font-size:14px;color:#666;font-variant-numeric:tabular-nums;flex-shrink:0}
+.fc-row small{display:block;margin-top:5px;font-size:13px;color:#666;line-height:1.4}
+.fc-row.added{border-left:3px solid var(--amber);background:rgba(184,145,67,.06)}
+.fc-add{padding:13px 20px;text-align:center;font-size:13.5px;color:#666;border-bottom:1px solid rgba(7,43,24,.06)}
+.fc-note{padding:13px 20px;font-size:12px;color:#6b736b;line-height:1.45}
+.clin-copy h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.1rem,3.4vw,56px);line-height:1.1;letter-spacing:-.012em;color:#fff;max-width:20ch}
+.clin-copy .body{margin-top:18px;color:rgba(255,255,255,.82);font-size:clamp(1rem,1.28vw,20px);line-height:1.5;max-width:46ch}
+.ticks{margin-top:clamp(28px,3.2vw,46px);display:flex;flex-direction:column;gap:12px}
+.ticks li{list-style:none;display:flex;align-items:flex-start;gap:12px;color:rgba(255,255,255,.82);font-size:clamp(.98rem,1.1vw,1.06rem);line-height:1.35}
+.ticks svg{width:17px;height:17px;flex:0 0 auto;margin-top:2px;color:var(--lime)}
+.clin-copy{display:flex;flex-direction:column;align-items:flex-start}
+
+/* --- "Powered by SEQUENCE" lockup in the formula-card header (replaces the pill badge) --- */
+.fc-pow{display:flex;flex-direction:column;align-items:flex-start;gap:.34em;flex:0 0 auto;
+  font-family:var(--sans);font-weight:600;font-size:6.3px;line-height:1;letter-spacing:-.052em;
+  text-transform:uppercase;color:var(--green)}
+.fc-pow img{display:block;width:44px;height:auto}
+
+/* --- clinician dose inspector (scripted demo; JS-only, never shown without it) ---
+   The panel is a second white surface that occupies the formula card's exact box, so the
+   two cross-fade as one card rather than one floating over a dimmed copy of the other. */
+.fstack{position:relative}
+.fcard{transition:opacity .42s var(--ease)}
+.fstack.swap .fcard{opacity:0}
+/* While the demo runs the stack is pinned to the finished card's height and BOTH white
+   surfaces fill it, so the box never grows or shrinks — rows just fill into a fixed card.
+   .demo is added by the script, so the static card keeps its natural height. */
+.fstack.demo>.fcard{height:100%}
+/* "+ Add a supplement" is what the demo pointer clicks to open the inspector */
+.fc-add{transition:background .16s var(--ease),color .16s var(--ease)}
+.fc-add.tap{background:rgba(7,43,24,.06);color:var(--green)}
+/* Rows 3+4 collapse by animating .fc-clip's height, set in px by the script and released
+   back to auto once open. (The tidier grid 0fr<->1fr trick is out: padding on the grid item
+   floors the track at 29px, and Chrome sticks at 0px on the way back to 1fr.) */
+.fc-slot>.fc-clip{overflow:hidden;opacity:1;transform:none;
+  transition:height .7s var(--ease),opacity .5s var(--ease),transform .5s var(--ease)}
+.fc-slot.shut>.fc-clip{opacity:0;transform:translateY(-8px)}
+.fc-slot.noanim>.fc-clip{transition:none}
+
+.clin-insp{position:absolute;inset:0;z-index:2;background:#fff;border-radius:22px;
+  border:1px solid rgba(7,43,24,.08);box-shadow:0 22px 64px -26px rgba(7,43,24,.3);
+  padding:26px 20px 20px;display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;transform:translateY(14px);pointer-events:none;
+  transition:opacity .45s var(--ease),transform .45s var(--ease),visibility 0s linear .45s}
+.clin-insp.on{opacity:1;visibility:visible;transform:none;transition-delay:0s,0s,0s}
+
+.ci-marker{display:flex;align-items:center;gap:10px}
+.ci-name{font-family:var(--sans);font-weight:500;font-size:clamp(15px,1.32vw,19px);color:var(--green)}
+.ci-badge{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.07em;text-transform:uppercase;
+  padding:6px 12px;border-radius:999px;background:rgba(254,91,4,.14);color:var(--orange);line-height:1}
+.ci-val{margin-left:auto;font-family:var(--serif);font-weight:600;font-size:clamp(16px,1.4vw,20px);
+  color:var(--orange);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ci-badge.pulse{animation:ciPulse .62s var(--ease)}
+@keyframes ciPulse{0%{transform:scale(1)}45%{transform:scale(1.16)}100%{transform:scale(1)}}
+
+.ci-chip{margin-top:clamp(20px,2.6vw,38px);display:flex;align-items:center;gap:12px;
+  background:var(--lime-deep);border-radius:20px;padding:clamp(16px,1.5vw,20px) 24px;
+  box-shadow:0 10px 30px -6px rgba(7,43,24,.16)}
+.ci-sup{font-family:var(--sans);font-weight:500;font-size:clamp(14px,1.1vw,16px);color:var(--green)}
+.ci-dose{margin-left:auto;font-family:var(--serif);font-weight:500;font-size:clamp(19px,1.7vw,24px);
+  color:var(--green);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* --p is the slider position; the fill, handle and caret all read from it so they stay locked */
+.ci-slider{--p:22.4%;position:relative;height:30px;margin-top:clamp(18px,2vw,26px);display:flex;align-items:center}
+.ci-track{position:relative;width:100%;height:8px;border-radius:4px;background:rgba(7,43,24,.10)}
+.ci-fill{position:absolute;inset:0 auto 0 0;width:var(--p);border-radius:4px;background:var(--lime-deep);
+  transition:width 1.3s var(--ease)}
+.ci-limit{position:absolute;left:86.9%;top:50%;width:4px;height:28px;margin-left:-2px;border-radius:2px;
+  background:rgba(7,43,24,.28);transform:translateY(-50%)}
+.ci-handle{position:absolute;left:var(--p);top:50%;width:22px;height:22px;border-radius:50%;
+  background:var(--lime-deep);box-shadow:0 0 0 3px #fff;transform:translate(-50%,-50%);
+  transition:left 1.3s var(--ease),transform .18s var(--ease)}
+/* thumb swells while the pointer is holding it, so the drag reads as a grab */
+.ci-slider.grab .ci-handle{transform:translate(-50%,-50%) scale(1.28)}
+.ci-caret{position:absolute;left:var(--p);bottom:calc(50% + 14px);font-size:11px;line-height:1;color:var(--green);
+  transform:translateX(-50%);transition:left 1.3s var(--ease)}
+/* rearming between cycles: the handle must be back at the start with no visible rewind */
+.ci-slider.noanim .ci-fill,.ci-slider.noanim .ci-handle,.ci-slider.noanim .ci-caret{transition:none}
+
+.ci-btn{margin-top:clamp(18px,2vw,26px);display:flex;align-items:center;justify-content:center;gap:8px;
+  height:52px;border-radius:999px;background:var(--green);color:#fff;
+  font-family:var(--sans);font-weight:500;font-size:15px;
+  transition:background .16s var(--ease),color .16s var(--ease),transform .16s var(--ease)}
+.ci-btn svg{width:16px;height:16px}
+.ci-btn.press{background:var(--lime-deep);color:var(--green);transform:scale(.975)}
+
+/* what the supplement is, pinned to the bottom of the panel */
+.ci-info{margin-top:auto;display:flex;align-items:center;gap:10px;
+  background:#F0F7F0;border-radius:10px;padding:12px 14px}
+.ci-i{flex:0 0 auto;width:20px;height:20px;border-radius:50%;border:1px solid var(--green);
+  display:grid;place-items:center;font-family:var(--sans);font-weight:600;font-size:11px;
+  line-height:1;color:var(--green)}
+.ci-note{font-family:var(--sans);font-weight:400;font-size:12px;line-height:18px;color:#404D40}
+
+.clin-cursor{position:absolute;left:0;top:0;z-index:3;width:27px;height:37px;
+  opacity:0;pointer-events:none;filter:drop-shadow(0 4px 9px rgba(7,43,24,.55));
+  transform:var(--ct,translate(0,0));
+  transition:opacity .22s var(--ease),transform .85s var(--ease)}
+.clin-cursor svg{display:block;width:100%;height:100%}
+.clin-cursor.on{opacity:1}
+/* Click tell: a ring pulsing out from the pointer tip. Dark green, not lime — the button
+   underneath goes lime on press, so a lime ring would vanish exactly when it fires. */
+.clin-cursor::after{content:'';position:absolute;left:-17px;top:-17px;width:40px;height:40px;
+  border-radius:50%;border:2.5px solid var(--green);opacity:0;transform:scale(.3)}
+.clin-cursor.tap::after{animation:ciTap .55s var(--ease)}
+@keyframes ciTap{0%{opacity:.95;transform:scale(.3)}70%{opacity:.5}100%{opacity:0;transform:scale(1.5)}}
+
+@media(prefers-reduced-motion:reduce){
+  .clin-insp,.clin-cursor,.fc-slot>.fc-clip,.fcard{transition:none}
+  .ci-badge.pulse{animation:none}
+}
+
+/* ============ 6. CONNECT ============ */
+.conn{background:#fff}
+/* the shared .sec-head cap is 20ch (686px at 1440) but this heading needs 772px on one line and
+   has 1087px of room; 15.2em clears it at every width from 1025 up and still lets it wrap on
+   mobile, where the container is narrower than the cap */
+.conn .sec-head h2{max-width:15.2em}
+/* two lines rather than the three the shared 20ch cap gives at the new heading size */
+.clin .sec-head h2{max-width:14em}
+/* the carousel and its dots are mobile only; above 720 the three cards are a plain grid */
+.conn-dots{display:none}
+.conn-dot{position:relative;width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(7,43,24,.18);cursor:pointer;transition:background .3s var(--ease),transform .3s var(--ease)}
+.conn-dot[aria-current="true"]{background:var(--green);transform:scale(1.25)}
+.conn-dot:focus-visible{outline:2.5px solid var(--green);outline-offset:3px}
+/* an 8px dot inside a 44px touch target */
+.conn-dot::before{content:"";position:absolute;inset:-18px}
+.conn-grid{margin-top:clamp(48px,5vw,84px);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,1.8vw,28px);align-items:stretch}
+/* min-width:0 or the grid item keeps its auto minimum and .chip's nowrap min-content widens the
+   column. the resting shadow is the house card elevation, shared with .fcard and .clin-insp:
+   these were the only cards on the page sitting flat. */
+.ccard{background:#fff;border:1px solid rgba(7,43,24,.08);border-radius:22px;padding:clamp(24px,2.2vw,32px);display:flex;flex-direction:column;min-width:0;box-shadow:0 22px 64px -26px rgba(7,43,24,.3);transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
+.ccard:hover{transform:translateY(-2px);border-color:rgba(7,43,24,.12);box-shadow:0 28px 72px -26px rgba(7,43,24,.38)}
+/* route icon beside the badge: same tile material as .badge itself (mineral + the house
+   hairline), so it reads as page furniture rather than a new device */
+.chead{display:flex;align-items:center;gap:12px}
+.cicon{flex:0 0 auto;width:40px;height:40px;border-radius:12px;background:var(--mineral);border:1px solid rgba(7,43,24,.08);display:grid;place-items:center;color:var(--green-soft)}
+.cicon svg{width:20px;height:20px}
+.ccard.dark .cicon{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:#fff}
+.ccard h3{margin-top:18px;font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,1.7vw,1.875rem);line-height:1.15;letter-spacing:-.006em;color:#1a1a1a}
+.csteps{margin-top:20px;list-style:none;counter-reset:cstep;display:flex;flex-direction:column;gap:15px}
+.csteps li{counter-increment:cstep;display:flex;gap:10px;font-size:clamp(1rem,1.15vw,1.25rem);line-height:1.35;color:#666}
+.csteps li::before{content:counter(cstep);flex:0 0 auto;width:22px;height:22px;border-radius:7px;display:grid;place-items:center;background:var(--mineral);border:1px solid rgba(7,43,24,.08);font-family:var(--sans);font-weight:500;font-size:12px;line-height:1;color:var(--green-soft)}
+.ccard.dark .csteps li::before{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);color:#fff}
+.ctick{margin-top:auto;padding-top:18px;display:flex;align-items:flex-start;gap:10px;font-size:clamp(1rem,1.15vw,1.25rem);line-height:1.35;color:#1a1a1a;font-weight:500}
+.ctick svg{width:16px;height:16px;flex:0 0 auto;margin-top:2px;color:var(--lime-cta)}
+/* cards 1 and 2 carry a block in the slot card 3 gives to its code chip, so all three terminate
+   the same way and the empty band above the tick line goes */
+.cnote{margin-top:20px;display:flex;align-items:flex-start;gap:11px;background:var(--mineral);border:1px solid rgba(7,43,24,.08);border-radius:14px;padding:14px 16px;font-size:13.5px;line-height:1.45;color:#666}
+.cnote svg{width:17px;height:17px;flex:0 0 auto;margin-top:2px;color:var(--green-soft)}
+.cnote b{display:block;font-weight:500;color:#1a1a1a}
+/* the rule sits above the footer, not above the tick: .cfoot is one line on every card at every
+   width, so the hairline registers across all three regardless of how many lines the tick wraps to
+   (card 3's runs to three at 1440 where cards 1 and 2 run to two). colour was #8a938a, which
+   failed AA on white at 3.17:1 */
+.cfoot{margin-top:14px;padding-top:14px;border-top:1px solid rgba(7,43,24,.08);font-size:12.5px;color:#6b736b}
+.ccard.dark{background:var(--green);border-color:rgba(255,255,255,.10);box-shadow:0 30px 70px -40px rgba(7,43,24,.5)}
+.ccard.dark:hover{border-color:rgba(255,255,255,.16);box-shadow:0 36px 80px -40px rgba(7,43,24,.58)}
+.ccard.dark h3{color:#fff}
+.ccard.dark .csteps li,.ccard.dark .csteps li::before{color:var(--ink-60)}
+.ccard.dark .ctick{color:#fff}
+.ccard.dark .cfoot{border-top-color:rgba(255,255,255,.14);color:rgba(255,255,255,.6)}
+.chip{margin-top:20px;background:#0b1f14;color:rgba(255,255,255,.9);border-radius:14px;padding:16px 18px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.5;overflow-x:auto}
+.chip-p{display:block;white-space:nowrap}
+.chip b{color:var(--lime);font-weight:400}
+
+/* ============ 7. REVENUE ============ */
+.rev-wrap{background:#fff;padding-top:0}
+.rev{position:relative;overflow:hidden;isolation:isolate;background:var(--green);border-radius:clamp(20px,2.2vw,30px);padding:clamp(30px,4vw,66px);
+  display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,4vw,64px);align-items:center;box-shadow:0 30px 70px -40px rgba(7,43,24,.5)}
+.rev::before{content:"";position:absolute;inset:0;z-index:-2;background:url(assets/rev-bg-v1.webp) 50% 50%/cover no-repeat;opacity:.5}
+.rev::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(7,43,24,.92) 0%,rgba(7,43,24,.82) 60%,rgba(7,43,24,.7) 100%)}
+.rev-num{font-family:var(--serif);font-weight:500;font-size:clamp(5rem,13vw,10.5rem);line-height:.86;color:var(--lime);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.rev-rrp{margin-top:clamp(10px,1vw,15px);font-family:var(--sans);font-weight:500;font-size:clamp(1rem,1.12vw,1.15rem);color:rgba(255,255,255,.62);letter-spacing:.01em}
+.rev-big{margin-top:clamp(22px,2.4vw,34px);font-family:var(--serif);font-weight:500;font-size:clamp(2.1rem,3.4vw,56px);line-height:1.1;letter-spacing:-.01em;color:#fff}
+.rev-body{margin-top:16px;font-size:clamp(1rem,1.28vw,20px);color:rgba(255,255,255,.82);line-height:1.5;max-width:48ch}
+.calc{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:24px;padding:clamp(22px,2.2vw,30px);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.calc-top{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.calc-label{font-size:14.5px;color:var(--ink-60)}
+.calc-num{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,2.4vw,2.1rem);line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+#calc-subs{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;margin:18px 0 4px;cursor:pointer}
+#calc-subs::-webkit-slider-runnable-track{height:4px;border-radius:999px;background:rgba(255,255,255,.18)}
+#calc-subs::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:28px;height:28px;border-radius:999px;background:var(--lime-cta);border:0;box-shadow:0 4px 14px -4px rgba(0,0,0,.5);cursor:grab;margin-top:-12px}
+#calc-subs::-moz-range-track{height:4px;border-radius:999px;background:rgba(255,255,255,.18)}
+#calc-subs::-moz-range-thumb{width:28px;height:28px;border-radius:999px;background:var(--lime-cta);border:0;box-shadow:0 4px 14px -4px rgba(0,0,0,.5);cursor:grab}
+#calc-subs:focus-visible{outline:2.5px solid var(--lime-cta);outline-offset:3px}
+.calc-outs{margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.calc-out .eyebrow{font-size:11.5px;color:var(--ink-60);display:block;min-height:2.6em}
+.calc-out output{display:block;margin-top:8px;font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.4vw,3.1rem);line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+.calc-note{margin-top:20px;font-size:12.5px;color:var(--ink-60);line-height:1.45}
+.no-js #calc-subs{display:none}
+.no-js .calc-nojs{display:block}
+.calc-nojs{display:none;margin-top:18px;font-size:13px;color:var(--ink-60)}
+
+/* ============ 8. INGREDIENTS ============ */
+/* card design, marquee and modal are ported verbatim from the D2C page so the two sites show the
+   same component; only the layout frame and the CTA differ, because this page books calls rather
+   than collecting waiting-list emails. */
+.ing{background:var(--mineral)}
+.ing-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,53%);gap:clamp(30px,4.5vw,72px);align-items:center}
+.comp-label{font-family:var(--sans);font-weight:400;color:#666;font-size:clamp(15px,1.15vw,18px)}
+.comp-title{margin-top:16px;font-family:var(--serif);font-weight:500;color:#1a1a1a;
+  font-size:clamp(2.1rem,3.4vw,56px);line-height:1.1;letter-spacing:-.012em}
+.comp-desc{margin-top:18px;font-family:var(--sans);font-weight:400;color:#666;font-size:clamp(1rem,1.28vw,20px);line-height:1.5;max-width:600px}
+.comp-points{margin-top:clamp(26px,3vw,40px);list-style:none;display:flex;flex-direction:column;gap:12px}
+.comp-points li{position:relative;padding-left:18px;font-family:var(--sans);font-weight:400;color:#666;font-size:clamp(.95rem,1.05vw,18px);line-height:1.35}
+.comp-points li::before{content:"";position:absolute;left:0;top:.6em;width:4px;height:4px;border-radius:50%;background:#666}
+.cta-row{display:flex;align-items:center;gap:clamp(16px,2vw,26px);flex-wrap:wrap;margin-top:clamp(30px,3.2vw,46px)}
+.comp-cta{display:inline-flex;align-items:center;gap:8px;background:#1a1a1a;color:#fff;text-decoration:none;
+  padding:13px 26px;border-radius:999px;font-family:var(--sans);font-weight:600;font-size:15px;
+  white-space:nowrap;transition:background .18s var(--ease),transform .18s var(--ease)}
+.comp-cta svg{transition:transform .22s var(--ease)}
+.comp-cta:hover{background:#333}
+.comp-cta:hover svg{transform:translateX(3px)}
+.comp-cta:focus-visible{outline:3px solid #1a1a1a;outline-offset:3px}
+.ing-link{background:none;border:0;padding:4px 2px;cursor:pointer;font-family:var(--sans);font-weight:500;
+  font-size:clamp(14px,1.05vw,16px);color:#1a1a1a;text-decoration:underline;text-underline-offset:4px;
+  text-decoration-thickness:1.5px;text-decoration-color:rgba(26,26,26,.35);
+  transition:text-decoration-color .18s var(--ease),color .18s var(--ease)}
+.ing-link:hover{text-decoration-color:#1a1a1a}
+.ing-link:focus-visible{outline:2.5px solid #1a1a1a;outline-offset:3px;border-radius:3px}
+.ing-note{margin-top:clamp(12px,1.4vw,16px);font-family:var(--sans);font-weight:400;font-size:clamp(.9rem,1.05vw,1rem);color:#8a8a8a;letter-spacing:.005em}
+.comp-media{position:relative;aspect-ratio:1;border-radius:clamp(20px,1.9vw,26px);overflow:hidden;background:#e8e6e0;box-shadow:0 22px 64px -26px rgba(7,43,24,.3)}
+/* the asset is pre-cropped from the 4096px master (source x[1700,3320] y[0,1620]), which is above
+   the sqnc wordmark, so no scale or object-position gymnastics are needed here. a square box with
+   object-fit:cover has no vertical overflow to pan, which is why the old approach needed scale. */
+.comp-bike{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+/* card track uses per-card margin (no gap / no vertical padding) so translateY(-50%) loops seamlessly */
+.comp-cards{position:absolute;left:44%;right:0;top:0;display:flex;flex-direction:column;padding:0 16px 0 0;animation:compscroll 48s linear infinite;will-change:transform}
+.comp-media:hover .comp-cards{animation-play-state:paused}
+@keyframes compscroll{to{transform:translateY(-50%)}}
+@media(prefers-reduced-motion:reduce){.comp-cards{animation:none}}
+.ing-card{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;margin-bottom:16px;border-radius:22px;
+  background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);
+  border:1px solid rgba(255,255,255,.55);box-shadow:0 14px 40px -18px rgba(0,0,0,.22)}
+.ing-info{min-width:0}
+.ing-title{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin:0}
+.ing-name{font-family:var(--serif);font-weight:500;color:#375443;font-size:clamp(18px,1.7vw,25px);line-height:1.05}
+/* line-height:normal here and on the tags: body{line-height:1.5} was inflating every card ~11px */
+.ing-dose{font-family:var(--sans);font-weight:500;color:#304d3c;opacity:.5;font-size:clamp(12px,1vw,15px);line-height:normal}
+.ing-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ing-tags span{background:#f4f4f2;color:#494845;padding:6px 12px;border-radius:999px;font-family:var(--sans);font-weight:500;font-size:clamp(11px,.85vw,13px);white-space:nowrap;line-height:normal}
+.ing-spark{flex-shrink:0;width:clamp(112px,9.2vw,146px);height:auto}
+/* the 29-ingredient list, in a native <dialog> so ESC, focus trap and backdrop come free */
+.ing-modal{position:fixed;inset:0;margin:auto;border:0;padding:0;border-radius:22px;width:min(780px,94vw);max-width:94vw;
+  height:fit-content;max-height:88svh;background:#fff;color:#1a1a1a;box-shadow:0 40px 120px -30px rgba(7,43,24,.55);overflow:hidden}
+.ing-modal::backdrop{background:rgba(7,20,12,.55);backdrop-filter:blur(3px)}
+.ing-modal[open]{display:flex;flex-direction:column;animation:ingIn .28s var(--ease)}
+@keyframes ingIn{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
+.ing-modal-head{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;
+  padding:clamp(22px,3vw,32px) clamp(20px,3vw,34px) clamp(15px,2vw,20px);border-bottom:1px solid #eef1ec}
+.ing-modal-eyebrow{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#6c8a76}
+.ing-modal-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.6vw,30px);color:#072B18;margin:5px 0 0;line-height:1.1}
+.ing-modal-sub{font-family:var(--sans);font-weight:400;font-size:clamp(13px,1.05vw,15px);color:#5a625a;margin:8px 0 0;max-width:52ch;line-height:1.45}
+.ing-modal-x{flex:0 0 auto;width:38px;height:38px;border:0;border-radius:50%;background:#f1f4ee;color:#3a463c;
+  font-size:24px;line-height:1;cursor:pointer;transition:background .18s var(--ease)}
+.ing-modal-x:hover{background:#e2e8dc}
+.ing-modal-x:focus-visible{outline:2.5px solid #072B18;outline-offset:2px}
+.ing-modal-body{overflow-y:auto;padding:clamp(18px,2.4vw,26px) clamp(20px,3vw,34px) clamp(24px,3vw,32px)}
+.ing-n{color:#aab3a6;font-variant-numeric:tabular-nums;width:30px}
+.ing-nm{font-weight:500;color:#1a1a1a}
+.ing-rt{color:#5a625a}
+.ing-ds{font-weight:600;color:#072B18;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ing-modal-foot{margin:18px 0 0;font-family:var(--sans);font-size:12px;color:#6b736b;line-height:1.5}
+
+/* ============ 9. COMPARISON ============ */
+.cmp{background:#fff}
+/* the shared 20ch cap gives 682px at 1440 but this heading needs 1013.5px on one line and has
+   1087.2px of room. 20.5em, not 19.3em: Georgia is the font-display:swap fallback and sets it
+   wider, so a tighter cap wraps during the swap flash. */
+.cmp .sec-head h2{max-width:20.5em}
+.cmp-table{margin-top:clamp(40px,4vw,60px);border-radius:14px}
+.cmp-row{display:grid;grid-template-columns:28% 24% 24% 24%;align-items:center;min-height:clamp(64px,6vw,88px);border-radius:11px}
+.cmp-head{min-height:clamp(70px,6vw,100px)}
+.cmp-c{display:flex;align-items:center;justify-content:center;padding:12px 14px;text-align:center}
+.cmp-row .cmp-c:first-child{justify-content:flex-start;text-align:left}
+.cmp-feat{font-size:clamp(.95rem,1.05vw,1.05rem);color:#1a1a1a;line-height:1.35}
+.cmp-strong{font-weight:500}
+.cmp-body{position:relative}
+.cmp-body .cmp-row:nth-child(odd){background:#f7f7f7}
+.cmp-logo-lg{height:clamp(13px,1.25vw,18px);width:auto;display:block}
+.cmp-brand{height:clamp(30px,3vw,46px);width:auto;display:block}
+.cmp-cat{font-family:var(--sans);font-weight:600;font-size:clamp(11.5px,1.05vw,14px);letter-spacing:.06em;text-transform:uppercase;color:#1a1a1a;line-height:1.25}
+.cmp-txt{font-family:var(--sans);font-weight:400;font-size:clamp(.85rem,.95vw,.98rem);color:#666;line-height:1.3}
+.cmp-ico{width:clamp(20px,1.9vw,26px);height:clamp(20px,1.9vw,26px);display:block;flex:0 0 auto}
+.cmp-highlight{position:absolute;top:0;bottom:0;left:28%;width:24%;border:2px solid #ff5f2e;border-radius:10px;pointer-events:none}
+.cmp-toggle{display:none;margin-top:26px;gap:6px;background:var(--mineral);border:1px solid rgba(7,43,24,.08);border-radius:999px;padding:5px;width:max-content}
+.cmp-tog{border:0;background:transparent;font-family:var(--sans);font-weight:500;font-size:14.5px;color:#666;padding:11px 20px;min-height:44px;border-radius:999px;cursor:pointer;transition:background .18s var(--ease),color .18s var(--ease)}
+.cmp-tog.on{background:#fff;color:#1a1a1a;box-shadow:0 12px 34px -16px rgba(7,43,24,.22)}
+.cmp-tog:focus-visible{outline:2.5px solid var(--green);outline-offset:3px}
+
+/* ============ 10. FINAL CTA ============ */
+/* photo left, green panel right, echoing the D2C .cta2. the photo half reuses the hero's own
+   backdrop and the same co-branded pack and bottle, so the page closes on the picture it opened
+   with: the partner's name on the product. */
+/* padding:0 overrides the global section padding: the photo half has to bleed to the edges */
+.close{display:flex;align-items:stretch;min-height:clamp(480px,50vw,760px);padding:0;background:var(--green)}
+/* 44/56 rather than 50/50: the closing headline needs 742px for two lines and a half panel only
+   offered 576px at 1440 */
+.close-media{position:relative;flex:0 0 44%;overflow:hidden;isolation:isolate;background:var(--green)}
+.close-media::before{content:"";position:absolute;inset:0;z-index:-2;background:url(assets/b2b-hero-alcove-v1.webp) center/cover no-repeat;transform:scale(1.04)}
+.close-media::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,43,24,.42) 0%,rgba(7,43,24,.24) 45%,rgba(7,43,24,.58) 100%)}
+/* the figures share the hero's livery classes, so the cqw-driven "Your brand" and "Powered by
+   SEQUENCE" text scales with whatever width the stage gets */
+.close-figs{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(84%,400px)}
+.close-pack{width:74%;margin-left:auto;margin-right:-4%}
+.close-bottle{position:absolute;left:2%;bottom:-3%;width:31%;z-index:2;filter:drop-shadow(0 24px 44px rgba(0,0,0,.42))}
+.close-panel{flex:1 1 56%;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+  padding:clamp(44px,5vw,88px) clamp(28px,4vw,72px)}
+/* sized so the sentence sets in two lines from 1024 up; the panel width is the cap, not an em value.
+   this rule is outside the D2C parity set, so trimming it does not disturb that work. */
+.close-panel h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.85rem,2.95vw,2.9rem);line-height:1.06;letter-spacing:-.014em;color:#fff}
+/* .close-lead, not `.close p`: the pack and bottle livery are <p> elements too, and a bare
+   descendant selector beat their cqw font-sizes and flattened them all to 18px */
+.close-lead{margin-top:clamp(16px,1.8vw,24px);color:rgba(255,255,255,.82);font-size:clamp(1.02rem,1.25vw,1.2rem);line-height:1.5;max-width:44ch}
+.close-mark{display:flex;align-items:center;gap:10px;margin-top:clamp(26px,3vw,38px);
+  font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.close-mark img{height:15px;width:auto;opacity:.92}
+.close .btn{margin-top:clamp(20px,2.2vw,28px);background:var(--lime-cta);color:var(--green);font-weight:600;font-size:15px;padding:13px 26px}
 .close .btn:hover{background:var(--lime);color:var(--green)}
+.close .field-alt{margin-top:16px;font-size:14px;color:rgba(255,255,255,.62)}
+.close .field-alt a{color:#fff;text-decoration:underline;text-underline-offset:3px}
 
-/* footer */
+/* ============ 11. FOOTER ============ */
 footer{background:#fff;border-top:1px solid rgba(7,43,24,.08);padding:40px 0}
-.foot-in{display:flex;justify-content:space-between;align-items:center;gap:18px 30px;flex-wrap:wrap;font-size:14px;color:#6c6c6c}
-.foot-in img{height:18px;width:auto}
-.foot-in a{color:var(--green-soft)}.foot-in a:hover{color:var(--green)}
+/* the footer takes the same rail gutter as every content section so its row ends on the same line
+   as the columns above it. It has to sit AFTER the base rule above: both are (0,0,1), so the one
+   declared later wins, and the earlier gutter list was silently losing its padding-right. */
+@media(min-width:1200px){footer{padding-right:clamp(190px,17vw,290px)}}
+/* mirrors the D2C footer (index.html .foot / .foot-row): the mark sits on its own row and each row
+   below holds exactly TWO items, so space-between pins one left and one right. three items in one
+   space-between row left the middle one floating wherever the free space fell. */
+.foot-in{display:flex;flex-direction:column;gap:26px;font-size:14px;color:#6c6c6c}
+.foot-in .mark img{height:22px;width:auto;display:block}
+.foot-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.foot-in a{color:var(--green-soft)}
+.foot-in a:hover{color:var(--green)}
+.foot-in a:focus-visible{outline:2.5px solid var(--green);outline-offset:3px}
 
-@media(max-width:860px){
-  .flow{grid-template-columns:repeat(2,1fr);gap:34px 22px}
-  .step:not(:last-child)::after{display:none}
-  .rev{grid-template-columns:1fr;gap:8px;text-align:left}
-  .rev-num{font-size:clamp(4.5rem,26vw,7rem)}
+/* ---------- TABLET ---------- */
+@media(max-width:1024px){
+  /* iPad width and below is touch, so hit areas need 44px here too, not just at 720.
+     gap restores the space before the arrow, which inline-flex would otherwise collapse. */
+  .nav-logo,.nav-cta,.nav-links a,.field-alt a,.floatnav-cta{display:inline-flex;align-items:center;min-height:44px}
+  .nav-cta{gap:.3em}
+  /* hero holds the full viewport so the credibility logos only appear once scrolled */
+  .hero{min-height:100svh}
+  /* nav floats over the photo now, so content starts below its ~72px height */
+  .hero-in{padding:clamp(96px,13vw,124px) 0 clamp(26px,5vw,44px)}
+  .hero-copy{max-width:100%}
+  html.static .hero{min-height:100svh!important}
+  .loop-grid{grid-template-columns:repeat(2,1fr);row-gap:clamp(26px,3.4vw,40px)}
+  .ben-grid{grid-template-columns:repeat(2,1fr)}
+  .clin-card{grid-template-columns:1fr}
+  /* mobile: the three routes become a swipeable, auto-advancing carousel. the grid bleeds to the
+     viewport edges so a card sits near full-width with the next one peeking. */
+  /* --gut is the wrap's own gutter. scroll-padding is load-bearing: without it the snap aligns the
+     card to the raw scrollport, which cancels the padding and parks the card on the viewport edge
+     while the heading sits at the gutter. */
+  .conn-grid{--gut:clamp(20px,4vw,60px);display:flex;grid-template-columns:none;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;
+    margin-inline:calc(var(--gut) * -1);padding-inline:var(--gut);scroll-padding-inline:var(--gut)}
+  .conn-grid::-webkit-scrollbar{display:none}
+  .ccard{flex:0 0 90%;scroll-snap-align:start}
+  /* progress tags rather than dots: each is a track (::before) with a fill (::after) that runs
+     across it over one autoplay interval, then the carousel advances. the button stays a 44px
+     touch target because the original 8px dots had overlapping hit areas that fired the wrong
+     slide. --conn-dot-ms is set from JS so the fill and the timer cannot drift apart. */
+  .conn-dots{display:flex;justify-content:center;gap:4px;margin-top:22px}
+  .conn-dot{position:relative;width:52px;height:44px;padding:0;background:none;border:0;border-radius:0;transform:none;cursor:pointer}
+  .conn-dot::before,.conn-dot::after{content:"";position:absolute;left:4px;right:4px;top:50%;height:4px;margin-top:-2px;border-radius:999px}
+  .conn-dot::before{background:rgba(7,43,24,.16)}
+  .conn-dot::after{background:var(--green);transform:scaleX(0);transform-origin:left center}
+  /* autoplay running on the active tag: the fill sweeps across */
+  .conn-dot.run::after{animation:conn-fill var(--conn-dot-ms,6000ms) linear forwards}
+  /* the base rule .conn-dot[aria-current="true"]{background:var(--green);transform:scale(1.25)} is
+     (0,2,0) and outranks the (0,1,0) .conn-dot above, so without this the active BUTTON paints a
+     solid green 65x55 block over the bar */
+  .conn-dot[aria-current="true"]{background:none;transform:none}
+  /* autoplay stopped, or the user has taken over: the active tag just reads as full */
+  .conn-dot[aria-current="true"]:not(.run)::after{transform:scaleX(1)}
+  @keyframes conn-fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @media(prefers-reduced-motion:reduce){
+    .conn-dot.run::after{animation:none;transform:scaleX(1)}
+  }
+  .conn-dot:focus-visible{outline:none}
+  .conn-dot:focus-visible::before{outline:2.5px solid var(--green);outline-offset:4px}
+  .ing-link{min-height:44px;display:inline-flex;align-items:center;padding:4px 2px}
+  html.static .conn-grid{scroll-behavior:auto}
+  /* minmax(0,1fr): plain 1fr keeps an auto min of min-content (330px from the £ figure), which
+     is what pushed the calculator past the card edge at 430 and below */
+  .rev{grid-template-columns:minmax(0,1fr)}
+  .ing-grid{grid-template-columns:1fr}
+  .ing-dose{font-size:11.5px}
+  .comp-media{order:-1;width:100%;max-width:500px;margin:0 auto}
+  .comp-text{max-width:none}
+  .comp-cards{left:auto;right:0;width:69%;padding:0 10px 0 0}
+  .ing-card{padding:13px 15px;gap:9px}
+  .ing-name{font-size:15px;line-height:1.1}
+  .ing-tags{margin-top:9px;gap:6px}
+  .ing-tags span{font-size:11px;padding:5px 10px}
+  .ing-spark{width:54px}
+  .cmp-c{padding:12px 10px}
 }
-@media(max-width:600px){
-  .btn{padding:12px 20px;font-size:.85rem;gap:8px}
-  .btn svg{width:15px;height:15px}
+@media(max-width:920px){
+  .cmp-row{grid-template-columns:38% 31% 31%}
+  .cmp-highlight{left:38%;width:31%}
+  .cmp-toggle{display:inline-flex}
+  .cmp-table[data-comp="bio"] .cmp-cap{display:none}
+  .cmp-table[data-comp="cap"] .cmp-bio{display:none}
 }
-@media(max-width:500px){
-  .flow{grid-template-columns:1fr;gap:30px}
-  .nav-back{display:none}
+
+/* ---------- MOBILE ---------- */
+@media(max-width:720px){
+  /* pull the products past the hero's edge so their bottoms crop against it, the way
+     they do on desktop. .hero{overflow:hidden} does the cutting. The lockups keep the
+     desktop line; the pack's moves from the corner to centre. */
+  /* max capped at 56px: any deeper and the pack's POWERED BY lockup touches the cut on 430px phones */
+  .hero-media{margin-bottom:calc(-1 * clamp(50px,14vw,56px))}
+  .pk-powline{right:auto;left:50%;transform:translateX(-50%)}
+  .hero h1{font-size:clamp(30px,8.4vw,42px)}
+  .hero .field{width:100%}
+  /* trimmed like D2C at mobile, but keep 44px touch targets */
+  .field{padding:5px 5px 5px 18px;gap:6px}
+  .field input{font-size:16px;padding:12px 0;min-height:44px}
+  .field .btn{padding:12px 18px;font-size:13.5px;gap:6px;min-height:44px}
+  .field .btn svg{width:15px;height:15px}
+  .cred{padding-top:clamp(62px,18vw,96px);padding-bottom:26px}
+  .social-head{flex-direction:column;gap:10px}
+  .avatar-stack{height:30px}
+  .social-text{font-size:0.9rem;line-height:1.3}
+  .marquee{margin-top:clamp(26px,7vw,40px);height:auto;overflow:visible;-webkit-mask:none;mask:none;max-width:340px;margin-left:auto;margin-right:auto}
+  .marquee-row{position:static;transform:none;animation:none!important;width:100%;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,6vw,32px) clamp(8px,3vw,18px);place-items:center}
+  /* 6 logos in two clean rows of 3: Imperial (7th) is dropped at this width */
+  .marquee-row>.mlogo:nth-child(n+7){display:none}
+  .mlogo{max-height:19px;max-width:70px;opacity:.62}
+  .loop-grid{grid-template-columns:1fr}
+  .lcard-txt p{font-size:16px}
+  /* one card per screen was eating the whole viewport: shorten the visual to 16:9,
+     trim the stack gaps, and keep the chip legible by nudging its type up a little */
+  .ben-grid{row-gap:clamp(26px,7vw,34px)}
+  .ben-item{padding-top:13px}
+  .ben-head{margin-bottom:14px;font-size:1.02rem}
+  .ben-art{aspect-ratio:16/9;border-radius:12px}
+  .ben-chip{width:92%;padding:3.2cqw;gap:3.2cqw;border-radius:3.8cqw}
+  .ben-chip-t{font-size:3.7cqw}
+  .ben-chip-i{width:8cqw;height:8cqw;border-radius:2.2cqw}
+  .ben-chip-i svg{width:4.6cqw;height:4.6cqw}
+  .ben-rev-big{font-size:11.5cqw}
+  .ben-rev-sub{font-size:5.6cqw;margin-top:1.8cqw}
+  .ben-grid{grid-template-columns:1fr;row-gap:34px}
+  .ben-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
+  .ben-tab{padding:13px 10px;font-size:14px;min-height:44px;white-space:nowrap}
+  .clin-card{padding:20px}
+  /* the closing CTA stacks: photo above, panel below, as the D2C .cta2 does at <=920 */
+  .close{flex-direction:column;min-height:0}
+  .close-media{flex:none;width:100%;aspect-ratio:16/12}
+  /* push the pack and bottle below the frame so their "Powered by SEQUENCE" marks land near the
+     bottom edge rather than floating ~35px above it. -8/-6 measured: pack ~10px, bottle ~8px. */
+  .close-figs{bottom:-8%}
+  .close-bottle{bottom:-6%}
+  .close-panel{padding:clamp(34px,8vw,56px) clamp(20px,4vw,40px) clamp(40px,9vw,64px)}
+  .close-panel h2{max-width:none;font-size:clamp(1.85rem,7.4vw,2.4rem)}
+  .close-lead{max-width:none}
+  .calc-outs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .calc-out output{font-size:clamp(20px,6.1vw,40px)}
+  /* visual thumb stays 28px; the input gets a 44px hit area for touch */
+  #calc-subs{height:44px}
+  .cmp-row{min-height:60px}
+  .nav-logo{display:inline-flex;align-items:center;min-height:44px}
+  .foot-in a{display:inline-flex;align-items:center;min-height:44px}
+  .field-alt a{display:inline-flex;align-items:center;min-height:44px}
+  .csteps{gap:13px}
+  .mstep{display:flex;align-items:center;gap:14px;position:fixed;top:0;left:0;right:0;z-index:50;
+    background:#fff;height:52px;padding:0 20px;border-bottom:1px solid rgba(7,20,12,.08);
+    transform:translateY(-100%);transition:transform .35s var(--ease)}
+  .mstep.show{transform:translateY(0)}
+  .mstep-tick{flex-shrink:0;width:2px;height:16px;border-radius:2px;background:#b3b3b3}
+  .mstep-list{display:flex;gap:16px;align-items:baseline;margin:0;padding:0;list-style:none;
+    font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.02em;white-space:nowrap}
+  .mstep-item{display:flex;gap:10px;align-items:baseline;color:#6b6b6b}
+  .mstep-l{display:none}
+  .mstep-item.on{color:#1a1a1a}
+  .mstep-item.on .mstep-l{display:inline}
+  .ccard h3{font-size:clamp(1.35rem,6vw,1.72rem)}
+  .cicon{width:34px;height:34px;border-radius:10px}
+  .cicon svg{width:17px;height:17px}
+  .chead{gap:10px}
+  .cnote{margin-top:16px;padding:12px 14px;font-size:13px}
+  /* section 08, matching the D2C page's <=720 treatment */
+  .comp-cta{white-space:normal;justify-content:center;padding:14px 24px;align-self:stretch;display:flex;width:100%}
 }
-/* mobile landscape: short viewport - compact the hero so headline + lead + CTA fit without a wall of text jammed at the top */
-@media(max-width:920px) and (max-height:560px) and (orientation:landscape){
-  .hero{padding:clamp(30px,7vh,48px) 0 clamp(28px,6vh,44px)}
-  .hero h1{margin-top:12px;font-size:clamp(1.7rem,4vw,2.3rem);max-width:22ch}
-  .hero .lead{margin-top:14px;font-size:clamp(1rem,1.5vw,1.18rem)}
-  .hero .btn{margin-top:18px}
-  section{padding:clamp(40px,7vw,72px) 0}
+@media(max-width:520px){
+  /* the longer submit label pins the field's min-content right edge at 476.8px, so below 520 the
+     pill stacks rather than escaping the gutter */
+  .hero .field{flex-direction:column;align-items:stretch;gap:10px;border-radius:24px;padding:10px}
+  /* :not(.hp) or this rule (0,2,1) outranks .field .hp (0,2,0) and un-hides the honeypot */
+  .hero .field input:not(.hp){width:100%;padding:12px 16px;min-height:44px}
+  .hero .field .btn{width:100%;justify-content:center;white-space:normal;min-height:48px}
+  .cmp-row{grid-template-columns:38% 31% 31%}
+  .cmp-highlight{left:38%;width:31%}
+  .cmp-feat{font-size:.9rem}
+}
+@media(max-width:560px){
+  .ing-modal{max-height:92svh;border-radius:18px}
+}
+@media(max-width:364px){
+  /* seven stepper items need 286px against a 280px budget at 320; 11px gaps bring it to ~256px */
+  .mstep-list{gap:11px}
+  .mstep-item{gap:8px}
+  /* .cmp-toggle is width:max-content and its right edge was pinned past the screen below 344px */
+  .cmp-toggle{max-width:100%}
+  .cmp-tog{padding:11px 8px;font-size:14.5px;min-height:44px;white-space:nowrap}
+}
+@media(max-width:400px){
+  /* below 400 the two output cells cannot hold the six-figure income at any readable size, so they
+     stack; 400 not 360, because at 360 the figure still spills its cell at the slider maximum */
+  .calc-outs{grid-template-columns:minmax(0,1fr);gap:16px}
+  .calc-out .eyebrow{min-height:0}
+  .ben-tab .full{display:none}
+  .ben-tab .short{display:inline}
+}
+/* mobile landscape */
+@media(max-width:1024px) and (max-height:560px) and (orientation:landscape){
+  .hero{min-height:auto}
+  html.static .hero{min-height:auto!important}
+  /* top padding clears the ~72px overlay nav even in short landscape viewports */
+  .hero-in{padding:clamp(88px,12vw,104px) 0 clamp(28px,5vw,44px)}
+  .hero h1{font-size:clamp(26px,5.2vw,34px)}
+  section{padding:clamp(34px,4.5vw,62px) 0}
+  .close{padding:clamp(34px,4.5vw,62px) 0}
 }
 </style>
 </head>
 <body>
-
-<nav class="nav">
-  <div class="nav-in">
-    <a class="nav-logo" href="/" aria-label="SEQUENCE home"><img src="assets/SEQUENCE_GREEN.svg" alt="SEQUENCE" width="181" height="27"></a>
-    <div class="nav-r">
-      <a class="nav-back" href="/">For customers</a>
-      <a class="nav-cta" href="https://sqnc.cal.com/sequence/sqnc-b2b-partnership-intro" target="_blank" rel="noopener noreferrer">Book a call &rarr;</a>
-    </div>
-  </div>
-</nav>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="floatnav" aria-hidden="true">
-  <a class="floatnav-logo" href="/" aria-label="SEQUENCE home" tabindex="-1"><img src="assets/SEQUENCE_GREEN.svg" alt="" width="181" height="27"></a>
-  <a class="floatnav-back" href="/" tabindex="-1">For customers</a>
-  <a class="floatnav-cta" href="https://sqnc.cal.com/sequence/sqnc-b2b-partnership-intro" target="_blank" rel="noopener noreferrer" tabindex="-1">Book a call &rarr;</a>
+  <a class="floatnav-logo" href="#hero" tabindex="-1"><img src="assets/SEQUENCE_GREEN.svg" alt="" width="181" height="27"></a>
+  <div class="floatnav-links">
+    <a href="#loop" tabindex="-1">How it works</a>
+    <a href="#connect" tabindex="-1">Integration</a>
+    <a href="#revenue" tabindex="-1">Revenue</a>
+  </div>
+  <a class="floatnav-cta" href="https://sqnc.cal.com/sequence/sqnc-b2b-partnership-intro" target="_blank" rel="noopener" tabindex="-1">Book a call &rarr;</a>
 </nav>
 
-<header class="hero">
-  <div class="wrap">
-    <p class="eyebrow">SEQUENCE API - For partners</p>
-    <h1>Offer the most personalised supplement, inside your platform.</h1>
-    <p class="lead">Your customers order a supplement built from their blood and wearable data, without ever leaving your site. You earn a 20% recurring revenue share, every month.</p>
-    <a class="btn" href="https://sqnc.cal.com/sequence/sqnc-b2b-partnership-intro" target="_blank" rel="noopener noreferrer">Book a call with the founders to learn more
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg></a>
-    <p class="cta-alt">Or email us: <a href="mailto:b2b@drinksequence.co.uk">b2b@drinksequence.co.uk</a></p>
+<!-- ============ 1. HERO ============ -->
+<header class="hero" id="hero" data-sec="01">
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-in">
+      <a class="nav-logo" href="/" aria-label="SEQUENCE home"><img src="assets/SEQUENCE_GREEN.svg" alt="SEQUENCE" width="181" height="27"></a>
+      <div class="nav-r">
+        <div class="nav-links">
+          <a href="#loop">How it works</a>
+          <a href="#connect">Integration</a>
+          <a href="#revenue">Revenue</a>
+        </div>
+        <a class="nav-cta" href="/"><span class="nav-cta-long">For direct customers</span><span class="nav-cta-short">For customers</span> &rarr;</a>
+      </div>
+    </div>
+  </nav>
+  <div class="hero-in">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">SEQUENCE - For partners</p>
+        <h1>Personalised supplement for every customer. <span class="h1-nobr">With your branding.</span></h1>
+        <p class="lead">Formulated based on blood and wearable data, inside your product.<br class="brk-md">Manufactured in the UK from the highest quality ingredients.</p>
+        <form class="field" id="b2b-lead" novalidate>
+          <input type="email" id="hero-email" name="email" required aria-label="Work email" autocomplete="email" inputmode="email" placeholder="Enter your work email">
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" readonly>
+          <button class="btn" type="submit"><span class="cta-txt">Submit your email, we&rsquo;ll be in touch</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg></button>
+        </form>
+        <p class="form-err" role="alert" hidden></p>
+        <p class="joined-pill" hidden>Thanks, we&rsquo;ll be in touch.</p>
+        <p class="field-alt">Or <a href="https://sqnc.cal.com/sequence/sqnc-b2b-partnership-intro" target="_blank" rel="noopener">book a call directly</a></p>
+      </div>
+      <div class="hero-media">
+        <div class="bottle-fig hero-bottle">
+          <img src="assets/b2b-bottle-clean-v2.webp" alt="Supplement bottle shown with placeholder partner branding" width="229" height="699">
+          <p class="bt-brand">Your brand</p>
+          <p class="powline bt-powline">Powered by <img src="assets/SEQUENCE_GREEN.svg" alt="SEQUENCE" width="181" height="27"></p>
+        </div>
+        <div class="pack-fig hero-pack">
+          <img src="assets/b2b-pack-blank-v2.webp" alt="Supplement pouch shown with placeholder partner branding, powered by SEQUENCE" width="734" height="1185">
+          <p class="pk-brand">Your brand</p>
+          <p class="pk-desc"><span>Precisely dosed</span><br>based on your<br>data, Charlotte.</p>
+          <p class="pk-comp">29 components</p>
+          <p class="powline pk-powline">Powered by <img src="assets/SEQUENCE_GREEN.svg" alt="SEQUENCE" width="181" height="27"></p>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 
-<section>
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>One API. Your platform, our supplement.</h2>
-      <p>Plug the SEQUENCE API into your app or site. Customers can order the supplement directly in your platform.</p>
-    </div>
-    <div class="flow">
-      <div class="step"><div class="step-n">1</div>
-        <h3>Ordered in your platform</h3>
-        <p>A customer buys the SEQUENCE supplement from your app, under your own branding and checkout.</p></div>
-      <div class="step"><div class="step-n">2</div>
-        <h3>API call to SEQUENCE</h3>
-        <p>Your platform passes their blood and wearable data to the SEQUENCE API.</p></div>
-      <div class="step"><div class="step-n">3</div>
-        <h3>AI formulates the stack</h3>
-        <p>SEQUENCE builds their personalised formula, precision-dosed to their biomarkers.</p></div>
-      <div class="step"><div class="step-n">4</div>
-        <h3>Shipped in 72h</h3>
-        <p>Daily sachets ship straight to your customer, re-formulated every month.</p></div>
+<main id="main">
+
+<!-- ============ 2. CREDIBILITY ============ -->
+<section class="cred reveal" id="credibility" data-sec="02" aria-label="Credibility">
+  <div class="social-head">
+    <img class="avatar-stack" src="assets/avatar-stack.png" alt="SEQUENCE founders and advisors" width="153" height="39">
+    <p class="social-text">Built by exited health tech founders, advised by executives and PhD scientists from&hellip;</p>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-row" id="mtrack">
+      <img class="mlogo" src="assets/logo-innocent.png" alt="Innocent">
+      <img class="mlogo" src="assets/logo-graze.png" alt="Graze">
+      <img class="mlogo" src="assets/logo-peppy.png" alt="Peppy">
+      <img class="mlogo" src="assets/logo-markerx.png" alt="MarkerX">
+      <img class="mlogo" src="assets/logo-princeton.png" alt="Princeton University">
+      <img class="mlogo" src="assets/logo-oxford.png" alt="University of Oxford">
+      <img class="mlogo" src="assets/logo-imperial.png" alt="Imperial College London">
     </div>
   </div>
 </section>
 
-<section class="rev-wrap">
+<!-- ============ 3. THE LOOP ============ -->
+<section class="loop reveal" id="loop" data-sec="03" aria-labelledby="loop-h">
+  <div class="wrap">
+    <div class="sec-head loop-head">
+      <h2 id="loop-h">Your customers can get the most personalised supplement with your branding.</h2>
+      <p>And you don&rsquo;t need to worry about stocking supplements.</p>
+    </div>
+    <div class="loop-grid">
+
+      <article class="lcard">
+        <div class="lcard-art c1">
+          <img class="c1-photo" src="assets/loop-testing-v1.webp" alt="A clinician reviewing a patient's blood panel on a tablet" width="760" height="943">
+          <span class="lcard-n">1</span>
+          <div class="c1-panel">
+            <span class="c1-ico"><img src="assets/loop-icon-blood-v1.png" alt="" width="96" height="94"></span>
+            <span class="c1-txt"><b>Tests are completed</b><span>Blood, wearables, urine and MRT</span></span>
+            <svg class="c1-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.3l2.7 2.7L16.4 9"/></svg>
+          </div>
+        </div>
+        <div class="lcard-txt">
+          <h3>Your customer completes the testing you offer</h3>
+          <p>Main inputs required are a blood test, wearable data and questionnaire.</p>
+        </div>
+      </article>
+
+      <article class="lcard">
+        <div class="lcard-art c2">
+          <span class="lcard-n">2</span>
+          <p class="c2-top">SEQUENCE AI model</p>
+          <svg class="c2-ring" viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="49.4" fill="none" stroke="var(--lime-deep)" stroke-width="1.1" stroke-linecap="round" stroke-dasharray=".1 3.6"/>
+          </svg>
+          <svg class="c2-arw c2-arw-t" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1.5 10 6 2 10.5Z" fill="var(--lime-deep)"/></svg>
+          <svg class="c2-arw c2-arw-b" viewBox="0 0 12 12" aria-hidden="true"><path d="M10 1.5 2 6l8 4.5Z" fill="var(--lime-deep)"/></svg>
+          <span class="c2-tag c2-tag-l">Health data</span>
+          <span class="c2-tag c2-tag-r">Supplement</span>
+          <p class="c2-mid">Proprietary<br>supplements<br>database</p>
+          <svg class="c2-db" viewBox="0 0 24 24" fill="none" stroke="var(--lime-deep)" stroke-width="1.9" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="8" ry="3.2"/><path d="M4 5.5v6c0 1.8 3.6 3.2 8 3.2s8-1.4 8-3.2v-6"/><path d="M4 11.5v6c0 1.8 3.6 3.2 8 3.2s8-1.4 8-3.2v-6"/></svg>
+          <p class="c2-bot">Re-testing</p>
+        </div>
+        <div class="lcard-txt">
+          <h3>Our algorithm formulates the supplement</h3>
+          <p>Formulation can be customised by your specialists and by the customer.</p>
+        </div>
+      </article>
+
+      <article class="lcard">
+        <div class="lcard-art c3">
+          <span class="lcard-n">3</span>
+          <div class="bottle-fig c3-bottle">
+            <img src="assets/b2b-bottle-clean-v2.webp" alt="Supplement bottle shown with placeholder partner branding" width="229" height="699">
+            <p class="bt-brand">Your brand</p>
+            <p class="powline bt-powline">Powered by <img src="assets/SEQUENCE_GREEN.svg" alt="SEQUENCE" width="181" height="27"></p>
+          </div>
+          <div class="pack-fig c3-pack">
+            <img src="assets/b2b-pack-blank-v2.webp" alt="Supplement pouch shown with placeholder partner branding, powered by SEQUENCE" width="734" height="1185">
+            <p class="pk-brand">Your brand</p>
+            <p class="pk-desc"><span>Precisely dosed</span><br>based on your<br>data, Charlotte.</p>
+            <p class="pk-comp">29 components</p>
+            <p class="powline pk-powline">Powered by <img src="assets/SEQUENCE_GREEN.svg" alt="SEQUENCE" width="181" height="27"></p>
+          </div>
+          <div class="c3-tags" aria-hidden="true">
+            <span>D3</span><span>Rhodiola Rosea</span><span>B12</span><span>Selenium</span>
+            <span>Iron bisglycinate</span><span>B6</span><span>Magnesium</span><span>Zinc</span>
+            <span>Ashwagandha</span><span>Acacia fibre</span><span>K2</span><span>Vitamin C</span>
+            <span>Creatine</span>
+          </div>
+        </div>
+        <div class="lcard-txt">
+          <h3>Personalised supplement ships with your branding</h3>
+          <p>Delivered to the customer in 72h.<br>A daily sachet that you mix into water.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. BENEFITS ============ -->
+<!-- desktop side rail: appears from the benefits section onward, mirrors the D2C pattern -->
+<!-- section stepper (mobile), mirrors the desktop side rail -->
+<div class="mstep" aria-hidden="true">
+  <span class="mstep-tick"></span>
+  <ol class="mstep-list">
+    <li class="mstep-item on" data-for="loop"><span class="mstep-n">01</span><span class="mstep-l">How it works</span></li>
+    <li class="mstep-item" data-for="benefits"><span class="mstep-n">02</span><span class="mstep-l">Why SEQUENCE</span></li>
+    <li class="mstep-item" data-for="clinician"><span class="mstep-n">03</span><span class="mstep-l">Clinician control</span></li>
+    <li class="mstep-item" data-for="connect"><span class="mstep-n">04</span><span class="mstep-l">Integration</span></li>
+    <li class="mstep-item" data-for="revenue"><span class="mstep-n">05</span><span class="mstep-l">Revenue</span></li>
+    <li class="mstep-item" data-for="ingredients"><span class="mstep-n">06</span><span class="mstep-l">Ingredients</span></li>
+    <li class="mstep-item" data-for="comparison"><span class="mstep-n">07</span><span class="mstep-l">Comparison</span></li>
+  </ol>
+</div>
+<nav class="side-menu" aria-hidden="true">
+  <span class="side-menu-item on" data-for="loop"><span class="side-menu-l">How it works</span><span class="side-menu-n">01</span></span>
+  <span class="side-menu-item" data-for="benefits"><span class="side-menu-l">Why SEQUENCE</span><span class="side-menu-n">02</span></span>
+  <span class="side-menu-item" data-for="clinician"><span class="side-menu-l">Clinician control</span><span class="side-menu-n">03</span></span>
+  <span class="side-menu-item" data-for="connect"><span class="side-menu-l">Integration</span><span class="side-menu-n">04</span></span>
+  <span class="side-menu-item" data-for="revenue"><span class="side-menu-l">Revenue</span><span class="side-menu-n">05</span></span>
+  <span class="side-menu-item" data-for="ingredients"><span class="side-menu-l">Ingredients</span><span class="side-menu-n">06</span></span>
+  <span class="side-menu-item" data-for="comparison"><span class="side-menu-l">Comparison</span><span class="side-menu-n">07</span></span>
+</nav>
+
+<section class="ben reveal" id="benefits" data-sec="04" aria-labelledby="ben-h">
+  <div class="wrap">
+    <div class="sec-head ben-head-wrap"><h2 id="ben-h">Increased customer life-time value through integrating your product into their day.</h2></div>
+    <div class="ben-tabs" id="ben-tabs" hidden>
+      <button type="button" class="ben-tab" data-panel="clinics"><span class="full">Longevity clinics</span><span class="short">Clinics</span></button>
+      <button type="button" class="ben-tab" data-panel="platforms"><span class="full">Blood-test platforms</span><span class="short">Blood tests</span></button>
+    </div>
+    <div class="ben-stack">
+
+      <section class="ben-panel" id="ben-clinics" aria-labelledby="ben-clinics-h">
+        <h3 id="ben-clinics-h">For longevity clinics</h3>
+        <div class="ben-grid">
+          <article class="ben-item">
+            <p class="eyebrow-d">Differentiate</p>
+            <p class="ben-head">Competitors are using non-personalised capsules</p>
+            <div class="ben-art">
+              <img src="assets/ben-shelf-v1.webp" alt="Shelves of off-the-shelf supplement bottles in a clinic dispensary" width="720" height="542" loading="lazy" style="--blur:2.15px">
+              <p class="ben-chip"><span class="ben-chip-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></span><span class="ben-chip-t">Dosed per patient, not per shelf</span></p>
+            </div>
+          </article>
+
+          <article class="ben-item">
+            <p class="eyebrow-d">Re-testing</p>
+            <p class="ben-head">Re-testing bookings increase to monitor supplement effects</p>
+            <div class="ben-art">
+              <img src="assets/ben-draw-v1.webp" alt="A patient having a blood sample taken at a clinic" width="720" height="542" loading="lazy" style="--blur:2px">
+              <p class="ben-chip"><span class="ben-chip-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-.6 3"/><path d="M20 5v6h-6"/></svg></span><span class="ben-chip-t">Re-formulated every month</span></p>
+            </div>
+          </article>
+
+          <article class="ben-item">
+            <p class="eyebrow-d">Daily habit</p>
+            <p class="ben-head">Your brand integrated to the daily routine of your customers</p>
+            <div class="ben-art">
+              <img src="assets/ben-bottle-v1.webp" alt="A hand holding a supplement bottle carrying the partner&rsquo;s own branding" width="720" height="542" loading="lazy" style="--blur:2.85px">
+              <p class="ben-chip"><span class="ben-chip-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2M5.6 5.6l1.4 1.4M3 12h2M19 12h2M17 7l1.4-1.4M21 18H3"/><path d="M8 18a4 4 0 0 1 8 0"/></svg></span><span class="ben-chip-t">Your name, every morning</span></p>
+            </div>
+          </article>
+
+          <article class="ben-item">
+            <p class="eyebrow-d">Revenue</p>
+            <p class="ben-head">Get a 35% margin each month and save on clinic&rsquo;s man hours</p>
+            <div class="ben-art ben-art-rev">
+              <div class="ben-rev">
+                <p class="ben-rev-big">35% margin</p>
+                <p class="ben-rev-sub">per customer each month</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="ben-panel" id="ben-platforms" aria-labelledby="ben-platforms-h">
+        <h3 id="ben-platforms-h">For blood-test platforms</h3>
+        <div class="ben-grid">
+          <article class="ben-item">
+            <p class="eyebrow-d">Formulation</p>
+            <p class="ben-head">Our custom AI helps to formulate the supplement</p>
+            <div class="ben-art">
+              <img src="assets/ben-plat-data-v1.webp" alt="Blood panel, wearable and AI chat readouts feeding the formula" width="651" height="723" loading="lazy" style="--blur:2.3px">
+              <p class="ben-chip"><span class="ben-chip-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5 12.7 8l4.5 1.7-4.5 1.7L11 15.9 9.3 11.4 4.8 9.7l4.5-1.7z"/><path d="M18.4 15.1l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span><span class="ben-chip-t">Dosed from the panel you ran</span></p>
+            </div>
+          </article>
+
+          <article class="ben-item">
+            <p class="eyebrow-d">Actionable</p>
+            <p class="ben-head">Customers get an actionable solution with your branding</p>
+            <div class="ben-art">
+              <img src="assets/ben-bottle-v1.webp" alt="A hand holding a supplement bottle carrying the partner&rsquo;s own branding" width="720" height="542" loading="lazy" style="--blur:2.85px">
+              <p class="ben-chip"><span class="ben-chip-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2M5.6 5.6l1.4 1.4M3 12h2M19 12h2M17 7l1.4-1.4M21 18H3"/><path d="M8 18a4 4 0 0 1 8 0"/></svg></span><span class="ben-chip-t">Your name, every morning</span></p>
+            </div>
+          </article>
+
+          <article class="ben-item">
+            <p class="eyebrow-d">Integration</p>
+            <p class="ben-head">Fully integrate the experience into your app via our API</p>
+            <div class="ben-art ben-art-app">
+              <img src="assets/ben-plat-app-v1.webp" alt="A partner app showing blood results with a SEQUENCE supplement offer built into it" width="1008" height="1210" loading="lazy">
+              <p class="ben-chip"><span class="ben-chip-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m8.6 8.6-4 3.4 4 3.4"/><path d="m15.4 8.6 4 3.4-4 3.4"/><path d="M13.6 6.2 10.4 17.8"/></svg></span><span class="ben-chip-t">They never leave your app</span></p>
+            </div>
+          </article>
+
+          <article class="ben-item">
+            <p class="eyebrow-d">Revenue</p>
+            <p class="ben-head">Get a 35% margin each month on customers you already have</p>
+            <div class="ben-art ben-art-rev">
+              <div class="ben-rev">
+                <p class="ben-rev-big">35% margin</p>
+                <p class="ben-rev-sub">per customer each month</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. CLINICIAN CONTROL ============ -->
+<section class="clin reveal" id="clinician" data-sec="05" aria-labelledby="clin-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="clin-h">Our AI formulates the supplement.<br class="brk">Your nutritionist and customer can adjust it.</h2></div>
+    <div class="clin-card">
+      <div class="fstack" id="clin-stack">
+      <div class="fcard">
+        <div class="fc-head">
+          <h3>Recommended formula</h3>
+          <span class="fc-pow">Powered by <img src="assets/SEQUENCE_GREEN.svg" alt="SEQUENCE" width="181" height="27"></span>
+        </div>
+        <div class="fc-row"><div class="fc-top"><b>Vitamin D3</b><span>2000 IU</span></div><small>Vitamin D 18 ng/mL, below range</small></div>
+        <div class="fc-row"><div class="fc-top"><b>Omega-3 (EPA/DHA)</b><span>1000 mg</span></div><small>Omega-3 index 4.1%, low</small></div>
+        <div class="fc-slot" data-slot="mg"><div class="fc-clip"><div class="fc-row"><div class="fc-top"><b>Magnesium glycinate</b><span>300 mg</span></div><small>Low intake, disrupted sleep (wearable)</small></div></div></div>
+        <div class="fc-slot" data-slot="coq"><div class="fc-clip"><div class="fc-row added"><div class="fc-top"><b>CoQ10</b><span>100 mg</span></div><small>Added by your clinician</small></div></div></div>
+        <div class="fc-add">+ Add a supplement</div>
+        <p class="fc-note">Illustrative. Your clinician has the final say before it ships.</p>
+      </div>
+
+      <!-- scripted dose-review demo: injected + driven by JS, so no-JS / reduced-motion /
+           ?static all keep the plain four-row card above and never see this -->
+      <div class="clin-insp" id="clin-insp" aria-hidden="true">
+        <div class="ci-marker">
+          <span class="ci-name"></span><span class="ci-badge">Low</span><span class="ci-val"></span>
+        </div>
+        <div class="ci-chip"><span class="ci-sup"></span><span class="ci-dose"></span></div>
+        <div class="ci-slider">
+          <span class="ci-caret">▼</span>
+          <span class="ci-track"><span class="ci-fill"></span></span>
+          <span class="ci-limit"></span>
+          <span class="ci-handle"></span>
+        </div>
+        <div class="ci-btn">Update the dosage
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg>
+        </div>
+        <div class="ci-info"><span class="ci-i" aria-hidden="true">i</span><p class="ci-note"></p></div>
+      </div>
+      <span class="clin-cursor" id="clin-cursor" aria-hidden="true">
+        <svg viewBox="0 0 22 30" width="22" height="30"><path d="M2 1.5 L2 24 L7.8 18.6 L11.4 26.8 L15.1 25.2 L11.6 17.2 L19 16.6 Z" fill="#fff" stroke="#072B18" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </span>
+      </div>
+      <div class="clin-copy">
+        <h2 id="clin-card-h">A digital interface to control the formula.</h2>
+        <p class="body">SEQUENCE builds the first formula and explains every dose.<br class="brk-md">Your nutritionist and customer can both adjust the formulation as needed. The formula can be updated on a monthly basis.</p>
+        <ul class="ticks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>See the reason behind every dose</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>Adjust doses within safe upper limits</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>Add or remove ingredients</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>Approve it before it ships</li>
+        </ul>
+        <a class="cta-lime" href="https://sqnc.cal.com/sequence/sqnc-b2b-partnership-intro" target="_blank" rel="noopener">Book a call
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. CONNECT ============ -->
+<section class="conn reveal" id="connect" data-sec="06" aria-labelledby="conn-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="conn-h">Start without any technical integrations.<br class="brk">Or fully integrate with our API.</h2>
+      <p>Two of the three ways need no engineering at all.</p>
+    </div>
+    <div class="conn-grid">
+      <article class="ccard">
+        <div class="chead"><span class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.1 13.9a4.4 4.4 0 0 0 6.3 0l2.6-2.6a4.4 4.4 0 0 0-6.3-6.3l-1.4 1.4"/><path d="M13.9 10.1a4.4 4.4 0 0 0-6.3 0l-2.6 2.6a4.4 4.4 0 0 0 6.3 6.3l1.4-1.4"/></svg></span><span class="badge">NO BUILD</span></div>
+        <h3>Checkout link</h3>
+        <ol class="csteps">
+          <li>We give you a co-branded ordering page.</li>
+          <li>Customers can see the formulation and customise.</li>
+          <li>They can purchase the supplement in one click.</li>
+        </ol>
+        <div class="cnote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><path d="M14 14h3v3"/><path d="M21 21h-3v-3"/></svg><span><b>Your link and QR code</b>co-branded to your clinic</span></div>
+        <p class="ctick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>Live within one day, no engineering</p>
+        <p class="cfoot">Best for clinics, coaches, teams</p>
+      </article>
+      <article class="ccard">
+        <div class="chead"><span class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="3"/><path d="M3 9.5h18"/><path d="M6.6 7h.01"/></svg></span><span class="badge">NO BUILD</span></div>
+        <h3>Portal with access to our AI</h3>
+        <ol class="csteps">
+          <li>Dashboard to see orders, revenue and shipments.</li>
+          <li>Upload test results, AI reads them in and no manual work needed.</li>
+          <li>You review and adjust the formula before it&rsquo;s sent.</li>
+        </ol>
+        <div class="cnote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10.5" rx="2.6"/><path d="M8 10.5V7.6a4 4 0 0 1 8 0v2.9"/></svg><span><b>Accounts for your team</b>free for up to 3 accounts</span></div>
+        <p class="ctick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>You place and control every order.</p>
+        <p class="cfoot">Best for clinics that order themselves</p>
+      </article>
+      <article class="ccard dark">
+        <div class="chead"><span class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8.6 8.6-4 3.4 4 3.4"/><path d="m15.4 8.6 4 3.4-4 3.4"/><path d="M13.6 6.2 10.4 17.8"/></svg></span><span class="badge on-green">ENGINEERING</span></div>
+        <h3>Full API</h3>
+        <ol class="csteps">
+          <li>Our engineers will help with the integration.</li>
+          <li>Your app sends the blood and wearable data, and gets the formula back.</li>
+          <li>Ordering and checkout stay inside your own product.</li>
+        </ol>
+        <div class="chip"><b>POST</b> /v1/formulate<span class="chip-p">{ panel, wearable }</span></div>
+        <p class="ctick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>Fully embedded, so patients never leave your app.</p>
+        <p class="cfoot">Recommended at 100+ monthly customers</p>
+      </article>
+    </div>
+    <div class="conn-dots" aria-label="Choose an integration route">
+      <button type="button" class="conn-dot" aria-current="true" aria-label="Checkout link"></button>
+      <button type="button" class="conn-dot" aria-label="Portal with access to our AI"></button>
+      <button type="button" class="conn-dot" aria-label="Full API"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. REVENUE ============ -->
+<section class="rev-wrap reveal" id="revenue" data-sec="07" aria-labelledby="rev-h">
   <div class="wrap">
     <div class="rev">
       <div class="rev-left">
-        <div class="rev-num">20<span>%</span></div>
-        <div class="rev-rrp">of the &pound;149&thinsp;/&thinsp;mo customer RRP</div>
+        <p class="rev-num">35%</p>
+        <p class="rev-rrp">of every &pound;149 / mo subscription (ex VAT).</p>
+        <h2 class="rev-big" id="rev-h">&pound;43.46 net margin.</h2>
+        <p class="rev-body">You do nothing operational. We cover formulation, manufacturing, shipping and support. The 35% is net revenue to you for as long as each customer stays.</p>
       </div>
-      <div>
-        <h2>A recurring revenue share, every month.</h2>
-        <p class="rp">We handle the formulation, manufacturing and fulfilment. You keep 20% of every monthly subscriber that has ordered the supplement through your platform.</p>
+      <div class="calc">
+        <div class="calc-top">
+          <label class="calc-label" for="calc-subs">Subscribers through you</label>
+          <p class="calc-num" id="calc-num">500</p>
+        </div>
+        <input type="range" id="calc-subs" min="25" max="1000" step="25" value="500" aria-describedby="calc-out-h calc-out-y">
+        <p class="calc-nojs">Based on 500 subscribers.</p>
+        <div class="calc-outs">
+          <div class="calc-out"><p class="eyebrow">CLINIC WORK HOURS SAVED</p><output for="calc-subs" id="calc-out-h">1,500h</output></div>
+          <div class="calc-out"><p class="eyebrow">YOUR NET INCOME PER YEAR</p><output for="calc-subs" id="calc-out-y">&pound;260,750</output></div>
+        </div>
+        <p class="calc-note">Net to you. This is your share, not the customer&rsquo;s total spend, and we cover all operations.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="who">
+<!-- ============ 8. PREMIUM COMPONENTS ============ -->
+<section class="ing reveal" id="ingredients" data-sec="08" aria-labelledby="ing-h">
+  <div class="wrap">
+    <div class="ing-grid">
+      <div class="comp-text">
+        <p class="comp-label">Premium components</p>
+        <h2 class="comp-title" id="ing-h">The most premium components. Precision dosed individually.</h2>
+        <p class="comp-desc">Using precision dosing equipment, we assemble each customer&rsquo;s powder individually in the UK.</p>
+        <ul class="comp-points">
+          <li>Highest quality raw materials (3rd party tested)</li>
+          <li>Manufactured in-house in the UK (GMP)</li>
+          <li>Every shipment is quality controlled</li>
+        </ul>
+        <div class="cta-row">
+          <a class="comp-cta" href="https://sqnc.cal.com/sequence/sqnc-b2b-partnership-intro" target="_blank" rel="noopener">Book a call
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg>
+          </a>
+          <button type="button" class="ing-link" data-open="ingModal" aria-haspopup="dialog">See all 29 ingredients &rarr;</button>
+        </div>
+        <p class="ing-note">V1: 29 ingredients today, with new ones added every month.</p>
+      </div>
+      <div class="comp-media">
+        <img class="comp-bike" src="assets/ing-bottle-v2.webp" width="1600" height="1600" loading="lazy" alt="A SEQUENCE drink made up in a bottle, close crop">
+    <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs>
+      <linearGradient id="spark-line" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f5a623"/><stop offset=".6" stop-color="#f5a623"/><stop offset="1" stop-color="#9bd824"/></linearGradient>
+      <radialGradient id="spark-endglow"><stop offset="0" stop-color="#6dd909" stop-opacity=".6"/><stop offset="1" stop-color="#6dd909" stop-opacity="0"/></radialGradient>
+      <radialGradient id="spark-endglow-o"><stop offset="0" stop-color="#f5a623" stop-opacity=".55"/><stop offset="1" stop-color="#f5a623" stop-opacity="0"/></radialGradient>
+      <filter id="spark-soft" x="-20%" y="-45%" width="140%" height="210%"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#ffffff" flood-opacity=".6"/></filter>
+      <g id="spark-ticks"><g stroke-width="3.4" stroke-linecap="round"><line x1="170" y1="9" x2="170" y2="25" stroke="#f5a623"/><line x1="170" y1="32" x2="170" y2="48" stroke="#6dd909"/><line x1="170" y1="55" x2="170" y2="71" stroke="#f5a623"/><line x1="170" y1="78" x2="170" y2="94" stroke="#fe5b04"/></g></g>
+      <!-- zones (ticks at x170): high 9-25 / optimal 32-48 / borderline 55-71 / low 78-94 — dot colors match landing zone -->
+      <symbol id="spark1" viewBox="0 0 176 96" overflow="visible"><path d="M6 86 L44 78 L84 64 L120 68" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 68 L154 40" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="78" r="4" fill="#fe5b04"/><circle cx="84" cy="64" r="4" fill="#f5a623"/><circle cx="120" cy="68" r="4" fill="#f5a623"/></g><circle cx="154" cy="40" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="40" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+      <symbol id="spark2" viewBox="0 0 176 96" overflow="visible"><path d="M6 58 L44 70 L84 46 L120 58" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 58 L154 36" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="70" r="4" fill="#f5a623"/><circle cx="84" cy="46" r="4" fill="#9bd824"/><circle cx="120" cy="58" r="4" fill="#f5a623"/></g><circle cx="154" cy="36" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="36" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+      <symbol id="spark3" viewBox="0 0 176 96" overflow="visible"><path d="M6 78 L44 68 L84 60 L120 44" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 44 L154 38" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="68" r="4" fill="#f5a623"/><circle cx="84" cy="60" r="4" fill="#f5a623"/><circle cx="120" cy="44" r="4" fill="#9bd824"/></g><circle cx="154" cy="38" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="38" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+      <symbol id="spark4" viewBox="0 0 176 96" overflow="visible"><path d="M6 62 L44 60 L84 63 L120 58" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 58 L154 44" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="60" r="4" fill="#f5a623"/><circle cx="84" cy="63" r="4" fill="#f5a623"/><circle cx="120" cy="58" r="4" fill="#f5a623"/></g><circle cx="154" cy="44" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="44" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+      <symbol id="spark5" viewBox="0 0 176 96" overflow="visible"><path d="M6 66 L44 58 L84 20 L120 36" fill="none" stroke="url(#spark-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 36 L154 40" fill="none" stroke="#6dd909" stroke-width="3.2" stroke-linecap="round"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="58" r="4" fill="#f5a623"/><circle cx="84" cy="20" r="4" fill="#f5a623"/><circle cx="120" cy="36" r="4" fill="#9bd824"/></g><circle cx="154" cy="40" r="13" fill="url(#spark-endglow)"/><circle cx="154" cy="40" r="6.6" fill="#55bd12" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+      <symbol id="spark6" viewBox="0 0 176 96" overflow="visible"><path d="M6 84 L44 80 L84 66 L120 70" fill="none" stroke="#f5a623" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#spark-soft)"/><path d="M120 70 L154 60" fill="none" stroke="#f5a623" stroke-width="3.2" stroke-linecap="round"/><g stroke="#fff" stroke-width="2.2"><circle cx="44" cy="80" r="4" fill="#fe5b04"/><circle cx="84" cy="66" r="4" fill="#f5a623"/><circle cx="120" cy="70" r="4" fill="#f5a623"/></g><circle cx="154" cy="60" r="13" fill="url(#spark-endglow-o)"/><circle cx="154" cy="60" r="6.6" fill="#f5a623" stroke="#fff" stroke-width="1.8"/><use href="#spark-ticks"/></symbol>
+    </defs></svg>
+      <div class="comp-cards" aria-hidden="true">
+        <div class="ing-card"><div class="ing-info"><p class="ing-title"><span class="ing-name">Magnesium Bisglycinate</span><span class="ing-dose">400 mg</span></p><div class="ing-tags"><span>Muscle tension</span><span>HRV</span></div></div><svg class="ing-spark" viewBox="0 0 176 96" fill="none" aria-hidden="true"><use href="#spark1"/></svg></div>
+        <div class="ing-card"><div class="ing-info"><p class="ing-title"><span class="ing-name">Rhodiola Rosea</span><span class="ing-dose">250 mg</span></p><div class="ing-tags"><span>VO2 Max</span><span>Mental Health</span></div></div><svg class="ing-spark" viewBox="0 0 176 96" fill="none" aria-hidden="true"><use href="#spark2"/></svg></div>
+        <div class="ing-card"><div class="ing-info"><p class="ing-title"><span class="ing-name">Vitamin D3</span><span class="ing-dose">2000 IU</span></p><div class="ing-tags"><span>Immunity</span><span>Bone health</span></div></div><svg class="ing-spark" viewBox="0 0 176 96" fill="none" aria-hidden="true"><use href="#spark3"/></svg></div>
+        <div class="ing-card"><div class="ing-info"><p class="ing-title"><span class="ing-name">Ashwagandha</span><span class="ing-dose">600 mg</span></p><div class="ing-tags"><span>Stress</span><span>Recovery</span></div></div><svg class="ing-spark" viewBox="0 0 176 96" fill="none" aria-hidden="true"><use href="#spark4"/></svg></div>
+        <div class="ing-card"><div class="ing-info"><p class="ing-title"><span class="ing-name">Creatine</span><span class="ing-dose">5 g</span></p><div class="ing-tags"><span>Power</span><span>Strength</span></div></div><svg class="ing-spark" viewBox="0 0 176 96" fill="none" aria-hidden="true"><use href="#spark5"/></svg></div>
+        <div class="ing-card"><div class="ing-info"><p class="ing-title"><span class="ing-name">Vitamin B12</span><span class="ing-dose">500 &micro;g</span></p><div class="ing-tags"><span>Energy</span><span>Focus</span></div></div><svg class="ing-spark" viewBox="0 0 176 96" fill="none" aria-hidden="true"><use href="#spark6"/></svg></div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. COMPARISON ============ -->
+<section class="cmp reveal" id="comparison" data-sec="09" aria-labelledby="cmp-h">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="cmp-check" viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11" fill="none" stroke="#ff5f2e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="cmp-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="#cfcfcf" stroke-width="1.6"/><path d="m9 9 6 6M15 9l-6 6" fill="none" stroke="#cfcfcf" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  </defs></svg>
   <div class="wrap">
     <div class="sec-head">
-      <h2>Built for platforms in longevity &amp; wellness.</h2>
-      <p>Our goal is to be the infrastructure layer for supplementation.</p>
+      <p class="eyebrow-d">For your practice</p>
+      <h2 id="cmp-h">What stocking a retail brand can&rsquo;t do for you.</h2>
     </div>
-    <div class="pills">
-      <span class="pill">Longevity clinics</span>
-      <span class="pill">Wearable companies</span>
-      <span class="pill">Sports teams</span>
-      <span class="pill">Telehealth</span>
-      <span class="pill">Blood-test companies</span>
+    <div class="cmp-toggle" role="group" aria-label="Choose a competitor to compare">
+      <button type="button" class="cmp-tog on" data-comp="bio" aria-pressed="true">Biogena One</button>
+      <button type="button" class="cmp-tog" data-comp="cap" aria-pressed="false">Capsule supplements</button>
+    </div>
+    <div class="cmp-table" id="cmp-table" data-comp="bio">
+      <div class="cmp-row cmp-head">
+        <div class="cmp-c"></div>
+        <div class="cmp-c"><img class="cmp-logo-lg" src="assets/SEQUENCE_GREEN.svg" alt="SEQUENCE" width="181" height="27"></div>
+        <div class="cmp-c cmp-bio"><img class="cmp-brand" src="assets/logo-biogena-one.webp" alt="Biogena One" width="400" height="266"></div>
+        <div class="cmp-c cmp-cap"><span class="cmp-cat">Capsule<br>supplements</span></div>
+      </div>
+      <div class="cmp-body">
+        <div class="cmp-row">
+          <div class="cmp-c"><span class="cmp-feat cmp-strong">Includes your branding</span></div>
+          <div class="cmp-c"><svg class="cmp-ico" role="img" aria-label="Yes"><use href="#cmp-check"/></svg></div>
+          <div class="cmp-c cmp-bio"><svg class="cmp-ico" role="img" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-cap"><svg class="cmp-ico" role="img" aria-label="No"><use href="#cmp-x"/></svg></div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-c"><span class="cmp-feat cmp-strong">Personalised to each customer</span></div>
+          <div class="cmp-c"><svg class="cmp-ico" role="img" aria-label="Yes"><use href="#cmp-check"/></svg></div>
+          <div class="cmp-c cmp-bio"><svg class="cmp-ico" role="img" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-cap"><span class="cmp-txt">Limited personalisation</span></div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-c"><span class="cmp-feat cmp-strong">Shipped on demand, no stock</span></div>
+          <div class="cmp-c"><svg class="cmp-ico" role="img" aria-label="Yes"><use href="#cmp-check"/></svg></div>
+          <div class="cmp-c cmp-bio"><svg class="cmp-ico" role="img" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-cap"><span class="cmp-txt">$10k+ MOQ pre-orders</span></div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-c"><span class="cmp-feat cmp-strong">Recurring profit</span></div>
+          <div class="cmp-c"><svg class="cmp-ico" role="img" aria-label="Yes"><use href="#cmp-check"/></svg></div>
+          <div class="cmp-c cmp-bio"><svg class="cmp-ico" role="img" aria-label="Yes"><use href="#cmp-check"/></svg></div>
+          <div class="cmp-c cmp-cap"><svg class="cmp-ico" role="img" aria-label="No"><use href="#cmp-x"/></svg></div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-c"><span class="cmp-feat cmp-strong">Your clinician controls the formula</span></div>
+          <div class="cmp-c"><svg class="cmp-ico" role="img" aria-label="Yes"><use href="#cmp-check"/></svg></div>
+          <div class="cmp-c cmp-bio"><svg class="cmp-ico" role="img" aria-label="No"><use href="#cmp-x"/></svg></div>
+          <div class="cmp-c cmp-cap"><svg class="cmp-ico" role="img" aria-label="No"><use href="#cmp-x"/></svg></div>
+        </div>
+        <span class="cmp-highlight" aria-hidden="true"></span>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="close">
-  <div class="wrap">
-    <h2>Let&rsquo;s build it together.</h2>
-    <p>We&rsquo;ll walk you through the API and the partnership terms.</p>
-    <a class="btn" href="https://sqnc.cal.com/sequence/sqnc-b2b-partnership-intro" target="_blank" rel="noopener noreferrer">Book a call with the founders to learn more
+
+<!-- ============ 10. FINAL CTA ============ -->
+<section class="close reveal" id="cta" data-sec="10" aria-labelledby="cta-h">
+  <div class="close-media">
+    <div class="close-figs">
+      <div class="bottle-fig close-bottle">
+        <img src="assets/b2b-bottle-clean-v2.webp" alt="Supplement bottle shown with placeholder partner branding" width="229" height="699" loading="lazy">
+        <p class="bt-brand">Your brand</p>
+        <p class="powline bt-powline">Powered by <img src="assets/SEQUENCE_GREEN.svg" alt="SEQUENCE" width="181" height="27"></p>
+      </div>
+      <div class="pack-fig close-pack">
+        <img src="assets/b2b-pack-blank-v2.webp" alt="Supplement pouch shown with placeholder partner branding, powered by SEQUENCE" width="734" height="1185" loading="lazy">
+        <p class="pk-brand">Your brand</p>
+        <p class="pk-desc"><span>Precisely dosed</span><br>based on your<br>data, Charlotte.</p>
+        <p class="pk-comp">29 components</p>
+        <p class="powline pk-powline">Powered by <img src="assets/SEQUENCE_GREEN.svg" alt="SEQUENCE" width="181" height="27"></p>
+      </div>
+    </div>
+  </div>
+  <div class="close-panel">
+    <h2 id="cta-h">Offer a personalised supplement to your customers with your branding.</h2>
+    <p class="close-lead">Your name on the pouch, the bottle and the checkout. We formulate, manufacture, ship and support every order, and 35% of each subscription comes back to you.</p>
+    <p class="close-mark">Powered by <img src="assets/SEQUENCE_WHITE.svg" alt="SEQUENCE" width="181" height="27"></p>
+    <a class="btn" data-cal href="https://sqnc.cal.com/sequence/sqnc-b2b-partnership-intro" target="_blank" rel="noopener">Book a call
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5"/></svg></a>
-    <p class="cta-alt">Or email us: <a href="mailto:b2b@drinksequence.co.uk">b2b@drinksequence.co.uk</a></p>
+    <p class="field-alt">Or email <a href="mailto:b2b@drinksequence.co.uk">b2b@drinksequence.co.uk</a></p>
   </div>
 </section>
 
-<footer>
+</main>
+
+<!-- ============ 12. FOOTER ============ -->
+<footer id="footer" data-sec="11">
   <div class="wrap foot-in">
-    <img src="assets/SEQUENCE_GREEN.svg" alt="SEQUENCE" width="181" height="27">
-    <span>&copy; 2026 SEQUENCE. All rights reserved.</span>
-    <span><a href="/">Home</a> - <a href="privacy.html">Privacy</a> - <a href="terms.html">Terms</a></span>
+    <div class="mark"><img src="assets/SEQUENCE_GREEN.svg" alt="SEQUENCE" width="181" height="27"></div>
+    <div class="foot-row">
+      <span>&copy; 2026 SEQUENCE. All rights reserved.</span>
+      <span><a href="/">Home</a> - <a href="/privacy">Privacy</a> - <a href="/terms">Terms</a></span>
+    </div>
   </div>
 </footer>
 
-<script>
-(function(){var fn=document.querySelector('.floatnav');if(!fn)return;
-var mq=matchMedia('(min-width:921px)'),tick=false;
-function render(){tick=false;fn.classList.toggle('show',mq.matches&&scrollY>150);}
-function onScroll(){if(!tick){tick=true;requestAnimationFrame(render);}}
-render();addEventListener('scroll',onScroll,{passive:true});
-mq.addEventListener?mq.addEventListener('change',render):mq.addListener(render);})();
-</script>
+<dialog id="ingModal" class="ing-modal" aria-labelledby="ingModalTitle">
+  <div class="ing-modal-head">
+    <div>
+      <p class="ing-modal-eyebrow">What's inside</p>
+      <h2 id="ingModalTitle">The SEQUENCE ingredient list</h2>
+      <p class="ing-modal-sub">29 evidence-based ingredients. Your daily formula is built from these - personalised to your blood &amp; wearable data.</p>
+    </div>
+    <button type="button" class="ing-modal-x" data-close aria-label="Close">&times;</button>
+  </div>
+  <div class="ing-modal-body">
+    <p class="ing-group-label"><span class="ing-badge">Personalised: 20</span> Routed per customer - dose set by your data</p>
+    <div class="ing-table-wrap">
+      <table class="ing-table">
+        <thead><tr><th>#</th><th>Ingredient</th><th>Routed on</th><th>Max dose</th></tr></thead>
+        <tbody><tr><td class="ing-n">1</td><td class="ing-nm">Creatine monohydrate</td><td class="ing-rt">Body mass, training load</td><td class="ing-ds">5 g</td></tr><tr><td class="ing-n">2</td><td class="ing-nm">Vitamin C</td><td class="ing-rt">Intake, training load</td><td class="ing-ds">1000 mg</td></tr><tr><td class="ing-n">3</td><td class="ing-nm">Collagen peptides</td><td class="ing-rt">Joint/tendon load, age</td><td class="ing-ds">10 g</td></tr><tr><td class="ing-n">4</td><td class="ing-nm">Acacia fibre</td><td class="ing-rt">Fibre intake, gut markers</td><td class="ing-ds">8 g</td></tr><tr><td class="ing-n">5</td><td class="ing-nm">Vitamin D3</td><td class="ing-rt">25(OH)D level + season</td><td class="ing-ds">300 mg mat.</td></tr><tr><td class="ing-n">6</td><td class="ing-nm">Curcumin (TurmXtra 60N)</td><td class="ing-rt">Inflammatory markers</td><td class="ing-ds">250 mg</td></tr><tr><td class="ing-n">7</td><td class="ing-nm">Tart cherry (Montmorency)</td><td class="ing-rt">Recovery, sleep</td><td class="ing-ds">480 mg</td></tr><tr><td class="ing-n">8</td><td class="ing-nm">Ashwagandha (KSM-66)</td><td class="ing-rt">Stress, HRV, cortisol</td><td class="ing-ds">500 mg</td></tr><tr><td class="ing-n">9</td><td class="ing-nm">Magnesium (bisglycinate)</td><td class="ing-rt">Mg status, sweat losses</td><td class="ing-ds">1429 mg</td></tr><tr><td class="ing-n">10</td><td class="ing-nm">Iron (ferrous bisglycinate)</td><td class="ing-rt">Ferritin</td><td class="ing-ds">75 mg mat.</td></tr><tr><td class="ing-n">11</td><td class="ing-nm">Glycine</td><td class="ing-rt">Sleep markers (wearable)</td><td class="ing-ds">3000 mg</td></tr><tr><td class="ing-n">12</td><td class="ing-nm">Rhodiola Rosea</td><td class="ing-rt">Fatigue, stress</td><td class="ing-ds">150 mg</td></tr><tr><td class="ing-n">13</td><td class="ing-nm">Vitamin B6 (P5P)</td><td class="ing-rt">B6 status, PMS</td><td class="ing-ds">5 mg</td></tr><tr><td class="ing-n">14</td><td class="ing-nm">Boswellia Serrata</td><td class="ing-rt">Joint pain, inflammation</td><td class="ing-ds">154 mg</td></tr><tr><td class="ing-n">15</td><td class="ing-nm">Selenium</td><td class="ing-rt">Serum selenium</td><td class="ing-ds">100 mg mat.</td></tr><tr><td class="ing-n">16</td><td class="ing-nm">Vitamin B12 (methylcobalamin)</td><td class="ing-rt">Serum B12 / MMA</td><td class="ing-ds">2 mg mat.</td></tr><tr><td class="ing-n">17</td><td class="ing-nm">Zinc</td><td class="ing-rt">Zinc status, immune load</td><td class="ing-ds">125 mg mat.</td></tr><tr><td class="ing-n">18</td><td class="ing-nm">Folate (5-MTHF)</td><td class="ing-rt">RBC folate</td><td class="ing-ds">6 mg mat.</td></tr><tr><td class="ing-n">19</td><td class="ing-nm">CoQ10</td><td class="ing-rt">Statin use, age, VO2</td><td class="ing-ds">204 mg mat.</td></tr><tr><td class="ing-n">20</td><td class="ing-nm">Iodine</td><td class="ing-rt">Urinary iodine / thyroid</td><td class="ing-ds">0.4 mg mat.</td></tr></tbody>
+      </table>
+    </div>
+    <p class="ing-group-label ing-group-2"><span class="ing-badge base">Base mix: 9</span> Everyone gets these, every day</p>
+    <div class="ing-table-wrap">
+      <table class="ing-table">
+        <thead><tr><th>#</th><th>Ingredient</th><th>Dose</th></tr></thead>
+        <tbody><tr><td class="ing-n">1</td><td class="ing-nm">Vitamin K2 (MK-7)</td><td class="ing-ds">100 &micro;g</td></tr><tr><td class="ing-n">2</td><td class="ing-nm">Vitamin K1</td><td class="ing-ds">100 &micro;g</td></tr><tr><td class="ing-n">3</td><td class="ing-nm">Vitamin A</td><td class="ing-ds">800 &micro;g</td></tr><tr><td class="ing-n">4</td><td class="ing-nm">Vitamin B1 (thiamin)</td><td class="ing-ds">5 mg</td></tr><tr><td class="ing-n">5</td><td class="ing-nm">Vitamin B2 (riboflavin)</td><td class="ing-ds">5 mg</td></tr><tr><td class="ing-n">6</td><td class="ing-nm">Vitamin B5 (pantothenic acid)</td><td class="ing-ds">10 mg</td></tr><tr><td class="ing-n">7</td><td class="ing-nm">Niacinamide (B3)</td><td class="ing-ds">20 mg</td></tr><tr><td class="ing-n">8</td><td class="ing-nm">Biotin</td><td class="ing-ds">50 &micro;g</td></tr><tr><td class="ing-n">9</td><td class="ing-nm">Manganese</td><td class="ing-ds">2 mg</td></tr></tbody>
+      </table>
+    </div>
+    <p class="ing-modal-foot">Doses shown are per-day maximums; your personalised amounts are set within safe ranges from your biomarkers. &ldquo;mat.&rdquo; = as material.</p>
+  </div>
+</dialog>
 
+<script>
+(function(){
+  'use strict';
+  var STATIC = /[?&#]static/.test(location.href);
+  if (STATIC) document.documentElement.classList.add('static');
+  var RM = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  document.documentElement.classList.remove('no-js');
+  document.documentElement.classList.add('js');
+
+  /* ---- floating pill nav (desktop only) ---- */
+  (function(){
+    var fn = document.querySelector('.floatnav'); if(!fn) return;
+    var mq = matchMedia('(min-width:1025px)'), tick = false;
+    function render(){ tick=false; fn.classList.toggle('show', mq.matches && scrollY > 150); }
+    function onScroll(){ if(!tick){ tick=true; requestAnimationFrame(render); } }
+    render();
+    addEventListener('scroll', onScroll, {passive:true});
+    mq.addEventListener ? mq.addEventListener('change', render) : mq.addListener(render);
+  })();
+
+  /* ---- mobile section stepper: the <=720 counterpart of the desktop side rail ---- */
+  (function(){
+    var bar=document.querySelector('.mstep'); if(!bar) return;
+    var items=[].slice.call(bar.querySelectorAll('.mstep-item'));
+    var targets=items.map(function(i){return document.getElementById(i.getAttribute('data-for'));});
+    var mq=matchMedia('(max-width:720px)'), tick=false;
+    function render(){
+      tick=false; if(!mq.matches){ bar.classList.remove('show'); return; }
+      var ref=scrollY + innerHeight*0.4, active=0;
+      for(var i=0;i<targets.length;i++){ var t=targets[i];
+        if(t && t.getBoundingClientRect().top+scrollY<=ref) active=i;
+      }
+      for(var j=0;j<items.length;j++) items[j].classList.toggle('on', j===active);
+      var first=targets[0], last=targets[targets.length-1], show=false;
+      if(first && last){
+        show = first.getBoundingClientRect().top <= 64 && last.getBoundingClientRect().bottom > 120;
+      }
+      bar.classList.toggle('show', show);
+    }
+    function onScroll(){ if(!tick){tick=true;requestAnimationFrame(render);} }
+    render();
+    addEventListener('scroll',onScroll,{passive:true});
+    addEventListener('resize',render);
+    mq.addEventListener?mq.addEventListener('change',render):mq.addListener(render);
+  })();
+
+  /* ---- desktop side rail: visible from the benefits section until the closing CTA ---- */
+  (function(){
+    var menu = document.querySelector('.side-menu'); if(!menu) return;
+    var items = [].slice.call(menu.querySelectorAll('.side-menu-item'));
+    var targets = items.map(function(i){ return document.getElementById(i.getAttribute('data-for')); });
+    var cta = document.getElementById('cta');
+    var mq = matchMedia('(min-width:1200px)'), tick = false;
+    function render(){
+      tick = false;
+      if (!mq.matches) { menu.classList.remove('show'); return; }
+      var ref = innerHeight * 0.4, active = -1;
+      for (var i=0;i<targets.length;i++){
+        var t = targets[i]; if(!t) continue;
+        if (t.getBoundingClientRect().top <= ref) active = i;
+      }
+      var first = targets[0], last = targets[targets.length-1];
+      var show = false;
+      if (first && last) {
+        /* 0.3, not 0.9: the rail is a ~227px band centred vertically, and .cred (the founder line and the
+           logo marquee) ends exactly where #loop begins, so it must not switch on until
+           scrollY >= credBottom - (vh - railHeight)/2. 0.3 clears that by 53-73px at 1280-1907. */
+        show = first.getBoundingClientRect().top < innerHeight * 0.3
+            && last.getBoundingClientRect().bottom > innerHeight * 0.15;
+      }
+      /* stand down once the closing CTA arrives — nothing left to navigate to */
+      if (cta && cta.getBoundingClientRect().top < innerHeight * 0.55) show = false;
+      menu.classList.toggle('show', show);
+      if (active < 0) active = 0;
+      for (var j=0;j<items.length;j++) items[j].classList.toggle('on', j === active);
+    }
+    function onScroll(){ if(!tick){ tick = true; requestAnimationFrame(render); } }
+    render();
+    addEventListener('scroll', onScroll, { passive:true });
+    addEventListener('resize', render);
+    mq.addEventListener ? mq.addEventListener('change', render) : mq.addListener(render);
+  })();
+
+
+  /* ingredients — duplicate the cards once so the vertical marquee loops seamlessly */
+  (function(){
+    var track = document.querySelector('.comp-cards'); if(!track) return;
+    track.innerHTML += track.innerHTML;
+  })();
+
+  /* the 29-ingredient list modal */
+  (function(){
+    var modal = document.getElementById('ingModal'); if(!modal || !modal.showModal) return;
+    document.querySelectorAll('[data-open="ingModal"]').forEach(function(b){
+      b.addEventListener('click', function(){ modal.showModal(); });
+    });
+    modal.addEventListener('click', function(e){
+      if (e.target === modal || (e.target.closest && e.target.closest('[data-close]'))) modal.close();
+    });
+  })();
+
+  /* ---- section 06: mobile card carousel, auto-advancing with manual swipe ---- */
+  (function(){
+    var grid = document.querySelector('.conn-grid'); if(!grid) return;
+    var cards = [].slice.call(grid.querySelectorAll('.ccard'));
+    var dots  = [].slice.call(document.querySelectorAll('.conn-dot'));
+    if (!cards.length) return;
+    var mq = matchMedia('(max-width:720px)');
+    var still = matchMedia('(prefers-reduced-motion:reduce)');
+    var isStatic = document.documentElement.classList.contains('static');
+    var DELAY = 6000;      /* long enough to read a card, short enough to feel alive */
+    var timer = null, halted = false, visible = false;
+
+    function index(){
+      /* nearest card to the scroll position, so swipes and autoplay share one source of truth */
+      var x = grid.scrollLeft, best = 0, bestD = Infinity;
+      for (var i=0;i<cards.length;i++){
+        var d = Math.abs((cards[i].offsetLeft - cards[0].offsetLeft) - x);
+        if (d < bestD){ bestD = d; best = i; }
+      }
+      return best;
+    }
+    function paint(){
+      var i = index();
+      for (var j=0;j<dots.length;j++){
+        if (j === i) dots[j].setAttribute('aria-current','true');
+        else dots[j].removeAttribute('aria-current');
+      }
+    }
+    /* restart the fill on whichever tag is active. removing the class and forcing a reflow is what
+       makes the animation replay; without the reflow the browser coalesces the two class changes
+       and the fill never restarts. */
+    function armFill(i){
+      /* the target index must be passed in from tick(): go() scrolls smoothly, so index() still
+         reports the OUTGOING card for the duration of the animation and the fill would re-arm the
+         tag we are leaving */
+      if (i == null) i = index();
+      for (var j=0;j<dots.length;j++) dots[j].classList.remove('run');
+      if (halted || isStatic || still.matches || !mq.matches || !visible) return;
+      void dots[i].offsetWidth;
+      dots[i].classList.add('run');
+    }
+    function clearFill(){ for (var j=0;j<dots.length;j++) dots[j].classList.remove('run'); }
+    function go(i){ grid.scrollTo({left: cards[i].offsetLeft - cards[0].offsetLeft, behavior:'smooth'}); }
+    function tick(){
+      if (halted || !mq.matches || !visible) return;
+      var next = (index() + 1) % cards.length;
+      go(next); armFill(next);
+    }
+    function start(){
+      stop();
+      if (halted || isStatic || still.matches || !mq.matches) return;
+      timer = setInterval(tick, DELAY);
+      armFill();
+    }
+    function stop(){ if (timer){ clearInterval(timer); timer = null; } clearFill(); }
+    /* a deliberate interaction ends autoplay for the rest of the visit: WCAG 2.2.2 wants a way to
+       stop moving content, and taking the hint from a swipe is quieter than a pause button */
+    function halt(){ halted = true; stop(); paint(); }
+    ['pointerdown','touchstart','wheel','keydown'].forEach(function(ev){
+      grid.addEventListener(ev, halt, {passive:true});
+    });
+
+    var raf = false;
+    grid.addEventListener('scroll', function(){
+      if (raf) return; raf = true;
+      requestAnimationFrame(function(){ raf = false; paint(); });
+    }, {passive:true});
+
+    dots.forEach(function(d,i){ d.addEventListener('click', function(){ halt(); go(i); }); });
+    /* one source of truth for the interval: the CSS fill reads it from here */
+    var dotWrap = document.querySelector('.conn-dots');
+    if (dotWrap) dotWrap.style.setProperty('--conn-dot-ms', DELAY + 'ms');
+
+    /* only runs while the section is on screen, never in a background tab */
+    if (window.IntersectionObserver){
+      new IntersectionObserver(function(es){
+        visible = es[0].isIntersecting;
+        if (visible) start(); else stop();
+      }, {threshold:0.35}).observe(grid);
+    } else { visible = true; start(); }
+    document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+    if (mq.addEventListener) mq.addEventListener('change', function(){ grid.scrollLeft = 0; paint(); start(); });
+    paint();
+  })();
+
+  /* ---- reveal on scroll ---- */
+  (function(){
+    var els = document.querySelectorAll('.reveal'); if(!els.length) return;
+    if (STATIC || RM || !('IntersectionObserver' in window)) {
+      [].forEach.call(els, function(el){ el.classList.add('in'); }); return;
+    }
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+    [].forEach.call(els, function(el){ io.observe(el); });
+  })();
+
+  /* ---- clinician dose-review demo ----
+     Plays once when the card scrolls into view: the formula list hands over to a dose
+     inspector, the clinician raises the dose and confirms, and the ingredient lands in
+     the list. Bails out entirely for ?static, reduced motion and small screens, which
+     all keep the plain four-row card exactly as authored. */
+  (function(){
+    var stack = document.getElementById('clin-stack'); if(!stack) return;
+    var insp  = document.getElementById('clin-insp');
+    var cur   = document.getElementById('clin-cursor');
+    var fcard = stack.querySelector('.fcard');
+    if(!insp || !cur || !fcard) return;
+    if(STATIC || RM || !('IntersectionObserver' in window)) return;
+    if(matchMedia('(max-width:860px)').matches) return;
+
+    var elName = insp.querySelector('.ci-name'), elBadge = insp.querySelector('.ci-badge'),
+        elVal  = insp.querySelector('.ci-val'),  elSup   = insp.querySelector('.ci-sup'),
+        elDose = insp.querySelector('.ci-dose'), elNote  = insp.querySelector('.ci-note'),
+        slider = insp.querySelector('.ci-slider'),
+        track  = insp.querySelector('.ci-track'), btn    = insp.querySelector('.ci-btn'),
+        fcAdd  = stack.querySelector('.fc-add'),
+        slots  = { mg: stack.querySelector('[data-slot="mg"]'), coq: stack.querySelector('[data-slot="coq"]') };
+    if(!slots.mg || !slots.coq || !fcAdd || !elNote) return;
+
+    var P0 = 0.224, P1 = 0.701;   /* slider start / clinician's chosen dose, as a fraction of the track */
+    var CYCLES = [
+      { name:'Magnesium (RBC) is',   val:'3.9 mg/dL', sup:'Magnesium glycinate', lo:'200 mg', hi:'300 mg', slot:'mg',
+        info:'Magnesium glycinate is a highly bioavailable form of magnesium that supports muscle relaxation, sleep quality, and nervous system function with minimal digestive side effects.' },
+      { name:'CoQ10 (ubiquinol) is', val:'0.4 µg/mL', sup:'CoQ10',               lo:'60 mg',  hi:'100 mg', slot:'coq',
+        info:'Ubiquinol is the active, readily absorbed form of CoQ10. It supports cellular energy production in the heart and muscles, and acts as an antioxidant.' }
+    ];
+
+    var timers = [], started = false;
+    function at(ms, fn){ timers.push(setTimeout(fn, ms)); }
+
+    function setCursor(x, y){ cur.style.setProperty('--ct','translate('+Math.round(x)+'px,'+Math.round(y)+'px)'); }
+    function moveDur(ms){ cur.style.transitionDuration = '.22s, ' + ms + 'ms'; }
+    /* the handle's end position has to be computed, not measured — at the moment we start
+       the drag the handle is still sitting at the other end of the track */
+    function cursorAtSlider(pct){
+      var o = stack.getBoundingClientRect(), t = track.getBoundingClientRect();
+      setCursor(t.left - o.left + t.width * pct - 3, t.top - o.top + t.height / 2 - 2);
+    }
+    function cursorAtEl(el, dx, dy){
+      var o = stack.getBoundingClientRect(), b = el.getBoundingClientRect();
+      setCursor(b.left - o.left + b.width / 2 - 3 + (dx || 0),
+                b.top  - o.top  + b.height / 2 - 2 + (dy || 0));
+    }
+
+    /* An animated open runs 0 -> measured px and then hands the height back to auto, so the
+       row keeps reflowing with the viewport afterwards. anim=false snaps, for setup. */
+    function setSlot(slot, open, anim){
+      var clip = slot.querySelector('.fc-clip');
+      if(!anim){
+        slot.classList.add('noanim');
+        slot.classList.toggle('shut', !open);
+        clip.style.height = open ? '' : '0px';
+        void stack.offsetHeight;
+        slot.classList.remove('noanim');
+        return;
+      }
+      if(open){
+        slot.classList.remove('shut');
+        clip.style.height = clip.scrollHeight + 'px';
+        var release = function(e){
+          if(e && e.propertyName !== 'height') return;
+          clip.removeEventListener('transitionend', release);
+          clip.style.height = '';                                /* back to auto so it reflows */
+        };
+        clip.addEventListener('transitionend', release);
+        setTimeout(release, 1200);  /* transitionend never fires in a background tab */
+      } else {
+        clip.style.height = clip.scrollHeight + 'px';            /* pin height before collapsing */
+        void clip.offsetHeight;
+        slot.classList.add('shut');
+        clip.style.height = '0px';
+      }
+    }
+    function shut(on){ ['mg','coq'].forEach(function(k){ setSlot(slots[k], !on, false); }); }
+    /* Pin the stack to the finished card's height, so the white box is one constant size for
+       the whole loop. Measured with .demo off (otherwise .fcard is height:100% of the very
+       value we're deriving) and with the collapsed rows added back via scrollHeight. All
+       synchronous, so nothing paints in between; safe to recompute on resize mid-loop. */
+    function lock(){
+      stack.classList.remove('demo');
+      stack.style.height = '';
+      var natural = fcard.offsetHeight, extra = 0;
+      ['mg','coq'].forEach(function(k){
+        if(slots[k].classList.contains('shut')) extra += slots[k].querySelector('.fc-clip').scrollHeight;
+      });
+      stack.style.height = (natural + extra) + 'px';
+      stack.classList.add('demo');
+    }
+
+    function cycle(c, done){
+      at(0, function(){
+        elName.textContent = c.name; elVal.textContent = c.val;
+        elSup.textContent  = c.sup;  elDose.textContent = c.lo;
+        elNote.textContent = c.info;
+        slider.classList.add('noanim');                          /* rearm, don't rewind */
+        slider.style.setProperty('--p', (P0 * 100) + '%');
+        void slider.offsetWidth;
+        slider.classList.remove('noanim');
+        moveDur(800); cursorAtEl(fcAdd);                         /* reach for "+ Add a supplement" */
+      });
+      at(1000, function(){ fcAdd.classList.add('tap'); cur.classList.add('tap'); });
+      at(1260, function(){ cur.classList.remove('tap'); });
+      at(1420, function(){                                       /* the click opens the inspector */
+        fcAdd.classList.remove('tap');
+        stack.classList.add('swap'); insp.classList.add('on');
+      });
+      at(2300, function(){ elBadge.classList.add('pulse'); });   /* "this one is low" */
+      at(3000, function(){                                       /* reach for the handle first — */
+        elBadge.classList.remove('pulse');                       /* without this the pointer cuts
+                                                                    diagonally to where the handle
+                                                                    will end up, rather than
+                                                                    dragging it there */
+        moveDur(620); cursorAtSlider(P0);
+      });
+      at(3650, function(){ slider.classList.add('grab'); });     /* pointer takes hold */
+      at(3900, function(){                                       /* drag: handle and pointer share
+                                                                    duration and easing, so they
+                                                                    travel locked together */
+        moveDur(1300);
+        slider.style.setProperty('--p', (P1 * 100) + '%');
+        cursorAtSlider(P1);
+      });
+      at(4700, function(){ elDose.textContent = c.hi; });        /* mid-drag, as it passes */
+      at(5300, function(){ slider.classList.remove('grab'); });  /* released at the new dose */
+      at(5600, function(){ moveDur(620); cursorAtEl(btn); });
+      at(6400, function(){ btn.classList.add('press'); cur.classList.add('tap'); });
+      at(6660, function(){ cur.classList.remove('tap'); });
+      at(6860, function(){
+        btn.classList.remove('press'); insp.classList.remove('on'); stack.classList.remove('swap');
+      });
+      at(7160, function(){ setSlot(slots[c.slot], true, true); });
+      if(done) at(8100, done);
+    }
+
+    /* Runs continuously: two dose reviews, a beat on the finished formula, then the two
+       added rows fold away and it starts over. Idles while scrolled out of view. */
+    function loop(){
+      if(!inView){ at(700, loop); return; }
+      timers.length = 0;                                          /* previous pass has fired */
+      cycle(CYCLES[0], function(){
+        cycle(CYCLES[1], function(){
+          at(2600, function(){                                    /* hold the finished formula */
+            setSlot(slots.mg, false, true);
+            setSlot(slots.coq, false, true);
+            at(1100, loop);
+          });
+        });
+      });
+    }
+
+    shut(true);
+    lock();
+    cur.classList.add('on');                                      /* the pointer stays on screen */
+    moveDur(0); cursorAtEl(fcAdd, 58, 66);                        /* parked just off the add row */
+
+    var rt; addEventListener('resize', function(){
+      clearTimeout(rt); rt = setTimeout(lock, 150);
+    }, {passive:true});
+
+    var inView = false, started = false;
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        inView = e.isIntersecting;
+        if(inView && !started){ started = true; at(700, loop); }
+      });
+    }, { threshold:0.35 });
+    io.observe(stack);
+  })();
+
+  /* ---- partner logo marquee ---- */
+  (function(){
+    var track = document.getElementById('mtrack'); if(!track) return;
+    var marquee = track.parentNode;
+    if (STATIC || RM || matchMedia('(max-width:720px)').matches) return;
+    function fill(){
+      var base = track.getAttribute('data-base');
+      if(!base){ base = track.innerHTML; track.setAttribute('data-base', base); }
+      track.innerHTML = base;
+      var guard = 0;
+      while (track.scrollWidth < marquee.offsetWidth * 1.6 && guard < 12){ track.innerHTML += base; guard++; }
+      track.innerHTML += track.innerHTML;
+      requestAnimationFrame(function(){ marquee.classList.add('go'); });
+    }
+    var imgs = track.querySelectorAll('img'), left = imgs.length;
+    if(!left) return;
+    [].forEach.call(imgs, function(im){
+      if (im.complete) { if(!--left) fill(); }
+      else { im.addEventListener('load', function(){ if(!--left) fill(); });
+             im.addEventListener('error', function(){ if(!--left) fill(); }); }
+    });
+  })();
+
+  /* ---- benefits tabs (WAI-ARIA tabs) ---- */
+  (function(){
+    var tabsBox = document.getElementById('ben-tabs'); if(!tabsBox) return;
+    var tabs = [].slice.call(tabsBox.querySelectorAll('.ben-tab'));
+    var panels = { clinics: document.getElementById('ben-clinics'), platforms: document.getElementById('ben-platforms') };
+    if(!tabs.length || !panels.clinics || !panels.platforms) return;
+    tabsBox.hidden = false;
+    tabsBox.setAttribute('role','tablist');
+    tabs.forEach(function(t,i){
+      var key = t.getAttribute('data-panel');
+      t.id = 'ben-tab-' + key;
+      t.setAttribute('role','tab');
+      t.setAttribute('aria-controls', 'ben-' + key);
+      panels[key].setAttribute('role','tabpanel');
+      panels[key].setAttribute('aria-labelledby', t.id);
+    });
+    function select(key, focus){
+      tabs.forEach(function(t){
+        var on = t.getAttribute('data-panel') === key;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        if (on && focus) t.focus();
+      });
+      Object.keys(panels).forEach(function(k){
+        var p = panels[k];
+        if (k === key){ p.removeAttribute('data-off'); p.removeAttribute('inert'); }
+        else { p.setAttribute('data-off',''); p.setAttribute('inert',''); }
+      });
+    }
+    tabs.forEach(function(t){
+      t.addEventListener('click', function(){ select(t.getAttribute('data-panel'), false); });
+      t.addEventListener('keydown', function(e){
+        var i = tabs.indexOf(t), n = null;
+        if (e.key === 'ArrowRight') n = tabs[(i+1) % tabs.length];
+        else if (e.key === 'ArrowLeft') n = tabs[(i-1+tabs.length) % tabs.length];
+        else if (e.key === 'Home') n = tabs[0];
+        else if (e.key === 'End') n = tabs[tabs.length-1];
+        if (n){ e.preventDefault(); select(n.getAttribute('data-panel'), true); }
+      });
+    });
+    var want = /[?&#]panel=platforms/.test(location.href) ? 'platforms' : 'clinics';
+    select(want, false);
+  })();
+
+  /* ---- revenue calculator ---- */
+  (function(){
+    var el = document.getElementById('calc-subs'); if(!el) return;
+    var numEl = document.getElementById('calc-num'),
+        outH  = document.getElementById('calc-out-h'),
+        outY  = document.getElementById('calc-out-y');
+    /* PRICE is the shelf price including VAT; the 35% share is taken on the net amount, which is
+       what "of every £149 / mo subscription (after VAT)" means. */
+    var PRICE = 149, VAT = 0.20, RATE = 0.35;
+    /* a clinic employee spends 1.5h on a customer, twice a year */
+    var HOURS_PER_VISIT = 1.5, VISITS_PER_YEAR = 2;
+    var GBP = new Intl.NumberFormat('en-GB',{style:'currency',currency:'GBP',minimumFractionDigits:0,maximumFractionDigits:0});
+    var NUM = new Intl.NumberFormat('en-GB',{maximumFractionDigits:0});
+    function calc(n){
+      var net = PRICE / (1 + VAT);
+      return { y: n * net * RATE * 12, h: n * HOURS_PER_VISIT * VISITS_PER_YEAR };
+    }
+    function update(){
+      var n = parseInt(el.value,10); if(!isFinite(n) || n < 0) n = 500;
+      var r = calc(n);
+      numEl.textContent = n;
+      outH.textContent = NUM.format(r.h) + 'h';
+      outY.textContent = GBP.format(r.y);
+      el.setAttribute('aria-valuetext', n + ' subscribers, ' + NUM.format(r.h) + ' clinic hours saved per year, ' + GBP.format(r.y) + ' net income per year');
+    }
+    el.addEventListener('input', update);
+    update();
+  })();
+
+  /* ---- comparison column switch (mobile) ---- */
+  (function(){
+    var table = document.getElementById('cmp-table'); if(!table) return;
+    var togs = [].slice.call(document.querySelectorAll('.cmp-tog'));
+    function set(comp){
+      table.setAttribute('data-comp', comp);
+      togs.forEach(function(b){
+        var on = b.getAttribute('data-comp') === comp;
+        b.classList.toggle('on', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    }
+    togs.forEach(function(b){ b.addEventListener('click', function(){ set(b.getAttribute('data-comp')); }); });
+    var m = /[?&#]cmp=(bio|cap)/.exec(location.href);
+    set(m ? m[1] : 'bio');
+  })();
+
+  /* ---- decorative email field: append to the cal.com link, submit nothing ---- */
+  /* hero lead capture. posts same-origin to the waitlist Worker with variant 'b2b-v2' so partner
+     leads are separable from consumer signups. the old block this replaces only rewrote a cal.com
+     href with ?email=, and it referenced a #cta-email that no longer exists. */
+  (function(){
+    var form = document.getElementById('b2b-lead'); if(!form) return;
+    var input = document.getElementById('hero-email');
+    var err   = document.querySelector('.form-err');
+    var pill  = document.querySelector('.joined-pill');
+    var KEY   = 'sqnc_b2b_lead';   /* not the D2C key: both pages share an origin on localhost */
+    var API   = '/api/waitlist';
+    var STATIC = document.documentElement.classList.contains('static');
+    function markJoined(){ form.hidden = true; if (err) err.hidden = true; if (pill) pill.hidden = false; }
+    try { if (localStorage.getItem(KEY)) markJoined(); } catch(_) {}
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (err) err.hidden = true;
+      var v = (input.value || '').trim();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){
+        if (err){ err.textContent = 'Please enter a valid email address.'; err.hidden = false; }
+        input.focus(); return;
+      }
+      if (form.website && form.website.value) return;   /* honeypot */
+      if (STATIC){ markJoined(); return; }
+      var btn = form.querySelector('button[type=submit]');
+      var txt = btn && btn.querySelector('.cta-txt');
+      var label = txt ? txt.textContent : '';
+      if (btn) btn.disabled = true; if (txt) txt.textContent = 'Sending\u2026';
+      fetch(API, { method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ email:v, ts:new Date().toISOString(), variant:'b2b-v2', src:'b2b', website:'' }) })
+        .then(function(r){ if(!r.ok) throw new Error(r.status);
+          try { localStorage.setItem(KEY,'1'); } catch(_) {}
+          markJoined();
+        })
+        .catch(function(){
+          if (btn) btn.disabled = false; if (txt) txt.textContent = label;
+          if (err){ err.textContent = 'Something went wrong, please try again.'; err.hidden = false; }
+        });
+    });
+  })();
+})();
+</script>
 <!-- Cloudflare Web Analytics: cookieless, aggregate. Installed manually rather than via
      the zone's automatic injection, which does not fire for this Pages-served site.
      The host + connect target are allow-listed in _headers' CSP. -->

@@ -8,3 +8,7 @@ assets/card-ring.png
 
 # local Claude Code config / session data — never deploy
 .claude/
+
+# b2b local safety backups — never deploy
+b2b-v2.backup-*.html
+b2b.backup-*.html
