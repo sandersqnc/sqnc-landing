@@ -567,8 +567,12 @@ html.static .ben-panel{transition:none}
    has 1087px of room; 15.2em clears it at every width from 1025 up and still lets it wrap on
    mobile, where the container is narrower than the cap */
 .conn .sec-head h2{max-width:15.2em}
-/* two lines rather than the three the shared 20ch cap gives at the new heading size */
-.clin .sec-head h2{max-width:14em}
+/* two lines. The copy grew past what 14em could hold, so this was setting four rows, and the
+   ceiling here is hard: section.clin reserves a 290px right gutter for the rail, leaving 1176px
+   at 1920 while "Your nutritionist and customer can adjust it." needs 1304px at 70px. Size alone
+   would have cost 16%; pairing a 65px cap with roughly double the shared tracking costs 7% and
+   holds two lines from 820px up. Sizes at 900 and below are unchanged from the shared rule. */
+.clin .sec-head h2{max-width:none;font-size:clamp(2.6rem,4.15vw,65px);letter-spacing:-.026em}
 /* the carousel and its dots are mobile only; above 720 the three cards are a plain grid */
 .conn-dots{display:none}
 .conn-dot{position:relative;width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(7,43,24,.18);cursor:pointer;transition:background .3s var(--ease),transform .3s var(--ease)}
